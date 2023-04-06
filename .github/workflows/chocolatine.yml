@@ -71,8 +71,7 @@ jobs:
     name: Mirror Pusher
     runs-on: ubuntu-latest
     needs: check_program_compilation
-    if: github.event_name == 'push'
-    if: github.ref != 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref != 'refs/heads/main'
     steps:
       - uses: actions/checkout@main
         with:
