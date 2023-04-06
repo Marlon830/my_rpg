@@ -1,0 +1,85 @@
+name: my_rpg
+on:
+  push:
+    branches-ignore:
+      - 'ga-ignore-*'
+  pull_request:
+    branches-ignore:
+      - 'ga-ignore-*'
+env:
+  MIRROR_URL: "git@github.com:EpitechPromo2027/B-MUL-200-MPL-2-1-myrpg-edgar.maurel.git"
+  EXECUTABLES: "my_rpg"
+jobs:
+  check_coding_style:
+    name: Coding Style Checker
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/epitech/coding-style-checker:latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+      - run: check.sh $(pwd) $(pwd)
+        continue-on-error: false
+      - run: |
+            file='coding-style-reports.log'
+            temp=0
+            i=1
+            while read line; do
+            temp=84
+            filename=$(echo $line | cut -d ":" -f1)
+
+            num=$(echo $line | cut -d ":" -f2)
+
+            code=$(echo $line | cut -d " " -f2)
+            majmin=$(echo $code | cut -d ":" -f1)
+            errcode=$(echo $code | cut -d ":" -f2)
+            majmin+=" coding style error"
+            echo "::error file=$filename,line=$num,title=$majmin::$errcode"
+            i=$((i+1))
+            done < $file
+            exit $temp
+        continue-on-error: false
+  check_program_compilation:
+    name: Program Compilation Checker
+    runs-on: ubuntu-latest
+    needs: check_coding_style
+    container:
+      image: epitechcontent/epitest-docker:latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+      - run: make
+        timeout-minutes: 2
+        continue-on-error: false
+      - run: make clean
+        continue-on-error: false
+      - run: | 
+            nbword=$(echo $EXECUTABLES | awk -F "," '{print NF}')
+            
+            for i in $(seq 1 $nbword)
+            do
+            exec=$(echo $EXECUTABLES | cut -d "," -f$i)
+            if ! test -x $exec ;
+            then
+                exit 84
+            fi
+            done
+        continue-on-error: false
+  push_to_mirror:
+    name: Mirror Pusher
+    runs-on: ubuntu-latest
+    needs: run_tests
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+      - uses: pixta-dev/repository-mirroring-action@main
+        with:
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
+            ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+
