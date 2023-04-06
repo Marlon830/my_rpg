@@ -28,7 +28,7 @@ typedef struct graphic_s {
     list_t *images;
 } graphic_t;
 
-graphic_t *graphic_init();
+graphic_t *graphic_init(void);
 void graphic_draw(graphic_t *graphic);
 void graphic_event(project_t *project);
 graphic_t *graphic_init(void);

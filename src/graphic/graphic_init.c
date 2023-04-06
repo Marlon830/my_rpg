@@ -12,7 +12,8 @@ graphic_t *graphic_init(void)
     graphic_t *graphic = malloc(sizeof(graphic_t));
     sfVideoMode mode = (sfVideoMode){1920, 1080, 32};
 
-    graphic->window = sfRenderWindow_create(mode, "Quoi ? Feur", sfClose | sfFullscreen, NULL);
+    graphic->window = sfRenderWindow_create(mode, "Quoi ? Feur",
+    sfClose | sfFullscreen, NULL);
     graphic->camera = sfView_create();
     graphic->player_pos = (sfVector2f){160, 160};
     graphic->images = malloc(sizeof(list_t));

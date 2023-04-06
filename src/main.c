@@ -18,7 +18,7 @@ void main_loop(project_t *project)
     free(project);
 }
 
-project_t *init_project()
+project_t *init_project(void)
 {
     project_t *project = malloc(sizeof(project_t));
 
@@ -27,7 +27,7 @@ project_t *init_project()
     return project;
 }
 
-int main()
+int main(void)
 {
     project_t *project = init_project();
     main_loop(project);

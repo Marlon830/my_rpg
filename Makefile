@@ -9,7 +9,7 @@ TARGET = myrpg
 
 CFLAGS = -Wextra -Wall
 
-LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-network -lcsfml-audio
+LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 
 CPPFLAGS = -I./include -I./csfml_engine/include
 
@@ -21,6 +21,7 @@ SRC = ./src/main.c \
 	  ./src/graphic/graphic_destroy.c \
 	  ./src/graphic/move_camera.c \
 	  ./src/utils/string.c \
+	  ./src/utils/string_bis.c \
 	  ./src/utils/list.c \
 
 OBJ = $(SRC:.c=.o)

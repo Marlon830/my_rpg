@@ -19,7 +19,6 @@ void graphic_key_event(project_t *project, sfKeyCode key)
         (sfVector2f){-project->player_speed, 0}, key); break;
         case sfKeyD : move_camera(project->graphic,
         (sfVector2f){project->player_speed, 0}, key); break;
-        default : break;
     }
 }
 
