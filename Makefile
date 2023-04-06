@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-TARGET = myrpg
+TARGET = my_rpg
 
 CFLAGS = -Wextra -Wall
 
