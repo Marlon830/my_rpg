@@ -26,7 +26,7 @@ void push_back(list_t **list, const char *id, void *node, enum type type)
     }
 }
 
-void *get_item(list_t *list, const char *id)
+void *get_item(list_t *list, char *id)
 {
     list_t *tmp = list;
     while (tmp != NULL) {

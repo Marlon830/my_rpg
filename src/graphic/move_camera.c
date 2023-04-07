@@ -5,12 +5,33 @@
 ** move_camera.c
 */
 
-#include "../../include/graphic.h"
+#include "../../include/project.h"
 
-void move_camera(graphic_t *graphic, sfVector2f move, sfKeyCode key)
+bool check_collision(project_t *project)
 {
-    graphic->player_pos.x += move.x;
-    graphic->player_pos.y += move.y;
+    list_t *tmp = project->graphic->colliders;
+    while (tmp != NULL) {
+        if (sfFloatRect_intersects(project->graphic->player_col,
+        ((collider_t *)tmp->element)->rect, NULL))
+            return true;
+        tmp = tmp->next;
+    }
+    return false;
+}
+
+void move_camera(graphic_t *graphic, project_t *project)
+{
+    graphic->player_pos.x += project->movement.x;
+    graphic->player_pos.y += project->movement.y;
+    graphic->player_col->left = graphic->player_pos.x;
+    graphic->player_col->top = graphic->player_pos.y;
+    if (check_collision(project)) {
+        graphic->player_pos.x -= project->movement.x;
+        graphic->player_pos.y -= project->movement.y;
+        graphic->player_col->left = graphic->player_pos.x;
+        graphic->player_col->top = graphic->player_pos.y;
+        return;  
+    }
     sfView_setCenter(graphic->camera, graphic->player_pos);
     sfRenderWindow_setView(graphic->window, graphic->camera);
     image_t *player = get_item(graphic->images, "player");

@@ -21,11 +21,17 @@ typedef struct image_s {
     sfVector2f pos;
 } image_t;
 
+typedef struct collider_s {
+    sfFloatRect *rect;
+} collider_t;
+
 typedef struct graphic_s {
     sfRenderWindow *window;
     sfView *camera;
     sfVector2f player_pos;
+    sfFloatRect *player_col;
     list_t *images;
+    list_t *colliders;
 } graphic_t;
 
 graphic_t *graphic_init(void);
@@ -34,7 +40,9 @@ void graphic_event(project_t *project);
 graphic_t *graphic_init(void);
 void graphic_event(project_t *project);
 void graphic_destroy(graphic_t *graphic);
-void move_camera(graphic_t *graphic, sfVector2f move, sfKeyCode key);
+void move_camera(graphic_t *graphic, project_t *project);
 image_t *create_image(int x, int y, char *path, sfIntRect rect);
+collider_t *create_collider(int x, int y, int w, int h);
+void colliders_init(char *path, graphic_t *graphic);
 
 #endif

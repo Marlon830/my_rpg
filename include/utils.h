@@ -21,7 +21,8 @@
 typedef struct sprite_s sprite_t;
 
 enum type {
-    IMAGE
+    IMAGE,
+    COLLIDER
 };
 
 typedef struct list_s {
@@ -33,7 +34,7 @@ typedef struct list_s {
 
 void push_back(list_t **list, const char *id, void *node, enum type type);
 void delete(list_t **list, const char *id);
-void *get_item(list_t *list, const char *id);
+void *get_item(list_t *list, char *id);
 char *itoa(int num);
 char *cat(char *str, char *str2);
 int my_strlen(char *str);

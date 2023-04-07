@@ -21,4 +21,5 @@ void graphic_draw(graphic_t *graphic)
 {
     sfRenderWindow_clear(graphic->window, sfBlack);
     images_draw(graphic);
+    sfRenderWindow_display(graphic->window);
 }
