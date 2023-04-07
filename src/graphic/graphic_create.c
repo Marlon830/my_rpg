@@ -30,5 +30,3 @@ collider_t *create_collider(int x, int y, int w, int h)
     col->rect->height = h;
     return col;
 }
-
-

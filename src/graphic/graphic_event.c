@@ -11,8 +11,7 @@ void graphic_event(project_t *project)
 {
     sfEvent event;
 
-    while (sfRenderWindow_pollEvent(WINDOW, &event))
-    {
+    while (sfRenderWindow_pollEvent(WINDOW, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(WINDOW);
     }
