@@ -30,7 +30,7 @@ void move_camera(graphic_t *graphic, project_t *project)
         graphic->player_pos.y -= project->movement.y;
         graphic->player_col->left = graphic->player_pos.x;
         graphic->player_col->top = graphic->player_pos.y;
-        return;  
+        return;
     }
     sfView_setCenter(graphic->camera, graphic->player_pos);
     sfRenderWindow_setView(graphic->window, graphic->camera);

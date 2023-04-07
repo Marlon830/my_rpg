@@ -11,7 +11,7 @@ void update(project_t *project)
 {
     int movement_x = 0, movement_y = 0;
     bool moved = false;
-    
+
     if (sfKeyboard_isKeyPressed(sfKeyZ))
         movement_y -= project->player_speed;
     if (sfKeyboard_isKeyPressed(sfKeyS))
