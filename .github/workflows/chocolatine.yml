@@ -9,6 +9,7 @@ on:
 env:
   MIRROR_URL: "git@github.com:EpitechPromo2027/B-MUL-200-MPL-2-1-myrpg-edgar.maurel.git"
   EXECUTABLES: "my_rpg"
+  ALLOWED_FUNCS: "malloc,free,memset,rand,srand,getline,stat,open,fopen,read,fread,close,fclose,write,fwrite,opendir,readdir,closedir"
 jobs:
   check_coding_style:
     name: Coding Style Checker
@@ -67,10 +68,51 @@ jobs:
             fi
             done
         continue-on-error: false
+  check_banned_functions:
+    name: Banned Functions Checker
+    runs-on: ubuntu-latest
+    needs: check_program_compilation
+    container:
+      image: epitechcontent/epitest-docker:latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+      - run: make
+      - run: make clean
+      - run: |
+            IFS=',' read -ra list <<< "$ALLOWED_FUNCS"
+            banned_func=()
+            is_banned=0
+            all_func=()
+            exit_status=0
+            
+            while read func_name; do
+                all_func+=("$func_name")
+            done < <(nm -D $EXECUTABLES | grep -oP '\b(?!__)[a-zA-Z_]+(?=@)')
+            
+            for func in "${all_func[@]}"; do
+                is_banned=1
+                for allowed_func in "${list[@]}"; do
+                    if [ "$func" == "$allowed_func" ]; then
+                        is_banned=0
+                    fi
+                done
+                if [ $is_banned == 1 ]; then
+                    banned_func+=("$func")
+                fi
+            done
+
+            for banned in "${banned_func[@]}"; do
+                exit_status=84
+                echo "::warning title=MAJOR error::Banned function $banned used"
+            done
+            exit $exit_status
+        continue-on-error: false
   push_to_mirror:
     name: Mirror Pusher
     runs-on: ubuntu-latest
-    needs: check_program_compilation
+    needs: check_banned_functions
     if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@main
