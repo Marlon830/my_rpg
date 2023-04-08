@@ -29,7 +29,7 @@ OBJ = $(SRC:.c=.o)
 all : $(TARGET)
 
 $(TARGET) : $(OBJ)
-	@$(CC) -o $(TARGET) $(OBJ) $(CFLAGS) $(LDFLAGS) -g3
+	@$(CC) -o $(TARGET) $(OBJ) $(CFLAGS) $(LDFLAGS)
 
 clean :
 	@$(RM) $(OBJ)
