@@ -1,2 +1,4 @@
 coding-style-reports.log
 coding-style.sh
+*.o
+my_rpg
