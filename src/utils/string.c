@@ -30,7 +30,7 @@ int my_strcmp(char *s1,  char *s2)
     return my_strlen(s1) - my_strlen(s2);
 }
 
-char *cat(char *s1, char *s2)
+char *my_strcat(char *s1, char *s2)
 {
     int len1 = my_strlen(s1);
     int len2 = my_strlen(s2);
