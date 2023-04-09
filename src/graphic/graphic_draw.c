@@ -5,21 +5,20 @@
 ** graphic_draw.c
 */
 
-#include "../../include/graphic.h"
+#include "project.h"
 
-void images_draw(graphic_t *graphic)
+void images_draw(project_t *project, list_t *img_list)
 {
-    list_t *tmp = graphic->images;
+    list_t *tmp = img_list;
+
     while (tmp != NULL) {
-        sfRenderWindow_drawSprite(graphic->window,
+        sfRenderWindow_drawSprite(project->window,
         ((image_t *)tmp->element)->sprite, NULL);
         tmp = tmp->next;
     }
 }
 
-void graphic_draw(graphic_t *graphic)
+void graphic_draw(project_t *project, graphic_t *scene)
 {
-    sfRenderWindow_clear(graphic->window, sfBlack);
-    images_draw(graphic);
-    sfRenderWindow_display(graphic->window);
+    images_draw(project, scene->images);
 }
