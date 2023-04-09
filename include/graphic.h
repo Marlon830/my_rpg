@@ -26,23 +26,23 @@ typedef struct collider_s {
 } collider_t;
 
 typedef struct graphic_s {
-    sfRenderWindow *window;
     sfView *camera;
     sfVector2f player_pos;
     sfFloatRect *player_col;
     list_t *images;
     list_t *colliders;
+    float player_speed;
+    sfVector2f movement;
 } graphic_t;
 
-graphic_t *graphic_init(void);
-void graphic_draw(graphic_t *graphic);
-void graphic_event(project_t *project);
-graphic_t *graphic_init(void);
-void graphic_event(project_t *project);
-void graphic_destroy(graphic_t *graphic);
-void move_camera(graphic_t *graphic, project_t *project);
+void graphic_draw(project_t *project, graphic_t *scene);
+void event_scene_one(project_t *project, graphic_t *scene);
+void event_all_scenes(project_t *project);
+graphic_t *graphic_init(project_t *project);
+void graphic_destroy(graphic_t *scene);
+void move_camera(project_t *project, graphic_t *scene);
 image_t *create_image(int x, int y, char *path, sfIntRect rect);
 collider_t *create_collider(int x, int y, int w, int h);
-void colliders_init(char *path, graphic_t *graphic);
+void colliders_init(char *path, graphic_t *scene);
 
 #endif
