@@ -9,7 +9,7 @@
 #include "../../include/utils.h"
 #include <string.h>
 
-void colliders_init(char *path, graphic_t *graphic)
+void colliders_init(char *path, graphic_t *scene)
 {
     FILE *fp = fopen(path, "r");
     ssize_t read;
@@ -26,7 +26,7 @@ void colliders_init(char *path, graphic_t *graphic)
         x = my_getnbr(num);
         num = strtok(NULL, " ");
         y = my_getnbr(num);
-        push_back(&graphic->colliders, "collider",
+        push_back(&scene->colliders, "collider",
         create_collider(x, y, 16, 16), COLLIDER);
     }
 }
