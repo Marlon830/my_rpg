@@ -7,11 +7,12 @@
 
 #include "../../include/project.h"
 
-bool check_collision(project_t *project)
+bool check_collision(project_t *project, graphic_t *scene)
 {
-    list_t *tmp = project->graphic->colliders;
+    list_t *tmp = scene->colliders;
+
     while (tmp != NULL) {
-        if (sfFloatRect_intersects(project->graphic->player_col,
+        if (sfFloatRect_intersects(scene->player_col,
         ((collider_t *)tmp->element)->rect, NULL))
             return true;
         tmp = tmp->next;
@@ -19,22 +20,22 @@ bool check_collision(project_t *project)
     return false;
 }
 
-void move_camera(graphic_t *graphic, project_t *project)
+void move_camera(project_t *project, graphic_t *scene)
 {
-    graphic->player_pos.x += project->movement.x;
-    graphic->player_pos.y += project->movement.y;
-    graphic->player_col->left = graphic->player_pos.x;
-    graphic->player_col->top = graphic->player_pos.y;
-    if (check_collision(project)) {
-        graphic->player_pos.x -= project->movement.x;
-        graphic->player_pos.y -= project->movement.y;
-        graphic->player_col->left = graphic->player_pos.x;
-        graphic->player_col->top = graphic->player_pos.y;
+    scene->player_pos.x += scene->movement.x;
+    scene->player_pos.y += scene->movement.y;
+    scene->player_col->left = scene->player_pos.x;
+    scene->player_col->top = scene->player_pos.y;
+    if (check_collision(project, scene)) {
+        scene->player_pos.x -= scene->movement.x;
+        scene->player_pos.y -= scene->movement.y;
+        scene->player_col->left = scene->player_pos.x;
+        scene->player_col->top = scene->player_pos.y;
         return;
     }
-    sfView_setCenter(graphic->camera, graphic->player_pos);
-    sfRenderWindow_setView(graphic->window, graphic->camera);
-    image_t *player = get_item(graphic->images, "player");
-    player->pos = graphic->player_pos;
+    sfView_setCenter(scene->camera, scene->player_pos);
+    sfRenderWindow_setView(project->window, scene->camera);
+    image_t *player = get_item(scene->images, "player");
+    player->pos = scene->player_pos;
     sfSprite_setPosition(player->sprite, player->pos);
 }
