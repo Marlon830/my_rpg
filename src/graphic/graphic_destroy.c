@@ -7,7 +7,7 @@
 
 #include "../../include/graphic.h"
 
-void graphic_destroy(graphic_t *graphic)
+void graphic_destroy(graphic_t *scene)
 {
-    sfRenderWindow_destroy(graphic->window);
+    return;
 }
