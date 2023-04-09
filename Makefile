@@ -17,6 +17,7 @@ SRC = ./src/main.c \
 	  ./src/graphic/graphic_create.c \
 	  ./src/graphic/graphic_draw.c \
 	  ./src/graphic/graphic_init.c \
+	  ./src/graphic/colliders_init.c \
 	  ./src/graphic/graphic_event.c \
 	  ./src/graphic/graphic_destroy.c \
 	  ./src/graphic/move_camera.c \

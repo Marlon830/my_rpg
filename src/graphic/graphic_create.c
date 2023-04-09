@@ -19,3 +19,14 @@ image_t *create_image(int x, int y, char *path, sfIntRect rect)
     sfSprite_setPosition(image->sprite, image->pos);
     return image;
 }
+
+collider_t *create_collider(int x, int y, int w, int h)
+{
+    collider_t *col = malloc(sizeof(collider_t));
+    col->rect = malloc(sizeof(sfFloatRect));
+    col->rect->left = x;
+    col->rect->top = y;
+    col->rect->width = w;
+    col->rect->height = h;
+    return col;
+}
