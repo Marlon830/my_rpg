@@ -10,22 +10,17 @@
     #include "graphic.h"
     #include "utils.h"
 
-    #define WINDOW project->graphic->window
-
-typedef struct keys_s {
-    bool z;
-    bool s;
-    bool q;
-    bool d;
-} keys_t;
+    #define WINDOW project->window
 
 typedef struct project_s {
-    graphic_t *graphic;
-    float player_speed;
-    sfVector2f movement;
-    keys_t *pressed;
+    sfRenderWindow *window;
+    graphic_t *scene_one;
     sfClock *clock;
     float dt;
+    int scene_id;
 } project_t;
+
+void update_all_scenes(project_t *project);
+void update_scene_one(project_t *project, graphic_t *scene);
 
 #endif
