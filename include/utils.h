@@ -7,10 +7,9 @@
 
 #ifndef UTILS_H_
     #define UTILS_H_
-    #include "stdio.h"
-    #include "stdlib.h"
-    #include "stdbool.h"
-    #include "SFML/Graphics.h"
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <SFML/Graphics.h>
     #include <stdbool.h>
     #include <sys/stat.h>
     #include <sys/types.h>
@@ -32,11 +31,9 @@ typedef struct list_s {
     struct list_s *next;
 } list_t;
 
-void push_back(list_t **list, const char *id, void *node, enum type type);
 void delete(list_t **list, const char *id);
 void *get_item(list_t *list, char *id);
-char *itoa(int num);
-char *cat(char *str, char *str2);
+char *my_strcat(char *str, char *str2);
 int my_strlen(char *str);
 int my_strcmp(char *s1,  char *s2);
 int my_getnbr(char *str);
