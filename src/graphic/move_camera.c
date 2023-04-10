@@ -25,12 +25,12 @@ void move_camera(project_t *project, graphic_t *scene)
     scene->player_pos.x += scene->movement.x;
     scene->player_pos.y += scene->movement.y;
     scene->player_col->left = scene->player_pos.x;
-    scene->player_col->top = scene->player_pos.y;
+    scene->player_col->top = scene->player_pos.y + 8;
     if (check_collision(project, scene)) {
         scene->player_pos.x -= scene->movement.x;
         scene->player_pos.y -= scene->movement.y;
         scene->player_col->left = scene->player_pos.x;
-        scene->player_col->top = scene->player_pos.y;
+        scene->player_col->top = scene->player_pos.y + 8;
         return;
     }
     sfView_setCenter(scene->camera, scene->player_pos);
