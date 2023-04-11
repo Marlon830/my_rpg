@@ -11,8 +11,8 @@
 
 void get_collider_coord(char *line, graphic_t *scene)
 {
-    char *num1 = malloc(sizeof(line)); 
-    char *num2 = malloc(sizeof(line)); 
+    char *num1 = malloc(sizeof(line));
+    char *num2 = malloc(sizeof(line));
     int i = 0;
     int j = 0;
     int x = 0;
@@ -29,7 +29,6 @@ void get_collider_coord(char *line, graphic_t *scene)
     push_back(&scene->colliders, "collider",
     create_collider(x, y, 16, 16), COLLIDER);
 }
-
 
 void colliders_init(char *path, graphic_t *scene)
 {
