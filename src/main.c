@@ -20,6 +20,21 @@ void main_loop(project_t *project)
     free(project);
 }
 
+player_t *init_player(int x, int y)
+{
+    player_t *player = malloc(sizeof(player_t));
+    player->col = malloc(sizeof(sfFloatRect));
+    player->pos.x = x;
+    player->pos.y = y;
+    player->col->left = player->pos.x;
+    player->col->top = player->pos.y;
+    player->col->width = 16;
+    player->col->height = 8;
+    player->speed = 1;
+    player->move = (sfVector2f) {0, 0};
+    return player;
+}
+
 project_t *init_project(void)
 {
     project_t *project = malloc(sizeof(project_t));
@@ -30,14 +45,7 @@ project_t *init_project(void)
     sfRenderWindow_setFramerateLimit(project->window, 60);
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
     project->clock = sfClock_create();
-    project->player = malloc(sizeof(player_t));
-    project->player->col = malloc(sizeof(sfFloatRect));
-    project->player->col->left = project->player->pos.x;
-    project->player->col->top = project->player->pos.y;
-    project->player->col->width = 16;
-    project->player->col->height = 8;
-    project->player->speed = 5000;
-    project->player->move = (sfVector2f) {0, 0};
+    project->player = init_player(160, 160);
     project->scene = load_scene(project, 0);
     return project;
 }
