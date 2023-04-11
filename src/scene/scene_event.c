@@ -2,12 +2,12 @@
 ** EPITECH PROJECT, 2022
 ** test_map
 ** File description:
-** graphic_event.c
+** scene_event.c
 */
 
 #include "../../include/project.h"
 
-void event_scene_one(project_t *project, graphic_t *scene)
+void scene_event(project_t *project)
 {
     sfEvent event;
 
@@ -16,13 +16,5 @@ void event_scene_one(project_t *project, graphic_t *scene)
             sfRenderWindow_close(project->window);
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab)
             switch_state_inventory(project->inventory);
-    }
-}
-
-void event_all_scenes(project_t *project)
-{
-    switch (project->scene_id) {
-        case 1: event_scene_one(project, project->scene_one); break;
-        default: break;
     }
 }

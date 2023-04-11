@@ -5,11 +5,11 @@
 ** colliders_init.c
 */
 
-#include "../../include/graphic.h"
+#include "../../include/scene.h"
 #include "../../include/utils.h"
 #include <string.h>
 
-void get_collider_coord(char *line, graphic_t *scene)
+void get_collider_coord(char *line, scene_t *scene)
 {
     char *num1 = malloc(sizeof(line));
     char *num2 = malloc(sizeof(line));
@@ -30,9 +30,9 @@ void get_collider_coord(char *line, graphic_t *scene)
     create_collider(x, y, 16, 16), COLLIDER);
 }
 
-void colliders_init(char *path, graphic_t *scene)
+void colliders_init(char *path, scene_t *scene)
 {
-    FILE *fp = fopen(path, "r");
+    FILE *fp = fopen(my_strcat("./assets/", path), "r");
     ssize_t read;
     size_t len = 0;
     char *line = NULL;
