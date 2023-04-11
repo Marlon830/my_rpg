@@ -2,10 +2,10 @@
 ** EPITECH PROJECT, 2022
 ** tiled-to-c
 ** File description:
-** graphic_create.c
+** scene_create.c
 */
 
-#include "../../include/graphic.h"
+#include "../../include/scene.h"
 #include "../../include/utils.h"
 #include <string.h>
 
