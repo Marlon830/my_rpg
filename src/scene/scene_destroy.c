@@ -9,5 +9,6 @@
 
 void scene_destroy(scene_t *scene)
 {
+    (void) scene;
     return;
 }
