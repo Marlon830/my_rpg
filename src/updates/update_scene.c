@@ -28,4 +28,5 @@ void update_scene(project_t *project)
         move_camera(project, project->scene);
     }
     scene_draw(project, project->scene);
+    update_inventory(project);
 }
