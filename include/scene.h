@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2022
 ** test_map
 ** File description:
-** graphic.h
+** scene.h
 */
 
-#ifndef GRAPHIC_H_
-    #define GRAPHIC_H_
+#ifndef SCENE_H_
+    #define SCENE_H_
     #include <SFML/Graphics.h>
     #include <SFML/Audio.h>
     #include <SFML/Window.h>
@@ -25,24 +25,27 @@ typedef struct collider_s {
     sfFloatRect *rect;
 } collider_t;
 
-typedef struct graphic_s {
+typedef struct scene_s {
     sfView *camera;
-    sfVector2f player_pos;
-    sfFloatRect *player_col;
     list_t *images;
     list_t *colliders;
-    float player_speed;
-    sfVector2f movement;
-} graphic_t;
+    sfVector2f spawn;
+    char *path;
+    char *name;
+} scene_t;
 
-void graphic_draw(project_t *project, graphic_t *scene);
-void event_scene_one(project_t *project, graphic_t *scene);
-void event_all_scenes(project_t *project);
-graphic_t *graphic_init(project_t *project);
-void graphic_destroy(graphic_t *scene);
-void move_camera(project_t *project, graphic_t *scene);
+typedef struct scene_list_s {
+    char *name;
+    sfVector2f spawn;
+} scene_list_t;
+
+void scene_draw(project_t *project, scene_t *scene);
+void scene_event(project_t *project);
+scene_t *load_scene(project_t *project, int scene_id);
+void scene_destroy(scene_t *scene);
+void move_camera(project_t *project, scene_t *scene);
 image_t *create_image(int x, int y, char *path, sfIntRect rect);
 collider_t *create_collider(int x, int y, int w, int h);
-void colliders_init(char *path, graphic_t *scene);
+void colliders_init(char *path, scene_t *scene);
 
 #endif

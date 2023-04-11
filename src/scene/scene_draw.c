@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2022
 ** test_map
 ** File description:
-** graphic_draw.c
+** scene_draw.c
 */
 
 #include "project.h"
@@ -18,7 +18,7 @@ void images_draw(project_t *project, list_t *img_list)
     }
 }
 
-void graphic_draw(project_t *project, graphic_t *scene)
+void scene_draw(project_t *project, scene_t *scene)
 {
     images_draw(project, scene->images);
 }

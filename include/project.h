@@ -7,20 +7,21 @@
 
 #ifndef PROJECT_H_
     #define PROJECT_H_
-    #include "graphic.h"
+    #include "scene.h"
     #include "utils.h"
+    #include "player.h"
 
     #define WINDOW project->window
 
 typedef struct project_s {
     sfRenderWindow *window;
-    graphic_t *scene_one;
+    scene_t *scene;
     sfClock *clock;
     float dt;
+    player_t *player;
     int scene_id;
 } project_t;
 
-void update_all_scenes(project_t *project);
-void update_scene_one(project_t *project, graphic_t *scene);
+void update_scene(project_t *project);
 
 #endif

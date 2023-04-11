@@ -6,7 +6,7 @@
 */
 
 #include "../../include/utils.h"
-#include "../../include/graphic.h"
+#include "../../include/scene.h"
 #include <string.h>
 
 void push_back(list_t **list, const char *id, void *node, enum type type)
