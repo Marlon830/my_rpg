@@ -40,7 +40,6 @@ project_t *init_project(void)
     project_t *project = malloc(sizeof(project_t));
     sfVideoMode mode = (sfVideoMode){1920, 1080, 32};
 
-    project->scene_one = graphic_init(project);
     project->inventory = create_inventory();
     project->window = sfRenderWindow_create(mode, "Quoi ? Feur",
     sfClose | sfFullscreen, NULL);
