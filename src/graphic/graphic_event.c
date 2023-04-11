@@ -7,7 +7,7 @@
 
 #include "../../include/project.h"
 
-void event_scene_one(project_t *project, graphic_t *scene)
+void event_scene_one(project_t *project, __attribute__((unused))graphic_t *scene)
 {
     sfEvent event;
 
@@ -17,7 +17,7 @@ void event_scene_one(project_t *project, graphic_t *scene)
     }
 }
 
-void event_scene_two(project_t *project, graphic_t *scene)
+void event_scene_two(project_t *project, __attribute__((unused))graphic_t *scene)
 {
     sfEvent event;
 

@@ -46,4 +46,6 @@ image_t *create_image(int x, int y, char *path, sfIntRect rect);
 collider_t *create_collider(int x, int y, int w, int h);
 void colliders_init(char *path, graphic_t *scene);
 
+void create_dialogue(char *path_to_dialogue);
+
 #endif

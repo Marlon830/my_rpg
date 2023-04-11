@@ -7,7 +7,7 @@
 
 #include "../../include/project.h"
 
-bool check_collision(project_t *project, graphic_t *scene)
+bool check_collision(__attribute__((unused))project_t *project, graphic_t *scene)
 {
     list_t *tmp = scene->colliders;
 

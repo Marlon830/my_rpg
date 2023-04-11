@@ -7,7 +7,7 @@
 
 #include "../../include/graphic.h"
 
-void graphic_destroy(graphic_t *scene)
+void graphic_destroy(__attribute__((unused))graphic_t *scene)
 {
     return;
 }

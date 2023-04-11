@@ -26,9 +26,9 @@ project_t *init_project(void)
     project->window = sfRenderWindow_create(mode, "Quoi ? Feur",
     sfClose | sfFullscreen, NULL);
     project->scene_one = graphic_init(project, "spawn.png", "assets/res.coll", "player.png");
-    project->scene_two = graphic_init(project, "n4s.png", "assets/res.coll", "player.png");
+    project->scene_two = graphic_init(project, "spawn.png", "assets/res.coll", "player.png");
     project->clock = sfClock_create();
-    project->scene_id = 2;
+    project->scene_id = 1;
     return project;
 }
 

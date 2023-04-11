@@ -13,6 +13,7 @@ SRC = src/main.c \
 	  src/graphic/graphic_event.c \
 	  src/graphic/graphic_destroy.c \
 	  src/graphic/move_camera.c \
+	  src/graphic/create_dialogue.c \
 	  src/updates/update_scene_one.c \
 	  src/updates/updates_all_scenes.c \
 	  src/utils/string.c \

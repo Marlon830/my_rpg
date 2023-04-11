@@ -1,0 +1,8 @@
+Name:LeFlopeux
+Image:allan.png
+Dialogue#
+Salut à toutes et a tous c'est allan je flop
+énormément regardez
+-
+deuxième Dialogue
+#
