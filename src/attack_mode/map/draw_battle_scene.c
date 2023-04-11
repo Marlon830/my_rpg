@@ -11,4 +11,5 @@ void draw_batle_scene(battle_scene_t *scene, sfRenderWindow *window)
 {
     draw_map(window, scene->map);
     draw_player(scene->player, window);
+    draw_hand(scene->hand, window);
 }

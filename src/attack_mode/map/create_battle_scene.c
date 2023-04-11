@@ -13,9 +13,12 @@ sfVector2f tile_size)
     battle_scene_t *res = malloc(sizeof(battle_scene_t));
     map_t *map = create_map(width, height, pos, tile_size);
     player_t *player = create_player(map->tiles[0]);
+    hand_t *hand = create_hand(1, res->player);
     player->tiles_close = get_tiles_close(map, player->actual_tile,
     player->actual_stats->move_points, player);
     res->map = map;
     res->player = player;
+    res->hand = hand;
+    update_hand(res->hand);
     return res;
 }

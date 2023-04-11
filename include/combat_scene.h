@@ -6,19 +6,8 @@
 */
 
 #pragma once
-#include <SFML/Graphics.h>
-#include <SFML/System/Time.h>
-#include <SFML/System/Vector3.h>
-#include <SFML/System.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <math.h>
-#include <time.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
+#include "attack_mode.h"
 
 #define MIN(a,b) a < b ? a : b
 #define MAX(a,b) a > b ? a : b
@@ -59,13 +48,7 @@ typedef struct {
     int nb_tiles_close;
 } player_t;
 
-typedef struct battle_scene_s {
-    player_t *player;
-    map_t *map;
-} battle_scene_t;
 
-void analyse_events(sfRenderWindow *window, sfEvent event,
-battle_scene_t *scene);
 sfVertex create_vertex(sfVector2f position, sfColor color);
 tile_t *create_tile(sfVector2f center, sfColor color,
 sfVector2f size, float height);
@@ -107,14 +90,10 @@ int my_strlen(char *str);
 int int_len(int x);
 stat_t *create_stats(void);
 void move_player(player_t *player, tile_t *tile, map_t *map);
-void end_of_turn(player_t *player);
+
 
 int get_width_height(map_t *map, char *text_information);
 map_t *load_map(char *filename, sfVector2f size, sfVector2f pos);
 char *get_line(char *str, int ind);
 int count_char_until(char *str, char until);
 tile_t *get_tile_from_str(char *line, sfVector2f size, sfVector2f decalage);
-battle_scene_t *create_battle_scene(int width, int height, sfVector2f pos,
-sfVector2f tile_size);
-void update_battle_scene(battle_scene_t *scene, float time);
-void draw_batle_scene(battle_scene_t *scene, sfRenderWindow *window);

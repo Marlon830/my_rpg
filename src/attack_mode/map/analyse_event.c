@@ -8,7 +8,7 @@
 #include "attack_mode.h"
 
 void analyse_events(sfRenderWindow *window, sfEvent event,
-battle_scene_t *scene)
+battle_scene_t *scene, hand_t *hand)
 {
     if (event.type == sfEvtResized)
         sfRenderWindow_setView(window, sfView_createFromRect((sfFloatRect)
@@ -27,5 +27,7 @@ battle_scene_t *scene)
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyS)
         save_map(scene->map);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
-        end_of_turn(scene->player);
+        end_of_turn(scene->player, hand);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyC)
+        add_card_to_hand(hand, "card", 10, 5);
 }

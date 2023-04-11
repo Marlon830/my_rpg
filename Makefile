@@ -9,32 +9,27 @@ TARGET = my_rpg
 
 CFLAGS = -Wextra -Wall
 
-LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
+LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm
 
 CPPFLAGS = -I./include -I./csfml_engine/include
 
-SRC = ./src/main.c \
-	  ./src/graphic/graphic_create.c \
-	  ./src/graphic/graphic_draw.c \
-	  ./src/graphic/graphic_init.c \
-	  ./src/graphic/graphic_event.c \
-	  ./src/graphic/graphic_destroy.c \
-	  ./src/graphic/move_camera.c \
-	  ./src/utils/string.c \
-	  ./src/utils/string_bis.c \
-	  ./src/utils/list.c \
+SRC = $(shell find src -name "*.c")
 
 OBJ = $(SRC:.c=.o)
 
 all : $(TARGET)
 
 $(TARGET) : $(OBJ)
-	@$(CC) -o $(TARGET) $(OBJ) $(CFLAGS) $(LDFLAGS) -g3
+	$(CC) -o $(TARGET) $(OBJ) $(CFLAGS) $(LDFLAGS) -g3
 
 clean :
-	@$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 fclean : clean
-	@$(RM) $(TARGET)
+	$(RM) $(TARGET)
+
+coding_style : fclean
+	~/Documents/coding-style-checker/coding-style.sh . ..
+	cat ../coding-style-reports.log
 
 re : fclean all

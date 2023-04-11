@@ -5,7 +5,7 @@
 ** main.c
 */
 
-#include "my.h"
+#include "attack_mode.h"
 
 
 int main(int argc, char const *argv[])
@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
     float seconds;
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event)) {
-            analyse_events(window, event, scene);
+            analyse_events(window, event, scene, scene->hand);
         }
         seconds = sfClock_getElapsedTime(clock).microseconds / 1000000.0;
         update_battle_scene(scene, seconds);

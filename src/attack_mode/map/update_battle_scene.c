@@ -12,7 +12,6 @@ void update_battle_scene(battle_scene_t *scene, float time)
         scene->player->tiles_close =
         update_tiles_close(scene->player, scene->map,
         scene->player->actual_tile, scene->player->actual_stats->move_points);
-        wave_map(scene->map, time);
         update_player(scene->player);
         color_tiles(scene->map, scene->player);
 }

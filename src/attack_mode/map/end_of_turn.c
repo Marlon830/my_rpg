@@ -7,8 +7,9 @@
 
 #include "attack_mode.h"
 
-void end_of_turn(player_t *player)
+void end_of_turn(player_t *player, hand_t *hand)
 {
     player->actual_stats->move_points = player->basic_stats->move_points;
     player->actual_stats->health_point += 10;
+    add_card_to_hand(hand, "card", 10, 5);
 }
