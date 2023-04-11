@@ -23,6 +23,7 @@ project_t *init_project(void)
     project_t *project = malloc(sizeof(project_t));
 
     project->scene_one = graphic_init(project);
+    project->inventory = create_inventory();
     project->clock = sfClock_create();
     project->scene_id = 1;
     return project;

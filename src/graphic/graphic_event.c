@@ -14,6 +14,8 @@ void event_scene_one(project_t *project, graphic_t *scene)
     while (sfRenderWindow_pollEvent(project->window, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(project->window);
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab)
+            switch_state_inventory(project->inventory);
     }
 }
 

@@ -13,8 +13,10 @@ SRC = src/main.c \
 	  src/graphic/graphic_event.c \
 	  src/graphic/graphic_destroy.c \
 	  src/graphic/move_camera.c \
+	  src/graphic/inventory_create.c \
 	  src/updates/update_scene_one.c \
 	  src/updates/updates_all_scenes.c \
+	  src/updates/update_inventory.c \
 	  src/utils/string.c \
 	  src/utils/string_bis.c \
 	  src/utils/list.c

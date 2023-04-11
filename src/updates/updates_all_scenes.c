@@ -15,5 +15,6 @@ void update_all_scenes(project_t *project)
         case 1: update_scene_one(project, project->scene_one); break;
         default: break;
     }
+    update_inventory(project);
     sfRenderWindow_display(project->window);
 }

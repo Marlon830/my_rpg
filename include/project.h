@@ -9,11 +9,13 @@
     #define PROJECT_H_
     #include "graphic.h"
     #include "utils.h"
+    #include "inventory.h"
 
     #define WINDOW project->window
 
 typedef struct project_s {
     sfRenderWindow *window;
+    inventory_t *inventory;
     graphic_t *scene_one;
     sfClock *clock;
     float dt;
