@@ -9,7 +9,7 @@ on:
 env:
   MIRROR_URL: "git@github.com:EpitechPromo2027/B-MUL-200-MPL-2-1-myrpg-edgar.maurel.git"
   EXECUTABLES: "my_rpg"
-  ALLOWED_FUNCS: "malloc,free,memset,rand,srand,getline,stat,open,fopen,read,fread,close,fclose,write,fwrite,opendir,readdir,closedir"
+  ALLOWED_FUNCS: "malloc,free,memset,rand,srand,getline,stat,open,fopen,read,fread,close,fclose,write,fwrite,opendir,readdir,closedir,sin,cos,exp"
 jobs:
   check_coding_style:
     name: Coding Style Checker

@@ -21,7 +21,7 @@
 #include <fcntl.h>
 #include "spells.h"
 #include "combat_scene.h"
-
+#include "utils.h"
 
 
 typedef struct battle_scene_s {
