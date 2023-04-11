@@ -30,7 +30,7 @@ char *get_png_file(char *path_to_dialogue)
     return buffer;
 }
 
-void create_dialogue(char *path_to_dialogue)
+void create_all_dialogue(char *path_to_all_dialogue)
 {
-    char *pnj_file = get_png_file(path_to_dialogue);
+
 }

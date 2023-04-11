@@ -17,6 +17,7 @@ typedef struct project_s {
     graphic_t *scene_one;
     graphic_t *scene_two;
     sfClock *clock;
+    list_t *all_dialogues;
     float dt;
     int scene_id;
 } project_t;

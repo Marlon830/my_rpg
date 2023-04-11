@@ -21,7 +21,8 @@ typedef struct sprite_s sprite_t;
 
 enum type {
     IMAGE,
-    COLLIDER
+    COLLIDER,
+    DIALOGUE
 };
 
 typedef struct list_s {

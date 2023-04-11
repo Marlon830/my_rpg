@@ -22,8 +22,8 @@ void update_scene_one(project_t *project, graphic_t *scene)
         movement_x += scene->player_speed;
     if (sfKeyboard_isKeyPressed(sfKeyEscape))
         sfRenderWindow_close(project->window);
-    if (sfKeyboard_isKeyPressed(sfKeySpace))
-        create_dialogue("assets/dialogues/first_png.txt");
+    //if (sfKeyboard_isKeyPressed(sfKeySpace))
+        //create_dialogue("assets/dialogues/first_png.txt");
     moved = movement_x != 0 || movement_y != 0;
     if (moved) {
         project->dt = sfClock_getElapsedTime(project->clock).microseconds;
