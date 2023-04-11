@@ -38,7 +38,8 @@ typedef struct graphic_s {
 void graphic_draw(project_t *project, graphic_t *scene);
 void event_scene_one(project_t *project, graphic_t *scene);
 void event_all_scenes(project_t *project);
-graphic_t *graphic_init(project_t *project);
+graphic_t *graphic_init(project_t *project, char *map, char *collision,
+    char *player);
 void graphic_destroy(graphic_t *scene);
 void move_camera(project_t *project, graphic_t *scene);
 image_t *create_image(int x, int y, char *path, sfIntRect rect);

@@ -15,6 +15,7 @@
 typedef struct project_s {
     sfRenderWindow *window;
     graphic_t *scene_one;
+    graphic_t *scene_two;
     sfClock *clock;
     float dt;
     int scene_id;
@@ -22,5 +23,6 @@ typedef struct project_s {
 
 void update_all_scenes(project_t *project);
 void update_scene_one(project_t *project, graphic_t *scene);
+void update_scene_two(project_t *project, graphic_t *scene);
 
 #endif

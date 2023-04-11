@@ -12,6 +12,7 @@
 image_t *create_image(int x, int y, char *path, sfIntRect rect)
 {
     image_t *image = malloc(sizeof(image_t));
+
     image->pos = (sfVector2f){(float)x, (float)y};
     image->texture = sfTexture_createFromFile(my_strcat("./assets/", path),
     &rect);
@@ -24,6 +25,7 @@ image_t *create_image(int x, int y, char *path, sfIntRect rect)
 collider_t *create_collider(int x, int y, int w, int h)
 {
     collider_t *col = malloc(sizeof(collider_t));
+
     col->rect = malloc(sizeof(sfFloatRect));
     col->rect->left = x;
     col->rect->top = y;
