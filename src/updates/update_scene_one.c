@@ -20,6 +20,8 @@ void update_scene_one(project_t *project, graphic_t *scene)
         movement_x -= scene->player_speed;
     if (sfKeyboard_isKeyPressed(sfKeyD))
         movement_x += scene->player_speed;
+    if (sfKeyboard_isKeyPressed(sfKeyEscape))
+        sfRenderWindow_close(project->window);
     moved = movement_x != 0 || movement_y != 0;
     if (moved) {
         project->dt = sfTime_asSeconds(sfClock_getElapsedTime(project->clock));
