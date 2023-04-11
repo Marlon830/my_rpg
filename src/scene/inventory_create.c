@@ -7,24 +7,7 @@
 
 #include "project.h"
 
-void add_box_to_list(list_box_t *list, box_t *box)
-{
-    list_box_t *temp = list;
-    list_box_t *new = malloc(sizeof(*new));
-
-    if (list->box == NULL) {
-        list->box = box;
-        free(new);
-        return;
-    }
-    new->next = NULL;
-    new->box = box;
-    while (temp->next != NULL)
-        temp = temp->next;
-    temp->next = new;
-}
-
-box_t *create_box(sfVector2f pos, sfVector2f size)
+box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
 {
     box_t *box = malloc(sizeof(*box));
     sfRectangleShape *shape = sfRectangleShape_create();
@@ -35,42 +18,53 @@ box_t *create_box(sfVector2f pos, sfVector2f size)
     sfRectangleShape_setFillColor(shape, (sfColor) {112, 114, 110, 255});
     sfRectangleShape_setOutlineColor(shape, sfBlack);
     box->shape = shape;
+    box->more_x = more_x;
+    box->more_y = more_y;
     return box;
 }
 
-list_box_t *init_list_box(void)
+void create_boxes_in_inventory_bis(inventory_t *inventory)
 {
-    list_box_t *list = malloc(sizeof(*list));
+    box_t *box;
 
-    list->box = NULL;
-    list->next = NULL;
-    return list;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 7; j++) {
+            box = create_box((sfVector2f)
+            {88 + 2 * 4 + 64 + 16 * i + 2 * i, 96 + 2 + 2 * j + 16 * j},
+            (sfVector2f) {16, 16}, 2 * 4 + 64 + 16 * i + 2 * i,
+            2 + 2 * j + 16 * j);
+            add_box_to_list(inventory->bag, box);
+        }
+    }
+    inventory->character = create_box((sfVector2f) {88 + 2 * 2 + 16, 96 + 2},
+    (sfVector2f) {32, 64 + 3 * 2}, 2 * 2 + 16, 2);
+    inventory->description = create_box((sfVector2f)
+    {88 + 2, 96 + 2 * 5 + 16 * 4}, (sfVector2f) {64 + 2 * 2, 48 + 2 * 2},
+    2, 2 * 5 + 16 * 4);
 }
 
-void create_boxes(inventory_t *inventory)
+void create_boxes_in_inventory(inventory_t *inventory)
 {
-    for (int i = 0; i < 4; i++)
-        add_box_to_list(inventory->first_equipment, create_box((sfVector2f)
-        {112 + 2, 104 + 2 + 2 * i + 16 * i}, (sfVector2f) {16, 16}));
-    for (int i = 0; i < 4; i++)
-        add_box_to_list(inventory->second_equipment, create_box((sfVector2f)
-        {112 + 2 * 3 + 48, 104 + 2 + 2 * i + 16 * i}, (sfVector2f) {16, 16}));
+    box_t *box;
+
     for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 7; j++)
-            add_box_to_list(inventory->bag, create_box((sfVector2f)
-            {112 + 2 * 4 + 64 + 16 * i + 2 * i, 104 + 2 + 2 * j + 16 * j},
-            (sfVector2f) {16, 16}));
+        box = create_box((sfVector2f) {88 + 2, 96 + 2 + 2 * i + 16 * i},
+        (sfVector2f) {16, 16}, 2, 2 + 2 * i + 16 * i);
+        add_box_to_list(inventory->first_equipment, box);
     }
-    inventory->character = create_box((sfVector2f) {112 + 2 * 2 + 16, 104 + 2},
-    (sfVector2f) {32, 64 + 3 * 2});
-    inventory->description = create_box((sfVector2f)
-    {112 + 2, 104 + 2 * 5 + 16 * 4}, (sfVector2f) {64 + 2 * 2, 48 + 2 * 2});
+    for (int i = 0; i < 4; i++) {
+        box = create_box((sfVector2f)
+        {88 + 2 * 3 + 48, 96 + 2 + 2 * i + 16 * i},
+        (sfVector2f) {16, 16}, 2 * 3 + 48, 2 + 2 * i + 16 * i);
+        add_box_to_list(inventory->second_equipment, box);
+    }
+    create_boxes_in_inventory_bis(inventory);
 }
 
 inventory_t *create_inventory(void)
 {
     inventory_t *inventory = malloc(sizeof(*inventory));
-    sfVector2f pos = {80 + 32, 80 + 24};
+    sfVector2f pos = {80 + 8, 80 + 16};
     sfVector2f size = {128 + 2 * 8, 112 + 2 * 8};
 
     inventory->first_equipment = init_list_box();
@@ -83,6 +77,6 @@ inventory_t *create_inventory(void)
     sfRectangleShape_setFillColor(inventory->shape, (sfColor)
     {196, 201, 199, 255});
     sfRectangleShape_setOutlineColor(inventory->shape, sfBlack);
-    create_boxes(inventory);
+    create_boxes_in_inventory(inventory);
     return inventory;
 }
