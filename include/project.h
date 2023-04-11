@@ -18,7 +18,6 @@
 typedef struct project_s {
     sfRenderWindow *window;
     inventory_t *inventory;
-    graphic_t *scene_one;
     scene_t *scene;
     sfClock *clock;
     float dt;
