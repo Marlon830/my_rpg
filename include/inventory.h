@@ -20,6 +20,8 @@ typedef struct box_s {
     sfSprite *sprite;
     sfTexture *texture;
     sfText *text;
+    float more_x;
+    float more_y;
 } box_t;
 
 typedef struct list_box_s {
@@ -38,6 +40,8 @@ typedef struct inventory_s {
 } inventory_t;
 
 inventory_t *create_inventory(void);
+list_box_t *init_list_box(void);
+void add_box_to_list(list_box_t *list, box_t *box);
 void switch_state_inventory(inventory_t *inventory);
 void update_inventory(project_t *project);
 
