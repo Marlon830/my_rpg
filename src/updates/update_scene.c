@@ -23,8 +23,8 @@ void update_scene(project_t *project)
     moved = movement_x != 0 || movement_y != 0;
     if (moved) {
         project->dt = sfTime_asSeconds(sfClock_getElapsedTime(project->clock));
-        project->player->move.x = movement_x * project->dt;
-        project->player->move.y = movement_y * project->dt;
+        project->player->move.x = movement_x;
+        project->player->move.y = movement_y;
         move_camera(project, project->scene);
     }
     scene_draw(project, project->scene);
