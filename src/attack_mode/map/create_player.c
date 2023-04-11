@@ -15,10 +15,10 @@ void set_player_pos(player_t *player)
     sfVector2f p2 = (sfVector2f){pos.x - size, pos.y - 2 * size};
     sfVector2f p3 = (sfVector2f){pos.x + size, pos.y - 2 * size};
     sfVector2f p4 = (sfVector2f){pos.x + size, pos.y};
-    sfVertexArray_append(player->array_character, create_vertex(p1, sfBlack));
-    sfVertexArray_append(player->array_character, create_vertex(p2, sfBlack));
-    sfVertexArray_append(player->array_character, create_vertex(p3, sfBlack));
-    sfVertexArray_append(player->array_character, create_vertex(p4, sfBlack));
+    sfVertexArray_append(player->array_character, vertex_create(p1, sfBlack));
+    sfVertexArray_append(player->array_character, vertex_create(p2, sfBlack));
+    sfVertexArray_append(player->array_character, vertex_create(p3, sfBlack));
+    sfVertexArray_append(player->array_character, vertex_create(p4, sfBlack));
 }
 
 player_t *create_player(tile_t *tile)

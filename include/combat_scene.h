@@ -13,6 +13,8 @@
 #define MAX(a,b) a > b ? a : b
 #define GET_MAX_TILES(n) n * n + 2 * n + 1
 
+typedef sfVertex sfvertex;
+
 typedef struct tile_s {
     sfVertexArray *array_tile;
     sfVertexArray *array_walls;
@@ -49,7 +51,7 @@ typedef struct {
 } player_t;
 
 
-sfVertex create_vertex(sfVector2f position, sfColor color);
+sfvertex vertex_create(sfVector2f position, sfColor color);
 tile_t *create_tile(sfVector2f center, sfColor color,
 sfVector2f size, float height);
 void draw_tile(sfRenderWindow *window, tile_t *tile);

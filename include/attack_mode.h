@@ -22,6 +22,8 @@
 #include "spells.h"
 #include "combat_scene.h"
 
+
+
 typedef struct battle_scene_s {
     player_t *player;
     map_t *map;

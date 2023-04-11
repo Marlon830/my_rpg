@@ -9,11 +9,11 @@
 
 void add_walls_left(tile_t *tile)
 {
-    sfVertex p1 = create_vertex(tile->points[0], (sfColor){134, 135, 132, 255});
-    sfVertex p2 = create_vertex(tile->points[3], (sfColor){134, 135, 132, 255});
-    sfVertex p3 = create_vertex((sfVector2f){tile->points[3].x,
+    sfVertex p1 = vertex_create(tile->points[0], (sfColor){134, 135, 132, 255});
+    sfVertex p2 = vertex_create(tile->points[3], (sfColor){134, 135, 132, 255});
+    sfVertex p3 = vertex_create((sfVector2f){tile->points[3].x,
     tile->points[3].y + tile->height}, (sfColor){134, 135, 132, 255});
-    sfVertex p4 = create_vertex((sfVector2f){tile->points[0].x,
+    sfVertex p4 = vertex_create((sfVector2f){tile->points[0].x,
     tile->points[0].y + tile->height}, (sfColor){134, 135, 132, 255});
     sfVertexArray_append(tile->array_walls, p1);
     sfVertexArray_append(tile->array_walls, p2);
@@ -23,11 +23,11 @@ void add_walls_left(tile_t *tile)
 
 void add_walls_right(tile_t *tile)
 {
-    sfVertex p1 = create_vertex(tile->points[3], (sfColor){28, 48, 65, 255});
-    sfVertex p2 = create_vertex(tile->points[2], (sfColor){28, 48, 65, 255});
-    sfVertex p3 = create_vertex((sfVector2f){tile->points[2].x,
+    sfVertex p1 = vertex_create(tile->points[3], (sfColor){28, 48, 65, 255});
+    sfVertex p2 = vertex_create(tile->points[2], (sfColor){28, 48, 65, 255});
+    sfVertex p3 = vertex_create((sfVector2f){tile->points[2].x,
     tile->points[2].y + tile->height}, (sfColor){28, 48, 65, 255});
-    sfVertex p4 = create_vertex((sfVector2f){tile->points[3].x,
+    sfVertex p4 = vertex_create((sfVector2f){tile->points[3].x,
     tile->points[3].y + tile->height}, (sfColor){28, 48, 65, 255});
     sfVertexArray_append(tile->array_walls, p1);
     sfVertexArray_append(tile->array_walls, p2);

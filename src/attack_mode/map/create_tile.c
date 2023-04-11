@@ -10,13 +10,13 @@
 void *create_tile_array(sfVector2f center, sfColor color,
 sfVector2f size, sfVertexArray *tile)
 {
-    sfVertex p1 = create_vertex((sfVector2f)
+    sfVertex p1 = vertex_create((sfVector2f)
     {center.x - size.x / 2, center.y }, color);
-    sfVertex p2 = create_vertex((sfVector2f)
+    sfVertex p2 = vertex_create((sfVector2f)
     {center.x, center.y - size.y / 2}, color);
-    sfVertex p3 = create_vertex((sfVector2f)
+    sfVertex p3 = vertex_create((sfVector2f)
     {center.x + size.x / 2, center.y}, color);
-    sfVertex p4 = create_vertex((sfVector2f)
+    sfVertex p4 = vertex_create((sfVector2f)
     {center.x, center.y + size.y / 2}, color);
     sfVertexArray_append(tile, p1);
     sfVertexArray_append(tile, p2);
