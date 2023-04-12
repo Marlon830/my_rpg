@@ -57,5 +57,7 @@ collider_t *create_collider(int x, int y, int w, int h);
 void colliders_init(char *path, scene_t *scene);
 void images_destroy(scene_t *scene);
 void colliders_destroy(scene_t *scene);
+sfText *create_text(void);
+sfRectangleShape *create_rect(void);
 
 #endif
