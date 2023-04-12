@@ -89,24 +89,3 @@ map_t *get_map(project_t *project, char *map_name)
         next_get_map(map, line);
     return map;
 }
-
-sfText *create_text(void)
-{
-    sfText *text;
-    sfFont *font = sfFont_createFromFile("assets/font.ttf");
-
-    text = sfText_create();
-    sfText_setFont(text, font);
-    sfText_setScale(text, (sfVector2f) {0.3, 0.3});
-    sfText_setPosition(text, (sfVector2f) {160, 160});
-    return text;
-}
-
-sfRectangleShape *create_rect(void)
-{
-    sfRectangleShape *rect = sfRectangleShape_create();
-
-    sfRectangleShape_setFillColor(rect, sfBlack);
-    sfRectangleShape_setSize(rect, (sfVector2f) {200, 30});
-    return rect;
-}
