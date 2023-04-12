@@ -13,6 +13,9 @@ SRC = src/main.c \
 	  src/scene/scene_event.c \
 	  src/scene/scene_destroy.c \
 	  src/scene/move_camera.c \
+	  src/dialogue/create_dialogue.c \
+	  src/dialogue/display_dialogue.c \
+	  src/dialogue/get_info_dialogue.c \
 	  src/updates/update_scene.c \
 	  src/utils/string.c \
 	  src/utils/string_bis.c \
@@ -26,7 +29,7 @@ TARGET = my_rpg
 all : $(TARGET)
 
 $(TARGET) : $(OBJ)
-	$(CC) -o $(TARGET) $(OBJ) $(LDFLAGS) -g3
+	$(CC) -o $(TARGET) $(OBJ) $(LDFLAGS)
 
 clean :
 	$(RM) $(OBJ)
