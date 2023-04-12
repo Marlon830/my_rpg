@@ -22,10 +22,12 @@ bool check_collision(project_t *project, scene_t *scene)
 
 bool check_tp(project_t *project)
 {
+    sfVector2f pos;
+
     for (int i = 0; i != project->scene->nb_tp; i++) {
         if (sfFloatRect_intersects(project->player->col,
         &project->scene->tp[i].rect, NULL)) {
-            sfVector2f pos = project->scene->tp[i].tp_pos;
+            pos = project->scene->tp[i].tp_pos;
             project->player->pos = pos;
             project->player->col->left = project->player->pos.x;
             project->player->col->top = project->player->pos.y + 8;
@@ -39,6 +41,8 @@ bool check_tp(project_t *project)
 
 void move_camera(project_t *project, scene_t *scene)
 {
+    image_t *player;
+
     project->player->pos.x += project->player->move.x;
     project->player->pos.y += project->player->move.y;
     project->player->col->left = project->player->pos.x;
@@ -52,7 +56,7 @@ void move_camera(project_t *project, scene_t *scene)
     }
     sfView_setCenter(scene->camera, project->player->pos);
     sfRenderWindow_setView(project->window, scene->camera);
-    image_t *player = get_item(scene->images, "player");
+    player = get_item(scene->images, "player");
     player->pos = project->player->pos;
     sfSprite_setPosition(player->sprite, player->pos);
 }
