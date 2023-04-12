@@ -1,8 +1,12 @@
-Name:LeFlopeux
-Image:allan.png
+Name:LeFlopeux02
+Image:allan.jpg
 Dialogue#
 Salut à toutes et a tous c'est allan je flop
 énormément regardez
 -
 deuxième Dialogue
+-
+oh non feur par exemple
+mais bon c'est pas une compétition
+-
 #
