@@ -16,6 +16,7 @@ void reset_box(box_t *box)
     free(box->name);
     box->name = NULL;
     box->quantity = 0;
+    box->is_selected = 0;
 }
 
 void delete_elem(list_box_t *list, char *name, int quantity)
@@ -60,23 +61,27 @@ box_t *get_box_with_coord(project_t *project, sfVector2f pos)
     while (temp != NULL) {
         if (check_box_with_coord(temp->box, pos))
             return temp->box;
+        temp = temp->next;
     }
     temp = project->inventory->first_equipment;
     while (temp != NULL) {
         if (check_box_with_coord(temp->box, pos))
             return temp->box;
+        temp = temp->next;
     }
     temp = project->inventory->second_equipment;
     while (temp != NULL) {
         if (check_box_with_coord(temp->box, pos))
             return temp->box;
+        temp = temp->next;
     }
     return NULL;
 }
 
 void select_box(project_t *project, sfVector2f pos)
 {
-    box_t *box = get_box_with_coord(project, pos);
+    sfVector2f new_pos = convert_mouse_position(project, pos);
+    box_t *box = get_box_with_coord(project, new_pos);
 
     if (box != NULL && box->sprite != NULL) {
         box->is_selected = true;
