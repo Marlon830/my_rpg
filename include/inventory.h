@@ -13,15 +13,24 @@
     #include <SFML/System.h>
     #include <stdbool.h>
 
+enum inventory_state {
+    NONE = 0,
+    PRESSED,
+};
+
 typedef struct box_s {
     sfRectangleShape *shape;
-    sfVector2f pos_box;
     sfVector2f pos_sprite;
     sfSprite *sprite;
-    sfTexture *texture;
+    sfTexture *sprite_texture;
+    sfTexture *box_texture;
+    char *name;
     sfText *text;
+    sfFont *font;
     float more_x;
     float more_y;
+    int quantity;
+    bool is_selected;
 } box_t;
 
 typedef struct list_box_s {
@@ -37,12 +46,17 @@ typedef struct inventory_s {
     box_t *character;
     box_t *description;
     bool is_active;
+    enum inventory_state state;
 } inventory_t;
 
 inventory_t *create_inventory(void);
 list_box_t *init_list_box(void);
+box_t *get_box_with_name(list_box_t *list, char *name);
+box_t *get_box_with_coord(project_t *project, sfVector2f pos);
 void add_box_to_list(list_box_t *list, box_t *box);
 void switch_state_inventory(inventory_t *inventory);
+bool add_elem(list_box_t *list, char *name, int quantity);
+void delete_elem(list_box_t *list, char *name, int quantity);
 void update_inventory(project_t *project);
 
 #endif
