@@ -60,6 +60,7 @@ project_t *init_project(void)
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
     project->clock = sfClock_create();
     project->player = init_player(160, 160);
+    project->scene = NULL;
     project->scene = load_scene(project, 0);
     project->actual_dial = init_actual_dialogue();
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
