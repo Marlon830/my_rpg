@@ -18,22 +18,29 @@ spawn_t sus_tp[] = {{(sfFloatRect){288, 240, 16, 16}, 1,
 (sfVector2f){208, 208}}};
 
 scene_list_t scenes[4] = {
-    {"island", island_tp, 1},
-    {"house", house_tp, 3},
-    {"sus", sus_tp, 2}
+    {"island", island_tp, 1, (sfVector2f){480, 480}},
+    {"house", house_tp, 3, (sfVector2f){256, 256}},
+    {"sus", sus_tp, 2, (sfVector2f){880, 432}}
 };
 
-void next_load_scene(project_t *project, scene_t *scene)
+void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
 {
-    push_back(&scene->images, "background", create_image(0, 0,
+    image_t *background = create_image((sfVector2f){16, 16},
     my_strcat(scene->name, "/background.png"),
-    (sfIntRect){0, 0, 480, 480}),IMAGE);
-    push_back(&scene->images, "player",
-    create_image(project->player->pos.x, project->player->pos.y, "player.png",
-    (sfIntRect){0, 0, 16, 16}), IMAGE);
-    push_back(&scene->images, "foreground", create_image(0, 0,
+    (sfIntRect){0, 0, 480, 480}, size);
+    background->nb_sprite = 1;
+    image_t *player = create_image((sfVector2f){project->player->pos.x,
+    project->player->pos.y}, "/player.png", (sfIntRect){0, 0, 64, 128},
+    (sfVector2f){16, 16});
+    player->nb_sprite = 4;
+    image_t *foreground = create_image((sfVector2f){16, 16},
     my_strcat(scene->name, "/foreground.png"),
-    (sfIntRect){0, 0, 480, 480}), IMAGE);
+    (sfIntRect){0, 0, 480, 480}, size);
+    foreground->nb_sprite = 1;
+
+    push_back(&scene->images, "background", background, IMAGE);
+    push_back(&scene->images, "player", player, IMAGE);
+    push_back(&scene->images, "foreground", foreground, IMAGE);
     colliders_init(my_strcat(scene->name, "/res.coll"), scene);
 }
 
@@ -54,6 +61,6 @@ scene_t *load_scene(project_t *project, int scene_id)
     sfView_setSize(scene->camera, (sfVector2f){256, 144});
     sfView_setCenter(scene->camera, project->player->pos);
     sfRenderWindow_setView(project->window, scene->camera);
-    next_load_scene(project, scene);
+    next_load_scene(project, scene, scenes[scene_id].size);
     return scene;
 }

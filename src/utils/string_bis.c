@@ -40,6 +40,7 @@ int my_getnbr(char *str)
 void my_strcpy(char *dest, char *src)
 {
     int src_len = my_strlen(src);
+
     for (int i = 0; src[i]; i++)
         dest[i] = src[i];
     dest[src_len] = '\0';
