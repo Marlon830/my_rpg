@@ -13,10 +13,18 @@ SRC = src/main.c \
 	  src/scene/scene_event.c \
 	  src/scene/scene_destroy.c \
 	  src/scene/move_camera.c \
+	  src/scene/inventory_create.c \
+	  src/dialogue/create_dialogue.c \
+	  src/dialogue/display_dialogue.c \
+	  src/dialogue/get_info_dialogue.c \
 	  src/updates/update_scene.c \
+	  src/updates/update_inventory.c \
 	  src/utils/string.c \
 	  src/utils/string_bis.c \
-	  src/utils/list.c
+	  src/utils/list.c \
+	  src/utils/inventory_list.c \
+	  src/utils/inventory_list2.c
+
 OBJ = $(SRC:.c=.o)
 CFLAGS = -W -Wall -Wextra
 CPPFLAGS = -Iinclude
@@ -26,7 +34,7 @@ TARGET = my_rpg
 all : $(TARGET)
 
 $(TARGET) : $(OBJ)
-	$(CC) -o $(TARGET) $(OBJ) $(LDFLAGS) -g3
+	$(CC) -o $(TARGET) $(OBJ) $(LDFLAGS)
 
 clean :
 	$(RM) $(OBJ)

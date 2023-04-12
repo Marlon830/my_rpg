@@ -15,7 +15,7 @@ void push_back(list_t **list, char *id, void *node, enum type type)
     list_t *new_node = malloc(sizeof(list_t));
 
     new_node->element = node;
-    new_node->id = malloc(my_strlen(id) + 1);
+    new_node->id = malloc(sizeof(char) * (my_strlen(id) + 1));
     my_strcpy(new_node->id, id);
     new_node->next = NULL;
     new_node->type = type;

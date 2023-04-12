@@ -64,5 +64,7 @@ void colliders_init(char *path, scene_t *scene);
 void images_destroy(scene_t *scene);
 void colliders_destroy(scene_t *scene);
 map_t *get_map(project_t *project, char *map_name);
+sfText *create_text(void);
+sfRectangleShape *create_rect(void);
 
 #endif

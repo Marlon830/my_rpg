@@ -13,6 +13,7 @@
 int my_strlen(char *str)
 {
     int i = 0;
+
     if (str == NULL)
         return 0;
     for (; str[i]; i++);
@@ -36,7 +37,7 @@ char *my_strcat(char *s1, char *s2)
     int len2 = my_strlen(s2);
     int curr1 = 0;
     int curr2 = 0;
-    char *res = malloc(len1 + len2 + 1);
+    char *res = malloc(sizeof(char) * (len1 + len2 + 1));
 
     for (int i = 0; i != (len1 + len2); i++) {
         if (curr1 != len1) {
@@ -49,4 +50,24 @@ char *my_strcat(char *s1, char *s2)
     }
     res[len1 + len2] = '\0';
     return res;
+}
+
+char *int_to_string(int num)
+{
+    int num_copy = num;
+    int len = 0;
+    char *str;
+
+    while (num_copy != 0) {
+        len++;
+        num_copy /= 10;
+    }
+    if (num == 0) len = 1;
+    str = malloc(sizeof(char) * (len + 1));
+    str[len] = '\0';
+    for (int i = len - 1; i >= 0; i--) {
+        str[i] = (num % 10) + '0';
+        num /= 10;
+    }
+    return str;
 }

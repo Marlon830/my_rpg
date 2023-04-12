@@ -16,6 +16,7 @@
     #include <fcntl.h>
     #include <string.h>
     #include <unistd.h>
+    #include <dirent.h>
 
 typedef struct sprite_s sprite_t;
 
@@ -23,7 +24,8 @@ enum type {
     IMAGE,
     COLLIDER,
     TP,
-    SCENE
+    SCENE,
+    DIALOGUE
 };
 
 typedef struct list_s {
@@ -41,5 +43,6 @@ int my_strcmp(char *s1,  char *s2);
 int my_getnbr(char *str);
 void my_strcpy(char *dest, char *src);
 void push_back(list_t **list, char *id, void *node, enum type type);
+char *int_to_string(int num);
 
 #endif
