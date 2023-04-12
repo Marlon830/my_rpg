@@ -34,6 +34,42 @@ void images_draw(project_t *project, list_t *img_list)
     }
 }
 
+void collision_draw(project_t *project, list_t *coll_list)
+{
+    list_t *tmp = coll_list;
+    collider_t *col;
+    sfRectangleShape *rect;
+
+    while (tmp != NULL) {
+        col = tmp->element;
+        rect = sfRectangleShape_create();
+        sfRectangleShape_setPosition(rect, (sfVector2f){col->rect->left,
+        col->rect->top});
+        sfRectangleShape_setSize(rect, (sfVector2f){16, 16});
+        sfRectangleShape_setFillColor(rect, (sfColor){255,0,0,100});
+        sfRenderWindow_drawRectangleShape(project->window, rect, NULL);
+        tmp = tmp->next;
+    }
+}
+
+void tp_draw(project_t *project, list_t *tp_list)
+{
+    list_t *tmp = tp_list;
+    tp_t *tp;
+    sfRectangleShape *rect;
+
+    while (tmp != NULL) {
+        tp = tmp->element;
+        rect = sfRectangleShape_create();
+        sfRectangleShape_setPosition(rect, (sfVector2f){tp->rect.left,
+        tp->rect.top});
+        sfRectangleShape_setSize(rect, (sfVector2f){16, 16});
+        sfRectangleShape_setFillColor(rect, (sfColor){255,255,255,100});
+        sfRenderWindow_drawRectangleShape(project->window, rect, NULL);
+        tmp = tmp->next;
+    }
+}
+
 void scene_draw(project_t *project, scene_t *scene)
 {
     sfRenderWindow_clear(project->window, sfBlack);

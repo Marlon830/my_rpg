@@ -22,17 +22,21 @@ bool check_collision(project_t *project, scene_t *scene)
 
 bool check_tp(project_t *project)
 {
-    for (int i = 0; i != project->scene->nb_tp; i++) {
+    list_t *tmp = project->scene->tp;
+    tp_t *tp;
+
+    while (tmp) {
+        tp = tmp->element;
         if (sfFloatRect_intersects(project->player->col,
-        &project->scene->tp[i].rect, NULL)) {
-            sfVector2f pos = project->scene->tp[i].tp_pos;
+        &tp->rect, NULL)) {
+            sfVector2f pos = tp->tp_pos;
             project->player->pos = pos;
             project->player->col->left = project->player->pos.x;
             project->player->col->top = project->player->pos.y + 8;
-            project->scene = load_scene(project,
-            project->scene->tp[i].to_scene_id);
+            project->scene = load_scene(project, tp->to_scene_id);
             return true;
         }
+        tmp = tmp->next;
     }
     return false;
 }

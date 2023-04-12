@@ -48,14 +48,17 @@ project_t *init_project(void)
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
     project->clock = sfClock_create();
     project->player = init_player(160, 160);
-    project->scene = load_scene(project, 0);
+    project->scenes = NULL;
     return project;
 }
 
 int main(void)
 {
     project_t *project = init_project();
-
+    push_back(&project->scenes, "island", get_map(project, "island"), SCENE);
+    push_back(&project->scenes, "house", get_map(project, "house"), SCENE);
+    push_back(&project->scenes, "sus", get_map(project, "sus"), SCENE);
+    project->scene = load_scene(project, 0);
     main_loop(project);
     return 0;
 }

@@ -29,11 +29,11 @@ typedef struct collider_s {
     sfFloatRect *rect;
 } collider_t;
 
-typedef struct spawn_s {
+typedef struct tp_s {
     sfFloatRect rect;
     int to_scene_id;
     sfVector2f tp_pos;
-} spawn_t;
+} tp_t;
 
 typedef struct scene_s {
     sfView *camera;
@@ -41,16 +41,16 @@ typedef struct scene_s {
     list_t *colliders;
     char *path;
     char *name;
-    spawn_t *tp;
+    list_t *tp;
     int nb_tp;
 } scene_t;
 
-typedef struct scene_list_s {
+typedef struct map_s {
     char *name;
-    spawn_t *tp;
+    list_t *tp;
     int nb_tp;
     sfVector2f size;
-} scene_list_t;
+} map_t;
 
 void scene_draw(project_t *project, scene_t *scene);
 void scene_event(project_t *project);
@@ -63,5 +63,6 @@ collider_t *create_collider(int x, int y, int w, int h);
 void colliders_init(char *path, scene_t *scene);
 void images_destroy(scene_t *scene);
 void colliders_destroy(scene_t *scene);
+map_t *get_map(project_t *project, char *map_name);
 
 #endif

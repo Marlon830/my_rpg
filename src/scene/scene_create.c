@@ -5,8 +5,9 @@
 ** scene_create.c
 */
 
-#include "../../include/scene.h"
-#include "../../include/utils.h"
+#include "scene.h"
+#include "utils.h"
+#include "project.h"
 #include <string.h>
 
 image_t *create_image(sfVector2f pos, char *path, sfIntRect rect,
@@ -36,4 +37,55 @@ collider_t *create_collider(int x, int y, int w, int h)
     col->rect->width = w;
     col->rect->height = h;
     return col;
+}
+
+tp_t *create_tp(sfVector2f pos, sfVector2f tp_pos, int to_scene_id)
+{
+    tp_t *tp = malloc(sizeof(tp_t));
+    tp->tp_pos = tp_pos;
+    tp->to_scene_id = to_scene_id;
+    tp->rect = (sfFloatRect){pos.x, pos.y, 16, 16};
+    return tp;
+}
+
+void next_get_map(map_t *map, char *line)
+{
+    sfVector2f pos = (sfVector2f){0, 0};
+    sfVector2f tp_pos = (sfVector2f){0, 0};
+    int to_scene_id = 0;
+
+    pos.x = my_getnbr(line);
+    for (; line[0] != ' '; line++);
+    pos.y = my_getnbr(line += 1);
+    for (; line[0] != ' '; line++);
+    to_scene_id = my_getnbr(line += 1);
+    for (; line[0] != ' '; line++);
+    tp_pos.x = my_getnbr(line += 1);
+    for (; line[0] != ' '; line++);
+    tp_pos.y = my_getnbr(line += 1);
+    tp_t *tp = create_tp(pos, tp_pos, to_scene_id);
+    push_back(&map->tp, "tp", tp, TP);
+    map->nb_tp++;
+}
+
+map_t *get_map(project_t *project, char *map_name)
+{
+    FILE *fp = fopen(my_strcat(my_strcat("./assets/", map_name),
+    "/data.mp"), "r");
+    ssize_t read;
+    size_t len = 0;
+    char *line = NULL;
+    map_t *map = malloc(sizeof(map_t));
+
+    map->size = (sfVector2f){0, 0};
+    getline(&line, &len, fp);
+    map->name = map_name;
+    map->tp = NULL;
+    map->size.x = my_getnbr(line);
+    for (; line[0] != ' '; line++);
+    map->size.y = my_getnbr(line);
+    map->nb_tp = 0;
+    while ((read = getline(&line, &len, fp)) != -1)
+        next_get_map(map, line);
+    return map;
 }
