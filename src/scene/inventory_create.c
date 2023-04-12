@@ -7,12 +7,21 @@
 
 #include "project.h"
 
+void create_box_bis(box_t *box)
+{
+    box->font = sfFont_createFromFile("assets/font/Roboto-Regular.ttf");
+    box->text = sfText_create();
+    sfText_setFont(box->text, box->font);
+    sfText_setColor(box->text, sfBlack);
+    sfText_setScale(box->text, (sfVector2f) {0.1, 0.1});
+    box->is_selected = false;
+}
+
 box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
 {
     box_t *box = malloc(sizeof(*box));
     sfRectangleShape *shape = sfRectangleShape_create();
 
-    box->pos_box = pos;
     sfRectangleShape_setPosition(shape, pos);
     sfRectangleShape_setSize(shape, size);
     sfRectangleShape_setFillColor(shape, (sfColor) {112, 114, 110, 255});
@@ -20,6 +29,12 @@ box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
     box->shape = shape;
     box->more_x = more_x;
     box->more_y = more_y;
+    box->sprite = NULL;
+    box->sprite_texture = NULL;
+    box->box_texture = NULL;
+    box->quantity = 0;
+    box->name = NULL;
+    create_box_bis(box);
     return box;
 }
 
