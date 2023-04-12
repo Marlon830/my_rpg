@@ -48,4 +48,5 @@ void update_scene(project_t *project)
         }
     }
     scene_draw(project, project->scene);
+    update_inventory(project);
 }

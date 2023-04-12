@@ -51,3 +51,23 @@ char *my_strcat(char *s1, char *s2)
     res[len1 + len2] = '\0';
     return res;
 }
+
+char *int_to_string(int num)
+{
+    int num_copy = num;
+    int len = 0;
+    char *str;
+
+    while (num_copy != 0) {
+        len++;
+        num_copy /= 10;
+    }
+    if (num == 0) len = 1;
+    str = malloc(len + 1);
+    str[len] = '\0';
+    for (int i = len - 1; i >= 0; i--) {
+        str[i] = (num % 10) + '0';
+        num /= 10;
+    }
+    return str;
+}

@@ -21,5 +21,17 @@ void scene_event(project_t *project)
             get_dialogue_by_id(project, project->all_dialogues, "LeFlopeux02");
             display_dialogue(project);
         }
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab)
+            switch_state_inventory(project->inventory);
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA)
+            add_elem(project->inventory->bag, "assets/object/apple.png", 1);
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyB)
+            add_elem(project->inventory->bag, "assets/object/strawberry.png",
+            1);
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyC)
+            delete_elem(project->inventory->bag, "assets/object/apple.png", 1);
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyE)
+            delete_elem(project->inventory->bag,
+            "assets/object/strawberry.png", 1);
     }
 }
