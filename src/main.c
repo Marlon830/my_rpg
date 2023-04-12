@@ -62,7 +62,6 @@ project_t *init_project(void)
     project->player = init_player(160, 160);
     project->scenes = NULL;
     project->scene = NULL;
-    project->scene = load_scene(project, 0);
     project->actual_dial = init_actual_dialogue();
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
     return project;
