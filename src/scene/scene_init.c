@@ -58,7 +58,7 @@ scene_t *load_scene(project_t *project, int scene_id)
     scene->name = scenes[scene_id].name;
     scene->tp = scenes[scene_id].tp;
     scene->nb_tp = scenes[scene_id].nb_tp;
-    sfView_setSize(scene->camera, (sfVector2f){256, 144});
+    sfView_setSize(scene->camera, (sfVector2f) {256, 144});
     sfView_setCenter(scene->camera, project->player->pos);
     sfRenderWindow_setView(project->window, scene->camera);
     next_load_scene(project, scene, scenes[scene_id].size);
