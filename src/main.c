@@ -23,6 +23,7 @@ void main_loop(project_t *project)
 player_t *init_player(int x, int y)
 {
     player_t *player = malloc(sizeof(player_t));
+
     player->col = malloc(sizeof(sfFloatRect));
     player->pos.x = x;
     player->pos.y = y;
@@ -33,6 +34,17 @@ player_t *init_player(int x, int y)
     player->speed = 1;
     player->move = (sfVector2f) {0, 0};
     return player;
+}
+
+act_dial_t *init_actual_dialogue(void)
+{
+    act_dial_t *actual_dial = malloc(sizeof(act_dial_t));
+
+    actual_dial->pos = 0;
+    actual_dial->text = create_text();
+    actual_dial->rect = create_rect();
+    actual_dial->is_displayed = 0;
+    return actual_dial;
 }
 
 project_t *init_project(void)
@@ -47,12 +59,15 @@ project_t *init_project(void)
     project->clock = sfClock_create();
     project->player = init_player(160, 160);
     project->scene = load_scene(project, 0);
+    project->actual_dial = init_actual_dialogue();
+    project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
     return project;
 }
 
 int main(void)
 {
     project_t *project = init_project();
+
     main_loop(project);
     return 0;
 }
