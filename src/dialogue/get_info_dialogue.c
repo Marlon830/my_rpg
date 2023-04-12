@@ -26,6 +26,8 @@ char *get_dialogue_image(char *dialogue)
 char *get_dialogue_by_id(project_t *project, list_t *dialogue, char *id)
 {
     list_t *temp = dialogue;
+    sfVector2f init_img = {0, 0};
+    sfVector2f img_size = {220, 220};
 
     if (temp == NULL)
         return NULL;
@@ -34,9 +36,9 @@ char *get_dialogue_by_id(project_t *project, list_t *dialogue, char *id)
         if (temp == NULL)
             return NULL;
     }
-    project->actual_dial->face = create_image(0, 0,
+    project->actual_dial->face = create_image(init_img,
     get_dialogue_image((char *) temp->element),
-    (sfIntRect) {0, 0, 220, 220});
+    (sfIntRect) {0, 0, 220, 220}, img_size);
     sfSprite_setScale(project->actual_dial->face->sprite,
     (sfVector2f) {0.1, 0.1});
     return (char *) temp->element;
