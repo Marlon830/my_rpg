@@ -28,7 +28,7 @@ void display_dialogue(project_t *project)
 {
     char *dialogue = project->actual_dial->dialogue;
     int i = project->actual_dial->pos;
-    char *ans = malloc(sizeof(char) * my_strlen(dialogue) + 1);
+    char *ans = malloc(sizeof(char) * (my_strlen(dialogue) + 1));
     int j = 0;
 
     i = display_dialogue_bis(dialogue, i, project);
