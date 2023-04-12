@@ -13,10 +13,22 @@
     #include <SFML/System.h>
     #include "utils.h"
 
+enum player_state {
+    IDLE_DOWN,
+    IDLE_UP,
+    IDLE_LEFT,
+    IDLE_RIGHT,
+    RUN_DOWN,
+    RUN_UP,
+    RUN_LEFT,
+    RUN_RIGHT
+};
+
 typedef struct player_s {
     sfVector2f pos;
     sfFloatRect *col;
     float speed;
+    enum player_state state;
     sfVector2f move;
 } player_t;
 

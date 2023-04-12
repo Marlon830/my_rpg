@@ -5,7 +5,8 @@
 ** main.c
 */
 
-#include "../include/project.h"
+#include "project.h"
+#include "utils.h"
 
 void main_loop(project_t *project)
 {
@@ -13,7 +14,6 @@ void main_loop(project_t *project)
         scene_event(project);
         update_scene(project);
         sfRenderWindow_display(project->window);
-        sfClock_restart(project->clock);
     }
     scene_destroy(project->scene);
     sfRenderWindow_destroy(project->window);
@@ -33,6 +33,7 @@ player_t *init_player(int x, int y)
     player->col->height = 8;
     player->speed = 1;
     player->move = (sfVector2f) {0, 0};
+    player->state = IDLE_DOWN;
     return player;
 }
 

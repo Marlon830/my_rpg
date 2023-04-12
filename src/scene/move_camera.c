@@ -41,7 +41,7 @@ bool check_tp(project_t *project)
 
 void move_camera(project_t *project, scene_t *scene)
 {
-    image_t *player;
+    image_t *player = get_item(scene->images, "player");
 
     project->player->pos.x += project->player->move.x;
     project->player->pos.y += project->player->move.y;
@@ -56,7 +56,6 @@ void move_camera(project_t *project, scene_t *scene)
     }
     sfView_setCenter(scene->camera, project->player->pos);
     sfRenderWindow_setView(project->window, scene->camera);
-    player = get_item(scene->images, "player");
     player->pos = project->player->pos;
     sfSprite_setPosition(player->sprite, player->pos);
 }

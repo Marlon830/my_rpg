@@ -9,16 +9,20 @@
 #include "../../include/utils.h"
 #include <string.h>
 
-image_t *create_image(int x, int y, char *path, sfIntRect rect)
+image_t *create_image(sfVector2f pos, char *path, sfIntRect rect,
+sfVector2f size)
 {
     image_t *image = malloc(sizeof(image_t));
 
-    image->pos = (sfVector2f){(float)x, (float)y};
+    image->pos = pos;
     image->texture = sfTexture_createFromFile(my_strcat("./assets/", path),
     &rect);
+    image->sprite_size = size;
     image->sprite = sfSprite_create();
+    image->sprite_pos = (sfVector2f){0, 0};
     sfSprite_setTexture(image->sprite, image->texture, sfFalse);
     sfSprite_setPosition(image->sprite, image->pos);
+    image->curr_pos = 0;
     return image;
 }
 

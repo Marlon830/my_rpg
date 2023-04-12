@@ -19,6 +19,10 @@ typedef struct image_s {
     sfSprite *sprite;
     sfTexture *texture;
     sfVector2f pos;
+    sfVector2f sprite_size;
+    sfVector2f sprite_pos;
+    int curr_pos;
+    int nb_sprite;
 } image_t;
 
 typedef struct collider_s {
@@ -45,6 +49,7 @@ typedef struct scene_list_s {
     char *name;
     spawn_t *tp;
     int nb_tp;
+    sfVector2f size;
 } scene_list_t;
 
 void scene_draw(project_t *project, scene_t *scene);
@@ -52,7 +57,8 @@ void scene_event(project_t *project);
 scene_t *load_scene(project_t *project, int scene_id);
 void scene_destroy(scene_t *scene);
 void move_camera(project_t *project, scene_t *scene);
-image_t *create_image(int x, int y, char *path, sfIntRect rect);
+image_t *create_image(sfVector2f pos, char *path, sfIntRect rect,
+sfVector2f size);
 collider_t *create_collider(int x, int y, int w, int h);
 void colliders_init(char *path, scene_t *scene);
 void images_destroy(scene_t *scene);
