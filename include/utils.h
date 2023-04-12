@@ -39,5 +39,6 @@ int my_strcmp(char *s1,  char *s2);
 int my_getnbr(char *str);
 void my_strcpy(char *dest, char *src);
 void push_back(list_t **list, char *id, void *node, enum type type);
+char *int_to_string(int num);
 
 #endif
