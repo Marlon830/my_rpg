@@ -16,6 +16,7 @@
     #include <fcntl.h>
     #include <string.h>
     #include <unistd.h>
+    #include <dirent.h>
 
 typedef struct sprite_s sprite_t;
 
