@@ -53,10 +53,17 @@ inventory_t *create_inventory(void);
 list_box_t *init_list_box(void);
 box_t *get_box_with_name(list_box_t *list, char *name);
 box_t *get_box_with_coord(project_t *project, sfVector2f pos);
+box_t *get_box_selected(project_t *project);
+sfVector2f convert_mouse_position(project_t *project, sfVector2f pos);
 void add_box_to_list(list_box_t *list, box_t *box);
 void switch_state_inventory(inventory_t *inventory);
 bool add_elem(list_box_t *list, char *name, int quantity);
 void delete_elem(list_box_t *list, char *name, int quantity);
 void update_inventory(project_t *project);
+void select_box(project_t *project, sfVector2f pos);
+void unselect_box(project_t *project, sfVector2f pos);
+void add_new_elem_in_box(box_t *box, char *name, int quantity);
+void reset_box(box_t *box);
+void update_selected_box(project_t *project);
 
 #endif
