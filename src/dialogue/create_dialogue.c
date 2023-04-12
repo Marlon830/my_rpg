@@ -14,15 +14,16 @@ char *get_png_file(char *filepath)
     char *buffer;
 
     stat(filepath, &sb);
-    buffer = malloc(sizeof(char) * sb.st_size + 1);
+    buffer = malloc(sizeof(char) * (sb.st_size + 1));
     read(fd, buffer, sb.st_size);
+    buffer[sb.st_size] = '\0';
     return buffer;
 }
 
 char *create_filepath(char *dirpath, char *filepath)
 {
-    char *ans = malloc(sizeof(char) * my_strlen(dirpath) +
-    my_strlen(filepath) + 1);
+    char *ans = malloc(sizeof(char) * (my_strlen(dirpath) +
+    my_strlen(filepath) + 2));
     int i = 0;
     int j = 0;
 
