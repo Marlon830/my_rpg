@@ -19,7 +19,9 @@ SRC = src/main.c \
 	  src/utils/string.c \
 	  src/utils/string_bis.c \
 	  src/utils/list.c \
-	  src/utils/inventory_list.c
+	  src/utils/inventory_list.c \
+	  src/utils/inventory_list2.c
+
 OBJ = $(SRC:.c=.o)
 CFLAGS = -W -Wall -Wextra
 CPPFLAGS = -Iinclude
