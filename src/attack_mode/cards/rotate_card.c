@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void move_to_zero(sfVector2f pos, sfVector2f *point)
+void add_pos(sfVector2f pos, sfVector2f *point)
 {
     point->x -= pos.x;
     point->y -= pos.y;
@@ -26,9 +26,9 @@ void rotate_card(card_t *card, float angle)
     sfVector2f point;
     for (int i = 0; i < 8; i++) {
         point = sfVertexArray_getVertex(card->array, i)->position;
-        move_to_zero(card->pos, &point);
+        add_pos(card->pos, &point);
         rotate(&point, angle);
-        move_to_zero((sfVector2f){-card->pos.x, -card->pos.y}, &point);
+        add_pos((sfVector2f){-card->pos.x, -card->pos.y}, &point);
         sfVertexArray_getVertex(card->array, i)->position = point;
     }
 }

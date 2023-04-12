@@ -24,8 +24,8 @@ int main(int argc, char const *argv[])
             analyse_events(window, event, scene, scene->hand);
         }
         seconds = sfClock_getElapsedTime(clock).microseconds / 1000000.0;
-        update_battle_scene(scene, seconds);
-        sfRenderWindow_clear(window, (sfColor){20, 54, 66});
+        update_battle_scene(scene, seconds, window);
+        sfRenderWindow_clear(window, (sfColor){20, 54, 66, 255});
         draw_batle_scene(scene, window);
         sfRenderWindow_display(window);
     }

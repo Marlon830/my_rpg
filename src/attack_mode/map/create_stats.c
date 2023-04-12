@@ -12,6 +12,6 @@ stat_t *create_stats(void)
     stat_t *res = malloc(sizeof(stat_t));
     res->damage = 10;
     res->health_point = 100;
-    res->move_points = 10;
+    res->move_points = 5;
     return res;
 }

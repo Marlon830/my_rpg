@@ -9,8 +9,8 @@
 
 void add_border(card_t *card, sfVector2f pos)
 {
-    sfVector2f p1 = (sfVector2f){pos.x - 105, pos.y};
-    sfVector2f p2 = (sfVector2f){pos.x + 105, pos.y};
+    sfVector2f p1 = (sfVector2f){pos.x - 105, pos.y + 5};
+    sfVector2f p2 = (sfVector2f){pos.x + 105, pos.y + 5};
     sfVector2f p3 = (sfVector2f){pos.x + 105, pos.y - 305};
     sfVector2f p4 = (sfVector2f){pos.x - 105, pos.y - 305};
 
@@ -44,7 +44,10 @@ card_t *create_card(char *name, int damage, int range, player_t *player)
     res->range = range;
     res->player = player;
     res->next = NULL;
+    res->previous = NULL;
+    res->state = NONE;
     res->pos = (sfVector2f){1920 / 2, 1080};
     create_card_vertex(res, res->pos);
+    res->energy = 5;
     return res;
 }

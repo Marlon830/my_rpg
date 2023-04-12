@@ -14,4 +14,6 @@ void draw_hand(hand_t *hand, sfRenderWindow *window)
         draw_card(temp, window);
         temp = temp->next;
     }
+    if (hand->selected)
+        draw_card(hand->selected, window);
 }

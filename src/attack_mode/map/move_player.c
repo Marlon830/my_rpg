@@ -7,8 +7,28 @@
 
 #include "attack_mode.h"
 
+void attack_player(player_t *player, tile_t *tile, map_t *map)
+{
+    if (!(player->state == ATTACKING && player->card))
+        return;
+    for (int i = 0; i < player->nb_attack_tiles; i++) {
+        if (player->attack_tiles[i]->ind == tile->ind) {
+            free(player->card);
+            player->state = MOVING;
+            player->card = NULL;
+            return;
+        }
+    }
+}
+
 void move_player(player_t *player, tile_t *tile, map_t *map)
 {
+    if (player->state != MOVING) {
+        attack_player(player, tile, map);
+        return;
+    }
+    if (tile->ind == -1)
+        return;
     sfVector2f pos = (sfVector2f){(tile->ind - (tile->ind % map->height))
     / map->height, tile->ind % map->height};
     sfVector2f pos2 = (sfVector2f){(player->actual_tile->ind -

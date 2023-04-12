@@ -9,7 +9,10 @@
 
 void end_of_turn(player_t *player, hand_t *hand)
 {
+    srand(time(NULL));
     player->actual_stats->move_points = player->basic_stats->move_points;
     player->actual_stats->health_point += 10;
-    add_card_to_hand(hand, "card", 10, 5);
+    for (int i = 0; i < 3; i++)
+        if (hand->nb_cards < 12)
+            add_card_to_hand(hand, "card", 10, (rand() + 1) % 10);
 }

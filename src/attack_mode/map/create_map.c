@@ -7,6 +7,14 @@
 
 #include "attack_mode.h"
 
+void *create_map_two(map_t *res)
+{
+    res->hovered_tile = res->tiles[0];
+    res->far_tile = create_tile((sfVector2f)
+    {-100, -100}, sfWhite, (sfVector2f){1, 1}, 0);
+    res->far_tile->ind = -1;
+}
+
 map_t *create_map(int width, int height, sfVector2f decalage, sfVector2f size)
 {
     map_t *res = malloc(sizeof(map_t));
@@ -27,6 +35,6 @@ map_t *create_map(int width, int height, sfVector2f decalage, sfVector2f size)
     res->width = width;
     res->height = height;
     res->tiles = tile_list;
-    res->hovered_tile = tile_list[0];
+    create_map_two(res);
     return res;
 }

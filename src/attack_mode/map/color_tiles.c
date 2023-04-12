@@ -15,8 +15,16 @@ void color_tiles(map_t *map, player_t *player)
     }
     map->hovered_tile->color = sfRed;
     update_tile(map->hovered_tile);
-    for (int i = 0; i < player->nb_tiles_close; i++) {
-            player->tiles_close[i]->color = sfGreen;
-            update_tile(player->tiles_close[i]);
-        }
+    if (player->state == MOVING) {
+        for (int i = 0; i < player->nb_tiles_close; i++) {
+                player->tiles_close[i]->color = sfGreen;
+                update_tile(player->tiles_close[i]);
+            }
+    }
+    if (player->state == ATTACKING) {
+        for (int i = 0; i < player->nb_attack_tiles; i++) {
+                player->attack_tiles[i]->color = sfRed;
+                update_tile(player->attack_tiles[i]);
+            }
+    }
 }

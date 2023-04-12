@@ -19,6 +19,6 @@ sfVector2f tile_size)
     res->map = map;
     res->player = player;
     res->hand = hand;
-    update_hand(res->hand);
+    res->hand->player = player;
     return res;
 }

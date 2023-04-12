@@ -18,5 +18,5 @@ void update_map(map_t *map, sfEvent event, player_t *player)
             }
     }
     if (!b)
-        map->hovered_tile = player->actual_tile;
+        map->hovered_tile = map->far_tile;
 }

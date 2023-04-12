@@ -30,5 +30,8 @@ player_t *create_player(tile_t *tile)
     set_player_pos(res);
     res->actual_stats = create_stats();
     res->basic_stats = create_stats();
+    res->state = MOVING;
+    res->attack_tiles = NULL;
+    res->card = NULL;
     return res;
 }

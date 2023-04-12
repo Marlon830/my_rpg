@@ -66,3 +66,27 @@ tile_t **get_tiles_close(map_t *map, tile_t *tile, int dist, player_t *player)
     }
     return res;
 }
+
+tile_t **get_tiles_attack(map_t *map, tile_t *tile, int dist, player_t *player)
+{
+    player->nb_attack_tiles = count_nb_tiles(map, tile, dist);
+    tile_t **res = malloc(sizeof(tile_t *) * player->nb_attack_tiles);
+    for (int i = 0; i < player->nb_attack_tiles; i++)
+        res[i] = NULL;
+    sfVector2f pos = (sfVector2f){(tile->ind - (tile->ind % map->height)) /
+    map->height, tile->ind % map->height};
+    sfVector2f p2;
+    for (int x = pos.x - dist;
+    x <= pos.x + dist && x < map->width; x++) {
+        if (x < 0)
+            continue;
+        for (int y = MAX(pos.y - dist, 0);
+        y <= pos.y + dist && y < map->height; y++) {
+            p2 = (sfVector2f){x, y};
+            is_good_height(tile, map->tiles[x * map->height + y], &p2);
+            set_close_tiles(res, map->tiles[x * map->height + y],
+            manhattan_dist(pos, p2), dist);
+        }
+    }
+    return res;
+}

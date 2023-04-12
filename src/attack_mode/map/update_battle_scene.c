@@ -7,11 +7,16 @@
 
 #include "attack_mode.h"
 
-void update_battle_scene(battle_scene_t *scene, float time)
+void update_battle_scene(battle_scene_t *scene, float time,
+sfRenderWindow *window)
 {
-        scene->player->tiles_close =
+        if (scene->player->state == MOVING)
+                scene->player->tiles_close =
         update_tiles_close(scene->player, scene->map,
         scene->player->actual_tile, scene->player->actual_stats->move_points);
         update_player(scene->player);
         color_tiles(scene->map, scene->player);
+        update_hand(scene->hand, (sfVector2f)
+        {sfMouse_getPositionRenderWindow(window).x,
+        sfMouse_getPositionRenderWindow(window).y});
 }

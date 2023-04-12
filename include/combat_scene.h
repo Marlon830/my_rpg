@@ -7,48 +7,11 @@
 
 #pragma once
 
-#include "attack_mode.h"
+#include "attack_structs.h"
 
 #define MIN(a,b) a < b ? a : b
 #define MAX(a,b) a > b ? a : b
 #define GET_MAX_TILES(n) n * n + 2 * n + 1
-
-typedef sfVertex sfvertex;
-
-typedef struct tile_s {
-    sfVertexArray *array_tile;
-    sfVertexArray *array_walls;
-    sfVector2f *points;
-    sfVector2f pos;
-    int ind;
-    sfVector2f size;
-    sfColor color;
-    float height;
-} tile_t;
-
-typedef struct {
-    int move_points;
-    float health_point;
-    float damage;
-} stat_t;
-
-typedef struct {
-    sfVector2f pos;
-    sfVector2f mousePos;
-    tile_t **tiles;
-    tile_t *hovered_tile;
-    int width;
-    int height;
-} map_t;
-
-typedef struct {
-    tile_t *actual_tile;
-    sfVertexArray *array_character;
-    stat_t *basic_stats;
-    stat_t *actual_stats;
-    tile_t **tiles_close;
-    int nb_tiles_close;
-} player_t;
 
 
 sfvertex vertex_create(sfVector2f position, sfColor color);
@@ -99,3 +62,4 @@ map_t *load_map(char *filename, sfVector2f size, sfVector2f pos);
 char *get_line(char *str, int ind);
 int count_char_until(char *str, char until);
 tile_t *get_tile_from_str(char *line, sfVector2f size, sfVector2f decalage);
+tile_t **get_tiles_attack(map_t *map, tile_t *tile, int dist, player_t *player);
