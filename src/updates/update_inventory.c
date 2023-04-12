@@ -15,22 +15,35 @@ void switch_state_inventory(inventory_t *inventory)
         inventory->is_active = true;
 }
 
+void update_box(project_t *project, box_t *box)
+{
+    sfVector2f pos_box;
+
+    sfRectangleShape_setPosition(box->shape, (sfVector2f)
+    {project->player->pos.x - 72 + box->more_x,
+    project->player->pos.y - 64 + box->more_y});
+    sfRenderWindow_drawRectangleShape(WINDOW, box->shape, NULL);
+    if (box->sprite != NULL) {
+        pos_box = sfRectangleShape_getPosition(box->shape);
+        box->pos_sprite = pos_box;
+        sfSprite_setPosition(box->sprite, box->pos_sprite);
+        sfText_setPosition(box->text, (sfVector2f) {pos_box.x + 0.5,
+        pos_box.y + 12.5});
+        sfRenderWindow_drawSprite(WINDOW, box->sprite, NULL);
+        sfRenderWindow_drawText(WINDOW, box->text, NULL);
+    }
+}
+
 void update_list_box(project_t *project, list_box_t *list)
 {
     list_box_t *temp = list;
 
     if (list->box == NULL)
         return;
-    sfRectangleShape_setPosition(list->box->shape, (sfVector2f)
-    {project->player->pos.x - 72 + list->box->more_x,
-    project->player->pos.y - 64 + list->box->more_y});
-    sfRenderWindow_drawRectangleShape(WINDOW, list->box->shape, NULL);
+    update_box(project, list->box);
     temp = temp->next;
     while (temp != NULL) {
-        sfRectangleShape_setPosition(temp->box->shape, (sfVector2f)
-        {project->player->pos.x - 72 + temp->box->more_x,
-        project->player->pos.y - 64 + temp->box->more_y});
-        sfRenderWindow_drawRectangleShape(WINDOW, temp->box->shape, NULL);
+        update_box(project, temp->box);
         temp = temp->next;
     }
 }
