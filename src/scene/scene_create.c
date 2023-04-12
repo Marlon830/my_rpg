@@ -68,7 +68,7 @@ void next_get_map(map_t *map, char *line)
     map->nb_tp++;
 }
 
-map_t *get_map(project_t *project, char *map_name)
+map_t *get_map(char *map_name)
 {
     FILE *fp = fopen(my_strcat(my_strcat("./assets/", map_name),
     "/data.mp"), "r");

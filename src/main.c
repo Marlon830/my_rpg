@@ -70,9 +70,9 @@ project_t *init_project(void)
 int main(void)
 {
     project_t *project = init_project();
-    push_back(&project->scenes, "island", get_map(project, "island"), SCENE);
-    push_back(&project->scenes, "house", get_map(project, "house"), SCENE);
-    push_back(&project->scenes, "sus", get_map(project, "sus"), SCENE);
+    push_back(&project->scenes, "island", get_map("island"), SCENE);
+    push_back(&project->scenes, "house", get_map("house"), SCENE);
+    push_back(&project->scenes, "sus", get_map("sus"), SCENE);
     project->scene = load_scene(project, 0);
     main_loop(project);
     return 0;

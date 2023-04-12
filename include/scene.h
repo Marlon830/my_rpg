@@ -53,6 +53,7 @@ typedef struct map_s {
 } map_t;
 
 void scene_draw(project_t *project, scene_t *scene);
+void dialogue_draw(project_t *project);
 void scene_event(project_t *project);
 scene_t *load_scene(project_t *project, int scene_id);
 void scene_destroy(scene_t *scene);
@@ -63,7 +64,7 @@ collider_t *create_collider(int x, int y, int w, int h);
 void colliders_init(char *path, scene_t *scene);
 void images_destroy(scene_t *scene);
 void colliders_destroy(scene_t *scene);
-map_t *get_map(project_t *project, char *map_name);
+map_t *get_map(char *map_name);
 sfText *create_text(void);
 sfRectangleShape *create_rect(void);
 
