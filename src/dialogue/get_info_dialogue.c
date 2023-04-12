@@ -40,6 +40,6 @@ char *get_dialogue_by_id(project_t *project, list_t *dialogue, char *id)
     get_dialogue_image((char *) temp->element),
     (sfIntRect) {0, 0, 220, 220}, img_size);
     sfSprite_setScale(project->actual_dial->face->sprite,
-    (sfVector2f) {0.1, 0.1});
+    (sfVector2f) {0.13, 0.13});
     return (char *) temp->element;
 }
