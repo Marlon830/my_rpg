@@ -21,11 +21,13 @@ SRC = src/main.c \
 	  src/dialogue/get_info_dialogue.c \
 	  src/updates/update_scene.c \
 	  src/updates/update_inventory.c \
+	  src/updates/update_inventory2.c \
 	  src/utils/string.c \
 	  src/utils/string_bis.c \
 	  src/utils/list.c \
 	  src/utils/inventory_list.c \
-	  src/utils/inventory_list2.c
+	  src/utils/inventory_list2.c \
+	  src/utils/inventory_list3.c
 
 OBJ = $(SRC:.c=.o)
 CFLAGS = -W -Wall -Wextra
