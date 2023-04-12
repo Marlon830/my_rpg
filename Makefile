@@ -7,7 +7,9 @@
 
 SRC = src/main.c \
 	  src/scene/scene_create.c \
+	  src/scene/scene_create_bis.c \
 	  src/scene/scene_draw.c \
+	  src/scene/scene_draw_bis.c \
 	  src/scene/scene_init.c \
 	  src/scene/colliders_init.c \
 	  src/scene/scene_event.c \
