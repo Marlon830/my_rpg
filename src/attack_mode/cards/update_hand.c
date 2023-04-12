@@ -31,7 +31,7 @@ void rotate_hand(hand_t *hand, sfVector2f mouse_pos)
         new_pos.x = -p / 2 + i * p / (hand->nb_cards - 1) + 20;
         new_pos.y -= temp->state == HOVERED ? 100 : 0;
         rotate_card(temp, -(hand->nb_cards * 10 > 60 ? 60 :
-        hand->nb_cards * 10) / 2 + i * interval_angle;);
+        hand->nb_cards * 10) / 2 + i * interval_angle);
         move_card(temp, new_pos);
         if (temp->state == SELECTED) {
             sfVertexArray_clear(temp->array);
