@@ -20,6 +20,7 @@ typedef struct project_s {
     float dt;
     player_t *player;
     int scene_id;
+    list_t *scenes;
 } project_t;
 
 void update_scene(project_t *project);
