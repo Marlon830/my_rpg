@@ -34,7 +34,7 @@ void scene_event(project_t *project)
             sfRenderWindow_close(project->window);
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace) {
             project->actual_dial->dialogue =
-            get_dialogue_by_id(project, project->all_dialogues, "LeFlopeux02");
+            get_dialogue_by_id(project, project->all_dialogues, "Shrek");
             display_dialogue(project);
         }
         check_event_inventory(project, event);
