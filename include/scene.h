@@ -15,6 +15,28 @@
 
 typedef struct project_s project_t;
 
+typedef struct scene_s {
+    sfView *camera;
+    list_t *images;
+    list_t *colliders;
+    char *path;
+    char *name;
+    list_t *tp;
+    int nb_tp;
+} scene_t;
+
+typedef struct button_s {
+    sfVector2f position;
+    sfVector2f size;
+    sfColor color;
+    char *txt_str;
+    sfText *text;
+    sfRectangleShape *rect;
+    sfBool (*is_clicked)(struct button_s *button, sfMouseButtonEvent *evt);
+    void (*clicked)(project_t *project);
+    void (*update)(struct button_s *button, project_t *project, sfEvent event);
+} button_t;
+
 typedef struct image_s {
     sfSprite *sprite;
     sfTexture *texture;
@@ -23,6 +45,9 @@ typedef struct image_s {
     sfVector2f sprite_pos;
     int curr_pos;
     int nb_sprite;
+    sfClock *clock_image;
+    sfTime time_image;
+    float seconds_image;
 } image_t;
 
 typedef struct collider_s {
@@ -66,7 +91,10 @@ void colliders_init(char *path, scene_t *scene);
 void images_destroy(scene_t *scene);
 void colliders_destroy(scene_t *scene);
 map_t *get_map(char *map_name);
-sfText *create_text(void);
+sfText *create_text(sfVector2f pos, sfVector2f size, sfColor color);
 sfRectangleShape *create_rect(void);
-
+void images_draw(project_t *project, list_t *img_list);
+void update_button(button_t *btn, project_t *project, sfEvent event);
+button_t *create_button(sfVector2f position , sfVector2f size,
+char *txt, void (*clicked)(project_t *project));
 #endif

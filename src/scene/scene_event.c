@@ -55,10 +55,11 @@ void scene_event(project_t *project)
             sfRenderWindow_close(project->window);
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
             sfRenderWindow_close(project->window);
-        if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace) {
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace &&
+        !project->inventory->is_active)
             check_all_pnj_dialogue(project);
-        }
-        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab)
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab &&
+        !project->actual_dial->is_displayed)
             switch_state_inventory(project->inventory);
         inventory_event(project, event);
     }

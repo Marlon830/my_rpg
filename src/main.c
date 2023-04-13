@@ -11,8 +11,14 @@
 void main_loop(project_t *project)
 {
     while (sfRenderWindow_isOpen(WINDOW)) {
-        scene_event(project);
-        update_scene(project);
+        if (project->status == GAME) {
+            scene_event(project);
+            update_scene(project);
+        }
+        if (project->status == MENU) {
+            menu_event(project);
+            draw_main_menu(project);
+        }
         sfRenderWindow_display(project->window);
     }
     scene_destroy(project->scene);
@@ -42,7 +48,8 @@ act_dial_t *init_actual_dialogue(void)
     act_dial_t *actual_dial = malloc(sizeof(act_dial_t));
 
     actual_dial->pos = 0;
-    actual_dial->text = create_text();
+    actual_dial->text = create_text((sfVector2f){160, 160},
+    (sfVector2f){0.2, 0.2}, sfWhite);
     actual_dial->rect = create_rect();
     actual_dial->is_displayed = 0;
     return actual_dial;
@@ -62,6 +69,8 @@ project_t *init_project(void)
     project->player = init_player(160, 160);
     project->scenes = NULL;
     project->scene = NULL;
+    project->status = MENU;
+    project->main_menu = init_main_menu(project);
     project->actual_dial = init_actual_dialogue();
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
     return project;
@@ -74,7 +83,6 @@ int main(void)
     push_back(&project->scenes, "island", get_map("island"), SCENE);
     push_back(&project->scenes, "house", get_map("house"), SCENE);
     push_back(&project->scenes, "sus", get_map("sus"), SCENE);
-    project->scene = load_scene(project, 0);
     main_loop(project);
     return 0;
 }

@@ -10,15 +10,16 @@
 #include "project.h"
 #include <string.h>
 
-sfText *create_text(void)
+sfText *create_text(sfVector2f pos, sfVector2f size, sfColor color)
 {
     sfText *text;
-    sfFont *font = sfFont_createFromFile("assets/font.ttf");
+    sfFont *font = sfFont_createFromFile("assets/font.otf");
 
     text = sfText_create();
     sfText_setFont(text, font);
-    sfText_setScale(text, (sfVector2f) {0.3, 0.3});
-    sfText_setPosition(text, (sfVector2f) {160, 160});
+    sfText_setScale(text, size);
+    sfText_setPosition(text, pos);
+    sfText_setFillColor(text, color);
     return text;
 }
 

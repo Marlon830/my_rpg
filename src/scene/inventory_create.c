@@ -12,9 +12,12 @@ void create_box_bis(box_t *box)
     box->font = sfFont_createFromFile("assets/font/Roboto-Regular.ttf");
     box->text = sfText_create();
     sfText_setFont(box->text, box->font);
-    sfText_setColor(box->text, sfBlack);
+    sfText_setColor(box->text, sfWhite);
     sfText_setScale(box->text, (sfVector2f) {0.1, 0.1});
     box->is_selected = false;
+    box->box_texture = sfTexture_createFromFile("assets/box.png", NULL);
+    sfRectangleShape_setTexture(box->shape, box->box_texture, sfTrue);
+    box->clock_box = sfClock_create();
 }
 
 box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
@@ -24,7 +27,7 @@ box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
 
     sfRectangleShape_setPosition(shape, pos);
     sfRectangleShape_setSize(shape, size);
-    sfRectangleShape_setFillColor(shape, (sfColor) {112, 114, 110, 255});
+    sfRectangleShape_setFillColor(shape, sfWhite);
     sfRectangleShape_setOutlineColor(shape, sfBlack);
     box->shape = shape;
     box->more_x = more_x;
@@ -34,6 +37,8 @@ box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
     box->box_texture = NULL;
     box->quantity = 0;
     box->name = NULL;
+    box->pos_animation = 0;
+    box->max_animation = 0;
     create_box_bis(box);
     return box;
 }
@@ -46,7 +51,7 @@ void create_boxes_in_inventory_bis(inventory_t *inventory)
         for (int j = 0; j < 7; j++) {
             box = create_box((sfVector2f)
             {88 + 2 * 4 + 64 + 16 * i + 2 * i, 96 + 2 + 2 * j + 16 * j},
-            (sfVector2f) {16, 16}, 2 * 4 + 64 + 16 * i + 2 * i,
+            (sfVector2f) {16, 16}, 2 * 5 + 64 + 16 * i + 2 * i,
             2 + 2 * j + 16 * j);
             add_box_to_list(inventory->bag, box);
         }
@@ -56,6 +61,8 @@ void create_boxes_in_inventory_bis(inventory_t *inventory)
     inventory->description = create_box((sfVector2f)
     {88 + 2, 96 + 2 * 5 + 16 * 4}, (sfVector2f) {64 + 2 * 2, 48 + 2 * 2},
     2, 2 * 5 + 16 * 4);
+    create_box_des_char(inventory->description, 1);
+    create_box_des_char(inventory->character, 2);
 }
 
 void create_boxes_in_inventory(inventory_t *inventory)
@@ -80,18 +87,19 @@ inventory_t *create_inventory(void)
 {
     inventory_t *inventory = malloc(sizeof(*inventory));
     sfVector2f pos = {80 + 8, 80 + 16};
-    sfVector2f size = {128 + 2 * 8, 112 + 2 * 8};
+    sfVector2f size = {128 + 2 * 9, 112 + 2 * 8};
 
     inventory->first_equipment = init_list_box();
     inventory->second_equipment = init_list_box();
     inventory->bag = init_list_box();
     inventory->is_active = false;
     inventory->shape = sfRectangleShape_create();
+    inventory->texture = sfTexture_createFromFile("assets/inventory.png", NULL);
     sfRectangleShape_setPosition(inventory->shape, pos);
     sfRectangleShape_setSize(inventory->shape, size);
-    sfRectangleShape_setFillColor(inventory->shape, (sfColor)
-    {196, 201, 199, 255});
+    sfRectangleShape_setFillColor(inventory->shape, sfWhite);
     sfRectangleShape_setOutlineColor(inventory->shape, sfBlack);
+    sfRectangleShape_setTexture(inventory->shape, inventory->texture, sfTrue);
     create_boxes_in_inventory(inventory);
     return inventory;
 }
