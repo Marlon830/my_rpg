@@ -18,6 +18,7 @@ void create_box_des_char(box_t *box, int des_char)
         sfRectangleShape_setTexture(box->shape, box->box_texture, sfTrue);
     }
     if (des_char == 2) {
+        box->max_animation = 3;
         rect = (sfIntRect) {0, 0, 16, 16};
         sfTexture_destroy(box->box_texture);
         box->sprite = sfSprite_create();
