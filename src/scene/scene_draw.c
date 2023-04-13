@@ -7,12 +7,15 @@
 
 #include "project.h"
 
-void img_animation(project_t *project, image_t *img)
+void img_animation(image_t *img)
 {
-    if ((int)project->dt % 20 == 0 && img->nb_sprite > 1) {
+    img->time_image = sfClock_getElapsedTime(img->clock_image);
+    img->seconds_image = img->time_image.microseconds / 1000000.0;
+    if (img->seconds_image > 0.15 && img->nb_sprite > 1) {
         img->curr_pos++;
         if (img->curr_pos == img->nb_sprite)
             img->curr_pos = 0;
+        sfClock_restart(img->clock_image);
     }
     img->sprite_pos.x = img->sprite_size.x * img->curr_pos;
 }
@@ -24,7 +27,7 @@ void images_draw(project_t *project, list_t *img_list)
 
     while (tmp != NULL) {
         img = tmp->element;
-        img_animation(project, img);
+        img_animation(img);
         sfSprite_setTextureRect(((image_t *)tmp->element)->sprite,
         (sfIntRect){img->sprite_pos.x, img->sprite_pos.y, img->sprite_size.x,
         img->sprite_size.y});
