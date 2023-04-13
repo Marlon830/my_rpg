@@ -5,7 +5,7 @@
 ** scene_event.c
 */
 
-#include "../../include/project.h"
+#include "project.h"
 
 void inventory_event(project_t *project, sfEvent event)
 {
