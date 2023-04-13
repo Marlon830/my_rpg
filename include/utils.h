@@ -25,7 +25,8 @@ enum type {
     COLLIDER,
     TP,
     SCENE,
-    DIALOGUE
+    DIALOGUE,
+    PNJ
 };
 
 typedef struct list_s {
