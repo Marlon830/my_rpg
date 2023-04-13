@@ -15,16 +15,6 @@
 
 typedef struct project_s project_t;
 
-typedef struct scene_s {
-    sfView *camera;
-    list_t *images;
-    list_t *colliders;
-    char *path;
-    char *name;
-    list_t *tp;
-    int nb_tp;
-} scene_t;
-
 typedef struct button_s {
     sfVector2f position;
     sfVector2f size;
