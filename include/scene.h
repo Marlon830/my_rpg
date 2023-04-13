@@ -34,7 +34,7 @@ typedef struct button_s {
     sfRectangleShape *rect;
     sfBool (*is_clicked)(struct button_s *button, sfMouseButtonEvent *evt);
     void (*clicked)(project_t *project);
-    void (*update)(struct button_s *button, project_t *project);
+    void (*update)(struct button_s *button, project_t *project, sfEvent event);
 } button_t;
 
 typedef struct image_s {
