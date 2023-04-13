@@ -23,6 +23,9 @@ typedef struct image_s {
     sfVector2f sprite_pos;
     int curr_pos;
     int nb_sprite;
+    sfClock *clock_image;
+    sfTime time_image;
+    float seconds_image;
 } image_t;
 
 typedef struct collider_s {
