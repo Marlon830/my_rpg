@@ -24,6 +24,13 @@ typedef struct actual_dialogue_s {
     image_t *face;
 } act_dial_t;
 
+typedef struct all_pnjs_s {
+    char *dial;
+    sfFloatRect *hitbox;
+    image_t *sprite;
+    int can_talk;
+} all_pnjs_t;
+
 typedef struct project_s {
     sfRenderWindow *window;
     inventory_t *inventory;
