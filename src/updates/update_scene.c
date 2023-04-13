@@ -30,11 +30,30 @@ sfVector2f key_management(project_t *project)
     return pos;
 }
 
+void update_pnj(project_t *project, image_t *player)
+{
+    list_t *temp_pnj = project->scene->pnj;
+
+    while (temp_pnj != NULL) {
+        all_pnjs_t *act_pnj = (all_pnjs_t *) temp_pnj->element;
+        if (sfFloatRect_contains(act_pnj->hitbox,
+        player->pos.x, player->pos.y)) {
+            act_pnj->sprite->sprite_pos.y = 16;
+            act_pnj->can_talk = 1;
+        } else {
+            act_pnj->can_talk = 0;
+            act_pnj->sprite->sprite_pos.y = 0;
+        }
+        temp_pnj = temp_pnj->next;
+    }
+}
+
 void update_scene(project_t *project)
 {
     image_t *player = get_item(project->scene->images, "player");
     sfVector2f movement = key_management(project);
 
+    update_pnj(project, player);
     project->dt = sfTime_asMilliseconds(sfClock_getElapsedTime(project->clock));
     if (movement.x != 0 || movement.y != 0) {
         project->player->move.x = movement.x;
