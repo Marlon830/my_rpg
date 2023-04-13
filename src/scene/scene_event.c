@@ -5,7 +5,7 @@
 ** scene_event.c
 */
 
-#include "../../include/project.h"
+#include "project.h"
 
 void inventory_event(project_t *project, sfEvent event)
 {
@@ -29,6 +29,23 @@ void inventory_event(project_t *project, sfEvent event)
         event.mouseButton.y});
 }
 
+void check_all_pnj_dialogue(project_t *project)
+{
+    list_t *temp_pnj = project->scene->pnj;
+    all_pnjs_t *act_pnj;
+
+    while (temp_pnj != NULL) {
+        act_pnj = (all_pnjs_t *) temp_pnj->element;
+        if (act_pnj->can_talk) {
+            project->actual_dial->dialogue =
+            get_dialogue_by_id(project, project->all_dialogues, "Shrek");
+            display_dialogue(project);
+            break;
+        }
+        temp_pnj = temp_pnj->next;
+    }
+}
+
 void scene_event(project_t *project)
 {
     sfEvent event;
@@ -39,9 +56,7 @@ void scene_event(project_t *project)
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
             sfRenderWindow_close(project->window);
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace) {
-            project->actual_dial->dialogue =
-            get_dialogue_by_id(project, project->all_dialogues, "Shrek");
-            display_dialogue(project);
+            check_all_pnj_dialogue(project);
         }
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab)
             switch_state_inventory(project->inventory);
