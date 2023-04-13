@@ -40,6 +40,7 @@ typedef struct list_box_s {
 
 typedef struct inventory_s {
     sfRectangleShape *shape;
+    sfTexture *texture;
     list_box_t *first_equipment;
     list_box_t *second_equipment;
     list_box_t *bag;
@@ -55,6 +56,7 @@ box_t *get_box_with_name(list_box_t *list, char *name);
 box_t *get_box_with_coord(project_t *project, sfVector2f pos);
 box_t *get_box_selected(project_t *project);
 sfVector2f convert_mouse_position(project_t *project, sfVector2f pos);
+
 void add_box_to_list(list_box_t *list, box_t *box);
 void switch_state_inventory(inventory_t *inventory);
 bool add_elem(list_box_t *list, char *name, int quantity);
@@ -65,5 +67,8 @@ void unselect_box(project_t *project, sfVector2f pos);
 void add_new_elem_in_box(box_t *box, char *name, int quantity);
 void reset_box(box_t *box);
 void update_selected_box(project_t *project);
+void create_box_des_char(box_t *box, int des_char);
+void update_inventory_character(project_t *project, box_t *box);
+void update_inventory_description(project_t *project, box_t *box);
 
 #endif
