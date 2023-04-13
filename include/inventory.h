@@ -31,6 +31,11 @@ typedef struct box_s {
     float more_y;
     int quantity;
     bool is_selected;
+    int pos_animation;
+    int max_animation;
+    sfClock *clock_box;
+    sfTime time_box;
+    float seconds_box;
 } box_t;
 
 typedef struct list_box_s {
