@@ -1,0 +1,17 @@
+Name:Theoronfle
+Image:theoronfle.png
+Dialogue#
+Oh salut toi !
+-
+Je devine que si tu es par ici
+c'est que tu es a la recherche du crampter
+-
+Si tu veux bien m'aider ce serait cool
+-
+Mon ordinateur a un gros probleme et ne fait
+que neiger *snif* on est en hiver ou quoi xD
+-
+Tiens je te le passe essaye de trouver une solution
+et je te recompenserai d'un donuts sucre au sucre
+-
+#
