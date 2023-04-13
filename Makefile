@@ -16,6 +16,7 @@ SRC = src/main.c \
 	  src/scene/scene_destroy.c \
 	  src/scene/move_camera.c \
 	  src/scene/inventory_create.c \
+	  src/scene/inventory_create2.c \
 	  src/dialogue/create_dialogue.c \
 	  src/dialogue/display_dialogue.c \
 	  src/dialogue/get_info_dialogue.c \
