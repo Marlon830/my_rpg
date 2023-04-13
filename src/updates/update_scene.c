@@ -10,7 +10,8 @@
 sfVector2f key_management(project_t *project)
 {
     sfVector2f pos = {0, 0};
-
+    if (project->inventory->is_active || project->actual_dial->is_displayed)
+        return pos;
     if (sfKeyboard_isKeyPressed(sfKeyZ)) {
         pos.y -= project->player->speed;
         project->player->state = RUN_UP;
