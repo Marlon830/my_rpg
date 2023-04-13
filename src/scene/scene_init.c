@@ -7,6 +7,39 @@
 
 #include "project.h"
 
+all_pnjs_t *create_pnj(scene_t *scene, char *dial,
+    sfFloatRect *hitbox, char *id)
+{
+    all_pnjs_t *pnj = malloc(sizeof(*pnj));
+
+    pnj->dial = dial;
+    pnj->hitbox = hitbox;
+    pnj->sprite = NULL;
+    pnj->can_talk = 0;
+    push_back(&scene->pnj, id,
+    (all_pnjs_t *) pnj, PNJ);
+    return pnj;
+}
+
+void load_pnj(scene_t *scene)
+{
+    sfFloatRect *rect = malloc(sizeof(*rect));
+    rect->top = 165 - 32;
+    rect->left = 250 - 32;
+    rect->width = 64;
+    rect->height = 64;
+    all_pnjs_t *theodore = create_pnj(scene, NULL, rect, "theodore");
+    theodore->sprite = create_image(
+        (sfVector2f) {250, 165},
+        my_strcat(scene->name, "/theodore.png"),
+        (sfIntRect) {0, 0, 64, 32},
+        (sfVector2f) {16, 16}
+    );
+    theodore->sprite->nb_sprite = 4;
+
+    push_back(&scene->images, "theodore", theodore->sprite, IMAGE);
+}
+
 void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
 {
     image_t *background = create_image((sfVector2f){0, 0},
@@ -21,11 +54,19 @@ void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
     my_strcat(scene->name, "/foreground.png"),
     (sfIntRect){0, 0, 480, 480}, size);
     foreground->nb_sprite = 1;
-
     push_back(&scene->images, "background", background, IMAGE);
     push_back(&scene->images, "player", player, IMAGE);
     push_back(&scene->images, "foreground", foreground, IMAGE);
+    load_pnj(scene);
     colliders_init(my_strcat(scene->name, "/res.coll"), scene);
+}
+
+void load_scene_bis(project_t *project, scene_t *scene, map_t *map)
+{
+    sfView_setSize(scene->camera, (sfVector2f){256, 144});
+    sfView_setCenter(scene->camera, project->player->pos);
+    sfRenderWindow_setView(project->window, scene->camera);
+    next_load_scene(project, scene, map->size);
 }
 
 scene_t *load_scene(project_t *project, int scene_id)
@@ -45,9 +86,8 @@ scene_t *load_scene(project_t *project, int scene_id)
     scene->name = map->name;
     scene->tp = map->tp;
     scene->nb_tp = map->nb_tp;
-    sfView_setSize(scene->camera, (sfVector2f){256, 144});
-    sfView_setCenter(scene->camera, project->player->pos);
-    sfRenderWindow_setView(project->window, scene->camera);
-    next_load_scene(project, scene, map->size);
+    scene->pnj = malloc(sizeof(list_t));
+    scene->pnj = NULL;
+    load_scene_bis(project, scene, map);
     return scene;
 }
