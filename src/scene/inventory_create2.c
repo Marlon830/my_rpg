@@ -10,7 +10,6 @@
 void create_box_des_char(box_t *box, int des_char)
 {
     sfIntRect rect;
-
     if (des_char == 1) {
         sfTexture_destroy(box->box_texture);
         box->box_texture = sfTexture_createFromFile(
