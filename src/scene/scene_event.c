@@ -38,7 +38,7 @@ void check_all_pnj_dialogue(project_t *project)
         act_pnj = (all_pnjs_t *) temp_pnj->element;
         if (act_pnj->can_talk) {
             project->actual_dial->dialogue =
-            get_dialogue_by_id(project, project->all_dialogues, "Shrek");
+            get_dialogue_by_id(project, project->all_dialogues, "Theoronfle");
             display_dialogue(project);
             break;
         }
