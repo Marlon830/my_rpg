@@ -10,6 +10,8 @@
 void draw_main_menu(project_t *project)
 {
     image_t *background = project->main_menu->background;
+
+    sfRenderWindow_clear(WINDOW, sfWhite);
     sfRenderWindow_drawSprite(project->window,
     background->sprite, NULL);
     update_button(project->main_menu->play, project, project->event);
