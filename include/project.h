@@ -11,9 +11,16 @@
     #include "utils.h"
     #include "inventory.h"
     #include "player.h"
+    #include "menu.h"
 
 
     #define WINDOW project->window
+
+enum game_state {
+    MENU,
+    GAME,
+    FIGHT
+};
 
 typedef struct actual_dialogue_s {
     char *dialogue;
@@ -34,7 +41,10 @@ typedef struct project_s {
     float dt;
     player_t *player;
     int scene_id;
+    enum game_state status;
     list_t *scenes;
+    main_menu_t *main_menu;
+    sfEvent event;
 } project_t;
 
 void update_scene(project_t *project);
@@ -43,5 +53,7 @@ list_t *create_all_dialogues(project_t *project, char *path_to_all_dialogue);
 char *get_dialogue_by_id(project_t *project, list_t *dialogue, char *id);
 char *get_dialogue_image(char *dialogue);
 void display_dialogue(project_t *project);
+void change_view(project_t *project, sfView *camera,
+sfVector2f size, sfVector2f pos);
 
 #endif
