@@ -43,6 +43,7 @@ typedef struct scene_s {
     char *name;
     list_t *tp;
     int nb_tp;
+    list_t *pnj;
 } scene_t;
 
 typedef struct map_s {
