@@ -41,12 +41,25 @@ char *txt, void (*clicked)(project_t *project))
     return button;
 }
 
+void update_hover_button(button_t *btn, sfVector2i mouse_pos)
+{
+    if (mouse_pos.x >= btn->position.x && mouse_pos.x <= btn->position.x
+    + btn->size.x && mouse_pos.y >= btn->position.y && mouse_pos.y <=
+    btn->position.y + btn->size.y)
+        sfRectangleShape_setFillColor(btn->rect, sfBlue);
+    else
+        sfRectangleShape_setFillColor(btn->rect, btn->color);
+}
+
 void update_button(button_t *btn, project_t *project, sfEvent event)
 {
+    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(WINDOW);
+
     if (event.type == sfEvtMouseButtonPressed) {
         if (btn->is_clicked(btn, &event.mouseButton))
             btn->clicked(project);
     }
+    update_hover_button(btn, mouse_pos);
     sfRenderWindow_drawRectangleShape(project->window, btn->rect, NULL);
     sfRenderWindow_drawText(project->window, btn->text, NULL);
 }
