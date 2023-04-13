@@ -13,11 +13,11 @@
 sfText *create_text(void)
 {
     sfText *text;
-    sfFont *font = sfFont_createFromFile("assets/font.ttf");
+    sfFont *font = sfFont_createFromFile("assets/font.otf");
 
     text = sfText_create();
     sfText_setFont(text, font);
-    sfText_setScale(text, (sfVector2f) {0.3, 0.3});
+    sfText_setScale(text, (sfVector2f) {0.20, 0.20});
     sfText_setPosition(text, (sfVector2f) {160, 160});
     return text;
 }

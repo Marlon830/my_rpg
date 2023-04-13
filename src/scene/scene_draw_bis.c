@@ -12,7 +12,7 @@ void dialogue_draw(project_t *project)
     sfVector2f player_pos = {project->player->pos.x - 100,
     project->player->pos.y + 35};
     sfVector2f player_pos_bis = {project->player->pos.x - 90,
-    project->player->pos.y + 35};
+    project->player->pos.y + 40};
 
     if (project->actual_dial->is_displayed == 1) {
         sfSprite_setPosition(project->actual_dial->face->sprite,
