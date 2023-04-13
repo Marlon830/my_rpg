@@ -40,7 +40,7 @@ void scene_event(project_t *project)
             sfRenderWindow_close(project->window);
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace) {
             project->actual_dial->dialogue =
-            get_dialogue_by_id(project, project->all_dialogues, "Shrek");
+            get_dialogue_by_id(project, project->all_dialogues, "Theoronfle");
             display_dialogue(project);
         }
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab)
