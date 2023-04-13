@@ -17,6 +17,7 @@ void create_box_bis(box_t *box)
     box->is_selected = false;
     box->box_texture = sfTexture_createFromFile("assets/box.png", NULL);
     sfRectangleShape_setTexture(box->shape, box->box_texture, sfTrue);
+    box->clock_box = sfClock_create();
 }
 
 box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
@@ -36,6 +37,8 @@ box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
     box->box_texture = NULL;
     box->quantity = 0;
     box->name = NULL;
+    box->pos_animation = 0;
+    box->max_animation = 0;
     create_box_bis(box);
     return box;
 }
