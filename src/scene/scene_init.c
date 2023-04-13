@@ -28,6 +28,14 @@ void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
     colliders_init(my_strcat(scene->name, "/res.coll"), scene);
 }
 
+void change_view(project_t *project, sfView *camera,
+sfVector2f size, sfVector2f pos)
+{
+    sfView_setSize(camera, size);
+    sfView_setCenter(camera, pos);
+    sfRenderWindow_setView(project->window, camera);
+}
+
 scene_t *load_scene(project_t *project, int scene_id)
 {
     scene_t *scene = malloc(sizeof(scene_t));
@@ -45,9 +53,8 @@ scene_t *load_scene(project_t *project, int scene_id)
     scene->name = map->name;
     scene->tp = map->tp;
     scene->nb_tp = map->nb_tp;
-    sfView_setSize(scene->camera, (sfVector2f){256, 144});
-    sfView_setCenter(scene->camera, project->player->pos);
-    sfRenderWindow_setView(project->window, scene->camera);
+    change_view(project, scene->camera, (sfVector2f){256, 144},
+    project->player->pos);
     next_load_scene(project, scene, map->size);
     return scene;
 }
