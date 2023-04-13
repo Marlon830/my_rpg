@@ -75,7 +75,6 @@ scene_t *load_scene(project_t *project, int scene_id)
     list_t *tmp = project->scenes;
     for (int i = 0; i != scene_id; i++) tmp = tmp->next;
     map_t *map = tmp->element;
-
     project->scene_id = scene_id;
     if (project->scene != NULL)
         scene_destroy(project->scene);
