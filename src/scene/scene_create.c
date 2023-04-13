@@ -24,6 +24,7 @@ sfVector2f size)
     sfSprite_setTexture(image->sprite, image->texture, sfFalse);
     sfSprite_setPosition(image->sprite, image->pos);
     image->curr_pos = 0;
+    image->clock_image = sfClock_create();
     return image;
 }
 
