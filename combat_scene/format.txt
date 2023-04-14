@@ -1,0 +1,1 @@
+x y damage range heath move_point
