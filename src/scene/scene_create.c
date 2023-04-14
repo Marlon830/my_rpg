@@ -56,7 +56,6 @@ void get_pnj_map(map_t *map, char *line)
     rect->width = my_getnbr(line += 1);
     for (; line[0] != ' '; line++);
     rect->height = my_getnbr(line += 1);
-
     all_pnjs_t *pnj = create_pnj(NULL,
     rect, pnj_name);
     push_back(&map->pnj, pnj->name,
