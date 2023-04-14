@@ -66,5 +66,9 @@ void change_view(project_t *project, sfView *camera,
 sfVector2f size, sfVector2f pos);
 all_pnjs_t *create_pnj(char *dial,
     sfFloatRect *pos_size, char *id);
+void set_pnj_dialogue(list_t *all_pnj, char *pnj_id, char *dialogue_id);
+void change_state_with_dialogue(project_t *project);
+void change_state_with_scene(project_t *project);
+void set_all_pnj_dialogues(project_t *project);
 
 #endif
