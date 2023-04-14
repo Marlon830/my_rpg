@@ -20,6 +20,7 @@ SRC = src/main.c \
 	  src/dialogue/create_dialogue.c \
 	  src/dialogue/display_dialogue.c \
 	  src/dialogue/get_info_dialogue.c \
+	  src/dialogue/changes_dialogue.c \
 	  src/updates/update_scene.c \
 	  src/updates/update_inventory.c \
 	  src/updates/update_inventory2.c \
