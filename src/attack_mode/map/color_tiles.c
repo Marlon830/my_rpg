@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void color_tiles(map_t *map, player_t *player)
+void color_tiles(combat_map_t *map, combat_player_t *player)
 {
     for (int i = 0; i < map->width * map->height; i++) {
         map->tiles[i]->color = sfWhite;

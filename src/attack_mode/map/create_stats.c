@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-stat_t *create_stats(void)
+stat_t *create_stats(int damage, int health_point, int move_point)
 {
     stat_t *res = malloc(sizeof(stat_t));
     res->damage = 10;

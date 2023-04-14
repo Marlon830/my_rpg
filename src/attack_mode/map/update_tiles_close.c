@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-tile_t **update_tiles_close(player_t *player, map_t *map,
+tile_t **update_tiles_close(combat_player_t *player, combat_map_t *map,
 tile_t *tile, int dist)
 {
     free(player->tiles_close);

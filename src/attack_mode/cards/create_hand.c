@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-hand_t *create_hand(int nb_cards, player_t *player)
+hand_t *create_hand(int nb_cards, combat_player_t *player)
 {
     hand_t *res = malloc(sizeof(hand_t));
     res->cards = create_card("card", 10, 5, player);

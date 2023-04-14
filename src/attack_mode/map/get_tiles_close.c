@@ -25,7 +25,7 @@ void is_good_height(tile_t *tile1, tile_t *tile2, sfVector2f *pos)
     }
 }
 
-int count_nb_tiles(map_t *map, tile_t *tile, int dist)
+int count_nb_tiles(combat_map_t *map, tile_t *tile, int dist)
 {
     sfVector2f pos = (sfVector2f){(tile->ind - (tile->ind % map->height)) /
     map->height, tile->ind % map->height};
@@ -43,7 +43,8 @@ int count_nb_tiles(map_t *map, tile_t *tile, int dist)
     return k;
 }
 
-tile_t **get_tiles_close(map_t *map, tile_t *tile, int dist, player_t *player)
+tile_t **get_tiles_close(combat_map_t *map, tile_t *tile, int dist,
+combat_player_t *player)
 {
     player->nb_tiles_close = count_nb_tiles(map, tile, dist);
     tile_t **res = malloc(sizeof(tile_t *) * player->nb_tiles_close);
@@ -67,7 +68,8 @@ tile_t **get_tiles_close(map_t *map, tile_t *tile, int dist, player_t *player)
     return res;
 }
 
-tile_t **get_tiles_attack(map_t *map, tile_t *tile, int dist, player_t *player)
+tile_t **get_tiles_attack(combat_map_t *map, tile_t *tile, int dist,
+combat_player_t *player)
 {
     player->nb_attack_tiles = count_nb_tiles(map, tile, dist);
     tile_t **res = malloc(sizeof(tile_t *) * player->nb_attack_tiles);

@@ -47,7 +47,7 @@ char *get_line(char *str, int ind)
     return res;
 }
 
-int get_width_height(map_t *map, char *text_information)
+int get_width_height(combat_map_t *map, char *text_information)
 {
     int len = 0;
     int width = my_getnbr(text_information);
@@ -60,9 +60,10 @@ int get_width_height(map_t *map, char *text_information)
     return len;
 }
 
-map_t *create_map_from_file(char *filename, sfVector2f size, sfVector2f pos)
+combat_map_t *create_map_from_file(char *filename, sfVector2f size,
+sfVector2f pos)
 {
-    map_t *map = load_map(filename, size, pos);
+    combat_map_t *map = load_map(filename, size, pos);
     save_map(map);
     map = load_map(filename, size, pos);
     save_map(map);

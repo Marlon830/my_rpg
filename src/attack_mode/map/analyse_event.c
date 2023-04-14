@@ -16,7 +16,7 @@ battle_scene_t *scene, hand_t *hand)
         unclick_card(hand, scene);
     if (event.type == sfEvtMouseButtonPressed &&
     event.mouseButton.button == sfMouseLeft)
-        move_player(scene->player, scene->map->hovered_tile, scene->map);
+        move_player(scene->player, scene->map->hovered_tile, scene->map, scene);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyS)
         save_map(scene->map);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)

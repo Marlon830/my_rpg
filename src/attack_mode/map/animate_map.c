@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void breathing_map(map_t *map, float height)
+void breathing_map(combat_map_t *map, float height)
 {
     for (int x = 0; x < map->width; x++) {
         for (int y = 0; y < map->height; y++) {
@@ -17,7 +17,7 @@ void breathing_map(map_t *map, float height)
     }
 }
 
-void random_map(map_t *map, float height)
+void random_map(combat_map_t *map, float height)
 {
     int i = 0;
     float dist;
@@ -31,7 +31,7 @@ void random_map(map_t *map, float height)
     }
 }
 
-void test_map(map_t *map, float height)
+void test_map(combat_map_t *map, float height)
 {
     sfVector2f center = map->tiles[(int)(map->width / 2) *
     map->height + (int)(map->height / 2)]->pos;
@@ -48,7 +48,7 @@ void test_map(map_t *map, float height)
     }
 }
 
-void water_drop_map(map_t *map, float height)
+void water_drop_map(combat_map_t *map, float height)
 {
     int i = 0;
     float dist = 0;
@@ -61,7 +61,7 @@ void water_drop_map(map_t *map, float height)
     }
 }
 
-void wave_map(map_t *map, float height)
+void wave_map(combat_map_t *map, float height)
 {
     int i = 0;
     float dist = 0;

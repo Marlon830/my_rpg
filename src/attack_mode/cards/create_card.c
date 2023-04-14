@@ -35,7 +35,7 @@ void create_card_vertex(card_t *card, sfVector2f pos)
     sfVertexArray_setPrimitiveType(card->array, sfQuads);
 }
 
-card_t *create_card(char *name, int damage, int range, player_t *player)
+card_t *create_card(char *name, int damage, int range, combat_player_t *player)
 {
     card_t *res = malloc(sizeof(card_t));
     res->array = sfVertexArray_create();

@@ -20,14 +20,16 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-typedef struct player_s player_t;
+typedef struct combat_player_s combat_player_t;
 typedef struct battle_scene_s battle_scene_t;
 typedef struct card_s card_t;
 typedef struct hand_s hand_t;
 typedef sfVertex sfvertex;
 typedef struct tile_s tile_t;
 typedef struct stat_s stat_t;
-typedef struct map_s map_t;
+typedef struct combat_map_s combat_map_t;
+typedef struct enemy_s enemy_t;
+typedef struct combat_text_s combat_text_t;
 
 enum player_state_e {
     ATTACKING,
@@ -42,7 +44,7 @@ typedef enum card_state_e {
 } card_state;
 
 struct card_s {
-    player_t *player;
+    combat_player_t *player;
     sfVector2f pos;
     sfVertexArray *array;
     char *name;
@@ -55,14 +57,14 @@ struct card_s {
 };
 
 struct hand_s {
-    player_t *player;
+    combat_player_t *player;
     card_t *cards;
     card_t *selected;
     int nb_cards;
 };
 
 
-struct player_s {
+struct combat_player_s {
     tile_t *actual_tile;
     sfVertexArray *array_character;
     stat_t *basic_stats;
@@ -77,9 +79,11 @@ struct player_s {
 
 
 struct battle_scene_s {
-    player_t *player;
-    map_t *map;
+    combat_player_t *player;
+    combat_map_t *map;
     hand_t *hand;
+    enemy_t **enemies;
+    int nb_enemies;
 };
 
 struct tile_s {
@@ -99,7 +103,7 @@ struct stat_s {
     float damage;
 };
 
-struct map_s {
+struct combat_map_s {
     sfVector2f pos;
     sfVector2f mousePos;
     tile_t **tiles;
@@ -107,4 +111,23 @@ struct map_s {
     tile_t *far_tile;
     int width;
     int height;
+};
+
+struct enemy_s {
+    tile_t *actual_tile;
+    sfVertexArray *array_character;
+    stat_t *basic_stats;
+    stat_t *actual_stats;
+    tile_t **tiles_close;
+    tile_t **attack_tiles;
+    combat_text_t *damage_taken;
+    int nb_tiles_close;
+    int nb_attack_tiles;
+    int range;
+};
+
+struct combat_text_s {
+    sfText *text;
+    sfClock *clock;
+    int show;
 };

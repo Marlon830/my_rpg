@@ -7,12 +7,15 @@
 
 #include "attack_mode.h"
 
-void end_of_turn(player_t *player, hand_t *hand)
+void end_of_turn(combat_player_t *player, hand_t *hand)
 {
+    if (player->state != MOVING)
+        return;
     srand(time(NULL));
     player->actual_stats->move_points = player->basic_stats->move_points;
     player->actual_stats->health_point += 10;
     for (int i = 0; i < 3; i++)
         if (hand->nb_cards < 12)
-            add_card_to_hand(hand, "card", 10, (rand() + 1) % 10);
+            add_card_to_hand(hand, "card", (rand() + 1) % 100,
+            (rand() + 1) % 10 + 1);
 }

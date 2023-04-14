@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void draw_player(player_t *player, sfRenderWindow *window)
+void draw_player(combat_player_t *player, sfRenderWindow *window)
 {
     sfRenderWindow_drawVertexArray(window, player->array_character, NULL);
 }

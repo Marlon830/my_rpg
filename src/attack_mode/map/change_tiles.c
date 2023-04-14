@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void change_tiles(map_t *map, sfVector2f new_size)
+void change_tiles(combat_map_t *map, sfVector2f new_size)
 {
     int j = 0;
     int tileSize = new_size.x + 10;

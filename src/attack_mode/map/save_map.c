@@ -7,26 +7,7 @@
 
 #include "attack_mode.h"
 
-char *int_to_str(int x)
-{
-    int len = 0;
-    int tmp = x;
-    while (tmp) {
-        tmp /= 10;
-        len++;
-    }
-    if (len == 0)
-        len = 1;
-    char *res = malloc(sizeof(char) * (len + 1));
-    res[len] = 0;
-    for (int i = len - 1; i >= 0; i--) {
-        res[i] = x % 10 + '0';
-        x /= 10;
-    }
-    return res;
-}
-
-void write_val_map(int fd, int x, int y, map_t *map)
+void write_val_map(int fd, int x, int y, combat_map_t *map)
 {
     char *x_str = int_to_str(x);
     char *y_str = int_to_str(y);
@@ -43,7 +24,7 @@ void write_val_map(int fd, int x, int y, map_t *map)
     free(z_str);
 }
 
-void save_map(map_t *map)
+void save_map(combat_map_t *map)
 {
     int i = 0;
     int fd = open("map.txt", O_CREAT | O_RDWR | O_TRUNC, 0666);

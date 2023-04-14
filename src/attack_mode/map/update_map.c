@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void update_map(map_t *map, sfEvent event, player_t *player)
+void update_map(combat_map_t *map, sfEvent event, combat_player_t *player)
 {
     map->mousePos = (sfVector2f){event.mouseMove.x, event.mouseMove.y};
     int b = 0;

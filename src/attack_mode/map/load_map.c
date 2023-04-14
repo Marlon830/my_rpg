@@ -8,7 +8,7 @@
 #include "attack_mode.h"
 
 tile_t **put_tiles(char *text_information, sfVector2f size,
-sfVector2f pos, map_t *res)
+sfVector2f pos, combat_map_t *res)
 {
     int height = count_char_in_str(text_information, '\n');
     char *line;
@@ -22,14 +22,14 @@ sfVector2f pos, map_t *res)
     return tiles;
 }
 
-map_t *load_map(char *filename, sfVector2f size, sfVector2f pos)
+combat_map_t *load_map(char *filename, sfVector2f size, sfVector2f pos)
 {
     int fd = open(filename, O_RDONLY);
     if (fd < 0) {
         write(2, "file does not exists.\n", 22);
         return NULL;
     }
-    map_t *res = malloc(sizeof(map_t));
+    combat_map_t *res = malloc(sizeof(combat_map_t));
     struct stat st;
     int ind = 0;
     stat(filename, &st);

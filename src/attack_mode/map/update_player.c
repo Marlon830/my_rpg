@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void update_player(player_t *player)
+void update_player(combat_player_t *player)
 {
     sfVertexArray_clear(player->array_character);
     set_player_pos(player);
