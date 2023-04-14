@@ -7,37 +7,42 @@
 
 #include "project.h"
 
-all_pnjs_t *create_pnj(scene_t *scene, char *dial,
-    sfFloatRect *hitbox, char *id)
+all_pnjs_t *create_pnj(char *dial,
+    sfFloatRect *pos_size, char *id)
 {
     all_pnjs_t *pnj = malloc(sizeof(*pnj));
+    sfFloatRect *rect = malloc(sizeof(sfFloatRect));
 
+    rect->left = pos_size->left - 32;
+    rect->top = pos_size->top - 32;
+    rect->width = 64;
+    rect->height = 64;
     pnj->dial = dial;
-    pnj->hitbox = hitbox;
+    pnj->hitbox = rect;
+    pnj->pos_size = pos_size;
     pnj->sprite = NULL;
     pnj->can_talk = 0;
-    push_back(&scene->pnj, id,
-    (all_pnjs_t *) pnj, PNJ);
+    pnj->name = id;
     return pnj;
 }
 
 void load_pnj(scene_t *scene)
 {
-    sfFloatRect *rect = malloc(sizeof(*rect));
-    rect->top = 165 - 32;
-    rect->left = 250 - 32;
-    rect->width = 64;
-    rect->height = 64;
-    all_pnjs_t *theodore = create_pnj(scene, NULL, rect, "theodore");
-    theodore->sprite = create_image(
-        (sfVector2f) {250, 165},
-        my_strcat(scene->name, "/theodore.png"),
-        (sfIntRect) {0, 0, 64, 32},
-        (sfVector2f) {16, 16}
-    );
-    theodore->sprite->nb_sprite = 4;
+    list_t *tmp = scene->pnj;
+    all_pnjs_t *pnj;
 
-    push_back(&scene->images, "theodore", theodore->sprite, IMAGE);
+    while (tmp != NULL) {
+        pnj = tmp->element;
+        pnj->sprite = create_image(
+            (sfVector2f){pnj->pos_size->left, pnj->pos_size->top},
+            my_strcat(scene->name, pnj->name),
+            (sfIntRect){0, 0, pnj->pos_size->width, pnj->pos_size->height},
+            (sfVector2f){16, 16}
+        );
+        pnj->sprite->nb_sprite = 4;
+        push_back(&scene->images, pnj->name, pnj->sprite, IMAGE);
+        tmp = tmp->next;
+    }
 }
 
 void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
@@ -86,7 +91,7 @@ scene_t *load_scene(project_t *project, int scene_id)
     scene->tp = map->tp;
     scene->nb_tp = map->nb_tp;
     scene->pnj = malloc(sizeof(list_t));
-    scene->pnj = NULL;
+    scene->pnj = map->pnj;
     change_view(project, scene->camera, (sfVector2f){256, 144},
     project->player->pos);
     next_load_scene(project, scene, map->size);

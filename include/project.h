@@ -34,8 +34,10 @@ typedef struct actual_dialogue_s {
 typedef struct all_pnjs_s {
     char *dial;
     sfFloatRect *hitbox;
+    sfFloatRect *pos_size;
     image_t *sprite;
     int can_talk;
+    char *name;
 } all_pnjs_t;
 
 typedef struct project_s {
@@ -62,5 +64,7 @@ char *get_dialogue_image(char *dialogue);
 void display_dialogue(project_t *project);
 void change_view(project_t *project, sfView *camera,
 sfVector2f size, sfVector2f pos);
+all_pnjs_t *create_pnj(char *dial,
+    sfFloatRect *pos_size, char *id);
 
 #endif

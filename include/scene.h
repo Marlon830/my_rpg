@@ -65,6 +65,8 @@ typedef struct map_s {
     char *name;
     list_t *tp;
     int nb_tp;
+    int nb_pnj;
+    list_t *pnj;
     sfVector2f size;
 } map_t;
 
@@ -83,6 +85,7 @@ void colliders_destroy(scene_t *scene);
 map_t *get_map(char *map_name);
 sfText *create_text(sfVector2f pos, sfVector2f size, sfColor color);
 sfRectangleShape *create_rect(void);
+tp_t *create_tp(sfVector2f pos, sfVector2f tp_pos, int to_scene_id);
 void images_draw(project_t *project, list_t *img_list);
 void update_button(button_t *btn, project_t *project, sfEvent event);
 button_t *create_button(sfVector2f position , sfVector2f size,
