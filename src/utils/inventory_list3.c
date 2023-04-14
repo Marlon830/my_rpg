@@ -44,6 +44,11 @@ void switch_elem_box(box_t *new_box, box_t *selected_box)
     int temp_quantity = new_box->quantity;
     int temp_type = new_box->type_sprite;
 
+    if (selected_box->type_box != OTHER && new_box->type_sprite !=
+    selected_box->type_box) {
+        selected_box->is_selected = false;
+        return;
+    }
     my_strcpy(temp_str, new_box->name);
     reset_box(new_box);
     add_new_elem_in_box(new_box, selected_box->name, selected_box->type_sprite,
