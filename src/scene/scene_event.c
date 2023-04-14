@@ -34,11 +34,12 @@ void check_all_pnj_dialogue(project_t *project)
     list_t *temp_pnj = project->scene->pnj;
     all_pnjs_t *act_pnj;
 
+    set_all_pnj_dialogues(project);
     while (temp_pnj != NULL) {
         act_pnj = (all_pnjs_t *) temp_pnj->element;
         if (act_pnj->can_talk) {
             project->actual_dial->dialogue =
-            get_dialogue_by_id(project, project->all_dialogues, "Theoronfle");
+            get_dialogue_by_id(project, project->all_dialogues, act_pnj->dial);
             display_dialogue(project);
             break;
         }
