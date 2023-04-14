@@ -34,6 +34,7 @@ bool check_tp(project_t *project)
             project->player->col->left = project->player->pos.x;
             project->player->col->top = project->player->pos.y + 8;
             project->scene = load_scene(project, tp->to_scene_id);
+            change_state_with_scene(project);
             return true;
         }
         tmp = tmp->next;
