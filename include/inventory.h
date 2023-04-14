@@ -18,6 +18,17 @@ enum inventory_state {
     PRESSED,
 };
 
+enum object_type {
+    NO_OBJECT = 0,
+    OTHER,
+    HELMET,
+    CHEST,
+    LEG,
+    FEET,
+    SWORD,
+    SHIELD,
+};
+
 typedef struct box_s {
     sfRectangleShape *shape;
     sfVector2f pos_sprite;
@@ -36,6 +47,8 @@ typedef struct box_s {
     sfClock *clock_box;
     sfTime time_box;
     float seconds_box;
+    enum object_type type_sprite;
+    enum object_type type_box;
 } box_t;
 
 typedef struct list_box_s {
@@ -64,16 +77,17 @@ sfVector2f convert_mouse_position(project_t *project, sfVector2f pos);
 
 void add_box_to_list(list_box_t *list, box_t *box);
 void switch_state_inventory(inventory_t *inventory);
-bool add_elem(list_box_t *list, char *name, int quantity);
+bool add_elem(list_box_t *list, char *name, int type, int quantity);
 void delete_elem(list_box_t *list, char *name, int quantity);
 void update_inventory(project_t *project);
 void select_box(project_t *project, sfVector2f pos);
 void unselect_box(project_t *project, sfVector2f pos);
-void add_new_elem_in_box(box_t *box, char *name, int quantity);
+void add_new_elem_in_box(box_t *box, char *name, int type, int quantity);
 void reset_box(box_t *box);
 void update_selected_box(project_t *project);
 void create_box_des_char(box_t *box, int des_char);
 void update_inventory_character(project_t *project, box_t *box);
 void update_inventory_description(project_t *project, box_t *box);
+void modified_type_box(inventory_t *inventory);
 
 #endif
