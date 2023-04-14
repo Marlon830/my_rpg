@@ -19,7 +19,7 @@ box_t *get_box_with_name(list_box_t *list, char *name)
     return NULL;
 }
 
-void add_new_elem_in_box(box_t *box, char *name, int quantity)
+void add_new_elem_in_box(box_t *box, char *name, int type, int quantity)
 {
     box->sprite = sfSprite_create();
     box->sprite_texture = sfTexture_createFromFile(name, NULL);
@@ -31,9 +31,10 @@ void add_new_elem_in_box(box_t *box, char *name, int quantity)
     box->quantity += quantity;
     sfText_setString(box->text, int_to_string(box->quantity));
     sfSprite_setScale(box->sprite, (sfVector2f) {0.875, 0.875});
+    box->type_sprite = type;
 }
 
-bool add_elem(list_box_t *list, char *name, int quantity)
+bool add_elem(list_box_t *list, char *name, int type, int quantity)
 {
     box_t *box = get_box_with_name(list, name);
     list_box_t *temp = list;
@@ -45,7 +46,7 @@ bool add_elem(list_box_t *list, char *name, int quantity)
     }
     while (temp != NULL) {
         if (temp->box->sprite == NULL) {
-            add_new_elem_in_box(temp->box, name, quantity);
+            add_new_elem_in_box(temp->box, name, type, quantity);
             return true;
         }
         temp = temp->next;
