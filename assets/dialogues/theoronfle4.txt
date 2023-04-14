@@ -1,7 +1,7 @@
 Name:Theoronfle4
 Image:theofache.png
 Dialogue#
-hé mais
+he mais
 -
 ...
 -
