@@ -11,7 +11,7 @@ void end_of_turn(combat_player_t *player, hand_t *hand)
 {
     if (player->state != MOVING)
         return;
-    srand(time(NULL));
+    srand(10);
     player->actual_stats->move_points = player->basic_stats->move_points;
     player->actual_stats->health_point += 10;
     for (int i = 0; i < 3; i++)
