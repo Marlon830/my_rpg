@@ -21,6 +21,7 @@ sfVector2f tile_size)
     res->hand = hand;
     res->hand->player = player;
     res->nb_enemies = 0;
+    res->win = 0;
     res->enemies = create_enemies_from_txt
     ("combat_scene/fight01.txt", map, &res->nb_enemies);
     return res;

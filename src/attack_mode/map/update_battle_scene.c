@@ -19,7 +19,7 @@ sfRenderWindow *window)
         update_hand(scene->hand, (sfVector2f)
         {sfMouse_getPositionRenderWindow(window).x,
         sfMouse_getPositionRenderWindow(window).y});
-        update_enemies(scene->enemies, scene->nb_enemies);
+        update_enemies(scene->enemies, scene->nb_enemies, scene);
         for (int i = 0; i < scene->nb_enemies; i++) {
                 if (scene->enemies[i] != NULL) {
                         change_enemy_color(scene->enemies[i]);

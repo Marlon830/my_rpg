@@ -74,7 +74,17 @@ void draw_enemy(enemy_t *enemy, sfRenderWindow *window);
 enemy_t **create_enemies_from_txt(char *filename, combat_map_t *map,
 int *nb_enemies);
 void change_enemy_color(enemy_t *enemy);
-void update_enemies(enemy_t **enemies, int nb_enemies);
+void update_enemies(enemy_t **enemies, int nb_enemies, battle_scene_t *scene);
 combat_text_t *create_combat_text(sfVector2f char_pos);
 void update_damage_taken(combat_text_t *text);
 char *int_to_str(int x);
+
+void destroy_battle_scene(battle_scene_t *scene);
+void destroy_player(combat_player_t *player);
+void destroy_combat_text(combat_text_t *text);
+void destroy_enemy(enemy_t *enemy);
+void destroy_tile(tile_t *tile);
+void destroy_map(combat_map_t *map);
+void destroy_card(card_t *card);
+void destroy_hand(hand_t *hand);
+void destroy_battle_scene(battle_scene_t *scene);

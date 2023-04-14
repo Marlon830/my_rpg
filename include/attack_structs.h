@@ -84,6 +84,7 @@ struct battle_scene_s {
     hand_t *hand;
     enemy_t **enemies;
     int nb_enemies;
+    int win;
 };
 
 struct tile_s {
