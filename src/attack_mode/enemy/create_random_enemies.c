@@ -11,7 +11,7 @@ enemy_t **create_random_enemies(combat_map_t *map, int nb_enemy)
 {
     int x;
     int y;
-    srand(time(NULL));
+    srand(10);
     enemy_t **res = malloc(sizeof(enemy_t *) * nb_enemy);
     for (int i = 0; i < nb_enemy; i++) {
         x = rand() % map->width + 1;
