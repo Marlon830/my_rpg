@@ -36,7 +36,7 @@ char *get_pnj_name(char *line)
     char *name;
 
     for (; line[i] != ' '; i++);
-    name = malloc(sizeof(char) * (i + 1));
+    name = malloc(sizeof(char) * (my_strlen(line) + 1));
     my_strcpy(name, line);
     name[i] = '\0';
     return name;
