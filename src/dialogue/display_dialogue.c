@@ -16,6 +16,7 @@ int display_dialogue_bis(char *dialogue, int act_pos, project_t *project)
         (sfVector2f){0.2, 0.2}, sfWhite);
         project->actual_dial->pos = 0;
         project->actual_dial->is_displayed = 0;
+        change_state_with_dialogue(project);
         return -84;
     }
     if (i == 0) {
