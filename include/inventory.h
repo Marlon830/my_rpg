@@ -88,6 +88,6 @@ void update_selected_box(project_t *project);
 void create_box_des_char(box_t *box, int des_char);
 void update_inventory_character(project_t *project, box_t *box);
 void update_inventory_description(project_t *project, box_t *box);
-void modified_type_box(inventory_t *inventory);
+void modify_type_box(inventory_t *inventory);
 
 #endif

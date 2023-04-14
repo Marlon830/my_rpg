@@ -103,6 +103,6 @@ inventory_t *create_inventory(void)
     sfRectangleShape_setOutlineColor(inventory->shape, sfBlack);
     sfRectangleShape_setTexture(inventory->shape, inventory->texture, sfTrue);
     create_boxes_in_inventory(inventory);
-    modified_type_box(inventory);
+    modify_type_box(inventory);
     return inventory;
 }
