@@ -10,10 +10,10 @@
 void inventory_event(project_t *project, sfEvent event)
 {
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA)
-        add_elem(project->inventory->bag, "assets/object/apple.png", 1);
+        add_elem(project->inventory->bag, "assets/object/apple.png", OTHER, 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyB)
         add_elem(project->inventory->bag, "assets/object/strawberry.png",
-        1);
+        OTHER, 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyC)
         delete_elem(project->inventory->bag, "assets/object/apple.png", 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyE)
