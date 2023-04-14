@@ -72,3 +72,19 @@ list_t *create_all_dialogues(project_t *project, char *dirpath)
     }
     return project->all_dialogues;
 }
+
+void set_pnj_dialogue(list_t *all_pnj, char *pnj_id, char *dialogue_id)
+{
+    list_t *tmp = all_pnj;
+    all_pnjs_t *pnj;
+
+    while (tmp != NULL) {
+        if (!my_strcmp(pnj_id, tmp->id))
+            break;
+        tmp = tmp->next;
+    }
+    if (tmp == NULL)
+        return;
+    pnj = tmp->element;
+    pnj->dial = dialogue_id;
+}
