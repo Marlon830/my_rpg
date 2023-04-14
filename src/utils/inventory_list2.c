@@ -17,6 +17,7 @@ void reset_box(box_t *box)
     box->name = NULL;
     box->quantity = 0;
     box->is_selected = 0;
+    box->type_sprite = NO_OBJECT;
 }
 
 void delete_elem(list_box_t *list, char *name, int quantity)

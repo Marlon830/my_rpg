@@ -18,6 +18,8 @@ void create_box_bis(box_t *box)
     box->box_texture = sfTexture_createFromFile("assets/box.png", NULL);
     sfRectangleShape_setTexture(box->shape, box->box_texture, sfTrue);
     box->clock_box = sfClock_create();
+    box->type_sprite = NO_OBJECT;
+    box->type_box = OTHER;
 }
 
 box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
@@ -101,5 +103,6 @@ inventory_t *create_inventory(void)
     sfRectangleShape_setOutlineColor(inventory->shape, sfBlack);
     sfRectangleShape_setTexture(inventory->shape, inventory->texture, sfTrue);
     create_boxes_in_inventory(inventory);
+    modify_type_box(inventory);
     return inventory;
 }
