@@ -63,5 +63,6 @@ void scene_event(project_t *project)
         !project->actual_dial->is_displayed)
             switch_state_inventory(project->inventory);
         inventory_event(project, event);
+        quest_event(project, event);
     }
 }
