@@ -86,5 +86,7 @@ void add_quest(char *quest_to_add, quest_t *quests, char *quest_id);
 void update_quest(quest_t *quests);
 quest_t *init_quests(void);
 void finish_quest(char *quest_id, quest_t *quests);
+void quest_draw(project_t *project);
+void quest_event(project_t *project, sfEvent event);
 
 #endif
