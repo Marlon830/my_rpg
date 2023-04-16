@@ -26,7 +26,8 @@ enum type {
     TP,
     SCENE,
     DIALOGUE,
-    PNJ
+    PNJ,
+    QUEST
 };
 
 typedef struct list_s {
@@ -36,7 +37,7 @@ typedef struct list_s {
     struct list_s *next;
 } list_t;
 
-void delete(list_t **list, const char *id);
+void delete_item(list_t **list, char *id);
 void *get_item(list_t *list, char *id);
 char *my_strcat(char *str, char *str2);
 int my_strlen(char *str);
