@@ -10,8 +10,8 @@
 stat_t *create_stats(int damage, int health_point, int move_point)
 {
     stat_t *res = malloc(sizeof(stat_t));
-    res->damage = 10;
-    res->health_point = 100;
-    res->move_points = 5;
+    res->damage = damage;
+    res->health_point = health_point;
+    res->move_points = move_point;
     return res;
 }

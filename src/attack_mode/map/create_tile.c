@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void *create_tile_array(sfVector2f center, sfColor color,
+void create_tile_array(sfVector2f center, sfColor color,
 sfVector2f size, sfVertexArray *tile)
 {
     sfVertex p1 = vertex_create((sfVector2f)

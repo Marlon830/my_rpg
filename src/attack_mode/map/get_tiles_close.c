@@ -19,7 +19,7 @@ void set_close_tiles(tile_t **tiles, tile_t *pos, int manhattan, int dist)
 
 void is_good_height(tile_t *tile1, tile_t *tile2, sfVector2f *pos)
 {
-    if (abs(tile1->height - tile2->height) > 5) {
+    if (fabs(tile1->height - tile2->height) > 5) {
         pos->x = -100;
         pos->y = -100;
     }

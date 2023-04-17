@@ -7,8 +7,8 @@
 
 #include "attack_mode.h"
 
-void update_battle_scene(battle_scene_t *scene, float time,
-sfRenderWindow *window)
+void update_battle_scene(battle_scene_t *scene,
+__attribute__((unused))float time, sfRenderWindow *window)
 {
         if (scene->player->state == MOVING)
                 scene->player->tiles_close =

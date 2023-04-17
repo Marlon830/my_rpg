@@ -9,5 +9,5 @@
 
 float manhattan_dist(sfVector2f p1, sfVector2f p2)
 {
-    return abs(p1.x - p2.x) + abs(p1.y - p2.y);
+    return fabs(p1.x - p2.x) + fabs(p1.y - p2.y);
 }

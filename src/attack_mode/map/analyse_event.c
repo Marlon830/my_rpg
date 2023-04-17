@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void analyse_events_two(sfRenderWindow *window, sfEvent event,
+void analyse_events_two(sfEvent event,
 battle_scene_t *scene, hand_t *hand)
 {
     if (event.type == sfEvtMouseButtonPressed)
@@ -36,8 +36,8 @@ battle_scene_t *scene, hand_t *hand)
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
         sfRenderWindow_close(window);
     if (event.type == sfEvtMouseMoved) {
-        update_map(scene->map, event, scene->player);
+        update_map(scene->map, event);
         hover_card(event, hand);
     }
-    analyse_events_two(window, event, scene, hand);
+    analyse_events_two(event, scene, hand);
 }

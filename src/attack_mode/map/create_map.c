@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-void *create_map_two(combat_map_t *res)
+void create_map_two(combat_map_t *res)
 {
     res->hovered_tile = res->tiles[0];
     res->far_tile = create_tile((sfVector2f)

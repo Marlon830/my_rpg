@@ -17,7 +17,7 @@ void breathing_map(combat_map_t *map, float height)
     }
 }
 
-void random_map(combat_map_t *map, float height)
+void random_map(combat_map_t *map)
 {
     int i = 0;
     float dist;
@@ -36,7 +36,6 @@ void test_map(combat_map_t *map, float height)
     sfVector2f center = map->tiles[(int)(map->width / 2) *
     map->height + (int)(map->height / 2)]->pos;
     int i = 0;
-    float val = 0;
     float dist;
     for (int x = 0; x < map->width; x++) {
         for (int y = 0; y < map->height; y++) {
@@ -48,10 +47,9 @@ void test_map(combat_map_t *map, float height)
     }
 }
 
-void water_drop_map(combat_map_t *map, float height)
+void water_drop_map(combat_map_t *map)
 {
     int i = 0;
-    float dist = 0;
     for (int x = 0; x < map->width; x++) {
         for (int y = 0; y < map->height; y++) {
             float dist = manhattan_dist(map->tiles[i]->pos, map->mousePos);
