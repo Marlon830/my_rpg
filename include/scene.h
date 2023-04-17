@@ -59,6 +59,7 @@ typedef struct scene_s {
     list_t *tp;
     int nb_tp;
     list_t *pnj;
+    sfVector2f map_size;
 } scene_t;
 
 typedef struct map_s {
