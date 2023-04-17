@@ -14,7 +14,7 @@
     #include <stdbool.h>
 
 enum inventory_state {
-    NONE = 0,
+    NONE2 = 0,
     PRESSED,
 };
 
