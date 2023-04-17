@@ -95,6 +95,7 @@ inventory_t *create_inventory(void)
     inventory->second_equipment = init_list_box();
     inventory->bag = init_list_box();
     inventory->is_active = false;
+    inventory->box_selected = false;
     inventory->shape = sfRectangleShape_create();
     inventory->texture = sfTexture_createFromFile("assets/inventory.png", NULL);
     sfRectangleShape_setPosition(inventory->shape, pos);
