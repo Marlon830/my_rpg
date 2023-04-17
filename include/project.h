@@ -12,8 +12,8 @@
     #include "inventory.h"
     #include "player.h"
     #include "menu.h"
+    #include "attack_structs.h"
     #include "attack_mode.h"
-
 
     #define WINDOW project->window
 
@@ -41,6 +41,16 @@ typedef struct all_pnjs_s {
     char *name;
 } all_pnjs_t;
 
+typedef struct quest_s {
+    int is_act_disp;
+    list_t *actual_quests_list;
+    list_t *finished_quests_list;
+    sfRectangleShape *actual_quests_rect;
+    sfRectangleShape *finished_quests_rect;
+    sfText *actual_quests_text;
+    sfText *finished_quests_text;
+} quest_t;
+
 typedef struct project_s {
     sfRenderWindow *window;
     inventory_t *inventory;
@@ -56,6 +66,7 @@ typedef struct project_s {
     main_menu_t *main_menu;
     sfEvent event;
     battle_scene_t *battle_scene;
+    quest_t *quests;
 } project_t;
 
 void update_scene(project_t *project);
@@ -76,4 +87,11 @@ char *get_file(char *filepath);
 
 void handle_end_of_fight(project_t *project);
 void battle_scene_event(project_t *project);
+void add_quest(char *quest_to_add, quest_t *quests, char *quest_id);
+void update_quest(quest_t *quests);
+quest_t *init_quests(void);
+void finish_quest(char *quest_id, quest_t *quests);
+void quest_draw(project_t *project);
+void quest_event(project_t *project, sfEvent event);
+
 #endif

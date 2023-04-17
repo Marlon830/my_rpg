@@ -63,7 +63,7 @@ void unselect_box(project_t *project, sfVector2f pos)
     sfVector2f new_pos = convert_mouse_position(project, pos);
     box_t *new_box = get_box_with_coord(project, new_pos);
 
-    project->inventory->state = NONE;
+    project->inventory->state = NONE2;
     project->inventory->box_selected = false;
     if (selected_box == NULL)
         return;

@@ -81,6 +81,7 @@ project_t *init_project(void)
     project->actual_dial = init_actual_dialogue();
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
     project->battle_scene = create_standard_battle_scene();
+    project->quests = init_quests();
     return project;
 }
 

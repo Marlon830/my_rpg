@@ -78,4 +78,5 @@ void scene_draw(project_t *project, scene_t *scene)
     sfRenderWindow_clear(project->window, sfBlack);
     images_draw(project, scene->images);
     dialogue_draw(project);
+    quest_draw(project);
 }

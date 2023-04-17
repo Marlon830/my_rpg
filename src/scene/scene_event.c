@@ -34,7 +34,6 @@ void check_all_pnj_dialogue(project_t *project)
     list_t *temp_pnj = project->scene->pnj;
     all_pnjs_t *act_pnj;
 
-    set_all_pnj_dialogues(project);
     while (temp_pnj != NULL) {
         act_pnj = (all_pnjs_t *) temp_pnj->element;
         if (act_pnj->can_talk) {
@@ -51,6 +50,7 @@ void scene_event(project_t *project)
 {
     sfEvent event;
 
+    set_all_pnj_dialogues(project);
     while (sfRenderWindow_pollEvent(project->window, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(project->window);
@@ -65,5 +65,6 @@ void scene_event(project_t *project)
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyK)
             project->status = FIGHT;
         inventory_event(project, event);
+        quest_event(project, event);
     }
 }
