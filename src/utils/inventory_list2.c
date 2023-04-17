@@ -87,5 +87,6 @@ void select_box(project_t *project, sfVector2f pos)
     if (box != NULL && box->sprite != NULL) {
         box->is_selected = true;
         project->inventory->state = PRESSED;
+        project->inventory->box_selected = true;
     }
 }
