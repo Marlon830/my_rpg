@@ -23,7 +23,7 @@ void main_loop(project_t *project)
         if (project->status == FIGHT) {
             battle_scene_event(project);
             update_battle_scene(project->battle_scene, 0, project->window);
-            handle_end_of_fight(project);
+            handle_end_of_fight(project, 0);
         }
         sfRenderWindow_display(project->window);
     }
