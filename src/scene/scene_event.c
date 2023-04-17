@@ -62,6 +62,8 @@ void scene_event(project_t *project)
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab &&
         !project->actual_dial->is_displayed)
             switch_state_inventory(project->inventory);
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyK)
+            project->status = FIGHT;
         inventory_event(project, event);
     }
 }

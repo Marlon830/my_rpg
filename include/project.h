@@ -12,6 +12,7 @@
     #include "inventory.h"
     #include "player.h"
     #include "menu.h"
+    #include "attack_mode.h"
 
 
     #define WINDOW project->window
@@ -54,6 +55,7 @@ typedef struct project_s {
     list_t *scenes;
     main_menu_t *main_menu;
     sfEvent event;
+    battle_scene_t *battle_scene;
 } project_t;
 
 void update_scene(project_t *project);
@@ -71,4 +73,6 @@ void change_state_with_dialogue(project_t *project);
 void change_state_with_scene(project_t *project);
 void set_all_pnj_dialogues(project_t *project);
 
+void handle_end_of_fight(project_t *project);
+void battle_scene_event(project_t *project);
 #endif

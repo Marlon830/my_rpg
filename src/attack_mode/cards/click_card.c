@@ -30,7 +30,7 @@ void unclick_card(hand_t *hand, battle_scene_t *scene)
     while (temp != NULL) {
         if (temp->state == SELECTED) {
             hand->selected = NULL;
-            temp->state = NONE;
+            temp->state = NOTHING;
             scene->player->state = ATTACKING;
             scene->player->attack_tiles =
             update_attack_tiles(scene->map, scene->player, temp);
@@ -48,7 +48,7 @@ void set_card(sfEvent event, hand_t *hand)
     sfVector2f *points = get_all_vector_from_vertex(temp->array);
     int nb_points = sfVertexArray_getVertexCount(temp->array) - 4;
     int ok = 0;
-    card_state temp_state = NONE;
+    card_state temp_state = NOTHING;
     while (temp->next != NULL)
         temp = temp->next;
     while (temp != NULL) {

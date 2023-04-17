@@ -25,4 +25,5 @@ sfRenderWindow *window)
                         change_enemy_color(scene->enemies[i]);
                 }
         }
+        draw_batle_scene(scene, window);
 }

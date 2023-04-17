@@ -45,7 +45,7 @@ card_t *create_card(char *name, int damage, int range, combat_player_t *player)
     res->player = player;
     res->next = NULL;
     res->previous = NULL;
-    res->state = NONE;
+    res->state = NOTHING;
     res->pos = (sfVector2f){1920 / 2, 1080};
     create_card_vertex(res, res->pos);
     res->energy = 5;

@@ -15,11 +15,11 @@ void hover_card(sfEvent event, hand_t *hand)
     sfVector2f *points = get_all_vector_from_vertex(temp->array);
     int nb_points = sfVertexArray_getVertexCount(temp->array) - 4;
     int ok = 0;
-    card_state temp_state = NONE;
+    card_state temp_state = NOTHING;
     while (temp->next != NULL)
         temp = temp->next;
     while (temp != NULL) {
-        temp_state = temp->state == HOVERED ? NONE : temp->state;
+        temp_state = temp->state == HOVERED ? NOTHING : temp->state;
         points = get_all_vector_from_vertex(temp->array);
         if (!ok && is_point_in_polygon(points, nb_points, (sfVector2f)
         {event.mouseMove.x, event.mouseMove.y}) && temp->state != SELECTED) {

@@ -38,7 +38,7 @@ enum player_state_e {
 };
 
 typedef enum card_state_e {
-    NONE,
+    NOTHING,
     HOVERED,
     SELECTED
 } card_state;
@@ -85,6 +85,7 @@ struct battle_scene_s {
     enemy_t **enemies;
     int nb_enemies;
     int win;
+    sfView *view;
 };
 
 struct tile_s {

@@ -12,12 +12,18 @@ void main_loop(project_t *project)
 {
     while (sfRenderWindow_isOpen(WINDOW)) {
         if (project->status == GAME) {
+            sfRenderWindow_setView(project->window, project->scene->camera);
             scene_event(project);
             update_scene(project);
         }
         if (project->status == MENU) {
             menu_event(project);
             draw_main_menu(project);
+        }
+        if (project->status == FIGHT) {
+            battle_scene_event(project);
+            update_battle_scene(project->battle_scene, 0, project->window);
+            handle_end_of_fight(project);
         }
         sfRenderWindow_display(project->window);
     }
@@ -74,6 +80,7 @@ project_t *init_project(void)
     project->main_menu = init_main_menu(project);
     project->actual_dial = init_actual_dialogue();
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
+    project->battle_scene = create_standard_battle_scene();
     return project;
 }
 
@@ -84,6 +91,7 @@ int main(void)
     push_back(&project->scenes, "island", get_map("island"), SCENE);
     push_back(&project->scenes, "house", get_map("house"), SCENE);
     push_back(&project->scenes, "sus", get_map("sus"), SCENE);
+    project->status = MENU;
     main_loop(project);
     return 0;
 }
