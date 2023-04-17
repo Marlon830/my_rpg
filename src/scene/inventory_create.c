@@ -49,12 +49,12 @@ void create_boxes_in_inventory_bis(inventory_t *inventory)
 {
     box_t *box;
 
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 7; j++) {
+    for (int i = 0; i < 7; i++) {
+        for (int j = 0; j < 4; j++) {
             box = create_box((sfVector2f)
-            {88 + 2 * 4 + 64 + 16 * i + 2 * i, 96 + 2 + 2 * j + 16 * j},
-            (sfVector2f) {16, 16}, 2 * 5 + 64 + 16 * i + 2 * i,
-            2 + 2 * j + 16 * j);
+            {88 + 2 * 4 + 64 + 16 * j + 2 * j, 96 + 2 + 2 * i + 16 * i},
+            (sfVector2f) {16, 16}, 2 * 5 + 64 + 16 * j + 2 * j,
+            2 + 2 * i + 16 * i);
             add_box_to_list(inventory->bag, box);
         }
     }
