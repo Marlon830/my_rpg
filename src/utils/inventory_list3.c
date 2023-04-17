@@ -33,7 +33,8 @@ box_t *get_box_selected(project_t *project)
 
 void change_elem_box(box_t *new_box, box_t *selected_box)
 {
-    add_new_elem_in_box(new_box, selected_box->name, selected_box->quantity);
+    add_new_elem_in_box(new_box, selected_box->name, selected_box->type_sprite,
+    selected_box->quantity);
     reset_box(selected_box);
 }
 
@@ -41,12 +42,19 @@ void switch_elem_box(box_t *new_box, box_t *selected_box)
 {
     char *temp_str = malloc(my_strlen(new_box->name) + 1);
     int temp_quantity = new_box->quantity;
+    int temp_type = new_box->type_sprite;
 
+    if (selected_box->type_box != OTHER && new_box->type_sprite !=
+    selected_box->type_box) {
+        selected_box->is_selected = false;
+        return;
+    }
     my_strcpy(temp_str, new_box->name);
     reset_box(new_box);
-    add_new_elem_in_box(new_box, selected_box->name, selected_box->quantity);
+    add_new_elem_in_box(new_box, selected_box->name, selected_box->type_sprite,
+    selected_box->quantity);
     reset_box(selected_box);
-    add_new_elem_in_box(selected_box, temp_str, temp_quantity);
+    add_new_elem_in_box(selected_box, temp_str, temp_type, temp_quantity);
 }
 
 void unselect_box(project_t *project, sfVector2f pos)
@@ -59,7 +67,9 @@ void unselect_box(project_t *project, sfVector2f pos)
     if (selected_box == NULL)
         return;
     if (new_box == NULL || (new_box->sprite != NULL &&
-    !my_strcmp(new_box->name, selected_box->name))) {
+    !my_strcmp(new_box->name, selected_box->name)) ||
+    (new_box->type_box != OTHER && selected_box->type_sprite
+    != new_box->type_box)) {
         selected_box->is_selected = false;
         return;
     }

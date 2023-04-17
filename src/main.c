@@ -40,6 +40,7 @@ player_t *init_player(int x, int y)
     player->speed = 1;
     player->move = (sfVector2f) {0, 0};
     player->state = IDLE_DOWN;
+    player->player_progress_state = 0;
     return player;
 }
 

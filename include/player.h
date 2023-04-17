@@ -30,6 +30,7 @@ typedef struct player_s {
     float speed;
     enum player_state state;
     sfVector2f move;
+    int player_progress_state;
 } player_t;
 
 #endif

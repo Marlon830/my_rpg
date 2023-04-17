@@ -20,6 +20,7 @@ SRC = src/main.c \
 	  src/dialogue/create_dialogue.c \
 	  src/dialogue/display_dialogue.c \
 	  src/dialogue/get_info_dialogue.c \
+	  src/dialogue/changes_dialogue.c \
 	  src/updates/update_scene.c \
 	  src/updates/update_inventory.c \
 	  src/updates/update_inventory2.c \
@@ -35,11 +36,15 @@ SRC = src/main.c \
 	  src/menu/menu_draw.c \
 	  src/menu/button_clicked.c \
 
+CFLAGS = -Wextra -Wall
+
+LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm
+
+CPPFLAGS = -I./include -I./csfml_engine/include
+
+SRC = $(shell find src -name "*.c")
+
 OBJ = $(SRC:.c=.o)
-CFLAGS = -W -Wall -Wextra
-CPPFLAGS = -Iinclude
-LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
-TARGET = my_rpg
 
 all : $(TARGET)
 
@@ -51,5 +56,9 @@ clean :
 
 fclean : clean
 	$(RM) $(TARGET)
+
+coding_style : fclean
+	~/Documents/coding-style-checker/coding-style.sh . ..
+	cat ../coding-style-reports.log
 
 re : fclean all

@@ -60,9 +60,9 @@ void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
     (sfIntRect){0, 0, 480, 480}, size);
     foreground->nb_sprite = 1;
     push_back(&scene->images, "background", background, IMAGE);
+    load_pnj(scene);
     push_back(&scene->images, "player", player, IMAGE);
     push_back(&scene->images, "foreground", foreground, IMAGE);
-    load_pnj(scene);
     colliders_init(my_strcat(scene->name, "/res.coll"), scene);
 }
 
