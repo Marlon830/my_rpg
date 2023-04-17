@@ -12,7 +12,8 @@
     #include "inventory.h"
     #include "player.h"
     #include "menu.h"
-
+    #include "attack_structs.h"
+    #include "attack_mode.h"
 
     #define WINDOW project->window
 
