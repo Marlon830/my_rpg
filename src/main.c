@@ -66,7 +66,7 @@ project_t *init_project(void)
     sfRenderWindow_setFramerateLimit(project->window, 60);
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
     project->clock = sfClock_create();
-    project->player = init_player(160, 160);
+    project->player = init_player(384, 416);
     project->scenes = NULL;
     project->scene = NULL;
     project->status = MENU;
@@ -80,9 +80,8 @@ int main(void)
 {
     project_t *project = init_project();
 
-    push_back(&project->scenes, "island", get_map("island"), SCENE);
+    push_back(&project->scenes, "forest", get_map("forest"), SCENE);
     push_back(&project->scenes, "house", get_map("house"), SCENE);
-    push_back(&project->scenes, "sus", get_map("sus"), SCENE);
     main_loop(project);
     return 0;
 }
