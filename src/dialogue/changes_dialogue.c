@@ -23,8 +23,11 @@ void change_state_with_scene(project_t *project)
 
 void set_all_pnj_dialogues(project_t *project)
 {
-    if (project->player->player_progress_state == 0)
+    set_pnj_dialogue(project->scene->pnj, "/door.png", "Dungeon1");
+    set_pnj_dialogue(project->scene->pnj, "/bed.png", "Bed");
+    if (project->player->player_progress_state == 0) {
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle");
+    }
     if (project->player->player_progress_state == 1)
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle2");
     if (project->player->player_progress_state == 2)
