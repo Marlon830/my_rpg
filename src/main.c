@@ -41,7 +41,7 @@ player_t *init_player(int x, int y)
     player->pos.y = y;
     player->col->left = player->pos.x;
     player->col->top = player->pos.y;
-    player->col->width = 16;
+    player->col->width = 10;
     player->col->height = 8;
     player->speed = 1;
     player->move = (sfVector2f) {0, 0};
