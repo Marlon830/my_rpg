@@ -30,7 +30,7 @@ void add_new_elem_in_box(box_t *box, char *name, int type, int quantity)
     my_strcpy(box->name, name);
     box->quantity += quantity;
     sfText_setString(box->text, int_to_string(box->quantity));
-    sfSprite_setScale(box->sprite, (sfVector2f) {0.875, 0.875});
+    sfSprite_setScale(box->sprite, (sfVector2f) {0.8125, 0.8125});
     box->type_sprite = type;
 }
 

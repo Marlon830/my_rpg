@@ -7,7 +7,7 @@
 
 #include "attack_mode.h"
 
-int my_main(int argc, char **argv)
+void my_main(void)
 {
     sfVideoMode mode = {1920, 1080, 32};
     sfRenderWindow *window = NULL;

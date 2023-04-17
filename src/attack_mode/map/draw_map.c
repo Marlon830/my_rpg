@@ -9,6 +9,7 @@
 
 void draw_map(sfRenderWindow *window, combat_map_t *map)
 {
-    for (int i = 0; i < map->height * map->width; i++)
+    for (int i = 0; i < map->height * map->width; i++) {
         draw_tile(window, map->tiles[i]);
+    }
 }

@@ -22,6 +22,7 @@ void update_selected_box(project_t *project)
     if (box == NULL)
         return;
     sfRenderWindow_drawSprite(WINDOW, box->sprite, NULL);
+    update_hover_or_selected_box(project, box);
 }
 
 void animate_inventory_sprite(box_t *box)

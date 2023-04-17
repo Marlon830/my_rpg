@@ -24,5 +24,8 @@ sfVector2f tile_size)
     res->win = 0;
     res->enemies = create_enemies_from_txt
     ("combat_scene/fight01.txt", map, &res->nb_enemies);
+    res->view = sfView_create();
+    sfView_setSize(res->view, (sfVector2f){1920, 1080});
+    sfView_setCenter(res->view, (sfVector2f){960, 540});
     return res;
 }

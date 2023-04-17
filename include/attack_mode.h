@@ -25,3 +25,4 @@ sfVector2f *get_all_vector_from_vertex(sfVertexArray *array);
 void add_pos(sfVector2f pos, sfVector2f *point);
 void hover_card(sfEvent event, hand_t *hand);
 void unclick_card(hand_t *hand, battle_scene_t *scene);
+battle_scene_t *create_standard_battle_scene(void);

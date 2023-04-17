@@ -31,7 +31,6 @@ combat_map_t *load_map(char *filename, sfVector2f size, sfVector2f pos)
     }
     combat_map_t *res = malloc(sizeof(combat_map_t));
     struct stat st;
-    int ind = 0;
     stat(filename, &st);
     char *text_information = malloc(sizeof(char) * st.st_size);
     read(fd,text_information ,st.st_size);

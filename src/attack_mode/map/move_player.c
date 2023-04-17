@@ -25,7 +25,7 @@ void hit_enemy(battle_scene_t *scene, tile_t *tile, int damage)
     free(text);
 }
 
-void attack_player(combat_player_t *player, tile_t *tile, combat_map_t *map,
+void attack_player(combat_player_t *player, tile_t *tile,
 battle_scene_t *scene)
 {
     if (!(player->state == ATTACKING && player->card))
@@ -46,7 +46,7 @@ void move_player(combat_player_t *player, tile_t *tile, combat_map_t *map,
 battle_scene_t *scene)
 {
     if (player->state != MOVING) {
-        attack_player(player, tile, map, scene);
+        attack_player(player, tile, scene);
         return;
     }
     if (tile->ind == -1)

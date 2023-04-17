@@ -23,10 +23,10 @@ sfVector2f *get_points(tile_t *tile);
 int is_point_in_diamond(sfVector2f point, tile_t *tile);
 combat_map_t *create_map(int width, int height, sfVector2f decalage,
 sfVector2f size);
-void update_map(combat_map_t *map, sfEvent event, combat_player_t *player);
+void update_map(combat_map_t *map, sfEvent event);
 void draw_map(sfRenderWindow *window, combat_map_t *map);
 void add_walls(tile_t *tile);
-void *create_tile_array(sfVector2f center, sfColor color,
+void create_tile_array(sfVector2f center, sfColor color,
 sfVector2f size, sfVertexArray *tile);
 void change_height(float new_height, tile_t *tile);
 float manhattan_dist(sfVector2f p1, sfVector2f p2);
@@ -35,7 +35,7 @@ void change_tiles(combat_map_t *map, sfVector2f new_size);
 
 void wave_map(combat_map_t *map, float height);
 void breathing_map(combat_map_t *map, float height);
-void water_drop_map(combat_map_t *map, float height);
+void water_drop_map(combat_map_t *map);
 void test_map(combat_map_t *map, float height);
 
 combat_player_t *create_player(tile_t *tile);
@@ -47,7 +47,7 @@ int dist, combat_player_t *player);
 tile_t **update_tiles_close(combat_player_t *player, combat_map_t *map,
 tile_t *tile, int dist);
 void color_tiles(combat_map_t *map, combat_player_t *player);
-void random_map(combat_map_t *map, float height);
+void random_map(combat_map_t *map);
 int count_char_in_str(char *str, char c);
 int my_getnbr(char *str);
 combat_map_t *create_map_from_file(char *filename, sfVector2f size,

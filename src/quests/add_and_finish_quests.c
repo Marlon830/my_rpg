@@ -9,6 +9,13 @@
 
 void add_quest(char *quest_to_add, quest_t *quests, char *quest_id)
 {
+    list_t *temp = quests->actual_quests_list;
+
+    while (temp != NULL) {
+        if (my_strcmp(temp->id, quest_id) == 0)
+            return;
+        temp = temp->next;
+    }
     push_back(&quests->actual_quests_list, quest_id,
     (char *) quest_to_add, QUEST);
     update_quest(quests);
