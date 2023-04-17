@@ -6,11 +6,11 @@
 ##
 
 TARGET = ./my_rpg
-CFLAGS = -Wextra -Wall
+CFLAGS = -W -Wextra -Wall
 
 LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm
 
-CPPFLAGS = -I./include -I./csfml_engine/include
+CPPFLAGS = -I./include
 
 SRC = $(shell find src -name "*.c")
 
