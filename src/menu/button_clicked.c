@@ -24,7 +24,6 @@ void display_settings(project_t *project)
     project->main_menu->state = SETTINGS;
 }
 
-
 void quit_button(project_t *project)
 {
     sfRenderWindow_close(project->window);

@@ -23,6 +23,7 @@ button_t *create_button(sfVector2f position , sfVector2f size,
 char *path, void (*clicked)(project_t *project))
 {
     button_t *button = malloc(sizeof(button_t));
+
     button->position = position;
     button->size = size;
     button->clicked = clicked;
@@ -31,8 +32,10 @@ char *path, void (*clicked)(project_t *project))
     sfRectangleShape_setSize(button->rect, button->size);
     button->sprite = sfSprite_create();
     sfSprite_setPosition(button->sprite, button->position);
-    button->texture = sfTexture_createFromFile(my_strcat(path, "btn.png"), &(sfIntRect){0, 0, size.x, size.y});
-    button->texture_hover = sfTexture_createFromFile(my_strcat(path, "btn_hover.png"), &(sfIntRect){0, 0, size.x, size.y});
+    button->texture = sfTexture_createFromFile(my_strcat(path, "btn.png"),
+    &(sfIntRect){0, 0, size.x, size.y});
+    button->texture_hover = sfTexture_createFromFile(
+    my_strcat(path, "btn_hover.png"), &(sfIntRect){0, 0, size.x, size.y});
     button->is_clicked = &is_button_clicked;
     button->update = &update_button;
     return button;
