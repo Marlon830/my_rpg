@@ -9,7 +9,8 @@
 
 void change_state_with_dialogue(project_t *project)
 {
-    if (project->player->player_progress_state == 2) {
+    if (project->player->player_progress_state == 2 ||
+    project->player->player_progress_state == 3) {
         finish_quest("QUETE1", project->quests);
         project->status = FIGHT;
     }
