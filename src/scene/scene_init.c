@@ -90,7 +90,6 @@ scene_t *load_scene(project_t *project, int scene_id)
     scene->name = map->name;
     scene->tp = map->tp;
     scene->nb_tp = map->nb_tp;
-    scene->pnj = malloc(sizeof(list_t));
     scene->pnj = map->pnj;
     scene->map_size = map->size;
     change_view(project, scene->camera, (sfVector2f){256, 144},
