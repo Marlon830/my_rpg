@@ -24,6 +24,7 @@ SRC = src/main.c \
 	  src/updates/update_scene.c \
 	  src/updates/update_inventory.c \
 	  src/updates/update_inventory2.c \
+	  src/updates/update_inventory3.c \
 	  src/utils/string.c \
 	  src/utils/string_bis.c \
 	  src/utils/list.c \
