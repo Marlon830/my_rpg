@@ -18,10 +18,10 @@ typedef struct project_s project_t;
 typedef struct button_s {
     sfVector2f position;
     sfVector2f size;
-    sfColor color;
-    char *txt_str;
-    sfText *text;
     sfRectangleShape *rect;
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfTexture *texture_hover;
     sfBool (*is_clicked)(struct button_s *button, sfMouseButtonEvent *evt);
     void (*clicked)(project_t *project);
     void (*update)(struct button_s *button, project_t *project, sfEvent event);
@@ -59,6 +59,7 @@ typedef struct scene_s {
     list_t *tp;
     int nb_tp;
     list_t *pnj;
+    sfVector2f map_size;
 } scene_t;
 
 typedef struct map_s {
@@ -89,5 +90,5 @@ tp_t *create_tp(sfVector2f pos, sfVector2f tp_pos, int to_scene_id);
 void images_draw(project_t *project, list_t *img_list);
 void update_button(button_t *btn, project_t *project, sfEvent event);
 button_t *create_button(sfVector2f position , sfVector2f size,
-char *txt, void (*clicked)(project_t *project));
+char *path, void (*clicked)(project_t *project));
 #endif
