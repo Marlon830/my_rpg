@@ -52,8 +52,8 @@ void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
     (sfIntRect){0, 0, size.x, size.y}, size);
     background->nb_sprite = 1;
     image_t *player = create_image((sfVector2f){project->player->pos.x,
-    project->player->pos.y}, "/player.png", (sfIntRect){0, 0, 64, 128},
-    (sfVector2f){16, 16});
+    project->player->pos.y}, "/player_32.png", (sfIntRect){0, 0, 128, 256},
+    (sfVector2f){32, 32});
     player->nb_sprite = 4;
     image_t *foreground = create_image((sfVector2f){0, 0},
     my_strcat(scene->name, "/foreground.png"),
