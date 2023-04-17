@@ -15,7 +15,7 @@ combat_text_t *create_combat_text(sfVector2f char_pos)
     sfText_setColor(res->text, sfWhite);
     sfText_setOutlineThickness(res->text, 2);
     sfText_setOutlineColor(res->text, sfBlack);
-    sfFont *font = sfFont_createFromFile("AldotheApache.ttf");
+    sfFont *font = sfFont_createFromFile("assets/font/AldotheApache.ttf");
     sfText_setFont(res->text, font);
     sfText_setPosition(res->text, pos);
     sfText_setString(res->text, "test");

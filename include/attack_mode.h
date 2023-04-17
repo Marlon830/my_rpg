@@ -14,7 +14,7 @@
 
 void analyse_events(sfRenderWindow *window, sfEvent event,
 battle_scene_t *scene, hand_t *hand);
-battle_scene_t *create_battle_scene(int width, int height, sfVector2f pos,
+battle_scene_t *create_battle_scene(int width, int height,
 sfVector2f tile_size);
 void update_battle_scene(battle_scene_t *scene, float time,
 sfRenderWindow *window);
@@ -26,3 +26,4 @@ void add_pos(sfVector2f pos, sfVector2f *point);
 void hover_card(sfEvent event, hand_t *hand);
 void unclick_card(hand_t *hand, battle_scene_t *scene);
 battle_scene_t *create_standard_battle_scene(void);
+battle_scene_t *create_battle_scene_from_file(char *filename, char *enemy_file);

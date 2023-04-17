@@ -50,9 +50,8 @@ void color_tiles(combat_map_t *map, combat_player_t *player);
 void random_map(combat_map_t *map);
 int count_char_in_str(char *str, char c);
 int my_getnbr(char *str);
-combat_map_t *create_map_from_file(char *filename, sfVector2f size,
-sfVector2f pos);
-void save_map(combat_map_t *map);
+combat_map_t *create_map_from_file(char *filename, sfVector2f size);
+void save_map(combat_map_t *map, char *filename);
 int my_strlen(char *str);
 int int_len(int x);
 stat_t *create_stats(int damage, int health_point, int move_point);
@@ -61,7 +60,7 @@ battle_scene_t *scene);
 
 
 int get_width_height(combat_map_t *map, char *text_information);
-combat_map_t *load_map(char *filename, sfVector2f size, sfVector2f pos);
+combat_map_t *load_map(char *filename, sfVector2f size);
 char *get_line(char *str, int ind);
 int count_char_until(char *str, char until);
 tile_t *get_tile_from_str(char *line, sfVector2f size, sfVector2f decalage);
