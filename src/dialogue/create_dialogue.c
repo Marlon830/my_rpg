@@ -7,7 +7,7 @@
 
 #include "project.h"
 
-char *get_png_file(char *filepath)
+char *get_file(char *filepath)
 {
     int fd = open(filepath, O_RDONLY);
     struct stat sb;
@@ -66,7 +66,7 @@ list_t *create_all_dialogues(project_t *project, char *dirpath)
             break;
         if (info_dir->d_name[0] == '.')
             continue;
-        pnj_file = get_png_file(create_filepath(dirpath, info_dir->d_name));
+        pnj_file = get_file(create_filepath(dirpath, info_dir->d_name));
         push_back(&(project->all_dialogues), get_dialogue_id(pnj_file),
         (char *) pnj_file, DIALOGUE);
     }
