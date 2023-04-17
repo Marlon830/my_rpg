@@ -12,13 +12,13 @@ void update_box_bis(project_t *project, box_t *box, sfVector2f new_mouse_pos)
     sfVector2f pos_box = sfRectangleShape_getPosition(box->shape);
 
     if (box->is_selected)
-        box->pos_sprite = (sfVector2f) {new_mouse_pos.x - 7,
-        new_mouse_pos.y - 7};
+        box->pos_sprite = (sfVector2f) {new_mouse_pos.x - 6,
+        new_mouse_pos.y - 6};
     if (!box->is_selected)
         box->pos_sprite = pos_box;
     sfSprite_setPosition(box->sprite, box->pos_sprite);
-    sfText_setPosition(box->text, (sfVector2f) {pos_box.x + 0.5,
-    pos_box.y + 12.5});
+    sfText_setPosition(box->text, (sfVector2f) {pos_box.x + 1.25,
+    pos_box.y + 11.75});
     sfRenderWindow_drawSprite(WINDOW, box->sprite, NULL);
     sfRenderWindow_drawText(WINDOW, box->text, NULL);
 }
@@ -29,9 +29,11 @@ void update_box(project_t *project, box_t *box)
     sfVector2f new_mouse_pos = convert_mouse_position(project, (sfVector2f)
     {mouse_pos.x, mouse_pos.y});
 
+    sfRectangleShape_setTexture(box->shape, box->box_texture, sfTrue);
     sfRectangleShape_setPosition(box->shape, (sfVector2f)
     {project->player->pos.x - 72 + box->more_x,
     project->player->pos.y - 64 + box->more_y});
+    update_hover_or_selected_box(project, box);
     sfRenderWindow_drawRectangleShape(WINDOW, box->shape, NULL);
     if (box->sprite != NULL)
         update_box_bis(project, box, new_mouse_pos);
@@ -56,11 +58,11 @@ void update_inventory_bis(project_t *project)
     sfRectangleShape_setPosition(project->inventory->shape, (sfVector2f)
     {project->player->pos.x - 72, project->player->pos.y - 64});
     sfRenderWindow_drawRectangleShape(WINDOW, project->inventory->shape, NULL);
+    update_inventory_description(project, project->inventory->description);
+    update_inventory_character(project, project->inventory->character);
     update_list_box(project, project->inventory->first_equipment);
     update_list_box(project, project->inventory->second_equipment);
     update_list_box(project, project->inventory->bag);
-    update_inventory_description(project, project->inventory->description);
-    update_inventory_character(project, project->inventory->character);
     update_selected_box(project);
 }
 
