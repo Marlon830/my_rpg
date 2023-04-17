@@ -14,8 +14,10 @@ void update_box_bis(project_t *project, box_t *box, sfVector2f new_mouse_pos)
     if (box->is_selected)
         box->pos_sprite = (sfVector2f) {new_mouse_pos.x - 6,
         new_mouse_pos.y - 6};
-    if (!box->is_selected)
-        box->pos_sprite = pos_box;
+    if (!box->is_selected) {
+        box->pos_sprite.x = pos_box.x + 1.5;
+        box->pos_sprite.y = pos_box.y;
+    }
     sfSprite_setPosition(box->sprite, box->pos_sprite);
     sfText_setPosition(box->text, (sfVector2f) {pos_box.x + 1.25,
     pos_box.y + 11.75});
