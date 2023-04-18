@@ -65,10 +65,9 @@ act_dial_t *init_actual_dialogue(void)
 project_t *init_project(void)
 {
     project_t *project = malloc(sizeof(project_t));
-    sfVideoMode mode = (sfVideoMode){1920, 1080, 32};
-
+    project->mode = (sfVideoMode){1920, 1080, 32};
     project->inventory = create_inventory();
-    project->window = sfRenderWindow_create(mode, "Quoi ? Feur",
+    project->window = sfRenderWindow_create(project->mode, "Quoi ? Feur",
     sfClose | sfFullscreen, NULL);
     sfRenderWindow_setFramerateLimit(project->window, 60);
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
@@ -82,6 +81,8 @@ project_t *init_project(void)
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
     project->battle_scene = create_standard_battle_scene();
     project->quests = init_quests();
+    project->volume = 100;
+    project->is_fullscreen = 1;
     return project;
 }
 
