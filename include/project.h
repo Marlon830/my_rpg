@@ -90,7 +90,7 @@ void change_state_with_scene(project_t *project, int to_scene_id);
 void set_all_pnj_dialogues(project_t *project);
 char *get_file(char *filepath);
 
-void handle_end_of_fight(project_t *project, int scene_to_load);
+void handle_end_of_fight(project_t *project);
 void battle_scene_event(project_t *project);
 void add_quest(char *quest_to_add, quest_t *quests, char *quest_id);
 void update_quest(quest_t *quests);
