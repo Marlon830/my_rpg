@@ -18,9 +18,10 @@
     #define WINDOW project->window
 
 enum game_state {
-    MENU,
+    MAIN_MENU,
     GAME,
-    FIGHT
+    FIGHT,
+    PAUSE_MENU,
 };
 
 typedef struct actual_dialogue_s {
@@ -64,6 +65,7 @@ typedef struct project_s {
     enum game_state status;
     list_t *scenes;
     main_menu_t *main_menu;
+    pause_menu_t *pause_menu;
     sfEvent event;
     battle_scene_t *battle_scene;
     quest_t *quests;

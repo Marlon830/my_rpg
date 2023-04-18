@@ -35,7 +35,7 @@ char *path, void (*clicked)(project_t *project))
     button->texture = sfTexture_createFromFile(my_strcat(path, "btn.png"),
     &(sfIntRect){0, 0, size.x, size.y});
     button->texture_hover = sfTexture_createFromFile(
-    my_strcat(path, "btn_hover.png"), &(sfIntRect){0, 0, size.x, size.y});
+    my_strcat(path, "btn_hover.png"),&(sfIntRect){0, 0, size.x, size.y});
     button->is_clicked = &is_button_clicked;
     button->update = &update_button;
     return button;
@@ -45,20 +45,17 @@ void update_hover_button(button_t *btn, sfVector2i mouse_pos)
 {
     if (mouse_pos.x >= btn->position.x && mouse_pos.x <= btn->position.x
     + btn->size.x && mouse_pos.y >= btn->position.y && mouse_pos.y <=
-    btn->position.y + btn->size.y)
+    btn->position.y + btn->size.y) {
         sfSprite_setTexture(btn->sprite, btn->texture_hover, sfFalse);
-    else
+    }
+    else {
         sfSprite_setTexture(btn->sprite, btn->texture, sfFalse);
+    }
 }
 
 void update_button(button_t *btn, project_t *project, sfEvent event)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(WINDOW);
-
-    if (event.type == sfEvtMouseButtonPressed) {
-        if (btn->is_clicked(btn, &event.mouseButton))
-            btn->clicked(project);
-    }
     update_hover_button(btn, mouse_pos);
     sfRenderWindow_drawSprite(project->window, btn->sprite, NULL);
 }

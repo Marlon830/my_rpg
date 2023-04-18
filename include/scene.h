@@ -91,4 +91,6 @@ void images_draw(project_t *project, list_t *img_list);
 void update_button(button_t *btn, project_t *project, sfEvent event);
 button_t *create_button(sfVector2f position , sfVector2f size,
 char *path, void (*clicked)(project_t *project));
+void draw_button(button_t *btn, project_t *project);
+void new_save(project_t *project);
 #endif

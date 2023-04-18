@@ -7,6 +7,51 @@
 
 #include "project.h"
 
+save_t *get_save(void)
+{
+    save_t *save = malloc(sizeof(save_t));
+    save->pos = (sfVector2f){0, 0};
+    FILE *fp;
+    size_t len = 0;
+    char *line = NULL;
+
+    if (access("save", F_OK) != 0) {
+        free(save);
+        return NULL;
+    }
+    fp = fopen("save", "r");
+    getline(&line, &len, fp);
+    save->scene_id = my_getnbr(line);
+    getline(&line, &len, fp);
+    save->pos.x = my_getnbr(line);
+    for (; line[0] != ' '; line++);
+    save->pos.y = my_getnbr(line);
+    getline(&line, &len, fp);
+    save->player_state= my_getnbr(line);
+    return save;
+}
+
+pause_menu_t *init_pause_menu(project_t *project)
+{
+    pause_menu_t *pause_menu = malloc(sizeof(pause_menu_t));
+    pause_menu->camera = sfView_create();
+    change_view(project, pause_menu->camera, (sfVector2f){1920, 1080},
+    (sfVector2f){1920 / 2, 1080 / 2});
+    pause_menu->background = create_image((sfVector2f){0, 0},
+    "background.png", (sfIntRect){0, 0, 1920, 1080},
+    (sfVector2f){1920, 1080});
+    pause_menu->background->nb_sprite = 1;
+    pause_menu->state = NAUNE;
+    pause_menu->resume = create_button((sfVector2f){425, 350},
+    (sfVector2f){420, 120}, "assets/UI/continue/", &resume_button);
+    pause_menu->save = create_button((sfVector2f){425, 500},
+    (sfVector2f){420, 120}, "assets/UI/save/", &new_save);
+    pause_menu->settings = create_button((sfVector2f){425, 650},
+    (sfVector2f){420, 120}, "assets/UI/settings/", &display_settings);
+    pause_menu->back_menu = create_button((sfVector2f){425, 800},
+    (sfVector2f){420, 120}, "assets/UI/back_menu/", &back_menu_button);
+    return pause_menu;
+}
 
 main_menu_t *init_main_menu(project_t *project)
 {
@@ -19,6 +64,7 @@ main_menu_t *init_main_menu(project_t *project)
     (sfVector2f){1920, 1080});
     main_menu->background->nb_sprite = 1;
     main_menu->state = NAUNE;
+    main_menu->save = get_save();
     main_menu->play = create_button((sfVector2f){425, 400},
     (sfVector2f){420, 120}, "assets/UI/play/", &display_play);
     main_menu->settings = create_button((sfVector2f){425, 550},
@@ -26,8 +72,8 @@ main_menu_t *init_main_menu(project_t *project)
     main_menu->quit = create_button((sfVector2f){425, 700},
     (sfVector2f){420, 120}, "assets/UI/quit/", &quit_button);
     main_menu->new_game = create_button((sfVector2f){1025, 400},
-    (sfVector2f){420, 120}, "assets/UI/new_game/", &play_button);
+    (sfVector2f){420, 120}, "assets/UI/new_game/", &new_game_button);
     main_menu->load_game = create_button((sfVector2f){1025, 550},
-    (sfVector2f){420, 120}, "assets/UI/load_game/", &play_button);
+    (sfVector2f){420, 120}, "assets/UI/load_game/", &load_game_button);
     return main_menu;
 }

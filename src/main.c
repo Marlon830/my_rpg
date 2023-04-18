@@ -16,9 +16,13 @@ void main_loop(project_t *project)
             scene_event(project);
             update_scene(project);
         }
-        if (project->status == MENU) {
-            menu_event(project);
+        if (project->status == MAIN_MENU) {
+            main_menu_event(project);
             draw_main_menu(project);
+        }
+        if (project->status == PAUSE_MENU) {
+            pause_menu_event(project);
+            draw_pause_menu(project);
         }
         if (project->status == FIGHT) {
             battle_scene_event(project);
@@ -76,8 +80,9 @@ project_t *init_project(void)
     project->player = init_player(384, 416);
     project->scenes = NULL;
     project->scene = NULL;
-    project->status = MENU;
+    project->status = MAIN_MENU;
     project->main_menu = init_main_menu(project);
+    project->pause_menu = init_pause_menu(project);
     project->actual_dial = init_actual_dialogue();
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
     project->battle_scene = create_standard_battle_scene();
