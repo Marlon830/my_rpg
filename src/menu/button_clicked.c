@@ -20,6 +20,7 @@ void new_game_button(project_t *project)
     write(fd, "R", 1);
     project->scene = load_scene(project, 0);
     project->main_menu->state = NAUNE;
+    close(fd);
 }
 
 void load_game_button(project_t *project)

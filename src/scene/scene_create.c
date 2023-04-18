@@ -81,6 +81,7 @@ map_t *next_get_map(map_t *map, char *map_name)
         return map;
     while ((read = getline(&line, &len, fp)) != -1)
         get_pnj_map(map, line);
+    fclose(fp);
     return map;
 }
 

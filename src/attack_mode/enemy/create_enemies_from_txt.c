@@ -57,5 +57,6 @@ int *nb_enemies)
     for (int i = 0; i < *nb_enemies; i++) {
         buffer += set_enemy(buffer, map, res, i);
     }
+    close(fd);
     return res;
 }

@@ -17,6 +17,7 @@ char *get_file(char *filepath)
     buffer = malloc(sizeof(char) * (sb.st_size + 1));
     read(fd, buffer, sb.st_size);
     buffer[sb.st_size] = '\0';
+    close(fd);
     return buffer;
 }
 
@@ -70,6 +71,7 @@ list_t *create_all_dialogues(project_t *project, char *dirpath)
         push_back(&(project->all_dialogues), get_dialogue_id(pnj_file),
         (char *) pnj_file, DIALOGUE);
     }
+    closedir(all_dialogues);
     return project->all_dialogues;
 }
 

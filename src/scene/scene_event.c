@@ -58,6 +58,7 @@ void new_save(project_t *project)
     write(fd, my_strcat(posx, " "), my_strlen(posx) + 1);
     write(fd, my_strcat(posy, "\n"), my_strlen(posy) + 1);
     write(fd, my_strcat(player_state, "\n"), my_strlen(player_state) + 1);
+    close(fd);
 }
 
 void scene_event(project_t *project)
