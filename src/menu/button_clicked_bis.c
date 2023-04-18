@@ -64,3 +64,14 @@ void set_second_resolution(project_t *project)
     sfRenderWindow_setFramerateLimit(project->window, 60);
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
 }
+
+void back_menu_button(project_t *project)
+{
+    project->status = MAIN_MENU;
+    project->main_menu->save = get_save();
+}
+
+void resume_button(project_t *project)
+{
+    project->status = GAME;
+}

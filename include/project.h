@@ -21,9 +21,10 @@
     #define DUNGEON 2
 
 enum game_state {
-    MENU,
+    MAIN_MENU,
     GAME,
-    FIGHT
+    FIGHT,
+    PAUSE_MENU,
 };
 
 typedef struct actual_dialogue_s {
@@ -67,12 +68,15 @@ typedef struct project_s {
     enum game_state status;
     list_t *scenes;
     main_menu_t *main_menu;
+    pause_menu_t *pause_menu;
     sfEvent event;
     battle_scene_t *battle_scene;
     quest_t *quests;
     sfVideoMode mode;
     float volume;
     int is_fullscreen;
+    char *pnj_fighting;
+    int fight_win;
 } project_t;
 
 void update_scene(project_t *project);
@@ -91,7 +95,7 @@ void change_state_with_scene(project_t *project, int to_scene_id);
 void set_all_pnj_dialogues(project_t *project);
 char *get_file(char *filepath);
 
-void handle_end_of_fight(project_t *project, int scene_to_load);
+void handle_end_of_fight(project_t *project);
 void battle_scene_event(project_t *project);
 void add_quest(char *quest_to_add, quest_t *quests, char *quest_id);
 void update_quest(quest_t *quests);
@@ -99,5 +103,10 @@ quest_t *init_quests(void);
 void finish_quest(char *quest_id, quest_t *quests);
 void quest_draw(project_t *project);
 void quest_event(project_t *project, sfEvent event);
+player_t *init_player(int x, int y);
+act_dial_t *init_actual_dialogue(void);
+project_t *init_project(void);
+save_t *get_save(void);
+void set_state_with_end_of_fight(project_t *project, int win);
 
 #endif

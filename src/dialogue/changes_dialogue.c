@@ -7,13 +7,26 @@
 
 #include "project.h"
 
+void set_state_with_end_of_fight(project_t *project, int win)
+{
+    if (project->fight_win == 1) {
+        if (!my_strcmp("/theodore.png", project->pnj_fighting)) {
+            project->player->player_progress_state = 4;
+            add_elem(project->inventory->bag, "assets/object/pants_bronze.png",
+            PANTS, 1);
+        }
+    }
+}
+
 void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj)
 {
     if ((project->player->player_progress_state == 2 ||
     project->player->player_progress_state == 3) &&
     !my_strcmp(act_pnj->name, "/theodore.png")) {
         finish_quest("QUETE1", project->quests);
+        add_quest("Visiter les environs", project->quests, "QUETE2");
         project->status = FIGHT;
+        project->pnj_fighting = act_pnj->name;
     }
     if (project->player->player_progress_state == 0 &&
     !my_strcmp(act_pnj->name, "/theodore.png"))
@@ -32,6 +45,7 @@ void set_all_pnj_dialogues(project_t *project)
 {
     set_pnj_dialogue(project->scene->pnj, "/door.png", "Dungeon1");
     set_pnj_dialogue(project->scene->pnj, "/bed.png", "Bed");
+    set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull1");
     if (project->player->player_progress_state == 0)
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle");
     if (project->player->player_progress_state == 1) {
@@ -42,4 +56,8 @@ void set_all_pnj_dialogues(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle3");
     if (project->player->player_progress_state == 3)
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle4");
+    if (project->player->player_progress_state == 4) {
+        set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull2");
+        set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle5");
+    }
 }

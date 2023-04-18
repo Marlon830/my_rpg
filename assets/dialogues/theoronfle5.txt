@@ -1,0 +1,8 @@
+Name:Theoronfle5
+Image:theoronfle.png
+Dialogue#
+Eh ! Rends mon pantalon !
+-
+J'ai flop la l'equipe
+-
+#

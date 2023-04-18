@@ -1,0 +1,6 @@
+Name:Skull1
+Image:ronfle.png
+Dialogue#
+....
+-
+#

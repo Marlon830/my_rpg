@@ -39,4 +39,5 @@ void colliders_init(char *path, scene_t *scene)
 
     while ((read = getline(&line, &len, fp)) != -1)
         get_collider_coord(line, scene);
+    fclose(fp);
 }
