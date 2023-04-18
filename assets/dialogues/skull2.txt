@@ -1,0 +1,10 @@
+Name:Skull2
+Image:ronfle.png
+Dialogue#
+Que fais tu ici ?
+-
+Tu n'aurais pas du rentrer
+-
+Viens te battre !
+-
+#
