@@ -101,5 +101,6 @@ void quest_event(project_t *project, sfEvent event);
 player_t *init_player(int x, int y);
 act_dial_t *init_actual_dialogue(void);
 project_t *init_project(void);
+save_t *get_save(void);
 
 #endif
