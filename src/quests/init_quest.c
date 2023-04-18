@@ -26,7 +26,7 @@ quest_t *init_quests(void)
     {32 * 1.65, 48 * 1.65});
     sfRectangleShape_setTexture(quests->finished_quests_rect, texture, sfTrue);
     quests->finished_quests_text = create_text((sfVector2f) {0, 0},
-    (sfVector2f) {0.1, 0.1}, sfWhite);
+    (sfVector2f) {0.1, 0.1}, sfGreen);
     quests->is_act_disp = -1;
     return quests;
 }

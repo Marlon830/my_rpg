@@ -10,6 +10,7 @@
     #include <stdio.h>
     #include <stdlib.h>
     #include <SFML/Graphics.h>
+    #include <SFML/Audio.h>
     #include <stdbool.h>
     #include <sys/stat.h>
     #include <sys/types.h>

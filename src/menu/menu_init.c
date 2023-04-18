@@ -7,6 +7,62 @@
 
 #include "project.h"
 
+slider_t *create_slider(sfVector2f pos, sfVector2f size, sfColor background)
+{
+    slider_t *slider = malloc(sizeof(slider_t));
+
+    slider->rect = sfRectangleShape_create();
+    slider->circle = sfCircleShape_create();
+    slider->position = pos;
+    slider->position_circle =
+    (sfVector2f) {pos.x + size.x - 20, pos.y - size.y - 2};
+    slider->size = size;
+    slider->background = background;
+    slider->foreground = sfWhite;
+    slider->value = 100;
+    sfCircleShape_setFillColor(slider->circle, sfWhite);
+    sfCircleShape_setRadius(slider->circle, 10);
+    sfCircleShape_setPosition(slider->circle, slider->position_circle);
+    sfRectangleShape_setSize(slider->rect, size);
+    sfRectangleShape_setFillColor(slider->rect, background);
+    sfRectangleShape_setPosition(slider->rect, pos);
+    return slider;
+}
+
+main_menu_t *init_main_menu_ter(main_menu_t *main_menu)
+{
+    main_menu->act_volume = create_text((sfVector2f) {1025, 400},
+    (sfVector2f) {1, 1}, sfWhite);
+    sfMusic_play(main_menu->music);
+    sfMusic_setLoop(main_menu->music, sfTrue);
+    main_menu->sound = sfSound_create();
+    sfSoundBuffer *sound_buffer = sfSoundBuffer_createFromFile
+    ("assets/music/soundbtn.ogg");
+    sfSound_setBuffer(main_menu->sound, sound_buffer);
+    main_menu->slider = create_slider((sfVector2f) {1100, 420},
+    (sfVector2f) {300, 5}, sfBlack);
+    main_menu->is_sliding = 0;
+    return main_menu;
+}
+
+main_menu_t *init_main_menu_bis(main_menu_t *main_menu)
+{
+    main_menu->fullscreen = create_button((sfVector2f){1025, 550},
+    (sfVector2f) {420 / 2, 120 / 2}, "assets/UI/fullscreen/",
+    &set_win_fullscreen);
+    main_menu->windowed = create_button((sfVector2f)
+    {1025 + (420 / 2) + 5, 550},
+    (sfVector2f) {420 / 2, 120 / 2}, "assets/UI/windowed/", &set_win_windowed);
+    main_menu->first_resolution = create_button((sfVector2f){1025, 700},
+    (sfVector2f) {420 / 2, 120 / 2}, "assets/UI/resolution1/",
+    &set_first_resolution);
+    main_menu->second_resolution = create_button((sfVector2f)
+    {1025 + (420 / 2) + 5, 700},
+    (sfVector2f) {420 / 2, 120 / 2}, "assets/UI/resolution2/",
+    &set_second_resolution);
+    main_menu->music = sfMusic_createFromFile("assets/music/medietrap.ogg");
+    return init_main_menu_ter(main_menu);
+}
 
 main_menu_t *init_main_menu(project_t *project)
 {
@@ -29,5 +85,5 @@ main_menu_t *init_main_menu(project_t *project)
     (sfVector2f){420, 120}, "assets/UI/new_game/", &play_button);
     main_menu->load_game = create_button((sfVector2f){1025, 550},
     (sfVector2f){420, 120}, "assets/UI/load_game/", &play_button);
-    return main_menu;
+    return init_main_menu_bis(main_menu);
 }

@@ -1,0 +1,9 @@
+Name:final_boss
+Image:boss.png
+Dialogue#
+T as les cramptes ?
+-
+quoicoubeh caca prout vomi apagnan
+ta les cramptés au sucre ouuu que le listenbourg
+-
+#
