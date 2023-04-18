@@ -10,5 +10,7 @@
 void update_player(combat_player_t *player)
 {
     sfVertexArray_clear(player->array_character);
+    if (player->actual_stats->energy_points < 0)
+        player->actual_stats->energy_points = 0;
     set_player_pos(player);
 }

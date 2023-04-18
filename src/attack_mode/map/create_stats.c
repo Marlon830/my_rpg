@@ -13,5 +13,6 @@ stat_t *create_stats(int damage, int health_point, int move_point)
     res->damage = damage;
     res->health_point = health_point;
     res->move_points = move_point;
+    res->energy_points = 10;
     return res;
 }

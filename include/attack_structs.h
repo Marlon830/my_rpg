@@ -30,6 +30,7 @@ typedef struct stat_s stat_t;
 typedef struct combat_map_s combat_map_t;
 typedef struct enemy_s enemy_t;
 typedef struct combat_text_s combat_text_t;
+typedef struct card_overlay_s card_overlay_t;
 
 enum player_state_e {
     ATTACKING,
@@ -43,6 +44,14 @@ typedef enum card_state_e {
     SELECTED
 } card_state;
 
+struct card_overlay_s {
+    sfText *damage;
+    sfText *energy;
+    sfText *range;
+    sfSprite *sprite;
+    sfText *name;
+};
+
 struct card_s {
     combat_player_t *player;
     sfVector2f pos;
@@ -51,9 +60,11 @@ struct card_s {
     int range;
     int energy;
     int damage;
+    float angle;
     struct card_s *next;
     struct card_s *previous;
     enum card_state_e state;
+    card_overlay_t *overlay;
 };
 
 struct hand_s {
@@ -103,6 +114,7 @@ struct stat_s {
     int move_points;
     float health_point;
     float damage;
+    int energy_points;
 };
 
 struct combat_map_s {

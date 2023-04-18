@@ -7,10 +7,10 @@
 
 #include "attack_mode.h"
 
-tile_t **update_attack_tiles(combat_map_t *map, combat_player_t *player,
-card_t *card)
+tile_t **update_attack_tiles(combat_player_t *player,
+card_t *card, battle_scene_t *scene)
 {
     if (player->attack_tiles)
         free(player->attack_tiles);
-    return get_tiles_attack(map, player->actual_tile, card->range, player);
+    return get_tiles_attack(scene, player->actual_tile, card->range, player);
 }

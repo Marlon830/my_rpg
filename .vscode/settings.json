@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "attack_mode.h": "c",
-        "random": "c"
+        "random": "c",
+        "typeinfo": "c"
     }
 }

@@ -42,9 +42,9 @@ combat_player_t *create_player(tile_t *tile);
 void draw_player(combat_player_t *player, sfRenderWindow *window);
 void set_player_pos(combat_player_t *player);
 void update_player(combat_player_t *player);
-tile_t **get_tiles_close(combat_map_t *map, tile_t *tile,
-int dist, combat_player_t *player);
-tile_t **update_tiles_close(combat_player_t *player, combat_map_t *map,
+tile_t **get_tiles_close(battle_scene_t *scene, tile_t *tile, int dist,
+combat_player_t *player);
+tile_t **update_tiles_close(combat_player_t *player, battle_scene_t *scene,
 tile_t *tile, int dist);
 void color_tiles(combat_map_t *map, combat_player_t *player);
 void random_map(combat_map_t *map);
@@ -64,7 +64,7 @@ combat_map_t *load_map(char *filename, sfVector2f size);
 char *get_line(char *str, int ind);
 int count_char_until(char *str, char until);
 tile_t *get_tile_from_str(char *line, sfVector2f size, sfVector2f decalage);
-tile_t **get_tiles_attack(combat_map_t *map, tile_t *tile, int dist,
+tile_t **get_tiles_attack(battle_scene_t *scene, tile_t *tile, int dist,
 combat_player_t *player);
 
 enemy_t *create_enemy(tile_t *tile);

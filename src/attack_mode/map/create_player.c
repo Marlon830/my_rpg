@@ -28,8 +28,8 @@ combat_player_t *create_player(tile_t *tile)
     res->array_character = sfVertexArray_create();
     sfVertexArray_setPrimitiveType(res->array_character, sfQuads);
     set_player_pos(res);
-    res->actual_stats = create_stats(10, 100, 5);
-    res->basic_stats = create_stats(10 ,100, 5);
+    res->actual_stats = create_stats(10, 100, 3);
+    res->basic_stats = create_stats(10 ,100, 3);
     res->state = MOVING;
     res->attack_tiles = NULL;
     res->card = NULL;

@@ -17,7 +17,7 @@ battle_scene_t *create_battle_scene_from_file(char *filename, char *enemy_file)
     res->win = 0;
     res->enemies = create_enemies_from_txt(enemy_file, res->map,
     &res->nb_enemies);
-    res->player->tiles_close = get_tiles_close(res->map,
+    res->player->tiles_close = get_tiles_close(res,
     res->player->actual_tile,
     res->player->actual_stats->move_points, res->player);
     res->view = sfView_create();
