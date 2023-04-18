@@ -31,8 +31,6 @@ battle_scene_t *scene, hand_t *hand)
         {0, 0, event.size.width, event.size.height}));
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(window);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
-        sfRenderWindow_close(window);
     if (event.type == sfEvtMouseMoved) {
         update_map(scene->map, event);
         hover_card(event, hand);
