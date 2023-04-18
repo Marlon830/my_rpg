@@ -35,7 +35,6 @@ void main_loop(project_t *project)
 player_t *init_player(int x, int y)
 {
     player_t *player = malloc(sizeof(player_t));
-
     player->col = malloc(sizeof(sfFloatRect));
     player->pos.x = x;
     player->pos.y = y;
@@ -47,6 +46,13 @@ player_t *init_player(int x, int y)
     player->move = (sfVector2f) {0, 0};
     player->state = IDLE_DOWN;
     player->player_progress_state = 0;
+    player->equipment = malloc(sizeof(player->equipment) * 13);
+    player->equipment->helmet = NULL;
+    player->equipment->armor = NULL;
+    player->equipment->pants = NULL;
+    player->equipment->boots = NULL;
+    player->equipment->sword = NULL;
+    player->equipment->shield = NULL;
     return player;
 }
 
