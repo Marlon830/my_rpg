@@ -53,8 +53,8 @@ void update_quest_list(list_t *quests_list, sfText *quest_text)
     int nb_of_quest = get_nb_of_quest(quests_list);
     char *ans = malloc(sizeof(char) *
     (get_max_quest_len(quests_list) * (nb_of_quest * 3)));
-    ans[0] = '\0';
 
+    ans[0] = '\0';
     while (temp_act_quest != NULL) {
         ans = my_quest_cat(ans, (char *) temp_act_quest->element);
         temp_act_quest = temp_act_quest->next;

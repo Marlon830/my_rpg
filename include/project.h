@@ -16,6 +16,9 @@
     #include "attack_mode.h"
 
     #define WINDOW project->window
+    #define FOREST 0
+    #define HOUSE 1
+    #define DUNGEON 2
 
 enum game_state {
     MAIN_MENU,
@@ -76,18 +79,18 @@ void update_scene(project_t *project);
 list_t *create_all_dialogues(project_t *project, char *path_to_all_dialogue);
 char *get_dialogue_by_id(project_t *project, list_t *dialogue, char *id);
 char *get_dialogue_image(char *dialogue);
-void display_dialogue(project_t *project);
+void display_dialogue(project_t *project, all_pnjs_t *act_pnj);
 void change_view(project_t *project, sfView *camera,
 sfVector2f size, sfVector2f pos);
 all_pnjs_t *create_pnj(char *dial,
     sfFloatRect *pos_size, char *id);
 void set_pnj_dialogue(list_t *all_pnj, char *pnj_id, char *dialogue_id);
-void change_state_with_dialogue(project_t *project);
-void change_state_with_scene(project_t *project);
+void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj);
+void change_state_with_scene(project_t *project, int to_scene_id);
 void set_all_pnj_dialogues(project_t *project);
 char *get_file(char *filepath);
 
-void handle_end_of_fight(project_t *project);
+void handle_end_of_fight(project_t *project, int scene_to_load);
 void battle_scene_event(project_t *project);
 void add_quest(char *quest_to_add, quest_t *quests, char *quest_id);
 void update_quest(quest_t *quests);
