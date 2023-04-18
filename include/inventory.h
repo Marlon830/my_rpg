@@ -13,6 +13,8 @@
     #include <SFML/System.h>
     #include <stdbool.h>
 
+typedef struct player_s player_t;
+
 enum inventory_state {
     NONE2 = 0,
     PRESSED,
@@ -22,9 +24,9 @@ enum object_type {
     NO_OBJECT = 0,
     OTHER,
     HELMET,
-    CHEST,
-    LEG,
-    FEET,
+    ARMOR,
+    PANTS,
+    BOOTS,
     SWORD,
     SHIELD,
 };
@@ -91,6 +93,8 @@ void update_inventory_character(project_t *project, box_t *box);
 void update_inventory_description(project_t *project, box_t *box);
 void update_description(project_t *project, inventory_t *inventory, box_t *box);
 void update_hover_or_selected_box(project_t *project, box_t *box);
+void update_equipment_inventory_sprite(project_t *project, box_t *character,
+player_t *player);
 void modify_type_box(inventory_t *inventory);
 
 #endif
