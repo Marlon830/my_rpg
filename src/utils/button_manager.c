@@ -55,6 +55,7 @@ void update_hover_button(button_t *btn, sfVector2i mouse_pos)
 void update_button(button_t *btn, project_t *project, sfEvent event)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(WINDOW);
+
     update_hover_button(btn, mouse_pos);
     sfRenderWindow_drawRectangleShape(WINDOW, btn->rect, NULL);
 }
