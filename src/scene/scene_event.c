@@ -70,7 +70,8 @@ void scene_event(project_t *project)
             sfRenderWindow_close(project->window);
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape) {
             project->status = PAUSE_MENU;
-            sfRenderWindow_setView(project->window, project->pause_menu->camera);
+            sfRenderWindow_setView(project->window,
+            project->pause_menu->camera);
         }
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace &&
         !project->inventory->is_active)

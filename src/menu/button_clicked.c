@@ -49,14 +49,3 @@ void quit_button(project_t *project)
 {
     sfRenderWindow_close(project->window);
 }
-
-void back_menu_button(project_t *project)
-{
-    project->status = MAIN_MENU;
-    project->main_menu->save = get_save();
-}
-
-void resume_button(project_t *project)
-{
-    project->status = GAME;
-}

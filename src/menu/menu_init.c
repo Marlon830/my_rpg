@@ -27,7 +27,7 @@ save_t *get_save(void)
     for (; line[0] != ' '; line++);
     save->pos.y = my_getnbr(line);
     getline(&line, &len, fp);
-    save->player_state= my_getnbr(line);
+    save->player_state = my_getnbr(line);
     return save;
 }
 
@@ -53,6 +53,20 @@ pause_menu_t *init_pause_menu(project_t *project)
     return pause_menu;
 }
 
+void next_init_main_menu(main_menu_t *main_menu)
+{
+    main_menu->play = create_button((sfVector2f){425, 400},
+    (sfVector2f){420, 120}, "assets/UI/play/", &display_play);
+    main_menu->settings = create_button((sfVector2f){425, 550},
+    (sfVector2f){420, 120}, "assets/UI/settings/", &display_settings);
+    main_menu->quit = create_button((sfVector2f){425, 700},
+    (sfVector2f){420, 120}, "assets/UI/quit/", &quit_button);
+    main_menu->new_game = create_button((sfVector2f){1025, 400},
+    (sfVector2f){420, 120}, "assets/UI/new_game/", &new_game_button);
+    main_menu->load_game = create_button((sfVector2f){1025, 550},
+    (sfVector2f){420, 120}, "assets/UI/load_game/", &load_game_button);
+}
+
 main_menu_t *init_main_menu(project_t *project)
 {
     main_menu_t *main_menu = malloc(sizeof(main_menu_t));
@@ -65,15 +79,6 @@ main_menu_t *init_main_menu(project_t *project)
     main_menu->background->nb_sprite = 1;
     main_menu->state = NAUNE;
     main_menu->save = get_save();
-    main_menu->play = create_button((sfVector2f){425, 400},
-    (sfVector2f){420, 120}, "assets/UI/play/", &display_play);
-    main_menu->settings = create_button((sfVector2f){425, 550},
-    (sfVector2f){420, 120}, "assets/UI/settings/", &display_settings);
-    main_menu->quit = create_button((sfVector2f){425, 700},
-    (sfVector2f){420, 120}, "assets/UI/quit/", &quit_button);
-    main_menu->new_game = create_button((sfVector2f){1025, 400},
-    (sfVector2f){420, 120}, "assets/UI/new_game/", &new_game_button);
-    main_menu->load_game = create_button((sfVector2f){1025, 550},
-    (sfVector2f){420, 120}, "assets/UI/load_game/", &load_game_button);
+    next_init_main_menu(main_menu);
     return main_menu;
 }

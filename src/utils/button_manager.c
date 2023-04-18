@@ -47,10 +47,8 @@ void update_hover_button(button_t *btn, sfVector2i mouse_pos)
     + btn->size.x && mouse_pos.y >= btn->position.y && mouse_pos.y <=
     btn->position.y + btn->size.y) {
         sfSprite_setTexture(btn->sprite, btn->texture_hover, sfFalse);
-    }
-    else {
+    } else
         sfSprite_setTexture(btn->sprite, btn->texture, sfFalse);
-    }
 }
 
 void update_button(button_t *btn, project_t *project, sfEvent event)

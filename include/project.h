@@ -95,5 +95,8 @@ quest_t *init_quests(void);
 void finish_quest(char *quest_id, quest_t *quests);
 void quest_draw(project_t *project);
 void quest_event(project_t *project, sfEvent event);
+player_t *init_player(int x, int y);
+act_dial_t *init_actual_dialogue(void);
+project_t *init_project(void);
 
 #endif

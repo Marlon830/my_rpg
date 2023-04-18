@@ -10,7 +10,7 @@
 void button_click(button_t *button, project_t *project, sfEvent event)
 {
     if (button->is_clicked(button, &event.mouseButton))
-        button->clicked(project); 
+        button->clicked(project);
 }
 
 void main_menu_button_event(project_t *project)
