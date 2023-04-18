@@ -14,12 +14,20 @@ void inventory_event3(project_t *project, sfEvent event)
         select_box(project, (sfVector2f) {event.mouseButton.x,
         event.mouseButton.y});
     if (project->inventory->is_active && event.type == sfEvtMouseButtonReleased
-    && event.mouseButton.button == sfMouseLeft)
+    && event.mouseButton.button == sfMouseLeft && project->inventory->state ==
+    PRESSED)
         unselect_box(project, (sfVector2f) {event.mouseButton.x,
         event.mouseButton.y});
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyI)
         add_elem(project->inventory->bag, "assets/object/helmet_gold.png",
         HELMET, 1);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyU)
+        add_elem(project->inventory->bag, "assets/object/boots_gold.png",
+        BOOTS, 1);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyLShift)
+        project->inventory->shift_pressed = true;
+    if (event.type == sfEvtKeyReleased && event.key.code == sfKeyLShift)
+        project->inventory->shift_pressed = false;
 }
 
 void inventory_event2(project_t *project, sfEvent event)
