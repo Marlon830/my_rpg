@@ -21,5 +21,4 @@ void draw_main_menu(project_t *project)
         update_button(project->main_menu->new_game, project, project->event);
         update_button(project->main_menu->load_game, project, project->event);
     }
-    sfRenderWindow_display(project->window);
 }
