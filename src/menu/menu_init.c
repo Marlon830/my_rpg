@@ -11,16 +11,15 @@ save_t *get_save(void)
 {
     save_t *save = malloc(sizeof(save_t));
     save->pos = (sfVector2f){0, 0};
-    FILE *fp;
+    FILE *fp = fopen("save", "r");
     size_t len = 0;
     char *line = NULL;
 
-    if (access("save", F_OK) != 0) {
+    getline(&line, &len, fp);
+    if (line[0] == 'R') {
         free(save);
         return NULL;
     }
-    fp = fopen("save", "r");
-    getline(&line, &len, fp);
     save->scene_id = my_getnbr(line);
     getline(&line, &len, fp);
     save->pos.x = my_getnbr(line);
@@ -28,6 +27,7 @@ save_t *get_save(void)
     save->pos.y = my_getnbr(line);
     getline(&line, &len, fp);
     save->player_state = my_getnbr(line);
+    fclose(fp);
     return save;
 }
 
