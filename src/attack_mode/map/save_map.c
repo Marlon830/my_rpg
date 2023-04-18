@@ -18,17 +18,16 @@ void write_val_map(int fd, int x, int y, combat_map_t *map)
     write(fd, y_str, my_strlen(y_str));
     write(fd, " ", 1);
     write(fd, z_str, my_strlen(z_str));
-    write(fd, x == map->width - 1 && y == map->height - 1 ? " " : "\n", 1);
+    write(fd, "\n", 1);
     free(x_str);
     free(y_str);
     free(z_str);
 }
 
-void save_map(combat_map_t *map)
+void save_map(combat_map_t *map, char *filename)
 {
     int i = 0;
-    int fd = open("map.txt", O_CREAT | O_RDWR | O_TRUNC, 0666);
-
+    int fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0666);
     write(fd, int_to_str(map->width), my_strlen(int_to_str(map->width)));
     write(fd, " ", 1);
     write(fd, int_to_str(map->height), my_strlen(int_to_str(map->height)));

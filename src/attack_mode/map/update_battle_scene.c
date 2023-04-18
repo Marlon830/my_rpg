@@ -12,7 +12,7 @@ __attribute__((unused))float time, sfRenderWindow *window)
 {
         if (scene->player->state == MOVING)
                 scene->player->tiles_close =
-        update_tiles_close(scene->player, scene->map,
+        update_tiles_close(scene->player, scene,
         scene->player->actual_tile, scene->player->actual_stats->move_points);
         update_player(scene->player);
         color_tiles(scene->map, scene->player);

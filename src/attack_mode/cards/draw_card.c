@@ -10,4 +10,5 @@
 void draw_card(card_t *card, sfRenderWindow *window)
 {
     sfRenderWindow_drawVertexArray(window, card->array, NULL);
+    draw_card_overlay(card->overlay, window);
 }

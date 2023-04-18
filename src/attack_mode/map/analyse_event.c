@@ -18,11 +18,9 @@ battle_scene_t *scene, hand_t *hand)
     event.mouseButton.button == sfMouseLeft)
         move_player(scene->player, scene->map->hovered_tile, scene->map, scene);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyS)
-        save_map(scene->map);
+        save_map(scene->map, "map.txt");
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
         end_of_turn(scene->player, hand);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyC)
-        add_card_to_hand(hand, "card", 10, 5);
 }
 
 void analyse_events(sfRenderWindow *window, sfEvent event,

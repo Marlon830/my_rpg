@@ -21,6 +21,14 @@ void set_player_pos(combat_player_t *player)
     sfVertexArray_append(player->array_character, vertex_create(p4, sfBlack));
 }
 
+void set_overlay_player(combat_player_t *player)
+{
+    player->overlay[0] = create_combat_text((sfVector2f){100, 100});
+    player->overlay[1] = create_combat_text((sfVector2f){100, 200});
+    player->overlay[2] = create_combat_text((sfVector2f){100, 300});
+    player->overlay[3] = create_combat_text((sfVector2f){100, 400});
+}
+
 combat_player_t *create_player(tile_t *tile)
 {
     combat_player_t *res = malloc(sizeof(combat_player_t));
@@ -28,10 +36,12 @@ combat_player_t *create_player(tile_t *tile)
     res->array_character = sfVertexArray_create();
     sfVertexArray_setPrimitiveType(res->array_character, sfQuads);
     set_player_pos(res);
-    res->actual_stats = create_stats(10, 100, 5);
-    res->basic_stats = create_stats(10 ,100, 5);
+    res->actual_stats = create_stats(10, 100, 3);
+    res->basic_stats = create_stats(10 ,100, 3);
     res->state = MOVING;
     res->attack_tiles = NULL;
     res->card = NULL;
+    res->overlay = malloc(sizeof(combat_text_t *) * 4);
+    set_overlay_player(res);
     return res;
 }

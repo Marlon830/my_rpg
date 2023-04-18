@@ -17,15 +17,18 @@ void set_close_tiles(tile_t **tiles, tile_t *pos, int manhattan, int dist)
     }
 }
 
-void is_good_height(tile_t *tile1, tile_t *tile2, sfVector2f *pos)
+void is_good_height(tile_t *tile1, tile_t *tile2,
+sfVector2f *pos, battle_scene_t *scene)
 {
-    if (fabs(tile1->height - tile2->height) > 5) {
+    if (fabs(tile1->height - tile2->height) > 5 || (scene != NULL &&
+    is_there_an_enemy(tile2, scene->enemies, scene->nb_enemies))) {
         pos->x = -100;
         pos->y = -100;
     }
 }
 
-int count_nb_tiles(combat_map_t *map, tile_t *tile, int dist)
+int count_nb_tiles(battle_scene_t *scene, combat_map_t *map,
+tile_t *tile, int dist)
 {
     sfVector2f pos = (sfVector2f){(tile->ind - (tile->ind % map->height)) /
     map->height, tile->ind % map->height};
@@ -36,31 +39,29 @@ int count_nb_tiles(combat_map_t *map, tile_t *tile, int dist)
         for (int y = MAX(pos.y - dist, 0);
         y <= pos.y + dist && y < map->height; y++) {
             p2 = (sfVector2f){x, y};
-            is_good_height(tile, map->tiles[x * map->height + y], &p2);
+            is_good_height(tile, map->tiles[x * map->height + y], &p2, scene);
             k += (p2.x != -100 && manhattan_dist(pos, p2) <= dist);
         }
     }
     return k;
 }
 
-tile_t **get_tiles_close(combat_map_t *map, tile_t *tile, int dist,
+tile_t **get_tiles_close(battle_scene_t *scene, tile_t *tile, int dist,
 combat_player_t *player)
 {
-    player->nb_tiles_close = count_nb_tiles(map, tile, dist);
+    combat_map_t *map = scene->map;
+    player->nb_tiles_close = count_nb_tiles(scene, map, tile, dist);
     tile_t **res = malloc(sizeof(tile_t *) * player->nb_tiles_close);
     for (int i = 0; i < player->nb_tiles_close; i++)
         res[i] = NULL;
     sfVector2f pos = (sfVector2f){(tile->ind - (tile->ind % map->height)) /
     map->height, tile->ind % map->height};
-    sfVector2f p2;
-    for (int x = pos.x - dist;
-    x <= pos.x + dist && x < map->width; x++) {
-        if (x < 0)
-            continue;
+    for (int x = MAX(pos.x - dist, 0); x <= pos.x + dist && x < map->width;
+    x++) {
         for (int y = MAX(pos.y - dist, 0);
         y <= pos.y + dist && y < map->height; y++) {
-            p2 = (sfVector2f){x, y};
-            is_good_height(tile, map->tiles[x * map->height + y], &p2);
+            sfVector2f p2 = (sfVector2f){x, y};
+            is_good_height(tile, map->tiles[x * map->height + y], &p2, scene);
             set_close_tiles(res, map->tiles[x * map->height + y],
             manhattan_dist(pos, p2), dist);
         }
@@ -68,24 +69,23 @@ combat_player_t *player)
     return res;
 }
 
-tile_t **get_tiles_attack(combat_map_t *map, tile_t *tile, int dist,
+tile_t **get_tiles_attack(battle_scene_t *scene, tile_t *tile, int dist,
 combat_player_t *player)
 {
-    player->nb_attack_tiles = count_nb_tiles(map, tile, dist);
+    combat_map_t *map = scene->map;
+    player->nb_attack_tiles = count_nb_tiles(scene, map, tile, dist);
     tile_t **res = malloc(sizeof(tile_t *) * player->nb_attack_tiles);
     for (int i = 0; i < player->nb_attack_tiles; i++)
         res[i] = NULL;
     sfVector2f pos = (sfVector2f){(tile->ind - (tile->ind % map->height)) /
     map->height, tile->ind % map->height};
     sfVector2f p2;
-    for (int x = pos.x - dist;
-    x <= pos.x + dist && x < map->width; x++) {
-        if (x < 0)
-            continue;
+    for (int x = MAX(pos.x - dist, 0); x <= pos.x + dist && x < map->width;
+    x++) {
         for (int y = MAX(pos.y - dist, 0);
         y <= pos.y + dist && y < map->height; y++) {
             p2 = (sfVector2f){x, y};
-            is_good_height(tile, map->tiles[x * map->height + y], &p2);
+            is_good_height(tile, map->tiles[x * map->height + y], &p2, NULL);
             set_close_tiles(res, map->tiles[x * map->height + y],
             manhattan_dist(pos, p2), dist);
         }

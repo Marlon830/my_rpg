@@ -17,6 +17,12 @@ void reset_hand_pos(hand_t *hand)
     }
 }
 
+void set_angle(card_t *temp, float interval_angle, hand_t *hand, int i)
+{
+    temp->angle = -(hand->nb_cards * 10 > 60 ? 60 :
+        hand->nb_cards * 10) / 2 + i * interval_angle;
+}
+
 void rotate_hand(hand_t *hand, sfVector2f mouse_pos)
 {
     float p = hand->nb_cards * 50 > 1000 ? 1000 : hand->nb_cards * 50;
@@ -26,17 +32,17 @@ void rotate_hand(hand_t *hand, sfVector2f mouse_pos)
     sfVector2f new_pos;
     card_t *temp = hand->cards;
     for (int i = hand->nb_cards - 1; i >= 0; i--) {
+        set_angle(temp, interval_angle, hand, i);
         new_pos.y = 60 * (i >= mid_point ?
         i / mid_point : (hand->nb_cards - i) / mid_point);
         new_pos.x = -p / 2 + i * p / (hand->nb_cards - 1) + 20;
         new_pos.y -= temp->state == HOVERED ? 100 : 0;
-        rotate_card(temp, -(hand->nb_cards * 10 > 60 ? 60 :
-        hand->nb_cards * 10) / 2 + i * interval_angle);
         move_card(temp, new_pos);
         if (temp->state == SELECTED) {
-            sfVertexArray_clear(temp->array);
+            temp->angle = 0;
             create_card_vertex(temp, mouse_pos);
-        }
+        } else
+            update_card_overlay(temp->overlay, temp);
         temp = temp->next;
     }
 }
@@ -48,6 +54,7 @@ void update_hand(hand_t *hand, sfVector2f mouse_pos)
     if (hand->nb_cards == 1) {
         if (temp->state == HOVERED) {
             move_card(temp, (sfVector2f){0, -100});
+            update_card_overlay(temp->overlay, temp);
         }
         if (temp->state == SELECTED) {
             sfVertexArray_clear(temp->array);

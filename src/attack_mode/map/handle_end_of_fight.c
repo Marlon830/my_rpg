@@ -11,9 +11,9 @@
 void handle_end_of_fight(project_t *project, int scene_to_load)
 {
     if (project->battle_scene->win) {
-        destroy_battle_scene(project->battle_scene);
-        project->battle_scene = create_standard_battle_scene();
-        project->status = GAME;
-        project->scene = load_scene(project, scene_to_load);
-    }
+            destroy_battle_scene(project->battle_scene);
+            project->battle_scene = create_standard_battle_scene();
+            project->status = GAME;
+            project->scene = load_scene(project, project->scene_id);
+        }
 }
