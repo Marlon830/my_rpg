@@ -14,7 +14,7 @@
     #include <stdbool.h>
 
 enum inventory_state {
-    NONE = 0,
+    NONE2 = 0,
     PRESSED,
 };
 
@@ -66,6 +66,7 @@ typedef struct inventory_s {
     box_t *description;
     bool is_active;
     enum inventory_state state;
+    bool box_selected;
 } inventory_t;
 
 inventory_t *create_inventory(void);
@@ -88,6 +89,8 @@ void update_selected_box(project_t *project);
 void create_box_des_char(box_t *box, int des_char);
 void update_inventory_character(project_t *project, box_t *box);
 void update_inventory_description(project_t *project, box_t *box);
+void update_description(project_t *project, inventory_t *inventory, box_t *box);
+void update_hover_or_selected_box(project_t *project, box_t *box);
 void modify_type_box(inventory_t *inventory);
 
 #endif

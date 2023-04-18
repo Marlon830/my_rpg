@@ -5,15 +5,11 @@
 ## Makefile
 ##
 
-TARGET = ./my_rpg
-CFLAGS = -Wextra -Wall
-
-LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm
-
-CPPFLAGS = -I./include -I./csfml_engine/include
-
 SRC = $(shell find src -name "*.c")
-
+CFLAGS = -W -Wextra -Wall
+LDFLAGS = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm
+CPPFLAGS = -Iinclude
+TARGET = my_rpg
 OBJ = $(SRC:.c=.o)
 
 all : $(TARGET)

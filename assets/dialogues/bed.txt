@@ -1,0 +1,14 @@
+Name:Bed
+Image:ronfle.png
+Dialogue#
+UUUUUUUUNNNNNNHHHHHHHHHHHH
+-
+...............
+-
+UUUUUUNNNNNNHHHHHHHHHHHHH
+-
+........................
+-
+UUUUUUUUUUNNNNNNNNHHHHHHHHHH
+-
+#

@@ -27,6 +27,23 @@ void push_back(list_t **list, char *id, void *node, enum type type)
     }
 }
 
+void delete_item(list_t **list, char *id)
+{
+    list_t *temp = *list;
+
+    if (*list == NULL)
+        return;
+    if (temp->next == NULL)
+        *list = NULL;
+    while (temp->next != NULL) {
+        if (my_strcmp(id, temp->next->id) == 0) {
+            temp->next = temp->next->next;
+            break;
+        }
+        temp = temp->next;
+    }
+}
+
 void *get_item(list_t *list, char *id)
 {
     list_t *tmp = list;

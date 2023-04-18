@@ -23,7 +23,7 @@ void main_loop(project_t *project)
         if (project->status == FIGHT) {
             battle_scene_event(project);
             update_battle_scene(project->battle_scene, 0, project->window);
-            handle_end_of_fight(project);
+            handle_end_of_fight(project, 0);
         }
         sfRenderWindow_display(project->window);
     }
@@ -73,7 +73,7 @@ project_t *init_project(void)
     sfRenderWindow_setFramerateLimit(project->window, 60);
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
     project->clock = sfClock_create();
-    project->player = init_player(160, 160);
+    project->player = init_player(384, 416);
     project->scenes = NULL;
     project->scene = NULL;
     project->status = MENU;
@@ -81,6 +81,7 @@ project_t *init_project(void)
     project->actual_dial = init_actual_dialogue();
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
     project->battle_scene = create_standard_battle_scene();
+    project->quests = init_quests();
     return project;
 }
 
@@ -88,10 +89,9 @@ int main(void)
 {
     project_t *project = init_project();
 
-    push_back(&project->scenes, "island", get_map("island"), SCENE);
+    push_back(&project->scenes, "forest", get_map("forest"), SCENE);
     push_back(&project->scenes, "house", get_map("house"), SCENE);
-    push_back(&project->scenes, "sus", get_map("sus"), SCENE);
-    project->status = MENU;
+    push_back(&project->scenes, "dungeon", get_map("dungeon"), SCENE);
     main_loop(project);
     return 0;
 }

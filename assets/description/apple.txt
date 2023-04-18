@@ -1,0 +1,5 @@
+C'est une pomme.
+J'ai vraiment besoin de t'expliquer
+ce qu'est une pomme ?
+
+Donne +5hp en combat

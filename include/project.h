@@ -12,10 +12,13 @@
     #include "inventory.h"
     #include "player.h"
     #include "menu.h"
+    #include "attack_structs.h"
     #include "attack_mode.h"
 
-
     #define WINDOW project->window
+    #define FOREST 0
+    #define HOUSE 1
+    #define DUNGEON 2
 
 enum game_state {
     MENU,
@@ -41,6 +44,16 @@ typedef struct all_pnjs_s {
     char *name;
 } all_pnjs_t;
 
+typedef struct quest_s {
+    int is_act_disp;
+    list_t *actual_quests_list;
+    list_t *finished_quests_list;
+    sfRectangleShape *actual_quests_rect;
+    sfRectangleShape *finished_quests_rect;
+    sfText *actual_quests_text;
+    sfText *finished_quests_text;
+} quest_t;
+
 typedef struct project_s {
     sfRenderWindow *window;
     inventory_t *inventory;
@@ -56,6 +69,7 @@ typedef struct project_s {
     main_menu_t *main_menu;
     sfEvent event;
     battle_scene_t *battle_scene;
+    quest_t *quests;
 } project_t;
 
 void update_scene(project_t *project);
@@ -63,16 +77,24 @@ void update_scene(project_t *project);
 list_t *create_all_dialogues(project_t *project, char *path_to_all_dialogue);
 char *get_dialogue_by_id(project_t *project, list_t *dialogue, char *id);
 char *get_dialogue_image(char *dialogue);
-void display_dialogue(project_t *project);
+void display_dialogue(project_t *project, all_pnjs_t *act_pnj);
 void change_view(project_t *project, sfView *camera,
 sfVector2f size, sfVector2f pos);
 all_pnjs_t *create_pnj(char *dial,
     sfFloatRect *pos_size, char *id);
 void set_pnj_dialogue(list_t *all_pnj, char *pnj_id, char *dialogue_id);
-void change_state_with_dialogue(project_t *project);
-void change_state_with_scene(project_t *project);
+void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj);
+void change_state_with_scene(project_t *project, int to_scene_id);
 void set_all_pnj_dialogues(project_t *project);
+char *get_file(char *filepath);
 
-void handle_end_of_fight(project_t *project);
+void handle_end_of_fight(project_t *project, int scene_to_load);
 void battle_scene_event(project_t *project);
+void add_quest(char *quest_to_add, quest_t *quests, char *quest_id);
+void update_quest(quest_t *quests);
+quest_t *init_quests(void);
+void finish_quest(char *quest_id, quest_t *quests);
+void quest_draw(project_t *project);
+void quest_event(project_t *project, sfEvent event);
+
 #endif
