@@ -14,10 +14,19 @@ void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj)
     !my_strcmp(act_pnj->name, "/theodore.png")) {
         finish_quest("QUETE1", project->quests);
         project->status = FIGHT;
+        project->battle_scene = create_battle_scene_from_file(
+    "assets/fight_scene/theoronfle_map.txt",
+    "assets/fight_scene/theoronfle_enemies.txt");
     }
     if (project->player->player_progress_state == 0 &&
     !my_strcmp(act_pnj->name, "/theodore.png"))
         project->player->player_progress_state = 1;
+    if (!my_strcmp(act_pnj->name, "/bed.png")) {
+        project->status = FIGHT;
+        project->battle_scene = create_battle_scene_from_file(
+    "assets/fight_scene/bed_map.txt",
+    "assets/fight_scene/bed_enemies.txt");
+    }
 }
 
 void change_state_with_scene(project_t *project, int to_scene_id)
