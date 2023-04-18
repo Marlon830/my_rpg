@@ -72,6 +72,8 @@ typedef struct project_s {
     sfEvent event;
     battle_scene_t *battle_scene;
     quest_t *quests;
+    char *pnj_fighting;
+    int fight_win;
 } project_t;
 
 void update_scene(project_t *project);
@@ -102,5 +104,6 @@ player_t *init_player(int x, int y);
 act_dial_t *init_actual_dialogue(void);
 project_t *init_project(void);
 save_t *get_save(void);
+void set_state_with_end_of_fight(project_t *project, int win);
 
 #endif
