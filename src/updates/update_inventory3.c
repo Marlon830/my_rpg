@@ -24,14 +24,17 @@ void update_description(project_t *project, inventory_t *inventory, box_t *box)
     char *buffer = get_file(get_description_elem(box));
     sfVector2f pos =
     sfRectangleShape_getPosition(inventory->description->shape);
-    sfTexture *texture = sfTexture_createFromFile("assets/box_hover.png", NULL);
 
-    sfRectangleShape_setTexture(box->shape, texture, sfTrue);
-    sfText_setScale(inventory->description->text, (sfVector2f) {0.1, 0.1});
-    sfText_setString(inventory->description->text, buffer);
-    sfText_setPosition(inventory->description->text, (sfVector2f)
-    {pos.x + 1, pos.y + 1});
-    sfRenderWindow_drawText(WINDOW, inventory->description->text, NULL);
+    if (buffer != NULL) {
+        sfText_setScale(inventory->description->text, (sfVector2f) {0.1, 0.1});
+        sfText_setString(inventory->description->text, buffer);
+        sfText_setPosition(inventory->description->text, (sfVector2f)
+        {pos.x + 1, pos.y + 1});
+        sfRenderWindow_drawText(WINDOW, inventory->description->text, NULL);
+    }
+    sfSprite_setPosition(box->hover, (sfVector2f) {project->player->pos.x - 72
+    + box->more_x, project->player->pos.y - 64 + box->more_y});
+    sfRenderWindow_drawSprite(WINDOW, box->hover, NULL);
 }
 
 void update_hover_or_selected_box(project_t *project, box_t *box)
@@ -53,4 +56,22 @@ void update_hover_or_selected_box(project_t *project, box_t *box)
         if (box->sprite != NULL)
             update_description(project, project->inventory, box);
     }
+}
+
+int check_shift_click(project_t *project, box_t *box)
+{
+    box_t *good_box;
+
+    if (!project->inventory->shift_pressed || box == NULL ||
+    box->sprite == NULL || box->type_sprite == OTHER)
+        return 0;
+    good_box = get_box_with_type(project->inventory, box->type_sprite);
+    if (good_box->sprite != NULL && my_strcmp(good_box->name, box->name) == 0)
+        return 0;
+    if (good_box->sprite == NULL) {
+        change_elem_box(project, good_box, box);
+        return 1;
+    }
+    switch_elem_box(project, good_box, box);
+    return 1;
 }

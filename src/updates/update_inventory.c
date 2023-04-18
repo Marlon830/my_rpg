@@ -35,8 +35,11 @@ void update_box(project_t *project, box_t *box)
     sfRectangleShape_setPosition(box->shape, (sfVector2f)
     {project->player->pos.x - 72 + box->more_x,
     project->player->pos.y - 64 + box->more_y});
-    update_hover_or_selected_box(project, box);
+    if (box->is_special && box->sprite == NULL) {
+        sfRectangleShape_setTexture(box->shape, box->special_texture, sfTrue);
+    }
     sfRenderWindow_drawRectangleShape(WINDOW, box->shape, NULL);
+    update_hover_or_selected_box(project, box);
     if (box->sprite != NULL)
         update_box_bis(project, box, new_mouse_pos);
 }

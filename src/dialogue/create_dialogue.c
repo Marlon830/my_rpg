@@ -13,6 +13,8 @@ char *get_file(char *filepath)
     struct stat sb;
     char *buffer;
 
+    if (fd < 0)
+        return NULL;
     stat(filepath, &sb);
     buffer = malloc(sizeof(char) * (sb.st_size + 1));
     read(fd, buffer, sb.st_size);
