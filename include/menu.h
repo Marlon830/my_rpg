@@ -57,7 +57,6 @@ typedef struct main_menu_s {
     sfSound *sound;
     slider_t *slider;
     int is_sliding;
-    sfView *camera;
     save_t *save;
     enum main_menu_state state;
 } main_menu_t;

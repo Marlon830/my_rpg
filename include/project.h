@@ -93,6 +93,7 @@ void set_pnj_dialogue(list_t *all_pnj, char *pnj_id, char *dialogue_id);
 void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj);
 void change_state_with_scene(project_t *project, int to_scene_id);
 void set_all_pnj_dialogues(project_t *project);
+void check_all_pnj_dialogue(project_t *project);
 char *get_file(char *filepath);
 
 void handle_end_of_fight(project_t *project);
