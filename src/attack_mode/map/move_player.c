@@ -34,6 +34,7 @@ battle_scene_t *scene)
         if (player->attack_tiles[i]->ind == tile->ind) {
             hit_enemy(scene, tile, player->actual_stats->damage +
             player->card->damage);
+            player->actual_stats->energy_points -= player->card->energy;
             free(player->card);
             player->state = MOVING;
             player->card = NULL;

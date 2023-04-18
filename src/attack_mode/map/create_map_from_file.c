@@ -60,12 +60,15 @@ int get_width_height(combat_map_t *map, char *text_information)
     return len;
 }
 
-combat_map_t *create_map_from_file(char *filename, sfVector2f size,
-sfVector2f pos)
+combat_map_t *create_map_from_file(char *filename, sfVector2f size)
 {
-    combat_map_t *map = load_map(filename, size, pos);
-    save_map(map);
-    map = load_map(filename, size, pos);
-    save_map(map);
+    combat_map_t *map = load_map(filename, size);
+    save_map(map, filename);
+    map = load_map(filename, size);
+    save_map(map, filename);
+    map->hovered_tile = map->tiles[0];
+    map->far_tile = create_tile((sfVector2f)
+    {-100, -100}, sfWhite, (sfVector2f){1, 1}, 0);
+    map->far_tile->ind = -1;
     return map;
 }

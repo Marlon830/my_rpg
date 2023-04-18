@@ -10,4 +10,7 @@
 void draw_player(combat_player_t *player, sfRenderWindow *window)
 {
     sfRenderWindow_drawVertexArray(window, player->array_character, NULL);
+    for (int i = 0; i < 3; i++)
+        sfRenderWindow_drawText(window, player->overlay[i]->text, NULL);
+
 }

@@ -33,7 +33,7 @@ void unclick_card(hand_t *hand, battle_scene_t *scene)
             temp->state = NOTHING;
             scene->player->state = ATTACKING;
             scene->player->attack_tiles =
-            update_attack_tiles(scene->map, scene->player, temp);
+            update_attack_tiles(scene->player, temp, scene);
             scene->player->card = temp;
             remove_from_linked_list(temp, hand);
             return;
@@ -55,7 +55,8 @@ void set_card(sfEvent event, hand_t *hand)
         temp_state = temp->state;
         points = get_all_vector_from_vertex(temp->array);
         if (!ok && is_point_in_polygon(points, nb_points,
-        (sfVector2f){event.mouseButton.x, event.mouseButton.y})) {
+        (sfVector2f){event.mouseButton.x, event.mouseButton.y})
+        && temp->energy <= hand->player->actual_stats->energy_points) {
             temp->state = SELECTED;
             ok = 1;
             hand->selected = temp;
@@ -67,6 +68,8 @@ void set_card(sfEvent event, hand_t *hand)
 
 void click_card(sfEvent event, hand_t *hand)
 {
+    if (hand->player->actual_stats->energy_points <= 0)
+        return;
     if (event.mouseButton.button == sfMouseRight
     && hand->player->state == ATTACKING) {
         add_card_to_hand(hand, hand->player->card->name,

@@ -13,8 +13,7 @@ void my_main(void)
     sfRenderWindow *window = NULL;
     window = sfRenderWindow_create(mode, "my_rpg",
     sfClose | sfResize | sfFullscreen, NULL);
-    battle_scene_t *scene = create_battle_scene(30, 30,
-    (sfVector2f){100, 500}, (sfVector2f){50, 25});
+    battle_scene_t *scene = create_battle_scene(30, 30, (sfVector2f){50, 25});
     sfEvent event;
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event))

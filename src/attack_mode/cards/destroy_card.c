@@ -10,5 +10,6 @@
 void destroy_card(card_t *card)
 {
     sfVertexArray_destroy(card->array);
+    destroy_card_overlay(card->overlay);
     free(card);
 }
