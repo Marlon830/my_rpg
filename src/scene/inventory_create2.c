@@ -30,21 +30,44 @@ void create_box_des_char(box_t *box, int des_char)
     }
 }
 
+void modify_type_box2(inventory_t *inventory, int type_box,
+char *list_texture[7], int count)
+{
+    list_box_t *temp = inventory->second_equipment;
+
+    temp = temp->next;
+    for (int i = 0; i < 2; i++) {
+        temp->box->special_texture = sfTexture_createFromFile(
+        list_texture[count], NULL);
+        sfRectangleShape_setTexture(temp->box->shape,
+        temp->box->special_texture, sfTrue);
+        temp->box->is_special = true;
+        temp->box->type_box = type_box;
+        type_box++;
+        temp = temp->next;
+        count++;
+    }
+}
+
 void modify_type_box(inventory_t *inventory)
 {
     list_box_t *temp = inventory->first_equipment;
     int type_box = HELMET;
+    char *list_texture[7] = {"assets/box_helmet.png", "assets/box_armor.png",
+    "assets/box_pants.png", "assets/box_boots.png","assets/box_sword.png",
+    "assets/box_shield.png", NULL};
+    int count = 0;
 
     while (temp != NULL) {
+        temp->box->special_texture = sfTexture_createFromFile(
+            list_texture[count], NULL);
+        sfRectangleShape_setTexture(temp->box->shape,
+        temp->box->special_texture, sfTrue);
+        temp->box->is_special = true;
         temp->box->type_box = type_box;
         type_box++;
         temp = temp->next;
+        count++;
     }
-    temp = inventory->second_equipment;
-    temp = temp->next;
-    for (int i = 0; i < 2; i++) {
-        temp->box->type_box = type_box;
-        type_box++;
-        temp = temp->next;
-    }
+    modify_type_box2(inventory, type_box, list_texture, count);
 }
