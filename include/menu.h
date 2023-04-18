@@ -22,6 +22,18 @@ enum main_menu_state {
     SETTINGS
 };
 
+typedef struct slider_s {
+    sfRectangleShape *rect;
+    sfCircleShape *circle;
+    sfColor background;
+    sfColor foreground;
+    sfVector2f position;
+    sfVector2f position_circle;
+    sfVector2f size;
+    sfVector2f circle_size;
+    float value;
+} slider_t;
+
 typedef struct main_menu_s {
     image_t *background;
     button_t *play;
@@ -29,8 +41,16 @@ typedef struct main_menu_s {
     button_t *quit;
     button_t *new_game;
     button_t *load_game;
-    sfText *test;
+    button_t *fullscreen;
+    button_t *windowed;
+    button_t *first_resolution;
+    button_t *second_resolution;
+    sfText *act_volume;
     sfView *camera;
+    sfMusic *music;
+    sfSound *sound;
+    slider_t *slider;
+    int is_sliding;
     enum main_menu_state state;
 } main_menu_t;
 
@@ -41,5 +61,9 @@ void play_button(project_t *project);
 void quit_button(project_t *project);
 void display_play(project_t *project);
 void display_settings(project_t *project);
+void set_win_fullscreen(project_t *project);
+void set_win_windowed(project_t *project);
+void set_first_resolution(project_t *project);
+void set_second_resolution(project_t *project);
 
 #endif
