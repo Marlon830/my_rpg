@@ -31,14 +31,15 @@ box_t *get_box_selected(project_t *project)
     return NULL;
 }
 
-void change_elem_box(box_t *new_box, box_t *selected_box)
+void change_elem_box(project_t *project, box_t *new_box, box_t *selected_box)
 {
     add_new_elem_in_box(new_box, selected_box->name, selected_box->type_sprite,
     selected_box->quantity);
     reset_box(selected_box);
+    update_equipment(project, project->inventory);
 }
 
-void switch_elem_box(box_t *new_box, box_t *selected_box)
+void switch_elem_box(project_t *project, box_t *new_box, box_t *selected_box)
 {
     char *temp_str = malloc(my_strlen(new_box->name) + 1);
     int temp_quantity = new_box->quantity;
@@ -55,6 +56,7 @@ void switch_elem_box(box_t *new_box, box_t *selected_box)
     selected_box->quantity);
     reset_box(selected_box);
     add_new_elem_in_box(selected_box, temp_str, temp_type, temp_quantity);
+    update_equipment(project, project->inventory);
 }
 
 void unselect_box(project_t *project, sfVector2f pos)
@@ -75,10 +77,10 @@ void unselect_box(project_t *project, sfVector2f pos)
         return;
     }
     if (new_box->sprite != NULL) {
-        switch_elem_box(new_box, selected_box);
+        switch_elem_box(project, new_box, selected_box);
         return;
     }
-    change_elem_box(new_box, selected_box);
+    change_elem_box(project, new_box, selected_box);
 }
 
 sfVector2f convert_mouse_position(project_t *project, sfVector2f pos)
