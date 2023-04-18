@@ -12,6 +12,7 @@ void play_button(project_t *project)
 {
     project->status = GAME;
     project->scene = load_scene(project, 0);
+    sfMusic_stop(project->main_menu->music);
 }
 
 void display_play(project_t *project)
