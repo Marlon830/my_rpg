@@ -14,7 +14,11 @@ void end_of_turn(combat_player_t *player, hand_t *hand)
     srand(10);
     player->actual_stats->move_points = player->basic_stats->move_points;
     player->actual_stats->energy_points = player->basic_stats->energy_points;
-    player->actual_stats->health_point += 10;
+    if (player->actual_stats->health_point < player->basic_stats->health_point)
+        player->actual_stats->health_point += 1;
+    if (player->actual_stats->health_point >=
+    player->basic_stats->health_point)
+        player->actual_stats->health_point = player->basic_stats->health_point;
     for (int i = 0; i < 3; i++)
         if (hand->nb_cards < 12)
             add_card_to_hand(hand, "card", (rand() + 1) % 100,

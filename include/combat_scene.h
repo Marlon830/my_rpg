@@ -87,3 +87,5 @@ void destroy_map(combat_map_t *map);
 void destroy_card(card_t *card);
 void destroy_hand(hand_t *hand);
 void destroy_battle_scene(battle_scene_t *scene);
+
+void update_combat_text(char *str, sfText *text);

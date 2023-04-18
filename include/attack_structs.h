@@ -86,6 +86,7 @@ struct combat_player_s {
     int nb_attack_tiles;
     enum player_state_e state;
     card_t *card;
+    combat_text_t **overlay;
 };
 
 

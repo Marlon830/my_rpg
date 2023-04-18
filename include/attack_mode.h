@@ -11,6 +11,7 @@
 #include "attack_structs.h"
 #include "combat_scene.h"
 #include "spells.h"
+#include "utils.h"
 
 void analyse_events(sfRenderWindow *window, sfEvent event,
 battle_scene_t *scene, hand_t *hand);

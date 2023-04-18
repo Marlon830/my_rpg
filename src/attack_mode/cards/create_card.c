@@ -53,6 +53,6 @@ card_t *create_card(char *name, int damage, int range, combat_player_t *player)
     res->pos = (sfVector2f){1920 / 2, 1080};
     res->overlay = create_card_overlay(res);
     create_card_vertex(res, res->pos);
-    res->energy = (rand() % 10) + 1;
+    res->energy = 5;
     return res;
 }
