@@ -37,7 +37,7 @@ void animate_inventory_sprite(box_t *box)
         box->pos_animation = 0;
     else
         box->pos_animation++;
-    rect = (sfIntRect) {box->pos_animation * 16, 0, 16, 16};
+    rect = (sfIntRect) {box->pos_animation * 32, 0, 32, 32};
     sfTexture_destroy(box->sprite_texture);
     box->sprite_texture = sfTexture_createFromFile("assets/player.png", &rect);
     sfSprite_setTexture(box->sprite, box->sprite_texture, sfTrue);
@@ -57,6 +57,7 @@ void update_inventory_character(project_t *project, box_t *box)
     project->player->pos.y - 64 + box->more_y + 16});
     animate_inventory_sprite(project->inventory->character);
     sfRenderWindow_drawSprite(WINDOW, box->sprite, NULL);
+    update_equipment_inventory_sprite(project, box, project->player);
 }
 
 void update_inventory_description(project_t *project, box_t *box)
