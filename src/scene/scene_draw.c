@@ -35,6 +35,7 @@ void images_draw(project_t *project, list_t *img_list)
         ((image_t *)tmp->element)->sprite, NULL);
         tmp = tmp->next;
     }
+    draw_equipment(project, project->player);
 }
 
 void collision_draw(project_t *project, list_t *coll_list)

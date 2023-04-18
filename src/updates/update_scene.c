@@ -59,12 +59,12 @@ void update_scene(project_t *project)
     if (movement.x != 0 || movement.y != 0) {
         project->player->move.x = movement.x;
         project->player->move.y = movement.y;
-        player->sprite_pos.y = project->player->state * 16;
+        player->sprite_pos.y = project->player->state * 32;
         move_camera(project, project->scene);
     } else {
         if (project->player->state > 3) {
             project->player->state -= 4;
-            player->sprite_pos.y = project->player->state * 16;
+            player->sprite_pos.y = project->player->state * 32;
         }
     }
     scene_draw(project, project->scene);
