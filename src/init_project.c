@@ -11,7 +11,6 @@
 player_t *init_player(int x, int y)
 {
     player_t *player = malloc(sizeof(player_t));
-
     player->col = malloc(sizeof(sfFloatRect));
     player->pos.x = x;
     player->pos.y = y;
@@ -49,7 +48,6 @@ project_t *init_project(void)
 {
     project_t *project = malloc(sizeof(project_t));
     sfVideoMode mode = (sfVideoMode){1920, 1080, 32};
-
     project->inventory = create_inventory();
     project->window = sfRenderWindow_create(mode, "Quoi ? Feur",
     sfClose | sfFullscreen, NULL);
@@ -66,5 +64,6 @@ project_t *init_project(void)
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
     project->battle_scene = create_standard_battle_scene();
     project->quests = init_quests();
+    project->fight_win = 0;
     return project;
 }
