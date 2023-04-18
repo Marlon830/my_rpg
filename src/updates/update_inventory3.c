@@ -27,11 +27,13 @@ void update_description(project_t *project, inventory_t *inventory, box_t *box)
     sfTexture *texture = sfTexture_createFromFile("assets/box_hover.png", NULL);
 
     sfRectangleShape_setTexture(box->shape, texture, sfTrue);
-    sfText_setScale(inventory->description->text, (sfVector2f) {0.1, 0.1});
-    sfText_setString(inventory->description->text, buffer);
-    sfText_setPosition(inventory->description->text, (sfVector2f)
-    {pos.x + 1, pos.y + 1});
-    sfRenderWindow_drawText(WINDOW, inventory->description->text, NULL);
+    if (buffer != NULL) {
+        sfText_setScale(inventory->description->text, (sfVector2f) {0.1, 0.1});
+        sfText_setString(inventory->description->text, buffer);
+        sfText_setPosition(inventory->description->text, (sfVector2f)
+        {pos.x + 1, pos.y + 1});
+        sfRenderWindow_drawText(WINDOW, inventory->description->text, NULL);
+    }
 }
 
 void update_hover_or_selected_box(project_t *project, box_t *box)
