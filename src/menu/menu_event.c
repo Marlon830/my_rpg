@@ -40,10 +40,12 @@ void slider_event(project_t *project, sfEvent event)
 
 void button_click(button_t *button, project_t *project, sfEvent event)
 {
-    if (button->is_clicked(button, &event.mouseButton)) {
-        sfSound_stop(project->main_menu->sound);
-        sfSound_play(project->main_menu->sound);
-        button->clicked(project);
+    if (event.type == sfEvtMouseButtonPressed) {
+        if (button->is_clicked(button, &event.mouseButton)) {
+            sfSound_stop(project->main_menu->sound);
+            sfSound_play(project->main_menu->sound);
+            button->clicked(project);
+        }
     }
 }
 
@@ -80,6 +82,7 @@ void main_menu_event(project_t *project)
             sfRenderWindow_close(project->window);
         if (project->event.type == sfEvtMouseButtonPressed)
             main_menu_button_event(project);
+        slider_event(project, project->event);
     }
 }
 

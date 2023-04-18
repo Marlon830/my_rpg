@@ -17,6 +17,13 @@ void update_slider(project_t *project, slider_t *slider)
 
 void update_settings(project_t *project)
 {
+    button_click(project->main_menu->fullscreen, project, project->event);
+    button_click(project->main_menu->windowed, project,
+    project->event);
+    button_click(project->main_menu->first_resolution,
+    project, project->event);
+    button_click(project->main_menu->second_resolution,
+    project, project->event);
     update_button(project->main_menu->fullscreen, project,
     project->event);
     update_button(project->main_menu->windowed, project,

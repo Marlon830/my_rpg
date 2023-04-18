@@ -35,9 +35,9 @@ combat_map_t *load_map(char *filename, sfVector2f size)
     combat_map_t *res = malloc(sizeof(combat_map_t));
     struct stat st;
     stat(filename, &st);
-    char *text_information = malloc(sizeof(char) * st.st_size);
+    char *text_information = malloc(sizeof(char) * (st.st_size + 1));
     read(fd,text_information ,st.st_size);
-    text_information[st.st_size] = 0;
+    text_information[st.st_size] = '\0';
     text_information += get_width_height(res, text_information);
     pos = (sfVector2f){960 - (res->width * size.x) / 2, 500};
     res->tiles = put_tiles(text_information, size, pos);

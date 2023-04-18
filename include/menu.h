@@ -88,5 +88,6 @@ void resume_button(project_t *project);
 void pause_menu_event(project_t *project);
 void draw_pause_menu(project_t *project);
 void back_menu_button(project_t *project);
+void button_click(button_t *button, project_t *project, sfEvent event);
 
 #endif
