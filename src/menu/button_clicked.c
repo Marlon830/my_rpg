@@ -10,13 +10,14 @@
 
 void new_game_button(project_t *project)
 {
+    int fd = open("save", O_WRONLY | O_CREAT, 0644);
+
     project->status = GAME;
-    if (access("save", F_OK) == 0)
-        remove("save");
     project->player->pos.x = 384;
     project->player->pos.y = 416;
     project->player->player_progress_state = 0;
     project->main_menu->save = NULL;
+    write(fd, "R", 1);
     project->scene = load_scene(project, 0);
     project->main_menu->state = NAUNE;
 }
