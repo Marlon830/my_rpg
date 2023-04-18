@@ -52,7 +52,7 @@ void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
     (sfIntRect){0, 0, size.x, size.y}, size);
     background->nb_sprite = 1;
     image_t *player = create_image((sfVector2f){project->player->pos.x,
-    project->player->pos.y}, "/player_32.png", (sfIntRect){0, 0, 128, 256},
+    project->player->pos.y}, "/player.png", (sfIntRect){0, 0, 128, 256},
     (sfVector2f){32, 32});
     player->nb_sprite = 4;
     image_t *foreground = create_image((sfVector2f){0, 0},
@@ -62,6 +62,7 @@ void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
     push_back(&scene->images, "background", background, IMAGE);
     load_pnj(scene);
     push_back(&scene->images, "player", player, IMAGE);
+    project->player->character = get_item(scene->images, "player");
     push_back(&scene->images, "foreground", foreground, IMAGE);
     colliders_init(my_strcat(scene->name, "/res.coll"), scene);
 }
