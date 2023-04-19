@@ -48,5 +48,6 @@ void my_strcpy(char *dest, char *src);
 void push_back(list_t **list, char *id, void *node, enum type type);
 char *int_to_string(int num);
 char *my_put_nbr(int nb);
+int get_list_len(list_t *list);
 
 #endif

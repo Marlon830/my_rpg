@@ -59,7 +59,7 @@ void set_all_pnj_dialogues(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle");
     if (project->player->player_progress_state == 1) {
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle2");
-        add_quest("Trouver la batterie de theodore", project->quests, "QUETE1");
+        add_quest("Aller dans la maison", project->quests, "QUETE1");
     }
     if (project->player->player_progress_state == 2)
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle3");
