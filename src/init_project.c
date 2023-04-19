@@ -10,12 +10,13 @@
 
 equipment_t *init_equipment(void)
 {
-    equipment_t *equipment = malloc(sizeof(*equipment) * 15);
+    equipment_t *equipment = malloc(sizeof(*equipment) * 17);
 
     equipment->helmet = NULL;
     equipment->armor = NULL;
     equipment->pants = NULL;
     equipment->boots = NULL;
+    equipment->amulet = NULL;
     equipment->ring = NULL;
     equipment->sword = NULL;
     equipment->shield = NULL;

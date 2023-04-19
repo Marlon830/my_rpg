@@ -27,6 +27,7 @@ enum object_type {
     ARMOR,
     PANTS,
     BOOTS,
+    AMULET,
     RING,
     SWORD,
     SHIELD,

@@ -7,6 +7,28 @@
 
 #include "project.h"
 
+void modify_ring(player_t *player, char *path)
+{
+    equipment_t *equipment = player->equipment;
+
+    if (path == NULL) {
+        sfSprite_destroy(equipment->ring);
+        sfTexture_destroy(equipment->ring_texture);
+        equipment->ring = NULL;
+        equipment->ring_texture = NULL;
+        free(path);
+        return;
+    }
+    if (equipment->ring != NULL) {
+        sfSprite_destroy(equipment->ring);
+        sfTexture_destroy(equipment->ring_texture);
+    }
+    equipment->ring = sfSprite_create();
+    equipment->ring_texture = sfTexture_createFromFile(path, &(sfIntRect)
+    {0, 0, 128, 256});
+    free(path);
+}
+
 void modify_sword(player_t *player, char *path)
 {
     equipment_t *equipment = player->equipment;
