@@ -86,6 +86,7 @@ struct combat_player_s {
     int nb_attack_tiles;
     enum player_state_e state;
     card_t *card;
+    combat_text_t *damage_taken;
     combat_text_t **overlay;
 };
 
@@ -137,8 +138,8 @@ struct enemy_s {
     tile_t **attack_tiles;
     combat_text_t *damage_taken;
     int nb_tiles_close;
-    int nb_attack_tiles;
     int range;
+    int nb_attack_tiles;
 };
 
 struct combat_text_s {
