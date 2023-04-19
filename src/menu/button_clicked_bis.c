@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2022
 ** my_rpg
 ** File description:
-** button_clicked.c
+** button_clicked_bis.c
 */
 
 #include "project.h"

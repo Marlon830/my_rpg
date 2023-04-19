@@ -20,6 +20,11 @@ void create_box_bis(box_t *box)
     box->clock_box = sfClock_create();
     box->type_sprite = NO_OBJECT;
     box->type_box = OTHER;
+    box->hover = sfSprite_create();
+    box->hover_texture = sfTexture_createFromFile("assets/box_hover.png", NULL);
+    box->special_texture = NULL;
+    box->is_special = false;
+    sfSprite_setTexture(box->hover, box->hover_texture, sfTrue);
 }
 
 box_t *create_box(sfVector2f pos, sfVector2f size, float more_x, float more_y)
@@ -90,14 +95,15 @@ inventory_t *create_inventory(void)
     inventory_t *inventory = malloc(sizeof(*inventory));
     sfVector2f pos = {80 + 8, 80 + 16};
     sfVector2f size = {128 + 2 * 9, 112 + 2 * 8};
-
     inventory->first_equipment = init_list_box();
     inventory->second_equipment = init_list_box();
     inventory->bag = init_list_box();
     inventory->is_active = false;
     inventory->box_selected = false;
+    inventory->shift_pressed = false;
     inventory->shape = sfRectangleShape_create();
     inventory->texture = sfTexture_createFromFile("assets/inventory.png", NULL);
+    inventory->state = NONE2;
     sfRectangleShape_setPosition(inventory->shape, pos);
     sfRectangleShape_setSize(inventory->shape, size);
     sfRectangleShape_setFillColor(inventory->shape, sfWhite);

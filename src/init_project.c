@@ -8,6 +8,21 @@
 #include "project.h"
 #include "utils.h"
 
+equipment_t *init_equipment(void)
+{
+    equipment_t *equipment = malloc(sizeof(*equipment) * 17);
+
+    equipment->helmet = NULL;
+    equipment->armor = NULL;
+    equipment->pants = NULL;
+    equipment->boots = NULL;
+    equipment->amulet = NULL;
+    equipment->ring = NULL;
+    equipment->sword = NULL;
+    equipment->shield = NULL;
+    return equipment;
+}
+
 player_t *init_player(int x, int y)
 {
     player_t *player = malloc(sizeof(player_t));
@@ -22,13 +37,7 @@ player_t *init_player(int x, int y)
     player->move = (sfVector2f) {0, 0};
     player->state = IDLE_DOWN;
     player->player_progress_state = 0;
-    player->equipment = malloc(sizeof(player->equipment) * 13);
-    player->equipment->helmet = NULL;
-    player->equipment->armor = NULL;
-    player->equipment->pants = NULL;
-    player->equipment->boots = NULL;
-    player->equipment->sword = NULL;
-    player->equipment->shield = NULL;
+    player->equipment = init_equipment();
     return player;
 }
 
@@ -44,12 +53,30 @@ act_dial_t *init_actual_dialogue(void)
     return actual_dial;
 }
 
+project_t *init_project_bis(project_t *project)
+{
+    project->main_menu = init_main_menu(project);
+    project->pause_menu = init_pause_menu(project);
+    project->actual_dial = init_actual_dialogue();
+    project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
+    project->battle_scene = create_standard_battle_scene();
+    project->quests = init_quests();
+    project->fight_win = 0;
+    project->volume = 100;
+    project->is_fullscreen = 1;
+    project->quests_button = create_text((sfVector2f) {0, 0},
+    (sfVector2f) {0.15, 0.15}, sfWhite);
+    sfText_setString(project->quests_button, "A: Quetes actuelles\nF: Quetes \
+finies\nE: Fermer journal de quetes");
+    return project;
+}
+
 project_t *init_project(void)
 {
     project_t *project = malloc(sizeof(project_t));
-    sfVideoMode mode = (sfVideoMode){1920, 1080, 32};
+    project->mode = (sfVideoMode){1920, 1080, 32};
     project->inventory = create_inventory();
-    project->window = sfRenderWindow_create(mode, "Quoi ? Feur",
+    project->window = sfRenderWindow_create(project->mode, "Quoi ? Feur",
     sfClose | sfFullscreen, NULL);
     sfRenderWindow_setFramerateLimit(project->window, 60);
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
@@ -58,12 +85,5 @@ project_t *init_project(void)
     project->scenes = NULL;
     project->scene = NULL;
     project->status = MAIN_MENU;
-    project->main_menu = init_main_menu(project);
-    project->pause_menu = init_pause_menu(project);
-    project->actual_dial = init_actual_dialogue();
-    project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
-    project->battle_scene = create_standard_battle_scene();
-    project->quests = init_quests();
-    project->fight_win = 0;
-    return project;
+    return init_project_bis(project);
 }

@@ -32,6 +32,8 @@ void finish_quest(char *quest_id, quest_t *quests)
             break;
         temp_act_quests_list = temp_act_quests_list->next;
     }
+    if (temp_act_quests_list == NULL)
+        return;
     delete_item(&quests->actual_quests_list, quest_id);
     push_back(&quests->finished_quests_list, quest_id,
     (char *) temp_act_quests_list->element, QUEST);

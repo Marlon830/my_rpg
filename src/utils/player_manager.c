@@ -95,24 +95,24 @@ void modify_boots(player_t *player, char *path)
     free(path);
 }
 
-void modify_sword(player_t *player, char *path)
+void modify_amulet(player_t *player, char *path)
 {
     equipment_t *equipment = player->equipment;
 
     if (path == NULL) {
-        sfSprite_destroy(equipment->sword);
-        sfTexture_destroy(equipment->sword_texture);
-        equipment->sword = NULL;
-        equipment->sword_texture = NULL;
+        sfSprite_destroy(equipment->amulet);
+        sfTexture_destroy(equipment->amulet_texture);
+        equipment->amulet = NULL;
+        equipment->amulet_texture = NULL;
         free(path);
         return;
     }
-    if (equipment->sword != NULL) {
-        sfSprite_destroy(equipment->sword);
-        sfTexture_destroy(equipment->sword_texture);
+    if (equipment->amulet != NULL) {
+        sfSprite_destroy(equipment->amulet);
+        sfTexture_destroy(equipment->amulet_texture);
     }
-    equipment->sword = sfSprite_create();
-    equipment->sword_texture = sfTexture_createFromFile(path, &(sfIntRect)
+    equipment->amulet = sfSprite_create();
+    equipment->amulet_texture = sfTexture_createFromFile(path, &(sfIntRect)
     {0, 0, 128, 256});
     free(path);
 }

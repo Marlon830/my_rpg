@@ -7,13 +7,15 @@
 
 #include "attack_mode.h"
 
-void set_close_tiles(tile_t **tiles, tile_t *pos, int manhattan, int dist)
+void set_close_tiles(tile_t **tiles, tile_t *pos, int b, int len)
 {
     int i = 0;
-    if (manhattan <= dist) {
-        while (tiles[i] != NULL)
+
+    if (b) {
+        while (tiles[i] != NULL && i < len)
             i++;
-        tiles[i] = pos;
+        if (i < len)
+            tiles[i] = pos;
     }
 }
 
@@ -63,7 +65,7 @@ combat_player_t *player)
             sfVector2f p2 = (sfVector2f){x, y};
             is_good_height(tile, map->tiles[x * map->height + y], &p2, scene);
             set_close_tiles(res, map->tiles[x * map->height + y],
-            manhattan_dist(pos, p2), dist);
+            manhattan_dist(pos, p2) <= dist, player->nb_tiles_close);
         }
     }
     return res;
@@ -74,8 +76,8 @@ combat_player_t *player)
 {
     combat_map_t *map = scene->map;
     player->nb_attack_tiles = count_nb_tiles(scene, map, tile, dist);
-    tile_t **res = malloc(sizeof(tile_t *) * player->nb_attack_tiles);
-    for (int i = 0; i < player->nb_attack_tiles; i++)
+    tile_t **res = malloc(sizeof(tile_t *) * (player->nb_attack_tiles + 1));
+    for (int i = 0; i <= player->nb_attack_tiles; i++)
         res[i] = NULL;
     sfVector2f pos = (sfVector2f){(tile->ind - (tile->ind % map->height)) /
     map->height, tile->ind % map->height};
@@ -87,7 +89,7 @@ combat_player_t *player)
             p2 = (sfVector2f){x, y};
             is_good_height(tile, map->tiles[x * map->height + y], &p2, NULL);
             set_close_tiles(res, map->tiles[x * map->height + y],
-            manhattan_dist(pos, p2), dist);
+            manhattan_dist(pos, p2) <= dist, player->nb_attack_tiles);
         }
     }
     return res;

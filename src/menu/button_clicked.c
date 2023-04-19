@@ -19,6 +19,7 @@ void new_game_button(project_t *project)
     project->main_menu->save = NULL;
     write(fd, "R", 1);
     project->scene = load_scene(project, 0);
+    sfMusic_stop(project->main_menu->music);
     project->main_menu->state = NAUNE;
     close(fd);
 }
@@ -35,6 +36,7 @@ void load_game_button(project_t *project)
     project->player->col->top = project->player->pos.y + 8;
     project->scene = load_scene(project, save->scene_id);
     project->main_menu->state = NAUNE;
+    sfMusic_stop(project->main_menu->music);
 }
 
 void display_play(project_t *project)

@@ -27,6 +27,8 @@ enum object_type {
     ARMOR,
     PANTS,
     BOOTS,
+    AMULET,
+    RING,
     SWORD,
     SHIELD,
 };
@@ -37,6 +39,10 @@ typedef struct box_s {
     sfSprite *sprite;
     sfTexture *sprite_texture;
     sfTexture *box_texture;
+    sfTexture *special_texture;
+    bool is_special;
+    sfSprite *hover;
+    sfTexture *hover_texture;
     char *name;
     sfText *text;
     sfFont *font;
@@ -69,6 +75,7 @@ typedef struct inventory_s {
     bool is_active;
     enum inventory_state state;
     bool box_selected;
+    bool shift_pressed;
 } inventory_t;
 
 inventory_t *create_inventory(void);
@@ -76,6 +83,7 @@ list_box_t *init_list_box(void);
 box_t *get_box_with_name(list_box_t *list, char *name);
 box_t *get_box_with_coord(project_t *project, sfVector2f pos);
 box_t *get_box_selected(project_t *project);
+box_t *get_box_with_type(inventory_t *inventory, enum object_type type);
 sfVector2f convert_mouse_position(project_t *project, sfVector2f pos);
 
 void add_box_to_list(list_box_t *list, box_t *box);
@@ -96,5 +104,9 @@ void update_hover_or_selected_box(project_t *project, box_t *box);
 void update_equipment_inventory_sprite(project_t *project, box_t *character,
 player_t *player);
 void modify_type_box(inventory_t *inventory);
+void change_elem_box(project_t *project, box_t *new_box, box_t *selected_box);
+void switch_elem_box(project_t *project, box_t *new_box, box_t *selected_box);
+int check_shift_click(project_t *project, box_t *box);
+int get_good_path(char *name);
 
 #endif

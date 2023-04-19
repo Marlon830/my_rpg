@@ -72,6 +72,10 @@ typedef struct project_s {
     sfEvent event;
     battle_scene_t *battle_scene;
     quest_t *quests;
+    sfText *quests_button;
+    sfVideoMode mode;
+    float volume;
+    int is_fullscreen;
     char *pnj_fighting;
     int fight_win;
 } project_t;
@@ -90,6 +94,7 @@ void set_pnj_dialogue(list_t *all_pnj, char *pnj_id, char *dialogue_id);
 void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj);
 void change_state_with_scene(project_t *project, int to_scene_id);
 void set_all_pnj_dialogues(project_t *project);
+void check_all_pnj_dialogue(project_t *project);
 char *get_file(char *filepath);
 
 void handle_end_of_fight(project_t *project);
@@ -104,6 +109,6 @@ player_t *init_player(int x, int y);
 act_dial_t *init_actual_dialogue(void);
 project_t *init_project(void);
 save_t *get_save(void);
-void set_state_with_end_of_fight(project_t *project, int win);
+void set_state_with_end_of_fight(project_t *project);
 
 #endif

@@ -84,6 +84,8 @@ void select_box(project_t *project, sfVector2f pos)
     sfVector2f new_pos = convert_mouse_position(project, pos);
     box_t *box = get_box_with_coord(project, new_pos);
 
+    if (check_shift_click(project, box))
+        return;
     if (box != NULL && box->sprite != NULL) {
         box->is_selected = true;
         project->inventory->state = PRESSED;

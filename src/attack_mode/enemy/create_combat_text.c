@@ -10,7 +10,7 @@
 combat_text_t *create_combat_text(sfVector2f char_pos)
 {
     sfVector2f pos = (sfVector2f){char_pos.x - 25, char_pos.y - 80};
-    combat_text_t *res = malloc(sizeof(combat_text_t));
+    combat_text_t *res = malloc(sizeof(combat_text_t) * 2);
     res->text = sfText_create();
     sfText_setColor(res->text, sfWhite);
     sfText_setOutlineThickness(res->text, 2);
