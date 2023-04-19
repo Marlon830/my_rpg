@@ -31,8 +31,8 @@ bool check_tp(project_t *project)
         &tp->rect, NULL)) {
             sfVector2f pos = tp->tp_pos;
             project->player->pos = pos;
-            project->player->col->left = project->player->pos.x;
-            project->player->col->top = project->player->pos.y + 8;
+            project->player->col->left = project->player->pos.x + 11;
+            project->player->col->top = project->player->pos.y + 16;
             project->scene = load_scene(project, tp->to_scene_id);
             change_state_with_scene(project, tp->to_scene_id);
             return true;
