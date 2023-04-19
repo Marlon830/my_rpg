@@ -72,6 +72,7 @@ typedef struct project_s {
     sfEvent event;
     battle_scene_t *battle_scene;
     quest_t *quests;
+    sfText *quests_button;
     sfVideoMode mode;
     float volume;
     int is_fullscreen;
