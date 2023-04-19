@@ -41,7 +41,7 @@ void test_map(combat_map_t *map, float height);
 combat_player_t *create_player(tile_t *tile);
 void draw_player(combat_player_t *player, sfRenderWindow *window);
 void set_player_pos(combat_player_t *player);
-void update_player(combat_player_t *player);
+void update_player(combat_player_t *player, battle_scene_t *scene);
 tile_t **get_tiles_close(battle_scene_t *scene, tile_t *tile, int dist,
 combat_player_t *player);
 tile_t **update_tiles_close(combat_player_t *player, battle_scene_t *scene,
