@@ -11,6 +11,15 @@ void draw_equipment4(project_t *project, player_t *player)
 {
     equipment_t *equip = player->equipment;
 
+    if (equip->sword != NULL) {
+        sfSprite_setTexture(equip->sword, equip->sword_texture, sfTrue);
+        sfSprite_setTextureRect(equip->sword, (sfIntRect)
+        {player->character->sprite_pos.x, player->character->sprite_pos.y,
+        player->character->sprite_size.x, player->character->sprite_size.y});
+        sfSprite_setPosition(equip->sword, player->character->pos);
+        if (!project->inventory->is_active)
+            sfRenderWindow_drawSprite(WINDOW, equip->sword, NULL);
+    }
     if (equip->shield != NULL) {
         sfSprite_setTexture(equip->shield, equip->shield_texture, sfTrue);
         sfSprite_setTextureRect(equip->shield, (sfIntRect)
@@ -25,6 +34,15 @@ void draw_equipment4(project_t *project, player_t *player)
 void draw_equipment3(project_t *project, player_t *player)
 {
     equipment_t *equip = player->equipment;
+    if (equip->amulet != NULL) {
+        sfSprite_setTexture(equip->amulet, equip->amulet_texture, sfTrue);
+        sfSprite_setTextureRect(equip->amulet, (sfIntRect)
+        {player->character->sprite_pos.x, player->character->sprite_pos.y,
+        player->character->sprite_size.x, player->character->sprite_size.y});
+        sfSprite_setPosition(equip->amulet, player->character->pos);
+        if (!project->inventory->is_active)
+            sfRenderWindow_drawSprite(WINDOW, equip->amulet, NULL);
+    }
     if (equip->ring != NULL) {
         sfSprite_setTexture(equip->ring, equip->ring_texture, sfTrue);
         sfSprite_setTextureRect(equip->ring, (sfIntRect)
@@ -33,15 +51,6 @@ void draw_equipment3(project_t *project, player_t *player)
         sfSprite_setPosition(equip->ring, player->character->pos);
         if (!project->inventory->is_active)
             sfRenderWindow_drawSprite(WINDOW, equip->ring, NULL);
-    }
-    if (equip->sword != NULL) {
-        sfSprite_setTexture(equip->sword, equip->sword_texture, sfTrue);
-        sfSprite_setTextureRect(equip->sword, (sfIntRect)
-        {player->character->sprite_pos.x, player->character->sprite_pos.y,
-        player->character->sprite_size.x, player->character->sprite_size.y});
-        sfSprite_setPosition(equip->sword, player->character->pos);
-        if (!project->inventory->is_active)
-            sfRenderWindow_drawSprite(WINDOW, equip->sword, NULL);
     }
     draw_equipment4(project, player);
 }
