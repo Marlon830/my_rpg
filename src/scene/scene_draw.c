@@ -33,9 +33,10 @@ void images_draw(project_t *project, list_t *img_list)
         img->sprite_size.y});
         sfRenderWindow_drawSprite(project->window,
         ((image_t *)tmp->element)->sprite, NULL);
+        if (!my_strcmp("player", tmp->id))
+            draw_equipment(project, project->player);
         tmp = tmp->next;
     }
-    draw_equipment(project, project->player);
 }
 
 void collision_draw(project_t *project, list_t *coll_list)
