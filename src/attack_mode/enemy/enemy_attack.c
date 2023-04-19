@@ -54,5 +54,6 @@ void enemy_get_close(enemy_t *enemy, battle_scene_t *scene)
 
 void enemy_attack(enemy_t *enemy, battle_scene_t *scene)
 {
+    if (enemy != NULL)
     enemy_get_close(enemy, scene);
 }

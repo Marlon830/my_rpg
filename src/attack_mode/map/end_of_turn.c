@@ -25,7 +25,6 @@ void end_of_turn(combat_player_t *player, hand_t *hand, battle_scene_t *scene)
             scene->enemies[j]->tiles_close = get_enemy_tiles_close(scene,
             scene->enemies[j]->actual_tile, scene->enemies[j]->
             actual_stats->move_points, scene->enemies[j]);
-        sfVertexArray_clear(scene->enemies[i]->array_character);
         set_enemy_pos(scene->enemies[i]);
         scene->enemies[i]->actual_stats->move_points =
         scene->enemies[i]->basic_stats->move_points;

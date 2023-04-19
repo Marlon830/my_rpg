@@ -9,6 +9,9 @@
 
 void set_enemy_pos(enemy_t *enemy)
 {
+    if (enemy == NULL)
+        return;
+    sfVertexArray_clear(enemy->array_character);
     int size = 20;
     sfVector2f pos = enemy->actual_tile->pos;
     sfVector2f p1 = (sfVector2f){pos.x - size, pos.y};
