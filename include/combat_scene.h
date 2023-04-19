@@ -59,9 +59,8 @@ void move_player(combat_player_t *player, tile_t *tile, combat_map_t *map,
 battle_scene_t *scene);
 
 
-int get_width_height(combat_map_t *map, char *text_information);
+int get_width_height(combat_map_t *map, FILE *stream);
 combat_map_t *load_map(char *filename, sfVector2f size);
-char *get_line(char *str, int ind);
 int count_char_until(char *str, char until);
 tile_t *get_tile_from_str(char *line, sfVector2f size, sfVector2f decalage);
 tile_t **get_tiles_attack(battle_scene_t *scene, tile_t *tile, int dist,

@@ -31,41 +31,22 @@ int count_char_until(char *str, char until)
     return i;
 }
 
-char *get_line(char *str, int ind)
+int get_width_height(combat_map_t *map, FILE *stream)
 {
-    int i = 0;
-    int c = 0;
-    int d = 0;
-
-    while (str[i] && c != ind) {
-        c += (str[i] == '\n');
-        i++;
-    }
-    if (str[i] == 0)
-        return NULL;
-    char *res = malloc(sizeof(char) * (count_char_until(str + i, '\n') + 1));
-    for (; str[i] && str[i] != '\n'; i++)
-        res[d++] = str[i];
-    return res;
-}
-
-int get_width_height(combat_map_t *map, char *text_information)
-{
-    int len = 0;
-    int width = my_getnbr(text_information);
-    len += int_len(width) + 1;
-    int height = my_getnbr(text_information + len);
-    len += int_len(height) + 1;
+    char *line = NULL;
+    size_t len;
+    getline(&line, &len, stream);
+    int width = my_getnbr(line);
+    int height = my_getnbr(line + int_len(width) + 1);
 
     map->width = width;
     map->height = height;
-    return len;
+    return my_strlen(line);
 }
 
 combat_map_t *create_map_from_file(char *filename, sfVector2f size)
 {
     combat_map_t *map = load_map(filename, size);
-    save_map(map, filename);
     map->hovered_tile = map->tiles[0];
     map->far_tile = create_tile((sfVector2f)
     {-100, -100}, sfWhite, (sfVector2f){1, 1}, 0);
