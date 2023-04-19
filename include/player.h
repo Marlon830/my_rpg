@@ -43,6 +43,14 @@ typedef struct equipment_s {
     sfTexture *shield_texture;
 } equipment_t;
 
+typedef struct player_stats_s {
+    int health;
+    int attack;
+    int defense;
+    int move_range;
+    int mana;
+} player_stats_t;
+
 typedef struct player_s {
     sfVector2f pos;
     sfFloatRect *col;
@@ -52,6 +60,7 @@ typedef struct player_s {
     int player_progress_state;
     equipment_t *equipment;
     image_t *character;
+    player_stats_t *player_stats;
 } player_t;
 
 void modify_helmet(player_t *player, char *path);

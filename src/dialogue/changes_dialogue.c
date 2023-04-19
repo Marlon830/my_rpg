@@ -14,6 +14,9 @@ void set_state_with_end_of_fight(project_t *project)
             project->player->player_progress_state = 4;
             add_elem(project->inventory->bag, "assets/object/pants_bronze.png",
             PANTS, 1);
+            set_pnj_dialogue(project->scene->pnj, "/theodore.png",
+            "Theoronfle5");
+            check_all_pnj_dialogue(project);
         }
     }
 }
@@ -67,6 +70,5 @@ void set_all_pnj_dialogues(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle4");
     if (project->player->player_progress_state == 4) {
         set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull2");
-        set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle5");
     }
 }

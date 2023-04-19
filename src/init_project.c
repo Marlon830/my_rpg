@@ -34,6 +34,7 @@ equipment_t *init_equipment(void)
 player_t *init_player(int x, int y)
 {
     player_t *player = malloc(sizeof(player_t));
+
     player->col = malloc(sizeof(sfFloatRect));
     player->pos.x = x;
     player->pos.y = y;
@@ -46,6 +47,7 @@ player_t *init_player(int x, int y)
     player->state = IDLE_DOWN;
     player->player_progress_state = 0;
     player->equipment = init_equipment();
+    player->player_stats = init_stats();
     return player;
 }
 
@@ -75,7 +77,7 @@ project_t *init_project_bis(project_t *project)
     project->quests_button = create_text((sfVector2f) {0, 0},
     (sfVector2f) {0.15, 0.15}, sfWhite);
     sfText_setString(project->quests_button, "A: Quetes actuelles\nF: Quetes \
-finies\nE: Fermer journal de quetes");
+finies");
     return project;
 }
 

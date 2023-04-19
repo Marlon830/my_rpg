@@ -111,5 +111,6 @@ project_t *init_project(void);
 equipment_t *init_equipment(void);
 save_t *get_save(project_t *project);
 void set_state_with_end_of_fight(project_t *project);
+player_stats_t *init_stats(void);
 
 #endif
