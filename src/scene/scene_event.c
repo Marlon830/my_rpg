@@ -77,21 +77,6 @@ void inventory_event(project_t *project, sfEvent event)
     inventory_event3(project, event);
 }
 
-void new_save(project_t *project)
-{
-    int fd = open("save", O_WRONLY | O_CREAT, 0644);
-    char *scene_id = my_put_nbr(project->scene_id);
-    char *posx = my_put_nbr(project->player->pos.x);
-    char *posy = my_put_nbr(project->player->pos.y);
-    char *player_state = my_put_nbr(project->player->player_progress_state);
-
-    write(fd, my_strcat(scene_id, "\n"), my_strlen(scene_id) + 1);
-    write(fd, my_strcat(posx, " "), my_strlen(posx) + 1);
-    write(fd, my_strcat(posy, "\n"), my_strlen(posy) + 1);
-    write(fd, my_strcat(player_state, "\n"), my_strlen(player_state) + 1);
-    close(fd);
-}
-
 void scene_event(project_t *project)
 {
     sfEvent event;

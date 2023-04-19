@@ -33,3 +33,15 @@ box_t *get_box_with_type(inventory_t *inventory, enum object_type type)
     }
     return NULL;
 }
+
+box_t *get_empty_box(inventory_t *inventory)
+{
+    list_box_t *temp = inventory->bag;
+
+    while (temp != NULL) {
+        if (temp->box->sprite == NULL)
+            return temp->box;
+        temp = temp->next;
+    }
+    return NULL;
+}

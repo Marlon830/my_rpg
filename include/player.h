@@ -84,5 +84,6 @@ void modify_shield(player_t *player, char *path);
 void draw_equipment(project_t *project, player_t *player);
 void update_equipment(project_t *project, inventory_t *inventory);
 void update_stats(project_t *project);
+void destroy_equipment(equipment_t *equipment);
 
 #endif

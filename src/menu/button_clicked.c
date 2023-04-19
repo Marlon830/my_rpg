@@ -17,6 +17,10 @@ void new_game_button(project_t *project)
     project->player->pos.y = 416;
     project->player->player_progress_state = 0;
     project->main_menu->save = NULL;
+    destroy_inventory(project->inventory);
+    project->inventory = create_inventory();
+    destroy_equipment(project->player->equipment);
+    project->player->equipment = init_equipment();
     write(fd, "R", 1);
     project->scene = load_scene(project, 0);
     sfMusic_stop(project->main_menu->music);

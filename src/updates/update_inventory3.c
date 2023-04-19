@@ -58,6 +58,16 @@ void update_hover_or_selected_box(project_t *project, box_t *box)
     }
 }
 
+int unequip_equipment(project_t *project, box_t *equip_box)
+{
+    box_t *empty_box = get_empty_box(project->inventory);
+
+    if (empty_box == NULL)
+        return 0;
+    change_elem_box(project, empty_box, equip_box);
+    return 0;
+}
+
 int check_shift_click(project_t *project, box_t *box)
 {
     box_t *good_box;
@@ -67,7 +77,7 @@ int check_shift_click(project_t *project, box_t *box)
         return 0;
     good_box = get_box_with_type(project->inventory, box->type_sprite);
     if (good_box->sprite != NULL && my_strcmp(good_box->name, box->name) == 0)
-        return 0;
+        return unequip_equipment(project, box);
     if (good_box->sprite == NULL) {
         change_elem_box(project, good_box, box);
         return 1;
