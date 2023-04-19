@@ -26,6 +26,7 @@ equipment_t *init_equipment(void)
 player_t *init_player(int x, int y)
 {
     player_t *player = malloc(sizeof(player_t));
+
     player->col = malloc(sizeof(sfFloatRect));
     player->pos.x = x;
     player->pos.y = y;
@@ -38,6 +39,7 @@ player_t *init_player(int x, int y)
     player->state = IDLE_DOWN;
     player->player_progress_state = 0;
     player->equipment = init_equipment();
+    player->player_stats = init_stats();
     return player;
 }
 

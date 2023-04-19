@@ -110,5 +110,6 @@ act_dial_t *init_actual_dialogue(void);
 project_t *init_project(void);
 save_t *get_save(void);
 void set_state_with_end_of_fight(project_t *project);
+player_stats_t *init_stats(void);
 
 #endif
