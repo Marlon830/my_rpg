@@ -111,4 +111,9 @@ project_t *init_project(void);
 save_t *get_save(void);
 void set_state_with_end_of_fight(project_t *project);
 
+void theoronfle_quest(project_t *project, all_pnjs_t *act_pnj);
+void bed_quest(project_t *project, all_pnjs_t *act_pnj);
+void skull_quest(project_t *project, all_pnjs_t *act_pnj);
+void door_quest(project_t *project, all_pnjs_t *act_pnj);
+
 #endif
