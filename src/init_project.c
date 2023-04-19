@@ -55,6 +55,10 @@ project_t *init_project_bis(project_t *project)
     project->fight_win = 0;
     project->volume = 100;
     project->is_fullscreen = 1;
+    project->quests_button = create_text((sfVector2f) {0, 0},
+    (sfVector2f) {0.15, 0.15}, sfWhite);
+    sfText_setString(project->quests_button, "A: Quetes actuelles\nF: Quetes \
+finies\nE: Fermer journal de quetes");
     return project;
 }
 
