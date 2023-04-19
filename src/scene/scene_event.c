@@ -18,10 +18,10 @@ void inventory_event3(project_t *project, sfEvent event)
     PRESSED)
         unselect_box(project, (sfVector2f) {event.mouseButton.x,
         event.mouseButton.y});
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyI)
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyU)
         add_elem(project->inventory->bag, "assets/object/helmet_gold.png",
         HELMET, 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyU)
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyP)
         add_elem(project->inventory->bag, "assets/object/boots_gold.png",
         BOOTS, 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyLShift)
@@ -32,21 +32,21 @@ void inventory_event3(project_t *project, sfEvent event)
 
 void inventory_event2(project_t *project, sfEvent event)
 {
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyJ)
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyI)
         add_elem(project->inventory->bag, "assets/object/armor_gold.png",
         ARMOR, 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyO)
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyK)
         add_elem(project->inventory->bag, "assets/object/ring_gelano.png",
         RING, 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyL)
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyO)
         add_elem(project->inventory->bag, "assets/object/pants_gold.png",
         PANTS, 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyM)
         add_elem(project->inventory->bag, "assets/object/shield_gold.png",
         SHIELD, 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyP)
-        add_elem(project->inventory->bag, "assets/object/helmet_bronze.png",
-        HELMET, 1);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyJ)
+        add_elem(project->inventory->bag, "assets/object/amulet_emerald.png",
+        AMULET, 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyC)
         delete_elem(project->inventory->bag, "assets/object/apple.png", 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyE)
@@ -61,15 +61,18 @@ void inventory_event(project_t *project, sfEvent event)
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyB)
         add_elem(project->inventory->bag, "assets/object/strawberry.png",
         OTHER, 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyF)
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyL)
         add_elem(project->inventory->bag, "assets/object/sword_silver.png",
         SWORD, 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyG)
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyL)
         add_elem(project->inventory->bag, "assets/object/sword_gold.png",
         SWORD, 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyH)
-        add_elem(project->inventory->bag, "assets/object/armor_silver.png",
-        ARMOR, 1);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyJ)
+        add_elem(project->inventory->bag, "assets/object/amulet_ruby.png",
+        AMULET, 1);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyJ)
+        add_elem(project->inventory->bag, "assets/object/amulet_diamond.png",
+        AMULET, 1);
     inventory_event2(project, event);
     inventory_event3(project, event);
 }
