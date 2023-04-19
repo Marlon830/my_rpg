@@ -1,5 +1,5 @@
 Name:Skull1
-Image:ronfle.png
+Image:sleep_skull.png
 Dialogue#
 ....
 -

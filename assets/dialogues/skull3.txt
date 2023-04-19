@@ -1,0 +1,17 @@
+Name:Skull3
+Image:sad_skull.png
+Dialogue#
+Roooh j'ai perdu
+-
+Je devine que tu pars a la recherche
+des crampter
+-
+C'est dangereux de partir tout seul,
+prends cette epee.
+-
+J'ai vraiment pas de peau aujourd'hui
+-
+Rien que ce midi sur mon poulet
+je suis tombe sur un os
+-
+#

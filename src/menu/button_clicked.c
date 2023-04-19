@@ -15,6 +15,7 @@ void new_game_button(project_t *project)
     project->status = GAME;
     project->player->pos.x = 384;
     project->player->pos.y = 416;
+    project->inventory = create_inventory();
     project->player->player_progress_state = 0;
     project->main_menu->save = NULL;
     destroy_inventory(project->inventory);
