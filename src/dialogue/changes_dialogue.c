@@ -7,7 +7,7 @@
 
 #include "project.h"
 
-void set_state_with_end_of_fight(project_t *project, int win)
+void set_state_with_end_of_fight(project_t *project)
 {
     if (project->fight_win == 1) {
         if (!my_strcmp("/theodore.png", project->pnj_fighting)) {

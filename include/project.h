@@ -109,6 +109,6 @@ player_t *init_player(int x, int y);
 act_dial_t *init_actual_dialogue(void);
 project_t *init_project(void);
 save_t *get_save(void);
-void set_state_with_end_of_fight(project_t *project, int win);
+void set_state_with_end_of_fight(project_t *project);
 
 #endif

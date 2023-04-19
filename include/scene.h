@@ -24,7 +24,7 @@ typedef struct button_s {
     sfTexture *texture_hover;
     sfBool (*is_clicked)(struct button_s *button, sfMouseButtonEvent *evt);
     void (*clicked)(project_t *project);
-    void (*update)(struct button_s *button, project_t *project, sfEvent event);
+    void (*update)(struct button_s *button, project_t *project);
 } button_t;
 
 typedef struct image_s {
@@ -88,7 +88,7 @@ sfText *create_text(sfVector2f pos, sfVector2f size, sfColor color);
 sfRectangleShape *create_rect(void);
 tp_t *create_tp(sfVector2f pos, sfVector2f tp_pos, int to_scene_id);
 void images_draw(project_t *project, list_t *img_list);
-void update_button(button_t *btn, project_t *project, sfEvent event);
+void update_button(button_t *btn, project_t *project);
 button_t *create_button(sfVector2f position , sfVector2f size,
 char *path, void (*clicked)(project_t *project));
 void draw_button(button_t *btn, project_t *project);

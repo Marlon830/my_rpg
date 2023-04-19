@@ -16,7 +16,7 @@ int get_good_path(char *name)
     return pos + 1;
 }
 
-box_t *get_box_with_type(inventory_t *inventory, int type)
+box_t *get_box_with_type(inventory_t *inventory, enum object_type type)
 {
     list_box_t *temp = inventory->first_equipment;
 
