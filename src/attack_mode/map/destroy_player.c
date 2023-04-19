@@ -12,7 +12,7 @@ void destroy_player(combat_player_t *player)
     free(player->actual_stats);
     sfVertexArray_destroy(player->array_character);
     free(player->basic_stats);
-    free(player);
     for (int i = 0; i < 4; i++)
         destroy_combat_text(player->overlay[i]);
+    free(player);
 }
