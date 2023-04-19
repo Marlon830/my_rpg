@@ -84,6 +84,7 @@ box_t *get_box_with_name(list_box_t *list, char *name);
 box_t *get_box_with_coord(project_t *project, sfVector2f pos);
 box_t *get_box_selected(project_t *project);
 box_t *get_box_with_type(inventory_t *inventory, enum object_type type);
+box_t *get_empty_box(inventory_t *inventory);
 sfVector2f convert_mouse_position(project_t *project, sfVector2f pos);
 
 void add_box_to_list(list_box_t *list, box_t *box);
