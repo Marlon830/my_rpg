@@ -44,24 +44,33 @@ void change_state_with_scene(project_t *project, int to_scene_id)
         project->player->player_progress_state = 2;
 }
 
+void set_all_pnj_dialogues_bis(project_t *project)
+{
+    if (project->player->player_progress_state >= 3)
+        set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle4");
+    if (project->player->player_progress_state >= 4) {
+        set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull2");
+        set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle5");
+    }
+    if (project->player->player_progress_state >= 5) {
+        set_pnj_dialogue(project->scene->pnj, "/door.png", "Dungeon2");
+        set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull3");
+    }
+}
+
 void set_all_pnj_dialogues(project_t *project)
 {
-    if (project->player->player_progress_state == 0) {
+    if (project->player->player_progress_state >= 0) {
         set_pnj_dialogue(project->scene->pnj, "/door.png", "Dungeon1");
         set_pnj_dialogue(project->scene->pnj, "/bed.png", "Bed");
         set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull1");
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle");
     }
-    if (project->player->player_progress_state == 1) {
+    if (project->player->player_progress_state >= 1) {
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle2");
         add_quest("Aller dans la maison", project->quests, "QUETE1");
     }
-    if (project->player->player_progress_state == 2)
+    if (project->player->player_progress_state >= 2)
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle3");
-    if (project->player->player_progress_state == 3)
-        set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle4");
-    if (project->player->player_progress_state == 4)
-        set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull2");
-    if (project->player->player_progress_state == 5)
-        set_pnj_dialogue(project->scene->pnj, "/door.png", "Dungeon2");
+    set_all_pnj_dialogues_bis(project);
 }
