@@ -36,8 +36,8 @@ void inventory_event2(project_t *project, sfEvent event)
         add_elem(project->inventory->bag, "assets/object/armor_gold.png",
         ARMOR, 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyO)
-        add_elem(project->inventory->bag, "assets/object/pants_bronze.png",
-        PANTS, 1);
+        add_elem(project->inventory->bag, "assets/object/ring_gelano.png",
+        RING, 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyL)
         add_elem(project->inventory->bag, "assets/object/pants_gold.png",
         PANTS, 1);

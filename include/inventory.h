@@ -27,6 +27,7 @@ enum object_type {
     ARMOR,
     PANTS,
     BOOTS,
+    RING,
     SWORD,
     SHIELD,
 };
@@ -105,5 +106,6 @@ void modify_type_box(inventory_t *inventory);
 void change_elem_box(project_t *project, box_t *new_box, box_t *selected_box);
 void switch_elem_box(project_t *project, box_t *new_box, box_t *selected_box);
 int check_shift_click(project_t *project, box_t *box);
+int get_good_path(char *name);
 
 #endif

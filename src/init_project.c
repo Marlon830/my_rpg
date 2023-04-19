@@ -8,6 +8,20 @@
 #include "project.h"
 #include "utils.h"
 
+equipment_t *init_equipment(void)
+{
+    equipment_t *equipment = malloc(sizeof(*equipment) * 15);
+
+    equipment->helmet = NULL;
+    equipment->armor = NULL;
+    equipment->pants = NULL;
+    equipment->boots = NULL;
+    equipment->ring = NULL;
+    equipment->sword = NULL;
+    equipment->shield = NULL;
+    return equipment;
+}
+
 player_t *init_player(int x, int y)
 {
     player_t *player = malloc(sizeof(player_t));
@@ -22,13 +36,7 @@ player_t *init_player(int x, int y)
     player->move = (sfVector2f) {0, 0};
     player->state = IDLE_DOWN;
     player->player_progress_state = 0;
-    player->equipment = malloc(sizeof(player->equipment) * 13);
-    player->equipment->helmet = NULL;
-    player->equipment->armor = NULL;
-    player->equipment->pants = NULL;
-    player->equipment->boots = NULL;
-    player->equipment->sword = NULL;
-    player->equipment->shield = NULL;
+    player->equipment = init_equipment();
     return player;
 }
 
