@@ -36,7 +36,7 @@ char *list_texture[7], int count)
     list_box_t *temp = inventory->second_equipment;
 
     temp = temp->next;
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
         temp->box->special_texture = sfTexture_createFromFile(
         list_texture[count], NULL);
         sfRectangleShape_setTexture(temp->box->shape,
@@ -53,9 +53,9 @@ void modify_type_box(inventory_t *inventory)
 {
     list_box_t *temp = inventory->first_equipment;
     int type_box = HELMET;
-    char *list_texture[7] = {"assets/box_helmet.png", "assets/box_armor.png",
-    "assets/box_pants.png", "assets/box_boots.png","assets/box_sword.png",
-    "assets/box_shield.png", NULL};
+    char *list_texture[8] = {"assets/box_helmet.png", "assets/box_armor.png",
+    "assets/box_pants.png", "assets/box_boots.png", "assets/box_ring.png",
+    "assets/box_sword.png", "assets/box_shield.png", NULL};
     int count = 0;
 
     while (temp != NULL) {
