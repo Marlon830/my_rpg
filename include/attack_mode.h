@@ -6,8 +6,6 @@
 */
 
 #pragma once
-
-
 #include "attack_structs.h"
 #include "combat_scene.h"
 #include "spells.h"
@@ -44,3 +42,5 @@ sfVector2f *pos, battle_scene_t *scene);
 void set_close_tiles(tile_t **tiles, tile_t *pos, int b, int len);
 void set_enemy_pos(enemy_t *enemy);
 void set_player_stats(combat_player_t *player);
+void enemy_get_close_to_player(enemy_t *enemy, battle_scene_t *scene);
+sfVector2f get_pos_in_tiles(combat_map_t *map, tile_t *tile);

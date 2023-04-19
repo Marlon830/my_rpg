@@ -43,6 +43,7 @@ combat_player_t *create_player(tile_t *tile)
     res->attack_tiles = NULL;
     res->card = NULL;
     res->overlay = malloc(sizeof(combat_text_t *) * 5);
+    res->damage_taken = create_combat_text((sfVector2f){0, 0});
     set_overlay_player(res);
     return res;
 }
