@@ -11,6 +11,7 @@ int int_len(int x)
 {
     int len = 0;
     int tmp = x;
+
     if (x == 0)
         return 1;
     while (tmp) {

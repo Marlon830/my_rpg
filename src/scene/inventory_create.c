@@ -95,7 +95,6 @@ inventory_t *create_inventory(void)
     inventory_t *inventory = malloc(sizeof(*inventory));
     sfVector2f pos = {80 + 8, 80 + 16};
     sfVector2f size = {128 + 2 * 9, 112 + 2 * 8};
-
     inventory->first_equipment = init_list_box();
     inventory->second_equipment = init_list_box();
     inventory->bag = init_list_box();
@@ -104,6 +103,7 @@ inventory_t *create_inventory(void)
     inventory->shift_pressed = false;
     inventory->shape = sfRectangleShape_create();
     inventory->texture = sfTexture_createFromFile("assets/inventory.png", NULL);
+    inventory->state = NONE2;
     sfRectangleShape_setPosition(inventory->shape, pos);
     sfRectangleShape_setSize(inventory->shape, size);
     sfRectangleShape_setFillColor(inventory->shape, sfWhite);

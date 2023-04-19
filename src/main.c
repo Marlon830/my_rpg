@@ -37,6 +37,11 @@ void main_loop(project_t *project)
         sfRenderWindow_display(project->window);
     }
     scene_destroy(project->scene);
+    sfSound_stop(project->main_menu->sound);
+    sfSound_destroy(project->main_menu->sound);
+    sfSoundBuffer_destroy(project->main_menu->soundbuffer);
+    sfMusic_stop(project->main_menu->music);
+    sfMusic_destroy(project->main_menu->music);
     sfRenderWindow_destroy(project->window);
     free(project);
 }

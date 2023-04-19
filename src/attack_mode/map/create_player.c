@@ -27,6 +27,7 @@ void set_overlay_player(combat_player_t *player)
     player->overlay[1] = create_combat_text((sfVector2f){100, 200});
     player->overlay[2] = create_combat_text((sfVector2f){100, 300});
     player->overlay[3] = create_combat_text((sfVector2f){100, 400});
+    player->overlay[4] = NULL;
 }
 
 combat_player_t *create_player(tile_t *tile)
@@ -41,7 +42,7 @@ combat_player_t *create_player(tile_t *tile)
     res->state = MOVING;
     res->attack_tiles = NULL;
     res->card = NULL;
-    res->overlay = malloc(sizeof(combat_text_t *) * 4);
+    res->overlay = malloc(sizeof(combat_text_t *) * 5);
     set_overlay_player(res);
     return res;
 }

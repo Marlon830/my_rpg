@@ -15,7 +15,7 @@ void update_slider(project_t *project, slider_t *slider)
     project->volume = ans > 0 ? ans : 0;
 }
 
-void update_settings(project_t *project)
+void update_button_settings(project_t *project)
 {
     button_click(project->main_menu->fullscreen, project, project->event);
     button_click(project->main_menu->windowed, project,
@@ -32,6 +32,11 @@ void update_settings(project_t *project)
     project, project->event);
     update_button(project->main_menu->second_resolution,
     project, project->event);
+}
+
+void update_settings(project_t *project)
+{
+    update_button_settings(project);
     sfRenderWindow_drawText(WINDOW, project->main_menu->act_volume, NULL);
     update_slider(project, project->main_menu->slider);
     sfRenderWindow_drawRectangleShape(WINDOW,

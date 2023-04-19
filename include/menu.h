@@ -55,6 +55,7 @@ typedef struct main_menu_s {
     sfView *camera;
     sfMusic *music;
     sfSound *sound;
+    sfSoundBuffer *soundbuffer;
     slider_t *slider;
     int is_sliding;
     save_t *save;
@@ -89,5 +90,10 @@ void pause_menu_event(project_t *project);
 void draw_pause_menu(project_t *project);
 void back_menu_button(project_t *project);
 void button_click(button_t *button, project_t *project, sfEvent event);
+main_menu_t *init_main_menu_bis(main_menu_t *main_menu);
+main_menu_t *init_main_menu_ter(main_menu_t *main_menu);
+slider_t *create_slider(sfVector2f pos, sfVector2f size, sfColor background);
+void next_init_main_menu(main_menu_t *main_menu);
+void slider_event(project_t *project, sfEvent event);
 
 #endif

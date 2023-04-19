@@ -10,6 +10,7 @@
 void set_close_tiles(tile_t **tiles, tile_t *pos, int manhattan, int dist)
 {
     int i = 0;
+
     if (manhattan <= dist) {
         while (tiles[i] != NULL)
             i++;

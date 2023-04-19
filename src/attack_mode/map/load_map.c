@@ -13,6 +13,7 @@ sfVector2f pos)
     int height = count_char_in_str(text_information, '\n');
     char *line;
     tile_t **tiles = malloc(sizeof(tile_t *) * height);
+
     for (int i = 0; i < height; i++) {
         line = get_line(text_information, i);
         if (line != NULL) {
@@ -37,7 +38,7 @@ combat_map_t *load_map(char *filename, sfVector2f size)
     stat(filename, &st);
     char *text_information = malloc(sizeof(char) * (st.st_size + 1));
     read(fd,text_information ,st.st_size);
-    text_information[st.st_size] = '\0';
+    text_information[st.st_size] = 0;
     text_information += get_width_height(res, text_information);
     pos = (sfVector2f){960 - (res->width * size.x) / 2, 500};
     res->tiles = put_tiles(text_information, size, pos);

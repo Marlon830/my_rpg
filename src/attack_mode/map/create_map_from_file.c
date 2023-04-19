@@ -16,6 +16,7 @@ tile_t *get_tile_from_str(char *line, sfVector2f size, sfVector2f decalage)
     int y = my_getnbr(line + len);
     len += int_len(y) + 1;
     float height = my_getnbr(line + len);
+
     sfVector2f pos = (sfVector2f){(x * tileSize + y * tileSize)
             / 2 + decalage.x, (x * tileSize - y * tileSize) /
             (2 * (size.x / size.y)) + decalage.y};
@@ -35,6 +36,7 @@ char *get_line(char *str, int ind)
     int i = 0;
     int c = 0;
     int d = 0;
+
     while (str[i] && c != ind) {
         c += (str[i] == '\n');
         i++;
@@ -63,8 +65,6 @@ int get_width_height(combat_map_t *map, char *text_information)
 combat_map_t *create_map_from_file(char *filename, sfVector2f size)
 {
     combat_map_t *map = load_map(filename, size);
-    save_map(map, filename);
-    map = load_map(filename, size);
     save_map(map, filename);
     map->hovered_tile = map->tiles[0];
     map->far_tile = create_tile((sfVector2f)
