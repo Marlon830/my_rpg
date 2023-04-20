@@ -20,6 +20,9 @@ void set_state_with_end_of_fight(project_t *project)
         }
         if (!my_strcmp("/skull.png", project->pnj_fighting)) {
             project->player->player_progress_state = 5;
+            finish_quest("QUETE2", project->quests);
+            add_quest("Aller au salon de coiffure en ville", project->quests,
+            "QUETE3");
             add_elem(project->inventory->bag,
             "assets/object/sword_bronze.png", SWORD, 1);
             set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull3");
