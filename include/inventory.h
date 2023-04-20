@@ -110,5 +110,8 @@ void switch_elem_box(project_t *project, box_t *new_box, box_t *selected_box);
 int check_shift_click(project_t *project, box_t *box);
 int get_good_path(char *name);
 void destroy_inventory(inventory_t *inventory);
+void switch_stat(project_t *project, box_t *box, box_t *box2);
+void add_or_delete_stat(project_t *project, box_t *new_box,
+box_t *selected_box);
 
 #endif
