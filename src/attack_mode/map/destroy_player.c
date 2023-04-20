@@ -14,5 +14,6 @@ void destroy_player(combat_player_t *player)
     free(player->basic_stats);
     for (int i = 0; i < 4; i++)
         destroy_combat_text(player->overlay[i]);
+    destroy_image(player->sprite);
     free(player);
 }

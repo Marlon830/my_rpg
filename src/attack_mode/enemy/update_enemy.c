@@ -11,6 +11,8 @@ void update_enemies(enemy_t **enemies, int nb_enemies, battle_scene_t *scene)
 {
     int b = 0;
     for (int i = 0; i < nb_enemies; i++) {
+        sfSprite_setPosition(enemies[i]->sprite->sprite,
+        enemies[i]->actual_tile->pos);
         enemies[i]->tiles_close = get_enemy_tiles_close(scene,enemies[i]
         ->actual_tile, enemies[i]->actual_stats->move_points, enemies[i]);
         if (enemies[i] != NULL)

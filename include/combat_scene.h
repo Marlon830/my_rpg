@@ -66,7 +66,7 @@ tile_t *get_tile_from_str(char *line, sfVector2f size, sfVector2f decalage);
 tile_t **get_tiles_attack(battle_scene_t *scene, tile_t *tile, int dist,
 combat_player_t *player);
 
-enemy_t *create_enemy(tile_t *tile);
+enemy_t *create_enemy(tile_t *tile, char *sprite_name);
 enemy_t **create_random_enemies(combat_map_t *map, int nb_enemy);
 void draw_enemy(enemy_t *enemy, sfRenderWindow *window);
 enemy_t **create_enemies_from_txt(char *filename, combat_map_t *map,
@@ -88,3 +88,5 @@ void destroy_hand(hand_t *hand);
 void destroy_battle_scene(battle_scene_t *scene);
 
 void update_combat_text(char *str, sfText *text);
+char *get_str_until(char *str, char sep);
+void destroy_image(image_t *image);

@@ -15,5 +15,6 @@ void destroy_enemy(enemy_t *enemy)
     free(enemy->actual_stats);
     sfVertexArray_destroy(enemy->array_character);
     destroy_combat_text(enemy->damage_taken);
+    destroy_image(enemy->sprite);
     free(enemy);
 }

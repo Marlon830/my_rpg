@@ -19,6 +19,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include "scene.h"
 
 typedef struct combat_player_s combat_player_t;
 typedef struct battle_scene_s battle_scene_t;
@@ -88,6 +89,7 @@ struct combat_player_s {
     card_t *card;
     combat_text_t *damage_taken;
     combat_text_t **overlay;
+    image_t *sprite;
 };
 
 
@@ -140,6 +142,7 @@ struct enemy_s {
     int nb_tiles_close;
     int range;
     int nb_attack_tiles;
+    image_t *sprite;
 };
 
 struct combat_text_s {
