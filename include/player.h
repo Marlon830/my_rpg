@@ -49,11 +49,16 @@ typedef struct player_stats_s {
     int defense_value;
     int move_range_value;
     int mana_value;
-    sfText *health_text;
-    sfText *attack_text;
-    sfText *defense_text;
-    sfText *move_range_text;
-    sfText *mana_text;
+    sfText *health_name;
+    sfText *attack_name;
+    sfText *defense_name;
+    sfText *move_range_name;
+    sfText *mana_name;
+    sfText *health_text_value;
+    sfText *attack_text_value;
+    sfText *defense_text_value;
+    sfText *move_range_text_value;
+    sfText *mana_text_value;
     image_t *health_image;
     image_t *attack_image;
     image_t *defense_image;
@@ -85,5 +90,9 @@ void draw_equipment(project_t *project, player_t *player);
 void update_equipment(project_t *project, inventory_t *inventory);
 void update_stats(project_t *project);
 void destroy_equipment(equipment_t *equipment);
+char *get_stat_path(char *path);
+void add_stat(player_t *player, char *path);
+void remove_stat(player_t *player, char *path);
+char *get_box_path(box_t *box);
 
 #endif

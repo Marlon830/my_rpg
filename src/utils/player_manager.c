@@ -16,7 +16,6 @@ void modify_helmet(player_t *player, char *path)
         sfTexture_destroy(equipment->helmet_texture);
         equipment->helmet = NULL;
         equipment->helmet_texture = NULL;
-        free(path);
         return;
     }
     if (equipment->helmet != NULL) {
@@ -38,7 +37,6 @@ void modify_armor(player_t *player, char *path)
         sfTexture_destroy(equipment->armor_texture);
         equipment->armor = NULL;
         equipment->armor_texture = NULL;
-        free(path);
         return;
     }
     if (equipment->armor != NULL) {
@@ -60,7 +58,6 @@ void modify_pants(player_t *player, char *path)
         sfTexture_destroy(equipment->pants_texture);
         equipment->pants = NULL;
         equipment->pants_texture = NULL;
-        free(path);
         return;
     }
     if (equipment->pants != NULL) {
@@ -82,7 +79,6 @@ void modify_boots(player_t *player, char *path)
         sfTexture_destroy(equipment->boots_texture);
         equipment->boots = NULL;
         equipment->boots_texture = NULL;
-        free(path);
         return;
     }
     if (equipment->boots != NULL) {
@@ -104,7 +100,6 @@ void modify_amulet(player_t *player, char *path)
         sfTexture_destroy(equipment->amulet_texture);
         equipment->amulet = NULL;
         equipment->amulet_texture = NULL;
-        free(path);
         return;
     }
     if (equipment->amulet != NULL) {
