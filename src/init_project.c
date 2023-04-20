@@ -86,8 +86,8 @@ project_t *init_project(void)
     project_t *project = malloc(sizeof(project_t));
     project->mode = (sfVideoMode){1920, 1080, 32};
     project->inventory = create_inventory();
-    project->window = sfRenderWindow_create(project->mode, "Quoi ? Feur",
-    sfClose | sfFullscreen, NULL);
+    project->window = sfRenderWindow_create(project->mode,
+    "Le Quoi ? Feur et la quete du crampter", sfClose | sfFullscreen, NULL);
     sfRenderWindow_setFramerateLimit(project->window, 60);
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
     project->clock = sfClock_create();
