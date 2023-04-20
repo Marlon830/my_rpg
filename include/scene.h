@@ -22,7 +22,7 @@ typedef struct button_s {
     sfSprite *sprite;
     sfTexture *texture;
     sfTexture *texture_hover;
-    sfBool (*is_clicked)(struct button_s *button, sfMouseButtonEvent *evt);
+    sfBool (*is_clicked)(project_t *project, struct button_s *button, sfMouseButtonEvent *evt);
     void (*clicked)(project_t *project);
     void (*update)(struct button_s *button, project_t *project);
 } button_t;
