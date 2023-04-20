@@ -35,6 +35,7 @@ void load_game_button(project_t *project)
 
     project->status = GAME;
     project->player->player_progress_state = save->player_state;
+    project->player->player_second_state = save->player_second_state;
     project->player->pos.x = save->pos.x;
     project->player->pos.y = save->pos.y;
     project->player->col->left = project->player->pos.x;

@@ -38,6 +38,7 @@ typedef struct save_s {
     int scene_id;
     sfVector2f pos;
     int player_state;
+    int player_second_state;
 } save_t;
 
 typedef struct main_menu_s {
