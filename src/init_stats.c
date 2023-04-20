@@ -19,6 +19,14 @@ player_stats_t *init_stats_bis(player_stats_t *player_stats)
     "object/boots_silver.png", (sfIntRect) {0, 0, 16, 16}, (sfVector2f) {0, 0});
     player_stats->mana_image = create_image((sfVector2f) {0, 0},
     "stats/mana.png", (sfIntRect) {0, 0, 16, 16}, (sfVector2f) {0, 0});
+    player_stats->attack_name = create_text((sfVector2f)
+    {0, 0}, (sfVector2f) {0.08, 0.08}, sfWhite);
+    player_stats->defense_name = create_text((sfVector2f)
+    {0, 0}, (sfVector2f) {0.08, 0.08}, sfWhite);
+    player_stats->move_range_name = create_text((sfVector2f)
+    {0, 0}, (sfVector2f) {0.08, 0.08}, sfWhite);
+    player_stats->mana_name = create_text((sfVector2f)
+    {0, 0}, (sfVector2f) {0.08, 0.08}, sfWhite);
     return player_stats;
 }
 
@@ -31,15 +39,17 @@ player_stats_t *init_stats(void)
     player_stats->health_value = 10;
     player_stats->mana_value = 10;
     player_stats->move_range_value = 10;
-    player_stats->health_text = create_text((sfVector2f)
+    player_stats->health_text_value = create_text((sfVector2f)
     {0, 0}, (sfVector2f) {0.1, 0.1}, sfWhite);
-    player_stats->attack_text = create_text((sfVector2f)
+    player_stats->attack_text_value = create_text((sfVector2f)
     {0, 0}, (sfVector2f) {0.1, 0.1}, sfWhite);
-    player_stats->defense_text = create_text((sfVector2f)
+    player_stats->defense_text_value = create_text((sfVector2f)
     {0, 0}, (sfVector2f) {0.1, 0.1}, sfWhite);
-    player_stats->move_range_text = create_text((sfVector2f)
+    player_stats->move_range_text_value = create_text((sfVector2f)
     {0, 0}, (sfVector2f) {0.1, 0.1}, sfWhite);
-    player_stats->mana_text = create_text((sfVector2f)
+    player_stats->mana_text_value = create_text((sfVector2f)
     {0, 0}, (sfVector2f) {0.1, 0.1}, sfWhite);
+    player_stats->health_name = create_text((sfVector2f)
+    {0, 0}, (sfVector2f) {0.08, 0.08}, sfWhite);
     return init_stats_bis(player_stats);
 }
