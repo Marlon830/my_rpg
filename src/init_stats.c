@@ -36,9 +36,9 @@ player_stats_t *init_stats(void)
 
     player_stats->attack_value = 10;
     player_stats->defense_value = 10;
-    player_stats->health_value = 10;
+    player_stats->health_value = 100;
     player_stats->mana_value = 10;
-    player_stats->move_range_value = 10;
+    player_stats->move_range_value = 3;
     player_stats->health_text_value = create_text((sfVector2f)
     {0, 0}, (sfVector2f) {0.1, 0.1}, sfWhite);
     player_stats->attack_text_value = create_text((sfVector2f)
