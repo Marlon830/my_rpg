@@ -16,7 +16,7 @@ enemy_t **create_random_enemies(combat_map_t *map, int nb_enemy)
     for (int i = 0; i < nb_enemy; i++) {
         x = rand() % map->width + 1;
         y = rand() % map->height + 1;
-        res[i] = create_enemy(map->tiles[x * map->height + y]);
+        res[i] = create_enemy(map->tiles[x * map->height + y], "df");
     }
     return res;
 }

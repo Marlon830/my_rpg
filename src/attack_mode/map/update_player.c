@@ -36,4 +36,5 @@ void update_player(combat_player_t *player, battle_scene_t *scene)
     !player->damage_taken->show) {
         scene->win = -1;
     }
+    sfSprite_setPosition(player->sprite->sprite, player->actual_tile->pos);
 }
