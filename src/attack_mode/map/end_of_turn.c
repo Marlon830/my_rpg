@@ -11,11 +11,8 @@
 
 void end_of_turn(combat_player_t *player, hand_t *hand, battle_scene_t *scene)
 {
-    unsigned int nb = 10;
-    unsigned int ans = (size_t) &nb;
     if (player->state != MOVING)
         return;
-    srand(ans);
     set_player_stats(player);
     for (int i = 0; i < 3; i++)
         if (hand->nb_cards < 12)

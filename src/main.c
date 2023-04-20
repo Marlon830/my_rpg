@@ -50,6 +50,7 @@ int main(void)
 {
     project_t *project = init_project();
 
+    srand(10);
     push_back(&project->scenes, "forest", get_map("forest"), SCENE);
     push_back(&project->scenes, "house", get_map("house"), SCENE);
     push_back(&project->scenes, "basement", get_map("basement"), SCENE);
