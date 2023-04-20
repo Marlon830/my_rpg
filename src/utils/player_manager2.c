@@ -16,7 +16,6 @@ void modify_ring(player_t *player, char *path)
         sfTexture_destroy(equipment->ring_texture);
         equipment->ring = NULL;
         equipment->ring_texture = NULL;
-        free(path);
         return;
     }
     if (equipment->ring != NULL) {
@@ -38,7 +37,6 @@ void modify_sword(player_t *player, char *path)
         sfTexture_destroy(equipment->sword_texture);
         equipment->sword = NULL;
         equipment->sword_texture = NULL;
-        free(path);
         return;
     }
     if (equipment->sword != NULL) {
@@ -60,7 +58,6 @@ void modify_shield(player_t *player, char *path)
         sfTexture_destroy(equipment->shield_texture);
         equipment->shield = NULL;
         equipment->shield_texture = NULL;
-        free(path);
         return;
     }
     if (equipment->shield != NULL) {
