@@ -65,6 +65,7 @@ void set_all_pnj_dialogues(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/bed.png", "Bed");
         set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull1");
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle");
+        set_pnj_dialogue(project->scene->pnj, "/enemy.png", "Enemy1");
     }
     if (project->player->player_progress_state >= 1) {
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle2");
