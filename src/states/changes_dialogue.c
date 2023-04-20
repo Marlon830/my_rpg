@@ -7,36 +7,14 @@
 
 #include "project.h"
 
-void set_state_with_end_of_fight(project_t *project)
-{
-    if (project->fight_win == 1) {
-        if (!my_strcmp("/theodore.png", project->pnj_fighting)) {
-            project->player->player_progress_state = 4;
-            add_elem(project->inventory->bag, "assets/object/pants_bronze.png",
-            PANTS, 1);
-            set_pnj_dialogue(project->scene->pnj, "/theodore.png",
-            "Theoronfle5");
-            check_all_pnj_dialogue(project);
-        }
-        if (!my_strcmp("/skull.png", project->pnj_fighting)) {
-            project->player->player_progress_state = 5;
-            finish_quest("QUETE2", project->quests);
-            add_quest("Aller au salon de coiffure en ville", project->quests,
-            "QUETE3");
-            add_elem(project->inventory->bag,
-            "assets/object/sword_bronze.png", SWORD, 1);
-            set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull3");
-            check_all_pnj_dialogue(project);
-        }
-    }
-}
-
 void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj)
 {
     theoronfle_quest(project, act_pnj);
     bed_quest(project, act_pnj);
     skull_quest(project, act_pnj);
     door_quest(project, act_pnj);
+    chest_quest(project, act_pnj);
+    enemy1_quest(project, act_pnj);
 }
 
 void change_state_with_scene(project_t *project, int to_scene_id)
@@ -59,6 +37,10 @@ void set_all_pnj_dialogues_bis(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/door.png", "Dungeon2");
         set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull3");
     }
+    if (project->player->player_progress_state >= 7) {
+        set_pnj_dialogue(project->scene->pnj, "/chest.png", "Chest2");
+        set_pnj_dialogue(project->scene->pnj, "/enemy.png", "Enemy2");
+    }
 }
 
 void set_all_pnj_dialogues(project_t *project)
@@ -69,6 +51,7 @@ void set_all_pnj_dialogues(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/skull.png", "Skull1");
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle");
         set_pnj_dialogue(project->scene->pnj, "/enemy.png", "Enemy1");
+        set_pnj_dialogue(project->scene->pnj, "/chest.png", "Chest1");
     }
     if (project->player->player_progress_state >= 1) {
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle2");
