@@ -7,26 +7,6 @@
 
 #include "project.h"
 
-char *get_info(char *str, int pos_word)
-{
-    int pos = 0;
-    char *new_str = malloc(my_strlen(str));
-    int new_pos = 0;
-
-    for (int i = 0; i < pos_word - 1; i++) {
-        while (str[pos] != ' ')
-            pos++;
-        pos++;
-    }
-    while (str[pos] != ' ' && str[pos] != '\n') {
-        new_str[new_pos] = str[pos];
-        pos++;
-        new_pos++;
-    }
-    new_str[new_pos] = '\0';
-    return new_str;
-}
-
 void get_inventory3(project_t *project, FILE *fp)
 {
     list_box_t *temp = project->inventory->bag;
@@ -93,6 +73,13 @@ void get_inventory(project_t *project, FILE *fp)
     update_equipment(project, project->inventory);
 }
 
+void get_save_bis(save_t *save, char *line, size_t len, FILE *fp)
+{
+    getline(&line, &len, fp);
+    save->player_second_state = my_getnbr(line);
+    fclose(fp);
+}
+
 save_t *get_save(project_t *project)
 {
     save_t *save = malloc(sizeof(save_t));
@@ -112,7 +99,7 @@ save_t *get_save(project_t *project)
     save->pos.y = my_getnbr(line);
     getline(&line, &len, fp);
     save->player_state = my_getnbr(line);
+    get_save_bis(save, line, len, fp);
     get_inventory(project, fp);
-    fclose(fp);
     return save;
 }
