@@ -15,8 +15,9 @@ void main_menu_button_event(project_t *project)
     button_click(main->settings, project, project->event);
     button_click(main->quit, project, project->event);
     if (main->state == PLAY) {
-        if (main->save != NULL)
+        if (main->save != NULL) {
             button_click(main->load_game, project, project->event);
+        }
         button_click(main->new_game, project, project->event);
     }
 }
@@ -55,6 +56,6 @@ void pause_menu_event(project_t *project)
         if (project->event.type == sfEvtMouseButtonPressed) {
             pause_menu_button_event(project);
         }
-        slider_event(project, project->event);
+        slider_event_pause(project, project->event);
     }
 }

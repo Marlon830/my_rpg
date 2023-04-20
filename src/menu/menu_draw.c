@@ -15,34 +15,6 @@ void update_slider(project_t *project, slider_t *slider)
     project->volume = ans > 0 ? ans : 0;
 }
 
-void update_button_settings(project_t *project)
-{
-    button_click(project->main_menu->fullscreen, project, project->event);
-    button_click(project->main_menu->windowed, project,
-    project->event);
-    button_click(project->main_menu->first_resolution,
-    project, project->event);
-    button_click(project->main_menu->second_resolution,
-    project, project->event);
-    update_button(project->main_menu->fullscreen, project);
-    update_button(project->main_menu->windowed, project);
-    update_button(project->main_menu->first_resolution,
-    project);
-    update_button(project->main_menu->second_resolution,
-    project);
-}
-
-void update_settings(project_t *project)
-{
-    update_button_settings(project);
-    sfRenderWindow_drawText(WINDOW, project->main_menu->act_volume, NULL);
-    update_slider(project, project->main_menu->slider);
-    sfRenderWindow_drawRectangleShape(WINDOW,
-    project->main_menu->slider->rect, NULL);
-    sfRenderWindow_drawCircleShape(WINDOW,
-    project->main_menu->slider->circle, NULL);
-}
-
 void draw_main_menu(project_t *project)
 {
     image_t *background = project->main_menu->background;
@@ -50,6 +22,7 @@ void draw_main_menu(project_t *project)
     sfText_setString(project->main_menu->act_volume,
     int_to_str((int) project->volume));
     sfMusic_setVolume(project->main_menu->music, project->volume);
+    sfMusic_setVolume(project->main_menu->music_ingame, project->volume);
     sfRenderWindow_clear(WINDOW, sfWhite);
     sfRenderWindow_drawSprite(project->window,
     background->sprite, NULL);
@@ -70,6 +43,10 @@ void draw_pause_menu(project_t *project)
 {
     image_t *background = project->pause_menu->background;
 
+    sfText_setString(project->pause_menu->act_volume,
+    int_to_str((int) project->volume));
+    sfMusic_setVolume(project->main_menu->music_ingame, project->volume);
+    sfMusic_setVolume(project->main_menu->music, project->volume);
     sfRenderWindow_clear(WINDOW, sfWhite);
     sfRenderWindow_drawSprite(project->window,
     background->sprite, NULL);
@@ -77,4 +54,7 @@ void draw_pause_menu(project_t *project)
     update_button(project->pause_menu->save, project);
     update_button(project->pause_menu->settings, project);
     update_button(project->pause_menu->back_menu, project);
+    if (project->pause_menu->state == SETTINGS) {
+        update_settings_pause(project);
+    }
 }

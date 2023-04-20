@@ -55,6 +55,7 @@ typedef struct main_menu_s {
     sfText *act_volume;
     sfView *camera;
     sfMusic *music;
+    sfMusic *music_ingame;
     sfSound *sound;
     sfSoundBuffer *soundbuffer;
     slider_t *slider;
@@ -71,6 +72,13 @@ typedef struct pause_menu_s {
     button_t *back_menu;
     sfView *camera;
     enum main_menu_state state;
+    int is_sliding;
+    sfText *act_volume;
+    slider_t *slider;
+    button_t *fullscreen;
+    button_t *windowed;
+    button_t *first_resolution;
+    button_t *second_resolution;
 } pause_menu_t;
 
 void main_menu_event(project_t *project);
@@ -96,5 +104,10 @@ main_menu_t *init_main_menu_ter(main_menu_t *main_menu);
 slider_t *create_slider(sfVector2f pos, sfVector2f size, sfColor background);
 void next_init_main_menu(main_menu_t *main_menu);
 void slider_event(project_t *project, sfEvent event);
+void display_settings_pause(project_t *project);
+void update_slider(project_t *project, slider_t *slider);
+void update_settings(project_t *project);
+void update_settings_pause(project_t *project);
+void slider_event_pause(project_t *project, sfEvent event);
 
 #endif

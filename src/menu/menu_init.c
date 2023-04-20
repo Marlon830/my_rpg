@@ -56,6 +56,9 @@ main_menu_t *init_main_menu_ter(main_menu_t *main_menu)
     main_menu->slider = create_slider((sfVector2f) {1100, 420},
     (sfVector2f) {300, 5}, sfBlack);
     main_menu->is_sliding = 0;
+    main_menu->music_ingame = sfMusic_createFromFile
+    ("assets/music/mediejersey.ogg");
+    sfMusic_setLoop(main_menu->music_ingame, sfTrue);
     return main_menu;
 }
 

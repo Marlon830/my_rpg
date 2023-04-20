@@ -26,6 +26,7 @@ void new_game_button(project_t *project)
     project->scene = load_scene(project, 0);
     sfMusic_stop(project->main_menu->music);
     project->main_menu->state = NAUNE;
+    sfMusic_play(project->main_menu->music_ingame);
     close(fd);
 }
 
@@ -43,6 +44,7 @@ void load_game_button(project_t *project)
     project->scene = load_scene(project, save->scene_id);
     project->main_menu->state = NAUNE;
     sfMusic_stop(project->main_menu->music);
+    sfMusic_play(project->main_menu->music_ingame);
 }
 
 void display_play(project_t *project)

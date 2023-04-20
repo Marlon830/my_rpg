@@ -79,6 +79,7 @@ project_t *init_project_bis(project_t *project)
     (sfVector2f) {0.15, 0.15}, sfWhite);
     sfText_setString(project->quests_button, "A: Quetes actuelles\nF: Quetes \
 finies");
+    project->sound = sfSound_create();
     return project;
 }
 

@@ -64,3 +64,8 @@ void set_second_resolution(project_t *project)
     sfRenderWindow_setFramerateLimit(project->window, 60);
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
 }
+
+void display_settings_pause(project_t *project)
+{
+    project->pause_menu->state = SETTINGS;
+}

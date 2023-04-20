@@ -9,8 +9,10 @@
 
 void back_menu_button(project_t *project)
 {
+    sfMusic_stop(project->main_menu->music_ingame);
     project->status = MAIN_MENU;
     project->main_menu->save = get_save(project);
+    sfMusic_play(project->main_menu->music);
 }
 
 void resume_button(project_t *project)
