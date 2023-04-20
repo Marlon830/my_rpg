@@ -59,9 +59,9 @@ main_menu_t *init_main_menu_ter(main_menu_t *main_menu)
     return main_menu;
 }
 
-main_menu_t *init_main_menu_bis(main_menu_t *main_menu)
+main_menu_t *init_main_menu_bis(project_t *project, main_menu_t *main_menu)
 {
-    main_menu->save = get_save();
+    main_menu->save = get_save(project);
     next_init_main_menu(main_menu);
     main_menu->fullscreen = create_button((sfVector2f){1025, 550},
     (sfVector2f) {420 / 2, 120 / 2}, "assets/UI/fullscreen/",
@@ -78,28 +78,4 @@ main_menu_t *init_main_menu_bis(main_menu_t *main_menu)
     &set_second_resolution);
     main_menu->music = sfMusic_createFromFile("assets/music/medietrap.ogg");
     return init_main_menu_ter(main_menu);
-}
-
-save_t *get_save(void)
-{
-    save_t *save = malloc(sizeof(save_t));
-    save->pos = (sfVector2f){0, 0};
-    FILE *fp = fopen("save", "r");
-    size_t len = 0;
-    char *line = NULL;
-
-    getline(&line, &len, fp);
-    if (line[0] == 'R') {
-        free(save);
-        return NULL;
-    }
-    save->scene_id = my_getnbr(line);
-    getline(&line, &len, fp);
-    save->pos.x = my_getnbr(line);
-    for (; line[0] != ' '; line++);
-    save->pos.y = my_getnbr(line);
-    getline(&line, &len, fp);
-    save->player_state = my_getnbr(line);
-    fclose(fp);
-    return save;
 }

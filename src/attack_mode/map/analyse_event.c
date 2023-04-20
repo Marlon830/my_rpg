@@ -20,7 +20,7 @@ battle_scene_t *scene, hand_t *hand)
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyS)
         save_map(scene->map, "map.txt");
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
-        end_of_turn(scene->player, hand);
+        end_of_turn(scene->player, hand, scene);
 }
 
 void analyse_events(sfRenderWindow *window, sfEvent event,

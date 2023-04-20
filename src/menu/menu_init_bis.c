@@ -40,5 +40,5 @@ main_menu_t *init_main_menu(project_t *project)
     (sfVector2f){1920, 1080});
     main_menu->background->nb_sprite = 1;
     main_menu->state = NAUNE;
-    return init_main_menu_bis(main_menu);
+    return init_main_menu_bis(project, main_menu);
 }

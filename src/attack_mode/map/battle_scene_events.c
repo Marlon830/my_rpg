@@ -16,8 +16,5 @@ void battle_scene_event(project_t *project)
     while (sfRenderWindow_pollEvent(project->window, &project->event)) {
         analyse_events(project->window, project->event,
     project->battle_scene, project->battle_scene->hand);
-        if (project->event.type == sfEvtKeyPressed &&
-        project->event.key.code == sfKeyK)
-            project->status = GAME;
     }
 }

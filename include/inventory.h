@@ -109,5 +109,6 @@ void change_elem_box(project_t *project, box_t *new_box, box_t *selected_box);
 void switch_elem_box(project_t *project, box_t *new_box, box_t *selected_box);
 int check_shift_click(project_t *project, box_t *box);
 int get_good_path(char *name);
+void destroy_inventory(inventory_t *inventory);
 
 #endif

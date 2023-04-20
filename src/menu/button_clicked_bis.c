@@ -10,7 +10,7 @@
 void back_menu_button(project_t *project)
 {
     project->status = MAIN_MENU;
-    project->main_menu->save = get_save();
+    project->main_menu->save = get_save(project);
 }
 
 void resume_button(project_t *project)

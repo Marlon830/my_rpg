@@ -15,7 +15,8 @@ void main_menu_button_event(project_t *project)
     button_click(main->settings, project, project->event);
     button_click(main->quit, project, project->event);
     if (main->state == PLAY) {
-        button_click(main->load_game, project, project->event);
+        if (main->save != NULL)
+            button_click(main->load_game, project, project->event);
         button_click(main->new_game, project, project->event);
     }
 }

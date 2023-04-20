@@ -7,12 +7,33 @@
 
 #include "project.h"
 
+void quest_event_bis(project_t *project, sfEvent event)
+{
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyF
+    && project->quests->is_act_disp == 0) {
+        project->quests->is_act_disp = -1;
+        return;
+    }
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyF
+    && (project->quests->is_act_disp == -1 ||
+    project->quests->is_act_disp == 1)) {
+        project->quests->is_act_disp = 0;
+        return;
+    }
+}
+
 void quest_event(project_t *project, sfEvent event)
 {
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA)
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA
+    && (project->quests->is_act_disp == -1 ||
+    project->quests->is_act_disp == 0)) {
         project->quests->is_act_disp = 1;
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyF)
-        project->quests->is_act_disp = 0;
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyE)
+        return;
+    }
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA
+    && project->quests->is_act_disp == 1) {
         project->quests->is_act_disp = -1;
+        return;
+    }
+    quest_event_bis(project, event);
 }

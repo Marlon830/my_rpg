@@ -24,11 +24,16 @@ void update_player_overlay(combat_player_t *player)
 
 }
 
-void update_player(combat_player_t *player)
+void update_player(combat_player_t *player, battle_scene_t *scene)
 {
     sfVertexArray_clear(player->array_character);
+    set_player_pos(player);
     if (player->actual_stats->energy_points < 0)
         player->actual_stats->energy_points = 0;
     update_player_overlay(player);
-    set_player_pos(player);
+    update_damage_taken(player->damage_taken);
+    if (player->actual_stats->health_point == 0 &&
+    !player->damage_taken->show) {
+        scene->win = -1;
+    }
 }

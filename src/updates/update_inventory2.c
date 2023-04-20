@@ -58,6 +58,7 @@ void update_inventory_character(project_t *project, box_t *box)
     animate_inventory_sprite(project->inventory->character);
     sfRenderWindow_drawSprite(WINDOW, box->sprite, NULL);
     update_equipment_inventory_sprite(project, box, project->player);
+    update_stats(project);
 }
 
 void update_inventory_description(project_t *project, box_t *box)

@@ -13,19 +13,28 @@ equipment_t *init_equipment(void)
     equipment_t *equipment = malloc(sizeof(*equipment) * 17);
 
     equipment->helmet = NULL;
+    equipment->helmet_texture = NULL;
     equipment->armor = NULL;
+    equipment->armor_texture = NULL;
     equipment->pants = NULL;
+    equipment->pants_texture = NULL;
     equipment->boots = NULL;
+    equipment->boots_texture = NULL;
     equipment->amulet = NULL;
+    equipment->amulet_texture = NULL;
     equipment->ring = NULL;
+    equipment->ring_texture = NULL;
     equipment->sword = NULL;
+    equipment->sword_texture = NULL;
     equipment->shield = NULL;
+    equipment->shield_texture = NULL;
     return equipment;
 }
 
 player_t *init_player(int x, int y)
 {
     player_t *player = malloc(sizeof(player_t));
+
     player->col = malloc(sizeof(sfFloatRect));
     player->pos.x = x;
     player->pos.y = y;
@@ -38,6 +47,7 @@ player_t *init_player(int x, int y)
     player->state = IDLE_DOWN;
     player->player_progress_state = 0;
     player->equipment = init_equipment();
+    player->player_stats = init_stats();
     return player;
 }
 
@@ -67,7 +77,7 @@ project_t *init_project_bis(project_t *project)
     project->quests_button = create_text((sfVector2f) {0, 0},
     (sfVector2f) {0.15, 0.15}, sfWhite);
     sfText_setString(project->quests_button, "A: Quetes actuelles\nF: Quetes \
-finies\nE: Fermer journal de quetes");
+finies");
     return project;
 }
 

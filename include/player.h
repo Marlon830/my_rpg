@@ -43,6 +43,24 @@ typedef struct equipment_s {
     sfTexture *shield_texture;
 } equipment_t;
 
+typedef struct player_stats_s {
+    int health_value;
+    int attack_value;
+    int defense_value;
+    int move_range_value;
+    int mana_value;
+    sfText *health_text;
+    sfText *attack_text;
+    sfText *defense_text;
+    sfText *move_range_text;
+    sfText *mana_text;
+    image_t *health_image;
+    image_t *attack_image;
+    image_t *defense_image;
+    image_t *move_range_image;
+    image_t *mana_image;
+} player_stats_t;
+
 typedef struct player_s {
     sfVector2f pos;
     sfFloatRect *col;
@@ -52,6 +70,7 @@ typedef struct player_s {
     int player_progress_state;
     equipment_t *equipment;
     image_t *character;
+    player_stats_t *player_stats;
 } player_t;
 
 void modify_helmet(player_t *player, char *path);
@@ -64,5 +83,7 @@ void modify_sword(player_t *player, char *path);
 void modify_shield(player_t *player, char *path);
 void draw_equipment(project_t *project, player_t *player);
 void update_equipment(project_t *project, inventory_t *inventory);
+void update_stats(project_t *project);
+void destroy_equipment(equipment_t *equipment);
 
 #endif

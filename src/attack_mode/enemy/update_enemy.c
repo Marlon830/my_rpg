@@ -11,6 +11,8 @@ void update_enemies(enemy_t **enemies, int nb_enemies, battle_scene_t *scene)
 {
     int b = 0;
     for (int i = 0; i < nb_enemies; i++) {
+        enemies[i]->tiles_close = get_enemy_tiles_close(scene,enemies[i]
+        ->actual_tile, enemies[i]->actual_stats->move_points, enemies[i]);
         if (enemies[i] != NULL)
             update_damage_taken(enemies[i]->damage_taken);
         if (enemies[i] != NULL && enemies[i]->actual_stats->health_point
