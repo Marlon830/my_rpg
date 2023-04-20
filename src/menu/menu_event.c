@@ -41,7 +41,7 @@ void slider_event(project_t *project, sfEvent event)
 void button_click(button_t *button, project_t *project, sfEvent event)
 {
     if (event.type == sfEvtMouseButtonPressed) {
-        if (button->is_clicked(button, &event.mouseButton)) {
+        if (button->is_clicked(project, button, &event.mouseButton)) {
             sfSound_stop(project->main_menu->sound);
             sfSound_play(project->main_menu->sound);
             button->clicked(project);
