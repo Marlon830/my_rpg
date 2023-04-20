@@ -77,6 +77,18 @@ void inventory_event(project_t *project, sfEvent event)
     inventory_event3(project, event);
 }
 
+void scene_event_bis(project_t *project, sfEvent event)
+{
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace &&
+    !project->inventory->is_active)
+        check_all_pnj_dialogue(project);
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab &&
+    !project->actual_dial->is_displayed) {
+        play_sound(project, "assets/music/inventory.ogg");
+        switch_state_inventory(project->inventory);
+    }
+}
+
 void scene_event(project_t *project)
 {
     sfEvent event;
@@ -90,12 +102,7 @@ void scene_event(project_t *project)
             sfRenderWindow_setView(project->window,
             project->pause_menu->camera);
         }
-        if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace &&
-        !project->inventory->is_active)
-            check_all_pnj_dialogue(project);
-        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab &&
-        !project->actual_dial->is_displayed)
-            switch_state_inventory(project->inventory);
+        scene_event_bis(project, event);
         inventory_event(project, event);
         quest_event(project, event);
     }
