@@ -40,8 +40,13 @@ void main_loop(project_t *project)
     sfSound_stop(project->main_menu->sound);
     sfSound_destroy(project->main_menu->sound);
     sfSoundBuffer_destroy(project->main_menu->soundbuffer);
+    sfSound_stop(project->sound);
+    sfSound_destroy(project->sound);
+    sfSoundBuffer_destroy(project->soundbuffer);
     sfMusic_stop(project->main_menu->music);
     sfMusic_destroy(project->main_menu->music);
+    sfMusic_stop(project->main_menu->music_ingame);
+    sfMusic_destroy(project->main_menu->music_ingame);
     sfRenderWindow_destroy(project->window);
     free(project);
 }
