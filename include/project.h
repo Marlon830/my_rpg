@@ -78,6 +78,8 @@ typedef struct project_s {
     int is_fullscreen;
     char *pnj_fighting;
     int fight_win;
+    sfSoundBuffer *soundbuffer;
+    sfSound *sound;
 } project_t;
 
 void update_scene(project_t *project);
@@ -119,5 +121,6 @@ void skull_quest(project_t *project, all_pnjs_t *act_pnj);
 void door_quest(project_t *project, all_pnjs_t *act_pnj);
 void chest_quest(project_t *project, all_pnjs_t *act_pnj);
 void enemy1_quest(project_t *project, all_pnjs_t *act_pnj);
+void play_sound(project_t *project, char *filepath);
 
 #endif
