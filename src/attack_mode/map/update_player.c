@@ -20,8 +20,68 @@ void update_player_overlay(combat_player_t *player)
     free(hp);
     free(move_points);
     free(energy);
+}
 
+void update_combat_equipment3(combat_player_t *player, equipment_t *equip)
+{
+    if (equip->sword != NULL) {
+        sfSprite_setTexture(equip->sword, equip->sword_texture, sfTrue);
+        sfSprite_setTextureRect(equip->sword, (sfIntRect)
+        {0, 0, 32, 32});
+        sfSprite_setPosition(equip->sword, player->actual_tile->pos);
+    }
+    if (equip->shield != NULL) {
+        sfSprite_setTexture(equip->shield, equip->shield_texture, sfTrue);
+        sfSprite_setTextureRect(equip->shield, (sfIntRect)
+        {0, 0, 32, 32});
+        sfSprite_setPosition(equip->shield, player->actual_tile->pos);
+    }
+}
 
+void update_combat_equipment2(combat_player_t *player, equipment_t *equip)
+{
+    if (equip->boots != NULL) {
+        sfSprite_setTexture(equip->boots, equip->boots_texture, sfTrue);
+        sfSprite_setTextureRect(equip->boots, (sfIntRect)
+        {0, 0, 32, 32});
+        sfSprite_setPosition(equip->boots, player->actual_tile->pos);
+    }
+    if (equip->amulet != NULL) {
+        sfSprite_setTexture(equip->amulet, equip->amulet_texture, sfTrue);
+        sfSprite_setTextureRect(equip->amulet, (sfIntRect)
+        {0, 0, 32, 32});
+        sfSprite_setPosition(equip->amulet, player->actual_tile->pos);
+    }
+    if (equip->ring != NULL) {
+        sfSprite_setTexture(equip->ring, equip->ring_texture, sfTrue);
+        sfSprite_setTextureRect(equip->ring, (sfIntRect)
+        {0, 0, 32, 32});
+        sfSprite_setPosition(equip->ring, player->actual_tile->pos);
+    }
+    update_combat_equipment3(player, equip);
+}
+
+void update_combat_equipment(combat_player_t *player, equipment_t *equip)
+{
+    if (equip->helmet != NULL) {
+        sfSprite_setTexture(equip->helmet, equip->helmet_texture, sfTrue);
+        sfSprite_setTextureRect(equip->helmet, (sfIntRect)
+        {0, 0, 32, 32});
+        sfSprite_setPosition(equip->helmet, player->actual_tile->pos);
+    }
+    if (equip->armor != NULL) {
+        sfSprite_setTexture(equip->armor, equip->armor_texture, sfTrue);
+        sfSprite_setTextureRect(equip->armor, (sfIntRect)
+        {0, 0, 32, 32});
+        sfSprite_setPosition(equip->armor, player->actual_tile->pos);
+    }
+    if (equip->pants != NULL) {
+        sfSprite_setTexture(equip->pants, equip->pants_texture, sfTrue);
+        sfSprite_setTextureRect(equip->pants, (sfIntRect)
+        {0, 0, 32, 32});
+        sfSprite_setPosition(equip->pants, player->actual_tile->pos);
+    }
+    update_combat_equipment2(player, equip);
 }
 
 void update_player(combat_player_t *player, battle_scene_t *scene)
@@ -37,4 +97,5 @@ void update_player(combat_player_t *player, battle_scene_t *scene)
         scene->win = -1;
     }
     sfSprite_setPosition(player->sprite->sprite, player->actual_tile->pos);
+    update_combat_equipment(player, player->equipment);
 }
