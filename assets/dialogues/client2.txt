@@ -1,0 +1,8 @@
+Name:Client2
+Image:client.png
+Dialogue#
+Ah et tu reviens me voir !
+-
+Tu vas me rembourser et plus vite que ca !
+-
+#

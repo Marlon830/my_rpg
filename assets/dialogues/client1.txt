@@ -1,0 +1,8 @@
+Name:Client1
+Image:client.png
+Dialogue#
+Ca m'enerve ce salon est trop guez
+-
+Vraiment je sais pas quoicouper !
+-
+#

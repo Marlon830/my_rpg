@@ -1,0 +1,8 @@
+Name:Client3
+Image:client.png
+Dialogue#
+Bon j'avoue que ce salon est pas si mal
+-
+meme je te donne mon t shirt
+-
+#
