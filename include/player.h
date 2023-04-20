@@ -90,5 +90,9 @@ void draw_equipment(project_t *project, player_t *player);
 void update_equipment(project_t *project, inventory_t *inventory);
 void update_stats(project_t *project);
 void destroy_equipment(equipment_t *equipment);
+char *get_stat_path(char *path);
+void add_stat(player_t *player, char *path);
+void remove_stat(player_t *player, char *path);
+char *get_box_path(box_t *box);
 
 #endif
