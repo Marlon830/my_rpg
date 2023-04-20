@@ -7,7 +7,8 @@
 
 #include "project.h"
 
-sfBool is_button_clicked(project_t *project, button_t *button, sfMouseButtonEvent *evt)
+sfBool is_button_clicked(project_t *project, button_t *button,
+sfMouseButtonEvent *evt)
 {
     sfFloatRect res = sfRectangleShape_getGlobalBounds(button->rect);
     sfVector2i mouse = (sfVector2i) {evt->x, evt->y};
@@ -48,13 +49,14 @@ char *path, void (*clicked)(project_t *project))
     return button;
 }
 
-void update_hover_button(project_t *project, button_t *btn, sfVector2i mouse_pos)
+void update_hover_button(project_t *project, button_t *btn,
+sfVector2i mouse_pos)
 {
     sfView *view = sfView_create();
     sfView_setSize(view, (sfVector2f) {1920, 1080});
     sfView_setCenter(view, (sfVector2f) {1920 / 2, 1080 / 2});
     sfVector2f pos = sfRenderWindow_mapPixelToCoords(WINDOW, mouse_pos, view);
-    
+
     if (pos.x >= btn->position.x && pos.x <= btn->position.x
     + btn->size.x && pos.y >= btn->position.y && pos.y <=
     btn->position.y + btn->size.y)
