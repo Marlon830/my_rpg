@@ -1,2 +1,2 @@
 1
-5 5 30 8 350 8
+5 5 30 8 350 8 mickey_house/mickey.png
