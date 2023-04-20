@@ -7,8 +7,8 @@
 
 #include "attack_mode.h"
 
-void update_battle_scene(battle_scene_t *scene,
-__attribute__((unused))float time, sfRenderWindow *window)
+void update_battle_scene(battle_scene_t *scene, project_t *project,
+sfRenderWindow *window)
 {
         if (scene->player->state == MOVING)
                 scene->player->tiles_close =
@@ -25,5 +25,7 @@ __attribute__((unused))float time, sfRenderWindow *window)
                         change_enemy_color(scene->enemies[i]);
                 }
         }
-        draw_batle_scene(scene, window);
+        update_player_stats(project->player->player_stats,
+        scene->player->actual_stats);
+        draw_batle_scene(scene, window, project);
 }

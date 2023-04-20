@@ -7,7 +7,8 @@
 
 #include "attack_mode.h"
 
-void draw_batle_scene(battle_scene_t *scene, sfRenderWindow *window)
+void draw_batle_scene(battle_scene_t *scene, sfRenderWindow *window,
+project_t *project)
 {
     sfRenderWindow_clear(window, (sfColor){20, 54, 66, 255});
     sfRenderWindow_drawVertexArray(window, scene->player->array_character,
@@ -19,4 +20,8 @@ void draw_batle_scene(battle_scene_t *scene, sfRenderWindow *window)
             draw_enemy(scene->enemies[i], window);
     }
     draw_hand(scene->hand, window);
+    sfVector2u screen_size = sfRenderWindow_getSize(window);
+    upscale_player_stats(project->player->player_stats, (sfVector2f){1, 1});
+    update_stats(project, (sfVector2f){screen_size.x, screen_size.y - 100},
+    (sfVector2f){2, 2});
 }

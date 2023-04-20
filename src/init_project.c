@@ -70,7 +70,7 @@ project_t *init_project_bis(project_t *project)
     project->pause_menu = init_pause_menu(project);
     project->actual_dial = init_actual_dialogue();
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
-    project->battle_scene = create_standard_battle_scene();
+    project->battle_scene = NULL;
     project->quests = init_quests();
     project->fight_win = 0;
     project->volume = 100;
