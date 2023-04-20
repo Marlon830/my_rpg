@@ -39,9 +39,6 @@ void skull_quest(project_t *project, all_pnjs_t *act_pnj)
 {
     if (project->player->player_progress_state == 4 &&
     !my_strcmp(act_pnj->name, "/skull.png")) {
-        finish_quest("QUETE2", project->quests);
-        add_quest("Aller au salon de coiffure en ville", project->quests,
-        "QUETE3");
         project->status = FIGHT;
         project->pnj_fighting = act_pnj->name;
         project->battle_scene = create_battle_scene_from_file(
