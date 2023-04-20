@@ -1,1 +1,1 @@
-x y damage range heath move_point
+x y damage range heath move_point texture_file

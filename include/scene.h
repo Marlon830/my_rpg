@@ -22,7 +22,8 @@ typedef struct button_s {
     sfSprite *sprite;
     sfTexture *texture;
     sfTexture *texture_hover;
-    sfBool (*is_clicked)(struct button_s *button, sfMouseButtonEvent *evt);
+    sfBool (*is_clicked)(project_t *project, struct button_s *button,
+    sfMouseButtonEvent *evt);
     void (*clicked)(project_t *project);
     void (*update)(struct button_s *button, project_t *project);
 } button_t;
@@ -81,7 +82,7 @@ image_t *create_image(sfVector2f pos, char *path, sfIntRect rect,
 sfVector2f size);
 collider_t *create_collider(int x, int y, int w, int h);
 void colliders_init(char *path, scene_t *scene);
-void images_destroy(scene_t *scene);
+void images_destroy(image_t *image);
 void colliders_destroy(scene_t *scene);
 map_t *get_map(char *map_name);
 sfText *create_text(sfVector2f pos, sfVector2f size, sfColor color);

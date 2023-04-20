@@ -45,5 +45,10 @@ combat_player_t *create_player(tile_t *tile)
     res->overlay = malloc(sizeof(combat_text_t *) * 5);
     res->damage_taken = create_combat_text((sfVector2f){0, 0});
     set_overlay_player(res);
+    res->sprite = create_image(res->actual_tile->pos,
+    "player.png", (sfIntRect){0, 0, 32, 32},
+    (sfVector2f){32, 32});
+    sfSprite_setScale(res->sprite->sprite, (sfVector2f){5, 5});
+    sfSprite_setOrigin(res->sprite->sprite, (sfVector2f){17, 24});
     return res;
 }

@@ -25,7 +25,7 @@ void scene_management(project_t *project)
     }
     if (project->status == FIGHT) {
         battle_scene_event(project);
-        update_battle_scene(project->battle_scene, 0, project->window);
+        update_battle_scene(project->battle_scene, project, project->window);
         handle_end_of_fight(project);
     }
 }
@@ -50,6 +50,7 @@ int main(void)
 {
     project_t *project = init_project();
 
+    srand(10);
     push_back(&project->scenes, "forest", get_map("forest"), SCENE);
     push_back(&project->scenes, "house", get_map("house"), SCENE);
     push_back(&project->scenes, "basement", get_map("basement"), SCENE);

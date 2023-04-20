@@ -19,7 +19,7 @@ void theoronfle_quest(project_t *project, all_pnjs_t *act_pnj)
         project->pnj_fighting = act_pnj->name;
         project->battle_scene = create_battle_scene_from_file(
     "assets/fight_scene/theoronfle_map.txt",
-    "assets/fight_scene/theoronfle_enemies.txt");
+    "assets/fight_scene/theoronfle_enemies.txt", project);
     }
 }
 
@@ -30,7 +30,7 @@ void bed_quest(project_t *project, all_pnjs_t *act_pnj)
         project->pnj_fighting = act_pnj->name;
         project->battle_scene = create_battle_scene_from_file(
     "assets/fight_scene/bed_map.txt",
-    "assets/fight_scene/bed_enemies.txt");
+    "assets/fight_scene/bed_enemies.txt", project);
     }
 }
 
@@ -42,7 +42,7 @@ void skull_quest(project_t *project, all_pnjs_t *act_pnj)
         project->pnj_fighting = act_pnj->name;
         project->battle_scene = create_battle_scene_from_file(
     "assets/fight_scene/skull_map.txt",
-    "assets/fight_scene/skull_enemies.txt");
+    "assets/fight_scene/skull_enemies.txt", project);
     }
 }
 

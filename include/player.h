@@ -89,7 +89,7 @@ void modify_sword(player_t *player, char *path);
 void modify_shield(player_t *player, char *path);
 void draw_equipment(project_t *project, player_t *player);
 void update_equipment(project_t *project, inventory_t *inventory);
-void update_stats(project_t *project);
+void update_stats(project_t *project, sfVector2f vect, sfVector2f scale);
 void destroy_equipment(equipment_t *equipment);
 char *get_stat_path(char *path);
 void add_stat(player_t *player, char *path);

@@ -35,8 +35,6 @@ void main_menu_event(project_t *project)
 {
     while (sfRenderWindow_pollEvent(project->window, &project->event)) {
         if (project->event.type == sfEvtClosed) {
-            sfMusic_stop(project->main_menu->music);
-            sfMusic_destroy(project->main_menu->music);
             sfRenderWindow_close(project->window);
         }
         if (project->event.type == sfEvtMouseButtonPressed)
@@ -49,8 +47,6 @@ void pause_menu_event(project_t *project)
 {
     while (sfRenderWindow_pollEvent(project->window, &project->event)) {
         if (project->event.type == sfEvtClosed) {
-            sfMusic_stop(project->main_menu->music);
-            sfMusic_destroy(project->main_menu->music);
             sfRenderWindow_close(project->window);
         }
         if (project->event.type == sfEvtKeyPressed &&

@@ -24,7 +24,7 @@ void set_enemy_pos(enemy_t *enemy)
     sfVertexArray_append(enemy->array_character, vertex_create(p4, sfRed));
 }
 
-enemy_t *create_enemy(tile_t *tile)
+enemy_t *create_enemy(tile_t *tile, char *sprite_name)
 {
     enemy_t *res = malloc(sizeof(enemy_t));
     res->actual_tile = tile;
@@ -36,5 +36,10 @@ enemy_t *create_enemy(tile_t *tile)
     res->range = 5;
     res->attack_tiles = NULL;
     res->damage_taken = create_combat_text(res->actual_tile->pos);
+    res->sprite = create_image
+    (res->actual_tile->pos, sprite_name, (sfIntRect){0, 0, 16, 16},
+    (sfVector2f){32, 32});
+    sfSprite_setScale(res->sprite->sprite, (sfVector2f){5, 5});
+    sfSprite_setOrigin(res->sprite->sprite, (sfVector2f){8, 15});
     return res;
 }
