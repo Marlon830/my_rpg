@@ -15,8 +15,13 @@ void new_game_button(project_t *project)
     project->status = GAME;
     project->player->pos.x = 384;
     project->player->pos.y = 416;
+    project->inventory = create_inventory();
     project->player->player_progress_state = 0;
     project->main_menu->save = NULL;
+    destroy_inventory(project->inventory);
+    project->inventory = create_inventory();
+    destroy_equipment(project->player->equipment);
+    project->player->equipment = init_equipment();
     write(fd, "R", 1);
     project->scene = load_scene(project, 0);
     sfMusic_stop(project->main_menu->music);
@@ -36,6 +41,7 @@ void load_game_button(project_t *project)
     project->player->col->top = project->player->pos.y + 8;
     project->scene = load_scene(project, save->scene_id);
     project->main_menu->state = NAUNE;
+    sfMusic_stop(project->main_menu->music);
 }
 
 void display_play(project_t *project)

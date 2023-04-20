@@ -72,6 +72,7 @@ typedef struct project_s {
     sfEvent event;
     battle_scene_t *battle_scene;
     quest_t *quests;
+    sfText *quests_button;
     sfVideoMode mode;
     float volume;
     int is_fullscreen;
@@ -107,7 +108,16 @@ void quest_event(project_t *project, sfEvent event);
 player_t *init_player(int x, int y);
 act_dial_t *init_actual_dialogue(void);
 project_t *init_project(void);
-save_t *get_save(void);
-void set_state_with_end_of_fight(project_t *project, int win);
+equipment_t *init_equipment(void);
+save_t *get_save(project_t *project);
+void set_state_with_end_of_fight(project_t *project);
+player_stats_t *init_stats(void);
+
+void theoronfle_quest(project_t *project, all_pnjs_t *act_pnj);
+void bed_quest(project_t *project, all_pnjs_t *act_pnj);
+void skull_quest(project_t *project, all_pnjs_t *act_pnj);
+void door_quest(project_t *project, all_pnjs_t *act_pnj);
+void chest_quest(project_t *project, all_pnjs_t *act_pnj);
+void enemy1_quest(project_t *project, all_pnjs_t *act_pnj);
 
 #endif

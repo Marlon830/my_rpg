@@ -52,7 +52,7 @@ void update_hover_button(button_t *btn, sfVector2i mouse_pos)
         sfRectangleShape_setTexture(btn->rect, btn->texture, sfTrue);
 }
 
-void update_button(button_t *btn, project_t *project, sfEvent event)
+void update_button(button_t *btn, project_t *project)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(WINDOW);
 

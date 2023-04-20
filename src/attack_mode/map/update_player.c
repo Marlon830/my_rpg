@@ -32,7 +32,7 @@ void update_player(combat_player_t *player, battle_scene_t *scene)
         player->actual_stats->energy_points = 0;
     update_player_overlay(player);
     update_damage_taken(player->damage_taken);
-    if (player->actual_stats->health_point == 0 &&
+    if (player->actual_stats->health_point <= 0 &&
     !player->damage_taken->show) {
         scene->win = -1;
     }

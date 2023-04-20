@@ -27,6 +27,8 @@ enum object_type {
     ARMOR,
     PANTS,
     BOOTS,
+    AMULET,
+    RING,
     SWORD,
     SHIELD,
 };
@@ -81,7 +83,8 @@ list_box_t *init_list_box(void);
 box_t *get_box_with_name(list_box_t *list, char *name);
 box_t *get_box_with_coord(project_t *project, sfVector2f pos);
 box_t *get_box_selected(project_t *project);
-box_t *get_box_with_type(inventory_t *inventory, int type);
+box_t *get_box_with_type(inventory_t *inventory, enum object_type type);
+box_t *get_empty_box(inventory_t *inventory);
 sfVector2f convert_mouse_position(project_t *project, sfVector2f pos);
 
 void add_box_to_list(list_box_t *list, box_t *box);
@@ -105,5 +108,10 @@ void modify_type_box(inventory_t *inventory);
 void change_elem_box(project_t *project, box_t *new_box, box_t *selected_box);
 void switch_elem_box(project_t *project, box_t *new_box, box_t *selected_box);
 int check_shift_click(project_t *project, box_t *box);
+int get_good_path(char *name);
+void destroy_inventory(inventory_t *inventory);
+void switch_stat(project_t *project, box_t *box, box_t *box2);
+void add_or_delete_stat(project_t *project, box_t *new_box,
+box_t *selected_box);
 
 #endif

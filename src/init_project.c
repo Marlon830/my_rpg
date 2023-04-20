@@ -8,9 +8,33 @@
 #include "project.h"
 #include "utils.h"
 
+equipment_t *init_equipment(void)
+{
+    equipment_t *equipment = malloc(sizeof(*equipment) * 17);
+
+    equipment->helmet = NULL;
+    equipment->helmet_texture = NULL;
+    equipment->armor = NULL;
+    equipment->armor_texture = NULL;
+    equipment->pants = NULL;
+    equipment->pants_texture = NULL;
+    equipment->boots = NULL;
+    equipment->boots_texture = NULL;
+    equipment->amulet = NULL;
+    equipment->amulet_texture = NULL;
+    equipment->ring = NULL;
+    equipment->ring_texture = NULL;
+    equipment->sword = NULL;
+    equipment->sword_texture = NULL;
+    equipment->shield = NULL;
+    equipment->shield_texture = NULL;
+    return equipment;
+}
+
 player_t *init_player(int x, int y)
 {
     player_t *player = malloc(sizeof(player_t));
+
     player->col = malloc(sizeof(sfFloatRect));
     player->pos.x = x;
     player->pos.y = y;
@@ -22,13 +46,9 @@ player_t *init_player(int x, int y)
     player->move = (sfVector2f) {0, 0};
     player->state = IDLE_DOWN;
     player->player_progress_state = 0;
-    player->equipment = malloc(sizeof(player->equipment) * 13);
-    player->equipment->helmet = NULL;
-    player->equipment->armor = NULL;
-    player->equipment->pants = NULL;
-    player->equipment->boots = NULL;
-    player->equipment->sword = NULL;
-    player->equipment->shield = NULL;
+    player->player_second_state = 0;
+    player->equipment = init_equipment();
+    player->player_stats = init_stats();
     return player;
 }
 
@@ -55,6 +75,10 @@ project_t *init_project_bis(project_t *project)
     project->fight_win = 0;
     project->volume = 100;
     project->is_fullscreen = 1;
+    project->quests_button = create_text((sfVector2f) {0, 0},
+    (sfVector2f) {0.15, 0.15}, sfWhite);
+    sfText_setString(project->quests_button, "A: Quetes actuelles\nF: Quetes \
+finies");
     return project;
 }
 
@@ -63,8 +87,8 @@ project_t *init_project(void)
     project_t *project = malloc(sizeof(project_t));
     project->mode = (sfVideoMode){1920, 1080, 32};
     project->inventory = create_inventory();
-    project->window = sfRenderWindow_create(project->mode, "Quoi ? Feur",
-    sfClose | sfFullscreen, NULL);
+    project->window = sfRenderWindow_create(project->mode,
+    "Le Quoi ? Feur et la quete du crampter", sfClose | sfFullscreen, NULL);
     sfRenderWindow_setFramerateLimit(project->window, 60);
     sfRenderWindow_setKeyRepeatEnabled(project->window, sfFalse);
     project->clock = sfClock_create();

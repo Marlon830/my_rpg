@@ -24,14 +24,12 @@ void update_button_settings(project_t *project)
     project, project->event);
     button_click(project->main_menu->second_resolution,
     project, project->event);
-    update_button(project->main_menu->fullscreen, project,
-    project->event);
-    update_button(project->main_menu->windowed, project,
-    project->event);
+    update_button(project->main_menu->fullscreen, project);
+    update_button(project->main_menu->windowed, project);
     update_button(project->main_menu->first_resolution,
-    project, project->event);
+    project);
     update_button(project->main_menu->second_resolution,
-    project, project->event);
+    project);
 }
 
 void update_settings(project_t *project)
@@ -55,14 +53,14 @@ void draw_main_menu(project_t *project)
     sfRenderWindow_clear(WINDOW, sfWhite);
     sfRenderWindow_drawSprite(project->window,
     background->sprite, NULL);
-    update_button(project->main_menu->play, project, project->event);
-    update_button(project->main_menu->settings, project, project->event);
-    update_button(project->main_menu->quit, project, project->event);
+    update_button(project->main_menu->play, project);
+    update_button(project->main_menu->settings, project);
+    update_button(project->main_menu->quit, project);
     if (project->main_menu->state == PLAY)
-        update_button(project->main_menu->new_game, project, project->event);
+        update_button(project->main_menu->new_game, project);
     if (project->main_menu->state == PLAY &&
     project->main_menu->save != NULL)
-        update_button(project->main_menu->load_game, project, project->event);
+        update_button(project->main_menu->load_game, project);
     if (project->main_menu->state == SETTINGS) {
         update_settings(project);
     }
@@ -75,8 +73,8 @@ void draw_pause_menu(project_t *project)
     sfRenderWindow_clear(WINDOW, sfWhite);
     sfRenderWindow_drawSprite(project->window,
     background->sprite, NULL);
-    update_button(project->pause_menu->resume, project, project->event);
-    update_button(project->pause_menu->save, project, project->event);
-    update_button(project->pause_menu->settings, project, project->event);
-    update_button(project->pause_menu->back_menu, project, project->event);
+    update_button(project->pause_menu->resume, project);
+    update_button(project->pause_menu->save, project);
+    update_button(project->pause_menu->settings, project);
+    update_button(project->pause_menu->back_menu, project);
 }

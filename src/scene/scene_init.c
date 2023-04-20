@@ -57,7 +57,7 @@ void next_load_scene(project_t *project, scene_t *scene, sfVector2f size)
     player->nb_sprite = 4;
     image_t *foreground = create_image((sfVector2f){0, 0},
     my_strcat(scene->name, "/foreground.png"),
-    (sfIntRect){0, 0, 480, 480}, size);
+    (sfIntRect){0, 0, size.x, size.y}, size);
     foreground->nb_sprite = 1;
     push_back(&scene->images, "background", background, IMAGE);
     load_pnj(scene);

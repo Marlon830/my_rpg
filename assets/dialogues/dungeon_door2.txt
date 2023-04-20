@@ -1,0 +1,11 @@
+Name:Dungeon2
+Image:door.png
+Dialogue#
+Ah tu viens de battre cette fraude
+de squelette
+-
+Bon, je te laisse passer
+-
+Fais attention c'est dangereux la bas...
+-
+#

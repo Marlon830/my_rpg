@@ -33,6 +33,7 @@ box_t *get_box_selected(project_t *project)
 
 void change_elem_box(project_t *project, box_t *new_box, box_t *selected_box)
 {
+    add_or_delete_stat(project, new_box, selected_box);
     add_new_elem_in_box(new_box, selected_box->name, selected_box->type_sprite,
     selected_box->quantity);
     reset_box(selected_box);
@@ -50,6 +51,7 @@ void switch_elem_box(project_t *project, box_t *new_box, box_t *selected_box)
         selected_box->is_selected = false;
         return;
     }
+    switch_stat(project, new_box, selected_box);
     my_strcpy(temp_str, new_box->name);
     reset_box(new_box);
     add_new_elem_in_box(new_box, selected_box->name, selected_box->type_sprite,

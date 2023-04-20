@@ -55,3 +55,17 @@ void *get_item(list_t *list, char *id)
     }
     return NULL;
 }
+
+int get_list_len(list_t *list)
+{
+    list_t *temp = list;
+    int i = 0;
+
+    if (list == NULL)
+        return 1;
+    while (temp != NULL) {
+        temp = temp->next;
+        i++;
+    }
+    return i;
+}

@@ -1,0 +1,8 @@
+Name:Enemy1
+Image:etchébaiste.png
+Dialogue#
+Ah tu viens pour chercher les crampons ?
+-
+Saches que je ne te laisserais pas passer
+-
+#

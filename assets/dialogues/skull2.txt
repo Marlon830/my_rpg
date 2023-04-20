@@ -1,10 +1,10 @@
 Name:Skull2
-Image:ronfle.png
+Image:angry_skull.png
 Dialogue#
 Que fais tu ici ?
 -
-Tu n'aurais pas du rentrer
+Tu me deranges durant ma nuit de n'os
 -
-Viens te battre !
+Je vais te desosser >:( !!!! 
 -
 #

@@ -10,7 +10,13 @@
 void add_quest(char *quest_to_add, quest_t *quests, char *quest_id)
 {
     list_t *temp = quests->actual_quests_list;
+    list_t *temp2 = quests->finished_quests_list;
 
+    while (temp2 != NULL) {
+        if (!my_strcmp(temp2->id, quest_id))
+            return;
+        temp2 = temp2->next;
+    }
     while (temp != NULL) {
         if (my_strcmp(temp->id, quest_id) == 0)
             return;

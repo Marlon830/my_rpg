@@ -28,7 +28,7 @@ void add_new_elem_in_box(box_t *box, char *name, int type, int quantity)
     sfSprite_setPosition(box->sprite, box->pos_sprite);
     box->name = malloc(sizeof(char) * (my_strlen(name) + 1));
     my_strcpy(box->name, name);
-    box->quantity += quantity;
+    box->quantity = quantity;
     sfText_setString(box->text, int_to_string(box->quantity));
     sfSprite_setScale(box->sprite, (sfVector2f) {0.8125, 0.8125});
     box->type_sprite = type;
