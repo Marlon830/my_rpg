@@ -46,6 +46,7 @@ player_t *init_player(int x, int y)
     player->move = (sfVector2f) {0, 0};
     player->state = IDLE_DOWN;
     player->player_progress_state = 0;
+    player->player_second_state = 0;
     player->equipment = init_equipment();
     player->player_stats = init_stats();
     return player;

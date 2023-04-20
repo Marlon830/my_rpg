@@ -34,7 +34,7 @@ void set_first_resolution(project_t *project)
     sfRenderWindow_close(project->window);
     project->mode = (sfVideoMode) {1920, 1080, 32};
     if (project->is_fullscreen == 1)
-        project->window = sfRenderWindow_create(project->mode, 
+        project->window = sfRenderWindow_create(project->mode,
         "Le Quoi ? Feur et la quete du crampter", sfClose | sfFullscreen, NULL);
     else
         project->window = sfRenderWindow_create(project->mode,

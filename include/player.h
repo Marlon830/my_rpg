@@ -73,6 +73,7 @@ typedef struct player_s {
     enum player_state state;
     sfVector2f move;
     int player_progress_state;
+    int player_second_state;
     equipment_t *equipment;
     image_t *character;
     player_stats_t *player_stats;

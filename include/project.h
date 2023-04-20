@@ -117,5 +117,7 @@ void theoronfle_quest(project_t *project, all_pnjs_t *act_pnj);
 void bed_quest(project_t *project, all_pnjs_t *act_pnj);
 void skull_quest(project_t *project, all_pnjs_t *act_pnj);
 void door_quest(project_t *project, all_pnjs_t *act_pnj);
+void chest_quest(project_t *project, all_pnjs_t *act_pnj);
+void enemy1_quest(project_t *project, all_pnjs_t *act_pnj);
 
 #endif
