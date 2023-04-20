@@ -1,0 +1,10 @@
+Name:Enemy2
+Image:etchébaiste.png
+Dialogue#
+Ah j'ai flop
+-
+Tu peux aller voir le coffre a droite
+-
+Fais vite
+-
+#

@@ -1,0 +1,8 @@
+Name:Chest1
+Image:chest_closed.png
+Dialogue#
+...
+-
+(Bat le boss pour obtenir un objet)
+-
+#
