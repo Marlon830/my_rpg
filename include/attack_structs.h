@@ -32,6 +32,7 @@ typedef struct combat_map_s combat_map_t;
 typedef struct enemy_s enemy_t;
 typedef struct combat_text_s combat_text_t;
 typedef struct card_overlay_s card_overlay_t;
+typedef struct equipment_s equipment_t;
 
 enum player_state_e {
     ATTACKING,
@@ -90,6 +91,7 @@ struct combat_player_s {
     combat_text_t *damage_taken;
     combat_text_t **overlay;
     image_t *sprite;
+    equipment_t *equipment;
 };
 
 
