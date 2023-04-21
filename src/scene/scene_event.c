@@ -79,7 +79,8 @@ void inventory_event(project_t *project, sfEvent event)
 
 void scene_event_bis(project_t *project, sfEvent event)
 {
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace &&
+    if (event.type == sfEvtKeyPressed && (event.key.code == sfKeySpace ||
+    event.key.code == sfKeyE) &&
     !project->inventory->is_active)
         check_all_pnj_dialogue(project);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab &&

@@ -38,8 +38,10 @@ project_t *project)
     res->player->actual_stats->move_points, res->player);
     res->view = sfView_create();
     res->hand->player = res->player;
+    res->player->equipment = project->player->equipment;
     sfView_setSize(res->view, (sfVector2f){1920, 1080});
     sfView_setCenter(res->view, (sfVector2f){1920 / 2, 1080 / 2});
     set_stats(project, res);
+    set_texture_equipment(res->player->equipment);
     return res;
 }

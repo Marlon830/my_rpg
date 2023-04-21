@@ -49,3 +49,4 @@ void enemy_get_close_to_player(enemy_t *enemy, battle_scene_t *scene);
 sfVector2f get_pos_in_tiles(combat_map_t *map, tile_t *tile);
 void upscale_player_stats(player_stats_t *stats, sfVector2f scale);
 void update_player_stats(player_stats_t *stats, stat_t *actual_stats);
+void set_texture_equipment(equipment_t *equip);

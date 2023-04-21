@@ -80,6 +80,7 @@ project_t *init_project_bis(project_t *project)
     sfText_setString(project->quests_button, "A: Quetes actuelles\nF: Quetes \
 finies");
     project->sound = sfSound_create();
+    project->soundbuffer = NULL;
     return project;
 }
 

@@ -77,7 +77,6 @@ void get_save_bis(save_t *save, char *line, size_t len, FILE *fp)
 {
     getline(&line, &len, fp);
     save->player_second_state = my_getnbr(line);
-    fclose(fp);
 }
 
 save_t *get_save(project_t *project)
