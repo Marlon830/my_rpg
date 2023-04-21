@@ -1,0 +1,9 @@
+Name:DoorBoss1
+Image:door.png
+Dialogue#
+Knock Knock. Vas ta battre avant
+-
+Serieusement tu croyais que ca allait
+etre aussi facile ?
+-
+#
