@@ -1,7 +1,7 @@
 Name:Mickey2
 Image:mickey.png
 Dialogue#
-Oh Oh ! Je me suis bien fait eclater
+Oh Oh ! Tu m'as bien mickey
 -
 Bon je n'aurais pas servi a grand chose
 -
