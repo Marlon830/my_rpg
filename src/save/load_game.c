@@ -26,6 +26,7 @@ void get_inventory3(project_t *project, FILE *fp)
         }
         temp = temp->next;
     }
+    get_quests(project, fp);
 }
 
 void get_inventory2(project_t *project, FILE *fp)
@@ -71,7 +72,7 @@ void get_inventory(project_t *project, FILE *fp)
     }
     get_inventory2(project, fp);
     get_inventory3(project, fp);
-    update_equipment(project, project->inventory, fp);
+    update_equipment(project, project->inventory);
 }
 
 void get_save_bis(save_t *save, char *line, size_t len, FILE *fp)
