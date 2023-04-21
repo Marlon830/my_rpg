@@ -42,8 +42,7 @@ void main_loop(project_t *project)
     sfSoundBuffer_destroy(project->main_menu->soundbuffer);
     sfSound_stop(project->sound);
     sfSound_destroy(project->sound);
-    if (project->soundbuffer != NULL)
-        sfSoundBuffer_destroy(project->soundbuffer);
+    sfSoundBuffer_destroy(project->soundbuffer);
     sfMusic_stop(project->main_menu->music);
     sfMusic_destroy(project->main_menu->music);
     sfMusic_stop(project->main_menu->music_ingame);
