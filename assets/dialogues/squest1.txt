@@ -1,0 +1,13 @@
+Name:Squest1
+Image:squest1.png
+Dialogue#
+Ma maman me dit que j'ai besoin de repos
+-
+Les gens me prendrait pour un T.U.R.C
+-
+Je prefererais aller faire du vélo avec
+tout mes copains moi
+-
+J'ai meme recu un nouveau casque
+-
+#
