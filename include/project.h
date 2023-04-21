@@ -116,6 +116,11 @@ void set_state_with_end_of_fight(project_t *project);
 player_stats_t *init_stats(void);
 char *get_info(char *str, int pos_word);
 
+char *get_quest_name(char *buffer);
+char *get_quest_id(char *buffer);
+void get_quests(project_t *project, FILE *fp);
+void save_quests(project_t *project, int fd);
+
 void theoronfle_quest(project_t *project, all_pnjs_t *act_pnj);
 void bed_quest(project_t *project, all_pnjs_t *act_pnj);
 void skull_quest(project_t *project, all_pnjs_t *act_pnj);
