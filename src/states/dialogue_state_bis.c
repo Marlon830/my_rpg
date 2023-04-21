@@ -39,7 +39,7 @@ void mickey_quest(project_t *project, all_pnjs_t *act_pnj)
             project->pnj_fighting = act_pnj->name;
             project->battle_scene = create_battle_scene_from_file(
         "assets/fight_scene/mickey_map.txt",
-        "assets/fight_scene/mickey_enemies.txt");
+        "assets/fight_scene/mickey_enemies.txt", project);
         }
     }
 }
@@ -52,7 +52,7 @@ void client_quest(project_t *project, all_pnjs_t *act_pnj)
             project->pnj_fighting = act_pnj->name;
             project->battle_scene = create_battle_scene_from_file(
         "assets/fight_scene/client_map.txt",
-        "assets/fight_scene/client_enemies.txt");
+        "assets/fight_scene/client_enemies.txt", project);
         }
     }
 }
