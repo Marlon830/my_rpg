@@ -21,6 +21,6 @@ void draw_hand(hand_t *hand, sfRenderWindow *window);
 void update_hand(hand_t *hand, sfVector2f mouse_pos);
 void move_card(card_t *card, sfVector2f increment);
 void create_card_vertex(card_t *card, sfVector2f pos);
-void click_card(sfEvent event, hand_t *hand);
+void click_card(sfRenderWindow *window, sfEvent event, hand_t *hand);
 tile_t **update_attack_tiles(combat_player_t *player,
 card_t *card, battle_scene_t *scene);
