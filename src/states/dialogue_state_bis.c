@@ -56,3 +56,15 @@ void client_quest(project_t *project, all_pnjs_t *act_pnj)
         }
     }
 }
+
+void dungeon_door1_quest(project_t *project, all_pnjs_t *act_pnj)
+{
+    if (project->player->player_progress_state == 8 &&
+    !my_strcmp(act_pnj->name, "/door_boss1.png")) {
+        project->player->pos.x = 48;
+        project->player->pos.y = 416;
+        project->player->col->left = project->player->pos.x + 11;
+        project->player->col->top = project->player->pos.y + 16;
+        project->scene = load_scene(project, 9);
+    }
+}

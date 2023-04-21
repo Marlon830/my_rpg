@@ -125,5 +125,6 @@ void enemy1_quest(project_t *project, all_pnjs_t *act_pnj);
 void mickey_quest(project_t *project, all_pnjs_t *act_pnj);
 void client_quest(project_t *project, all_pnjs_t *act_pnj);
 void play_sound(project_t *project, char *filepath);
+void dungeon_door1_quest(project_t *project, all_pnjs_t *act_pnj);
 
 #endif
