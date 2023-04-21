@@ -66,12 +66,12 @@ act_dial_t *init_actual_dialogue(void)
 
 project_t *init_project_bis(project_t *project)
 {
+    project->quests = init_quests();
     project->main_menu = init_main_menu(project);
     project->pause_menu = init_pause_menu(project);
     project->actual_dial = init_actual_dialogue();
     project->all_dialogues = create_all_dialogues(project, "assets/dialogues");
     project->battle_scene = NULL;
-    project->quests = init_quests();
     project->fight_win = 0;
     project->volume = 100;
     project->is_fullscreen = 1;
