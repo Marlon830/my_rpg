@@ -1,2 +1,2 @@
 1
-5 5 40 2 400 3
+5 5 40 2 400 3 coiffeur/client.png
