@@ -44,6 +44,7 @@ void get_inventory2(project_t *project, FILE *fp)
             quantity = my_getnbr(get_info(line, 2));
             type = my_getnbr(get_info(line, 3));
             add_new_elem_in_box(temp->box, name, type, quantity);
+            add_stat(project->player, temp->box->name);
         }
         temp = temp->next;
     }
@@ -57,7 +58,6 @@ void get_inventory(project_t *project, FILE *fp)
     char *name;
     int type;
     int quantity;
-
     while (temp != NULL) {
         getline(&line, &len, fp);
         if (line[0] != '0') {
@@ -65,6 +65,7 @@ void get_inventory(project_t *project, FILE *fp)
             quantity = my_getnbr(get_info(line, 2));
             type = my_getnbr(get_info(line, 3));
             add_new_elem_in_box(temp->box, name, type, quantity);
+            add_stat(project->player, temp->box->name);
         }
         temp = temp->next;
     }
