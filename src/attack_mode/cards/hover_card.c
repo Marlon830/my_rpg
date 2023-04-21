@@ -7,7 +7,14 @@
 
 #include "attack_mode.h"
 
-void hover_card(sfEvent event, hand_t *hand)
+void hover_card2(card_state *temp_state,
+card_t *temp, sfVector2f **points)
+{
+    *temp_state = temp->state == HOVERED ? NOTHING : temp->state;
+    *points = get_all_vector_from_vertex(temp->array);
+}
+
+void hover_card(sfRenderWindow *window, sfEvent event, hand_t *hand)
 {
     card_t *temp = hand->cards;
     if (!temp)
@@ -19,10 +26,10 @@ void hover_card(sfEvent event, hand_t *hand)
     while (temp->next != NULL)
         temp = temp->next;
     while (temp != NULL) {
-        temp_state = temp->state == HOVERED ? NOTHING : temp->state;
-        points = get_all_vector_from_vertex(temp->array);
+        hover_card2(&temp_state, temp, &points);
         if (!ok && is_point_in_polygon(points, nb_points, (sfVector2f)
-        {event.mouseMove.x, event.mouseMove.y}) && temp->state != SELECTED) {
+        convert_mouse_window(window, event.mouseMove.x, event.mouseMove.y))
+        && temp->state != SELECTED) {
             temp->state = HOVERED;
             ok = 1;
         } else
