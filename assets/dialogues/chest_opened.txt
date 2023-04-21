@@ -1,6 +1,6 @@
 Name:Chest2
 Image:chest_opened.png
 Dialogue#
-Vous obtenez un casque en or !
+Vous obtenez des jambieres en or !
 -
 #
