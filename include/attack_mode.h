@@ -24,7 +24,7 @@ void end_of_turn(combat_player_t *player, hand_t *hand, battle_scene_t *scene);
 int is_point_in_polygon(sfVector2f *polygon, int nb_points, sfVector2f point);
 sfVector2f *get_all_vector_from_vertex(sfVertexArray *array);
 void add_pos(sfVector2f pos, sfVector2f *point);
-void hover_card(sfEvent event, hand_t *hand);
+void hover_card(sfRenderWindow *window,sfEvent event, hand_t *hand);
 void unclick_card(hand_t *hand, battle_scene_t *scene);
 battle_scene_t *create_standard_battle_scene(void);
 battle_scene_t *create_battle_scene_from_file(char *filename, char *enemy_file,
