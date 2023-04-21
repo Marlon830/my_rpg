@@ -57,7 +57,6 @@ void get_inventory(project_t *project, FILE *fp)
     char *name;
     int type;
     int quantity;
-
     while (temp != NULL) {
         getline(&line, &len, fp);
         if (line[0] != '0') {
@@ -71,6 +70,7 @@ void get_inventory(project_t *project, FILE *fp)
     get_inventory2(project, fp);
     get_inventory3(project, fp);
     update_equipment(project, project->inventory);
+    get_quests(project, fp);
 }
 
 void get_save_bis(save_t *save, char *line, size_t len, FILE *fp)
