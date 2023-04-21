@@ -30,7 +30,7 @@ void change_state_with_scene(project_t *project, int to_scene_id)
 
 void set_all_pnj_dialogues_ter(project_t *project)
 {
-    if (project->player->player_second_state == 2) {
+    if (project->player->player_second_state >= 2) {
         set_pnj_dialogue(project->scene->pnj, "/client.png", "Client3");
     }
 }
@@ -52,7 +52,7 @@ void set_all_pnj_dialogues_bis(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/enemy.png", "Enemy2");
         set_pnj_dialogue(project->scene->pnj, "/door_boss1.png", "DoorBoss2");
     }
-    if (project->player->player_second_state == 1) {
+    if (project->player->player_second_state >= 1) {
         set_pnj_dialogue(project->scene->pnj, "/mickey.png", "Mickey2");
         set_pnj_dialogue(project->scene->pnj, "/client.png", "Client2");
     }
