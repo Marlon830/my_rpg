@@ -20,12 +20,10 @@ sfRenderWindow *window)
         {sfMouse_getPositionRenderWindow(window).x,
         sfMouse_getPositionRenderWindow(window).y});
         update_enemies(scene->enemies, scene->nb_enemies, scene);
-        for (int i = 0; i < scene->nb_enemies; i++) {
-                if (scene->enemies[i] != NULL) {
-                        change_enemy_color(scene->enemies[i]);
-                }
-        }
         update_player_stats(project->player->player_stats,
         scene->player->actual_stats);
         draw_batle_scene(scene, window, project);
+        update_lazer(scene->lazer);
+        update_black_fade(scene);
+        update_end_of_fight(scene);
 }

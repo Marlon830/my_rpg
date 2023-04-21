@@ -19,6 +19,10 @@ void hit_enemy(battle_scene_t *scene, tile_t *tile, int damage)
             sfText_setPosition(scene->enemies[i]->damage_taken->text,
             (sfVector2f){tile->pos.x - my_strlen(text) * 7, tile->pos.y - 80});
             free(text);
+            destroy_lazer(scene->lazer);
+            scene->lazer = create_lazer(scene->enemies[i]->actual_tile->pos,
+            scene->player->actual_tile->pos, damage / 10.);
+            scene->lazer->show = 1;
             return;
         }
     }

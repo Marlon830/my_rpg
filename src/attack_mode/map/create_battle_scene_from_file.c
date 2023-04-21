@@ -22,6 +22,28 @@ void set_stats(project_t *project, battle_scene_t *scene)
     real_stats->move_points = game_stats->move_range_value;
 }
 
+battle_scene_t *create_battle_scene_from_file_two(battle_scene_t *res,
+project_t *project)
+{
+    sfVector2u pos = sfRenderWindow_getSize(project->window);
+    sfView_setSize(res->view, (sfVector2f){1920, 1080});
+    sfView_setCenter(res->view, (sfVector2f){1920 / 2, 1080 / 2});
+    set_stats(project, res);
+    set_texture_equipment(res->player->equipment);
+    res->lazer = create_lazer(res->player->actual_tile->pos, res->enemies[0]->
+    actual_tile->pos, 5);
+    res->clock = sfClock_create();
+    res->black_fade = sfVertexArray_create();
+    append_vertex((sfVector2f){0, 0}, (sfColor){0, 0, 0, 0}, res->black_fade);
+    append_vertex((sfVector2f){0, pos.y},
+    (sfColor){0, 0, 0, 0}, res->black_fade);
+    append_vertex((sfVector2f){pos.x, pos.y}, (sfColor){0, 0, 0, 0},
+    res->black_fade);
+    append_vertex((sfVector2f){pos.x, 0}, (sfColor){0, 0, 0, 0},
+    res->black_fade);
+    sfVertexArray_setPrimitiveType(res->black_fade, sfQuads);
+}
+
 battle_scene_t *create_battle_scene_from_file(char *filename, char *enemy_file,
 project_t *project)
 {
@@ -39,9 +61,6 @@ project_t *project)
     res->view = sfView_create();
     res->hand->player = res->player;
     res->player->equipment = project->player->equipment;
-    sfView_setSize(res->view, (sfVector2f){1920, 1080});
-    sfView_setCenter(res->view, (sfVector2f){1920 / 2, 1080 / 2});
-    set_stats(project, res);
-    set_texture_equipment(res->player->equipment);
+    create_battle_scene_from_file_two(res, project);
     return res;
 }
