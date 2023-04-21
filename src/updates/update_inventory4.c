@@ -91,7 +91,7 @@ int update_equipment2(project_t *project, list_box_t *temp, char *path)
     return count;
 }
 
-void update_equipment(project_t *project, inventory_t *inventory)
+void update_equipment(project_t *project, inventory_t *inventory, FILE *fp)
 {
     list_box_t *temp = inventory->first_equipment;
     char *path = NULL;
@@ -99,4 +99,5 @@ void update_equipment(project_t *project, inventory_t *inventory)
 
     temp = inventory->second_equipment;
     update_equipment3(project, temp, path, count);
+    get_quests(project, fp);
 }

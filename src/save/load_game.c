@@ -71,8 +71,7 @@ void get_inventory(project_t *project, FILE *fp)
     }
     get_inventory2(project, fp);
     get_inventory3(project, fp);
-    update_equipment(project, project->inventory);
-    get_quests(project, fp);
+    update_equipment(project, project->inventory, fp);
 }
 
 void get_save_bis(save_t *save, char *line, size_t len, FILE *fp)
@@ -89,7 +88,7 @@ save_t *get_save(project_t *project)
     FILE *fp = fopen("save", "r");
     size_t len = 0;
     char *line = NULL;
-    
+
     save->pos = (sfVector2f){0, 0};
     getline(&line, &len, fp);
     if (line[0] == 'R') {

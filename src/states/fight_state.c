@@ -48,7 +48,7 @@ void set_state_with_end_of_fight_bis(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/enemy.png", "Enemy2");
         check_all_pnj_dialogue(project);
         add_quest("Combattre Heisenberg", project->quests,
-        "QUETE4");        
+        "QUETE4");
     }
     set_state_with_end_of_fight_ter(project);
 }
