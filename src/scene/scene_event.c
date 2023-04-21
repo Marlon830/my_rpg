@@ -47,20 +47,10 @@ void inventory_event2(project_t *project, sfEvent event)
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyJ)
         add_elem(project->inventory->bag, "assets/object/amulet_emerald.png",
         AMULET, 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyC)
-        delete_elem(project->inventory->bag, "assets/object/apple.png", 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyE)
-        delete_elem(project->inventory->bag, "assets/object/strawberry.png",
-        1);
 }
 
 void inventory_event(project_t *project, sfEvent event)
 {
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyA)
-        add_elem(project->inventory->bag, "assets/object/apple.png", OTHER, 1);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyB)
-        add_elem(project->inventory->bag, "assets/object/strawberry.png",
-        OTHER, 1);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyL)
         add_elem(project->inventory->bag, "assets/object/sword_silver.png",
         SWORD, 1);
