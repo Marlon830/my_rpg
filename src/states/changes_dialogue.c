@@ -18,6 +18,7 @@ void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj)
     mickey_quest(project, act_pnj);
     client_quest(project, act_pnj);
     dungeon_door1_quest(project, act_pnj);
+    squest_quest(project, act_pnj);
 }
 
 void change_state_with_scene(project_t *project, int to_scene_id)
@@ -32,6 +33,10 @@ void set_all_pnj_dialogues_ter(project_t *project)
 {
     if (project->player->player_second_state >= 2) {
         set_pnj_dialogue(project->scene->pnj, "/client.png", "Client3");
+        set_pnj_dialogue(project->scene->pnj, "/enemy_sq1.png", "Squest2");
+    }
+    if (project->player->player_second_state >= 3) {
+        set_pnj_dialogue(project->scene->pnj, "/enemy_sq1.png", "Squest3");
     }
 }
 
@@ -71,6 +76,7 @@ void set_all_pnj_dialogues(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/mickey.png", "Mickey1");
         set_pnj_dialogue(project->scene->pnj, "/client.png", "Client1");
         set_pnj_dialogue(project->scene->pnj, "/door_boss1.png", "DoorBoss1");
+        set_pnj_dialogue(project->scene->pnj, "/enemy_sq1.png", "Squest1");
     }
     if (project->player->player_progress_state >= 1) {
         set_pnj_dialogue(project->scene->pnj, "/theodore.png", "Theoronfle2");
