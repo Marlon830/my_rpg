@@ -8,6 +8,14 @@
 #include "project.h"
 #include "utils.h"
 
+void scene_management_bis(project_t *project)
+{
+    if (project->status == CREDIT) {
+        credit_event(project);
+        update_credit(project, project->credit);
+    }
+}
+
 void scene_management(project_t *project)
 {
     if (project->status == GAME) {
@@ -28,6 +36,7 @@ void scene_management(project_t *project)
         update_battle_scene(project->battle_scene, project, project->window);
         handle_end_of_fight(project);
     }
+    scene_management_bis(project);
 }
 
 void main_loop(project_t *project)
