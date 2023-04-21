@@ -81,6 +81,7 @@ project_t *init_project_bis(project_t *project)
 finies");
     project->sound = sfSound_create();
     project->soundbuffer = NULL;
+    project->credit = create_credit();
     return project;
 }
 
