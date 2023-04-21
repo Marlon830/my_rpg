@@ -1,0 +1,6 @@
+Name:DoorBoss2
+Image:door.png
+Dialogue#
+Vas y bonne chance
+-
+#

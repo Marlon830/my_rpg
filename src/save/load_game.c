@@ -26,6 +26,7 @@ void get_inventory3(project_t *project, FILE *fp)
         }
         temp = temp->next;
     }
+    get_quests(project, fp);
 }
 
 void get_inventory2(project_t *project, FILE *fp)
@@ -77,16 +78,19 @@ void get_inventory(project_t *project, FILE *fp)
 void get_save_bis(save_t *save, char *line, size_t len, FILE *fp)
 {
     getline(&line, &len, fp);
+    save->player_state = my_getnbr(line);
+    getline(&line, &len, fp);
     save->player_second_state = my_getnbr(line);
 }
 
 save_t *get_save(project_t *project)
 {
     save_t *save = malloc(sizeof(save_t));
-    save->pos = (sfVector2f){0, 0};
     FILE *fp = fopen("save", "r");
     size_t len = 0;
     char *line = NULL;
+
+    save->pos = (sfVector2f){0, 0};
     getline(&line, &len, fp);
     if (line[0] == 'R') {
         free(save);
@@ -97,8 +101,6 @@ save_t *get_save(project_t *project)
     save->pos.x = my_getnbr(line);
     for (; line[0] != ' '; line++);
     save->pos.y = my_getnbr(line);
-    getline(&line, &len, fp);
-    save->player_state = my_getnbr(line);
     get_save_bis(save, line, len, fp);
     get_inventory(project, fp);
     return save;

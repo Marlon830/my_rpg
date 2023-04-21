@@ -89,5 +89,6 @@ void new_save(project_t *project)
     save_left_equipment(project, fd);
     save_right_equipment(project, fd);
     save_bag(project, fd);
+    save_quests(project, fd);
     close(fd);
 }
