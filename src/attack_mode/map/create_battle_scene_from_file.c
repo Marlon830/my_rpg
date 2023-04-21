@@ -22,7 +22,7 @@ void set_stats(project_t *project, battle_scene_t *scene)
     real_stats->move_points = game_stats->move_range_value;
 }
 
-battle_scene_t *create_battle_scene_from_file_two(battle_scene_t *res,
+void create_battle_scene_from_file_two(battle_scene_t *res,
 project_t *project)
 {
     sfVector2u pos = sfRenderWindow_getSize(project->window);
