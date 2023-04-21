@@ -24,4 +24,6 @@ project_t *project)
     upscale_player_stats(project->player->player_stats, (sfVector2f){1, 1});
     update_stats(project, (sfVector2f){screen_size.x, screen_size.y - 100},
     (sfVector2f){2, 2});
+    draw_lazer(scene->lazer, window);
+    sfRenderWindow_drawVertexArray(window, scene->black_fade, NULL);
 }

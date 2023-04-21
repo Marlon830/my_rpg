@@ -25,6 +25,8 @@ sfVector2f tile_size)
     res->hand->player = player;
     res->win = 0;
     res->view = sfView_create();
+    res->lazer = create_lazer(res->player->actual_tile->pos,
+    res->enemies[0]->actual_tile->pos, 5);
     sfView_setSize(res->view, (sfVector2f){1920, 1080});
     sfView_setCenter(res->view, (sfVector2f){960, 540});
     return res;

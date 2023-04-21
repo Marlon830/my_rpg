@@ -10,5 +10,4 @@ def generate_map(width, height, filename) :
         for y in range(height, 0, -1) :
             fd.write(str(x) + ' ' + str(y) + ' 40\n') 
 
-
 generate_map(10, 20, "testmap")

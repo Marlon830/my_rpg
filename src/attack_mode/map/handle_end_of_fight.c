@@ -52,7 +52,7 @@ void reset_equipment(equipment_t *equip)
 void handle_end_of_fight(project_t *project)
 {
     project->fight_win = project->battle_scene->win;
-    if (project->battle_scene->win) {
+    if (project->battle_scene->win == -1 || project->battle_scene->win == 1) {
         upscale_player_stats(project->player->player_stats,
         (sfVector2f){.08, .08});
         update_player_stats(project->player->player_stats,
