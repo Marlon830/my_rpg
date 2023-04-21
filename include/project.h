@@ -14,6 +14,7 @@
     #include "menu.h"
     #include "attack_structs.h"
     #include "attack_mode.h"
+    #include "credit.h"
 
     #define WINDOW project->window
     #define FOREST 0
@@ -25,6 +26,7 @@ enum game_state {
     GAME,
     FIGHT,
     PAUSE_MENU,
+    CREDIT,
 };
 
 typedef struct actual_dialogue_s {
@@ -80,6 +82,7 @@ typedef struct project_s {
     int fight_win;
     sfSoundBuffer *soundbuffer;
     sfSound *sound;
+    credit_t *credit;
 } project_t;
 
 void update_scene(project_t *project);
@@ -125,6 +128,7 @@ void enemy1_quest(project_t *project, all_pnjs_t *act_pnj);
 void mickey_quest(project_t *project, all_pnjs_t *act_pnj);
 void client_quest(project_t *project, all_pnjs_t *act_pnj);
 void play_sound(project_t *project, char *filepath);
+void reset_view(project_t *project);
 sfVector2f convert_mouse_window(sfRenderWindow *window, int x, int y);
 
 #endif
