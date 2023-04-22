@@ -144,5 +144,10 @@ void therock_quest(project_t *project, all_pnjs_t *act_pnj);
 void squest_quest(project_t *project, all_pnjs_t *act_pnj);
 void boat_quest(project_t *project, all_pnjs_t *act_pnj);
 void secondary_quest_fight_state(project_t *project);
+void destroy_project(project_t *project);
+void destroy_dialogue(act_dial_t *actual_dial);
+void destroy_button(button_t *button);
+void destroy_slider(slider_t *slider);
+void destroy_quest(quest_t *quest);
 
 #endif

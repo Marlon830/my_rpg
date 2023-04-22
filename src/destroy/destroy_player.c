@@ -48,3 +48,16 @@ void destroy_equipment(equipment_t *equipment)
         sfTexture_destroy(equipment->boots_texture);
     destroy_equipment2(equipment);
 }
+
+void destroy_player_game(player_t *player)
+{
+    if (player == NULL)
+        return;
+    if (player->equipment != NULL)
+        destroy_equipment(player->equipment);
+    if (player->character != NULL)
+        destroy_image(player->character);
+    if (player->player_stats != NULL)
+        destroy_stats(player->player_stats);
+    free(player);
+}

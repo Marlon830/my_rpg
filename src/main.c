@@ -59,6 +59,7 @@ void main_loop(project_t *project)
     sfMusic_stop(project->credit->music);
     sfMusic_destroy(project->credit->music);
     sfRenderWindow_destroy(project->window);
+    destroy_project(project);
     free(project);
 }
 
