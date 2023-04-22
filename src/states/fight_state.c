@@ -11,7 +11,7 @@ void set_state_with_end_of_fight_four(project_t *project)
 {
     if (!my_strcmp("/boat_guy.png", project->pnj_fighting)) {
         project->player->player_second_state = 4;
-        finish_quest("SEC_QUETE3", project->quests);
+        finish_quest("SEC_QUETE4", project->quests);
         add_quest("Trouver un donjon", project->quests,
         "FINAL_QUETE");
         add_elem(project->inventory->bag,
