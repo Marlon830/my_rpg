@@ -15,6 +15,7 @@ project_t *project)
     NULL);
     draw_map(window, scene->map);
     draw_player(scene->player, window);
+    draw_lazer(scene->lazer, window);
     for (int i = 0; i < scene->nb_enemies; i++) {
         if (scene->enemies[i] != NULL)
             draw_enemy(scene->enemies[i], window);
@@ -24,6 +25,7 @@ project_t *project)
     upscale_player_stats(project->player->player_stats, (sfVector2f){1, 1});
     update_stats(project, (sfVector2f){screen_size.x, screen_size.y - 100},
     (sfVector2f){2, 2});
-    draw_lazer(scene->lazer, window);
+    draw_tutorial(scene->tutorial, window);
     sfRenderWindow_drawVertexArray(window, scene->black_fade, NULL);
+
 }

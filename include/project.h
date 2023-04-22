@@ -126,6 +126,7 @@ void save_quests(project_t *project, int fd);
 
 void theoronfle_quest(project_t *project, all_pnjs_t *act_pnj);
 void bed_quest(project_t *project, all_pnjs_t *act_pnj);
+void kid_quest(project_t *project, all_pnjs_t *act_pnj);
 void skull_quest(project_t *project, all_pnjs_t *act_pnj);
 void door_quest(project_t *project, all_pnjs_t *act_pnj);
 void chest_quest(project_t *project, all_pnjs_t *act_pnj);
@@ -140,7 +141,8 @@ void heisenberg_quest(project_t *project, all_pnjs_t *act_pnj);
 void chest2_quest(project_t *project, all_pnjs_t *act_pnj);
 void dungeon_door2_quest(project_t *project, all_pnjs_t *act_pnj);
 void therock_quest(project_t *project, all_pnjs_t *act_pnj);
-void kid_quest(project_t *project, all_pnjs_t *act_pnj);
+void squest_quest(project_t *project, all_pnjs_t *act_pnj);
+void boat_quest(project_t *project, all_pnjs_t *act_pnj);
 void secondary_quest_fight_state(project_t *project);
 
 #endif

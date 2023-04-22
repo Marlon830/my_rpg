@@ -1,0 +1,6 @@
+Name:Boat2
+Image:chest_opened.png
+Dialogue#
+Maintenant oui
+-
+#

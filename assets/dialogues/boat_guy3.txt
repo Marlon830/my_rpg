@@ -1,0 +1,6 @@
+Name:Boat3
+Image:chest_opened.png
+Dialogue#
+Prends ca
+-
+#

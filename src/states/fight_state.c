@@ -7,6 +7,20 @@
 
 #include "project.h"
 
+void set_state_with_end_of_fight_four(project_t *project)
+{
+    if (!my_strcmp("/boat_guy.png", project->pnj_fighting)) {
+        project->player->player_second_state = 4;
+        finish_quest("SEC_QUETE3", project->quests);
+        add_quest("Trouver un donjon", project->quests,
+        "FINAL_QUETE");
+        add_elem(project->inventory->bag,
+        "assets/object/sword_gold.png", SWORD, 1);
+        set_pnj_dialogue(project->scene->pnj, "/boat_guy.png", "Boat3");
+        check_all_pnj_dialogue(project);
+    }
+}
+
 void dungeon_quest_fight_bis(project_t *project)
 {
     if (!my_strcmp("/therock.png", project->pnj_fighting)) {
@@ -36,6 +50,7 @@ void dungeon_quest_fight(project_t *project)
         set_pnj_dialogue(project->scene->pnj, "/heisenberg.png", "Heisenberg2");
         check_all_pnj_dialogue(project);
     }
+    set_state_with_end_of_fight_four(project);
     dungeon_quest_fight_bis(project);
 }
 
