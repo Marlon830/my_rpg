@@ -26,6 +26,8 @@ void dungeon_quest_fight_bis(project_t *project)
         finish_quest("QUETE5", project->quests);
         add_quest("Trouver les crampter", project->quests,
         "QUETE6");
+        add_elem(project->inventory->bag,
+        "assets/object/amulet_ruby.png", AMULET, 1);
         set_pnj_dialogue(project->scene->pnj, "/therock.png", "Therock2");
         check_all_pnj_dialogue(project);
     }
