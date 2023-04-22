@@ -88,7 +88,7 @@ save_t *get_save(project_t *project)
     FILE *fp = fopen("save", "r");
     size_t len = 0;
     char *line = NULL;
-    
+
     save->pos = (sfVector2f){0, 0};
     getline(&line, &len, fp);
     if (line[0] == 'R') {
