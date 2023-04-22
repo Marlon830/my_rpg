@@ -20,9 +20,11 @@ void set_stats(project_t *project, battle_scene_t *scene)
     real_stats->energy_points = game_stats->mana_value;
     actual_stats->move_points = game_stats->move_range_value;
     real_stats->move_points = game_stats->move_range_value;
+    actual_stats->defense = game_stats->defense_value;
+    real_stats->defense = game_stats->defense_value;
 }
 
-battle_scene_t *create_battle_scene_from_file_two(battle_scene_t *res,
+void create_battle_scene_from_file_two(battle_scene_t *res,
 project_t *project)
 {
     sfVector2u pos = sfRenderWindow_getSize(project->window);
@@ -62,5 +64,6 @@ project_t *project)
     res->hand->player = res->player;
     res->player->equipment = project->player->equipment;
     create_battle_scene_from_file_two(res, project);
+    res->tutorial = create_tutorial();
     return res;
 }

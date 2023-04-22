@@ -34,6 +34,9 @@ typedef struct combat_text_s combat_text_t;
 typedef struct card_overlay_s card_overlay_t;
 typedef struct equipment_s equipment_t;
 typedef struct lazer_s lazer_t;
+typedef struct arrow_s arrow_t;
+typedef struct sprite_s sprite_t;
+typedef struct tutorial_s tutorial_t;
 
 #define pi 3.1415
 
@@ -55,6 +58,9 @@ struct card_overlay_s {
     sfText *range;
     sfSprite *sprite;
     sfText *name;
+    sprite_t *damage_sprite;
+    sprite_t *energy_sprite;
+    sprite_t *range_sprite;
 };
 
 struct card_s {
@@ -97,6 +103,14 @@ struct combat_player_s {
     equipment_t *equipment;
 };
 
+struct arrow_s {
+    sfVertexArray *array;
+    sfVector2f pos;
+    sfText *text;
+    float size;
+    float angle;
+};
+
 
 struct battle_scene_s {
     combat_player_t *player;
@@ -109,6 +123,7 @@ struct battle_scene_s {
     lazer_t *lazer;
     sfClock *clock;
     sfVertexArray *black_fade;
+    tutorial_t *tutorial;
 };
 
 struct tile_s {
@@ -127,6 +142,7 @@ struct stat_s {
     float health_point;
     float damage;
     int energy_points;
+    int defense;
 };
 
 struct combat_map_s {
@@ -166,4 +182,20 @@ struct combat_text_s {
     sfText *text;
     sfClock *clock;
     int show;
+};
+
+struct sprite_s {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfVector2f pos;
+};
+
+struct tutorial_s {
+    sprite_t *left_click;
+    sprite_t *right_click;
+    sprite_t *space_bar;
+    sfText *left_click_text;
+    sfText *right_click_text;
+    sfText *space_bar_text;
+    arrow_t *arrow;
 };

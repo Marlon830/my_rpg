@@ -1,23 +1,23 @@
 R
-371 258
-0
-0
-assets/object/helmet_gold.png 2 2
-assets/object/armor_gold.png 3 3
-assets/object/pants_gold.png 2 4
-assets/object/boots_gold.png 1 5
-assets/object/amulet_diamond.png 2 6
-assets/object/ring_gelano.png 1 7
-assets/object/sword_silver.png 2 8
-assets/object/shield_gold.png 2 9
+233 269
+8
+2
+assets/object/helmet_gold.png 1 2
+assets/object/armor_gold.png 1 3
+assets/object/pants_bronze.png 1 4
 0
 0
 0
+assets/object/sword_silver.png 1 8
+assets/object/shield_gold.png 1 9
+assets/object/apple.png 7 1
 0
-assets/object/sword_gold.png 2 8
-assets/object/amulet_ruby.png 2 6
 0
-assets/object/amulet_emerald.png 2 6
+0
+0
+0
+0
+0
 0
 0
 0
