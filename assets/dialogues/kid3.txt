@@ -1,5 +1,5 @@
-Name:Squest3
-Image:squest1.png
+Name:Kid3
+Image:kid.png
 Dialogue#
 Merci !!
 Tu m'as gueri !

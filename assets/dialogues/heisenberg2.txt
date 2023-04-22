@@ -1,0 +1,8 @@
+Name:Heisenberg2
+Image:heisenberg2.png
+Dialogue#
+Oh non j'ai perdu !
+-
+c'est finis pour moi la meth
+-
+#

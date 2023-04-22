@@ -1,0 +1,14 @@
+Name:Therock1
+Image:therock.png
+Dialogue#
+Bravo tu as reussi a arriver jusqu'ici.
+-
+Mais c'est finis pour toi. Tu m'as permis de trouver
+les crampter.
+-
+Ils sont derriere cette porte donc je n'ai
+plus qu'a te tuer
+-
+Finissons en une bonne fois pour toute !
+-
+#

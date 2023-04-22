@@ -129,14 +129,19 @@ void bed_quest(project_t *project, all_pnjs_t *act_pnj);
 void skull_quest(project_t *project, all_pnjs_t *act_pnj);
 void door_quest(project_t *project, all_pnjs_t *act_pnj);
 void chest_quest(project_t *project, all_pnjs_t *act_pnj);
-void enemy1_quest(project_t *project, all_pnjs_t *act_pnj);
+void etchebest_quest(project_t *project, all_pnjs_t *act_pnj);
 void mickey_quest(project_t *project, all_pnjs_t *act_pnj);
 void client_quest(project_t *project, all_pnjs_t *act_pnj);
 void play_sound(project_t *project, char *filepath);
 void reset_view(project_t *project);
 sfVector2f convert_mouse_window(sfRenderWindow *window, int x, int y);
 void dungeon_door1_quest(project_t *project, all_pnjs_t *act_pnj);
+void heisenberg_quest(project_t *project, all_pnjs_t *act_pnj);
+void chest2_quest(project_t *project, all_pnjs_t *act_pnj);
+void dungeon_door2_quest(project_t *project, all_pnjs_t *act_pnj);
+void therock_quest(project_t *project, all_pnjs_t *act_pnj);
 void squest_quest(project_t *project, all_pnjs_t *act_pnj);
 void boat_quest(project_t *project, all_pnjs_t *act_pnj);
+void secondary_quest_fight_state(project_t *project);
 
 #endif

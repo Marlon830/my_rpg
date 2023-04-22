@@ -1,5 +1,5 @@
-Name:Squest2
-Image:squest1.png
+Name:Kid2
+Image:kid.png
 Dialogue#
 Si j'ai bien compris tu cherches un T.U.R.C
 c'est ca ?

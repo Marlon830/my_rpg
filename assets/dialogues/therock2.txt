@@ -1,0 +1,15 @@
+Name:Therock2
+Image:therock2.png
+Dialogue#
+....
+-
+Comment c'est possible....
+-
+Cela fait des annees que je suis a la recherche
+des crampter...
+-
+Et tu gaches tout ce que j'ai fait...
+-
+j'espere tu flop
+-
+#
