@@ -45,18 +45,3 @@ void skull_quest(project_t *project, all_pnjs_t *act_pnj)
     "assets/fight_scene/skull_enemies.txt", project);
     }
 }
-
-void door_quest(project_t *project, all_pnjs_t *act_pnj)
-{
-    if (project->player->player_progress_state == 5 &&
-    !my_strcmp(act_pnj->name, "/door.png")) {
-        project->player->player_progress_state = 6;
-        project->player->pos.x = 1664;
-        project->player->pos.y = 416;
-        project->player->col->left = project->player->pos.x + 11;
-        project->player->col->top = project->player->pos.y + 16;
-        project->scene = load_scene(project, 3);
-        finish_quest("QUETE3", project->quests);
-        add_quest("Chercher Mickey", project->quests, "SEC_QUETE1");
-    }
-}
