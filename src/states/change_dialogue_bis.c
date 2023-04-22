@@ -23,6 +23,7 @@ void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj)
     heisenberg_quest(project, act_pnj);
     chest2_quest(project, act_pnj);
     therock_quest(project, act_pnj);
+    boat_quest(project, act_pnj);
 }
 
 void change_state_with_scene(project_t *project, int to_scene_id)
