@@ -66,6 +66,7 @@ int main(void)
     push_back(&project->scenes, "boat", get_map("boat"), SCENE);
     push_back(&project->scenes, "squest_1", get_map("squest_1"), SCENE);
     push_back(&project->scenes, "dungeon2", get_map("dungeon2"), SCENE);
+    push_back(&project->scenes, "dungeon3", get_map("dungeon3"), SCENE);
     main_loop(project);
     return 0;
 }
