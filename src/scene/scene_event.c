@@ -89,8 +89,7 @@ void scene_event(project_t *project)
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(project->window);
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyLAlt) {
-            project->status = CREDIT;
-            reset_view(project);
+            start_credit(project);
             return;
         }
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape) {
