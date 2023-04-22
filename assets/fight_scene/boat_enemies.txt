@@ -1,2 +1,2 @@
 1
-5 5 50 2 100 1 boat/boat_guy.png
+5 5 100 7 1000 1 boat/boat_guy.png

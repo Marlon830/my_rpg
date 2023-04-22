@@ -1,2 +1,2 @@
 1
-5 5 30 8 100 5 dungeon1/etchebest.png
+5 5 120 4 1000 5 dungeon1/etchebest.png

@@ -1,2 +1,2 @@
 1
-5 5 15 8 200 5 basement/skull.png
+5 5 45 8 250 5 basement/skull.png

@@ -39,6 +39,7 @@ void dungeon_quest_fight(project_t *project)
         project->player->player_progress_state = 7;
         set_pnj_dialogue(project->scene->pnj, "/etchebest.png", "Etchebest2");
         check_all_pnj_dialogue(project);
+        finish_quest("FINAL_QUETE", project->quests);
         add_quest("Combattre Heisenberg", project->quests,
         "QUETE4");
     }
