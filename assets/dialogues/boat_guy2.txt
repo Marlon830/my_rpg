@@ -1,6 +1,10 @@
 Name:Boat2
-Image:chest_opened.png
+Image:oeufhumpty.png
 Dialogue#
-Maintenant oui
+He je t'ai vu par la fenetre
+-
+T'as essaye de casser la gueule a un gosse ??
+-
+Cette epee va m'etre plus utile que prevu
 -
 #

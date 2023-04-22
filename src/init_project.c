@@ -61,6 +61,8 @@ act_dial_t *init_actual_dialogue(void)
     (sfVector2f){0.2, 0.2}, sfWhite);
     actual_dial->rect = create_rect();
     actual_dial->is_displayed = 0;
+    actual_dial->dialogue = NULL;
+    actual_dial->face = NULL;
     return actual_dial;
 }
 
@@ -78,7 +80,7 @@ project_t *init_project_bis(project_t *project)
     project->quests_button = create_text((sfVector2f) {0, 0},
     (sfVector2f) {0.15, 0.15}, sfWhite);
     sfText_setString(project->quests_button, "A: Quetes actuelles\nF: Quetes \
-finies");
+finies\nE: Interagir\nTab: Inventaire");
     project->sound = sfSound_create();
     project->soundbuffer = NULL;
     project->credit = create_credit();
