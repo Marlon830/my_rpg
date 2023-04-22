@@ -1,6 +1,13 @@
 Name:Boat3
-Image:chest_opened.png
+Image:oeufcasse.jpg
 Dialogue#
-Prends ca
+Comment ca mon oeuf j'ai perdu
+-
+En meme temps je marchait sur des oeufs
+pendant tout le combat
+-
+Prends cette epee tu la merite
+-
+Elle est toute n'oeuf
 -
 #

@@ -1,11 +1,13 @@
 Name:Boat1
-Image:chest_opened.png
+Image:oeufhumpty.png
 Dialogue#
 Salut toi
 -
 J'essaie de me cacher
 -
 Pourquoi me demande tu ?
-Et bien parce que j'ai vole l'epee de 
+Et bien parce que j'ai vole l'epee de ce maudit chat
+-
+Me balance pas stp
 -
 #
