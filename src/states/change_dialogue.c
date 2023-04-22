@@ -18,6 +18,7 @@ void init_dialogues(project_t *project)
     set_pnj_dialogue(project->scene->pnj, "/chest2.png", "Chest1");
     set_pnj_dialogue(project->scene->pnj, "/mickey.png", "Mickey1");
     set_pnj_dialogue(project->scene->pnj, "/client.png", "Client1");
+    set_pnj_dialogue(project->scene->pnj, "/kid.png", "Kid1");
     set_pnj_dialogue(project->scene->pnj, "/door_boss1.png", "DoorBoss1");
     set_pnj_dialogue(project->scene->pnj, "/door_boss2.png", "DoorBoss1");
     set_pnj_dialogue(project->scene->pnj, "/door_boss3.png", "DoorBoss1");
@@ -44,12 +45,16 @@ void set_dungeon_dialogues(project_t *project)
 
 void set_secondary_quest_dialogues(project_t *project)
 {
-    if (project->player->player_second_state == 1) {
+    if (project->player->player_second_state >= 1) {
         set_pnj_dialogue(project->scene->pnj, "/mickey.png", "Mickey2");
         set_pnj_dialogue(project->scene->pnj, "/client.png", "Client2");
     }
-    if (project->player->player_second_state == 2) {
+    if (project->player->player_second_state >= 2) {
         set_pnj_dialogue(project->scene->pnj, "/client.png", "Client3");
+        set_pnj_dialogue(project->scene->pnj, "/kid.png", "Kid2");
+    }
+    if (project->player->player_second_state >= 3) {
+        set_pnj_dialogue(project->scene->pnj, "/kid.png", "Kid3");
     }
 }
 

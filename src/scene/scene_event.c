@@ -98,6 +98,11 @@ void scene_event(project_t *project)
     while (sfRenderWindow_pollEvent(project->window, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(project->window);
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyLAlt) {
+            project->status = CREDIT;
+            reset_view(project);
+            return;
+        }
         if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape) {
             project->status = PAUSE_MENU;
             sfRenderWindow_setView(project->window,

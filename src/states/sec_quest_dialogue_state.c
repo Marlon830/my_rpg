@@ -32,3 +32,16 @@ void client_quest(project_t *project, all_pnjs_t *act_pnj)
         }
     }
 }
+
+void kid_quest(project_t *project, all_pnjs_t *act_pnj)
+{
+    if (!my_strcmp(act_pnj->name, "/kid.png")) {
+        if (project->player->player_second_state == 2) {
+            project->status = FIGHT;
+            project->pnj_fighting = act_pnj->name;
+            project->battle_scene = create_battle_scene_from_file(
+        "assets/fight_scene/kid_map.txt",
+        "assets/fight_scene/kid_enemies.txt", project);
+        }
+    }
+}

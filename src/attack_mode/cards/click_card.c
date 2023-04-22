@@ -42,7 +42,14 @@ void unclick_card(hand_t *hand, battle_scene_t *scene)
     }
 }
 
-void set_card(sfEvent event, hand_t *hand)
+void set_card2(card_state *temp_state,
+card_t *temp, sfVector2f **points)
+{
+    *temp_state = temp->state;
+    *points = get_all_vector_from_vertex(temp->array);
+}
+
+void set_card(sfRenderWindow *window, sfEvent event, hand_t *hand)
 {
     card_t *temp = hand->cards;
     sfVector2f *points = get_all_vector_from_vertex(temp->array);
@@ -52,10 +59,10 @@ void set_card(sfEvent event, hand_t *hand)
     while (temp->next != NULL)
         temp = temp->next;
     while (temp != NULL) {
-        temp_state = temp->state;
-        points = get_all_vector_from_vertex(temp->array);
+        set_card2(&temp_state, temp, &points);
         if (!ok && is_point_in_polygon(points, nb_points,
-        (sfVector2f){event.mouseButton.x, event.mouseButton.y})
+        (sfVector2f) convert_mouse_window(window, event.mouseButton.x,
+        event.mouseButton.y))
         && temp->energy <= hand->player->actual_stats->energy_points) {
             temp->state = SELECTED;
             ok = 1;
@@ -66,7 +73,7 @@ void set_card(sfEvent event, hand_t *hand)
     }
 }
 
-void click_card(sfEvent event, hand_t *hand)
+void click_card(sfRenderWindow *window, sfEvent event, hand_t *hand)
 {
     if (hand->player->actual_stats->energy_points <= 0)
         return;
@@ -82,5 +89,5 @@ void click_card(sfEvent event, hand_t *hand)
     card_t *temp = hand->cards;
     if (!temp || hand->player->card)
         return;
-    set_card(event, hand);
+    set_card(window, event, hand);
 }

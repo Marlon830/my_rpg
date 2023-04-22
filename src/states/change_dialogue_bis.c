@@ -17,6 +17,7 @@ void change_state_with_dialogue(project_t *project, all_pnjs_t *act_pnj)
     etchebest_quest(project, act_pnj);
     mickey_quest(project, act_pnj);
     client_quest(project, act_pnj);
+    kid_quest(project, act_pnj);
     dungeon_door1_quest(project, act_pnj);
     dungeon_door2_quest(project, act_pnj);
     heisenberg_quest(project, act_pnj);

@@ -14,6 +14,7 @@
     #include "menu.h"
     #include "attack_structs.h"
     #include "attack_mode.h"
+    #include "credit.h"
 
     #define WINDOW project->window
     #define FOREST 0
@@ -25,6 +26,7 @@ enum game_state {
     GAME,
     FIGHT,
     PAUSE_MENU,
+    CREDIT,
 };
 
 typedef struct actual_dialogue_s {
@@ -80,6 +82,7 @@ typedef struct project_s {
     int fight_win;
     sfSoundBuffer *soundbuffer;
     sfSound *sound;
+    credit_t *credit;
 } project_t;
 
 void update_scene(project_t *project);
@@ -116,6 +119,11 @@ void set_state_with_end_of_fight(project_t *project);
 player_stats_t *init_stats(void);
 char *get_info(char *str, int pos_word);
 
+char *get_quest_name(char *buffer);
+char *get_quest_id(char *buffer);
+void get_quests(project_t *project, FILE *fp);
+void save_quests(project_t *project, int fd);
+
 void theoronfle_quest(project_t *project, all_pnjs_t *act_pnj);
 void bed_quest(project_t *project, all_pnjs_t *act_pnj);
 void skull_quest(project_t *project, all_pnjs_t *act_pnj);
@@ -125,10 +133,14 @@ void etchebest_quest(project_t *project, all_pnjs_t *act_pnj);
 void mickey_quest(project_t *project, all_pnjs_t *act_pnj);
 void client_quest(project_t *project, all_pnjs_t *act_pnj);
 void play_sound(project_t *project, char *filepath);
+void reset_view(project_t *project);
+sfVector2f convert_mouse_window(sfRenderWindow *window, int x, int y);
 void dungeon_door1_quest(project_t *project, all_pnjs_t *act_pnj);
 void heisenberg_quest(project_t *project, all_pnjs_t *act_pnj);
 void chest2_quest(project_t *project, all_pnjs_t *act_pnj);
 void dungeon_door2_quest(project_t *project, all_pnjs_t *act_pnj);
 void therock_quest(project_t *project, all_pnjs_t *act_pnj);
+void squest_quest(project_t *project, all_pnjs_t *act_pnj);
+void secondary_quest_fight_state(project_t *project);
 
 #endif

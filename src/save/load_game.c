@@ -26,6 +26,7 @@ void get_inventory3(project_t *project, FILE *fp)
         }
         temp = temp->next;
     }
+    get_quests(project, fp);
 }
 
 void get_inventory2(project_t *project, FILE *fp)

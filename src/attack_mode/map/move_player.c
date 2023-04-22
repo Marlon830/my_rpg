@@ -19,6 +19,10 @@ void hit_enemy(battle_scene_t *scene, tile_t *tile, int damage)
             sfText_setPosition(scene->enemies[i]->damage_taken->text,
             (sfVector2f){tile->pos.x - my_strlen(text) * 7, tile->pos.y - 80});
             free(text);
+            destroy_lazer(scene->lazer);
+            scene->lazer = create_lazer(scene->enemies[i]->actual_tile->pos,
+            scene->player->actual_tile->pos, damage / 10.);
+            scene->lazer->show = 1;
             return;
         }
     }
@@ -43,7 +47,7 @@ battle_scene_t *scene)
     }
 }
 
-void move_player(combat_player_t *player, tile_t *tile, combat_map_t *map,
+void move_player(combat_player_t *player, tile_t *tile,
 battle_scene_t *scene)
 {
     if (player->state != MOVING) {
@@ -52,11 +56,11 @@ battle_scene_t *scene)
     }
     if (tile->ind == -1)
         return;
-    sfVector2f pos = (sfVector2f){(tile->ind - (tile->ind % map->height))
-    / map->height, tile->ind % map->height};
+    sfVector2f pos = (sfVector2f){(tile->ind - (tile->ind % scene->map->height))
+    / scene->map->height, tile->ind % scene->map->height};
     sfVector2f pos2 = (sfVector2f){(player->actual_tile->ind -
-    (player->actual_tile->ind % map->height))
-    / map->height, player->actual_tile->ind % map->height};
+    (player->actual_tile->ind % scene->map->height))
+    / scene->map->height, player->actual_tile->ind % scene->map->height};
     for (int i = 0; i < player->nb_tiles_close; i++) {
         if (player->tiles_close[i]->ind == tile->ind) {
             player->actual_stats->move_points -= manhattan_dist(pos2, pos);

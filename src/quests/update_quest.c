@@ -72,4 +72,6 @@ void update_quest(quest_t *quests)
     if (quests->finished_quests_list != NULL)
         update_quest_list(quests->finished_quests_list,
         quests->finished_quests_text);
+    else
+        sfText_setString(quests->finished_quests_text, "\0");
 }

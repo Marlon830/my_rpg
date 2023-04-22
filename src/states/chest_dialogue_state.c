@@ -11,8 +11,8 @@ void chest_quest(project_t *project, all_pnjs_t *act_pnj)
 {
     if (!my_strcmp(act_pnj->name, "/chest.png")) {
         if (project->player->player_progress_state == 7) {
-            add_elem(project->inventory->bag, "assets/object/helmet_gold.png",
-            HELMET, 1);
+            add_elem(project->inventory->bag, "assets/object/pants_gold.png",
+            PANTS, 1);
             project->player->player_progress_state = 8;
         }
     }

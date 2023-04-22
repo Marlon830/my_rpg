@@ -1,1 +1,55 @@
-R
+4
+283 351
+7
+3
+assets/object/helmet_gold.png 2 2
+assets/object/armor_gold.png 2 3
+assets/object/pants_gold.png 4 4
+assets/object/boots_gold.png 4 5
+assets/object/amulet_ruby.png 3 6
+assets/object/ring_gelano.png 5 7
+assets/object/sword_gold.png 3 8
+assets/object/shield_gold.png 2 9
+assets/object/apple.png 3 1
+assets/object/pants_bronze.png 1 4
+assets/object/shield_gold.png 1 9
+assets/object/pants_gold.png 1 4
+assets/object/helmet_gold.png 1 2
+0
+assets/object/sword_silver.png 4 8
+0
+0
+assets/object/amulet_diamond.png 3 6
+assets/object/amulet_emerald.png 3 6
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+Chercher un bateau|SEC_QUETE4
+Combattre Heisenberg|QUETE4
+Aller dans la maison|QUETE1
+Visiter les environs|QUETE2
+Aller en ville|QUETE3
+Chercher Mickey|SEC_QUETE1
+Aller au salon de Quoi ? Feur|SEC_QUETE2
+Chercher un T.U.R.C|SEC_QUETE3
+-
+Aller dans la maison|QUETE1
+Visiter les environs|QUETE2
+Aller en ville|QUETE3
+Chercher Mickey|SEC_QUETE1
+Aller au salon de Quoi ? Feur|SEC_QUETE2
+Chercher un T.U.R.C|SEC_QUETE3

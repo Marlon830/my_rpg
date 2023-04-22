@@ -11,7 +11,6 @@
 void new_game_button(project_t *project)
 {
     int fd = open("save", O_WRONLY | O_CREAT, 0644);
-
     project->status = GAME;
     project->player->pos.x = 384;
     project->player->pos.y = 416;
@@ -27,6 +26,9 @@ void new_game_button(project_t *project)
     sfMusic_stop(project->main_menu->music);
     project->main_menu->state = NAUNE;
     sfMusic_play(project->main_menu->music_ingame);
+    project->quests->actual_quests_list = NULL;
+    project->quests->finished_quests_list = NULL;
+    update_quest(project->quests);
     close(fd);
 }
 

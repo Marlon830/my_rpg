@@ -28,5 +28,9 @@ void enemy_attack(enemy_t *enemy, battle_scene_t *scene)
     enemy->range) {
         hit_player(scene, scene->player->actual_tile,
         enemy->actual_stats->damage);
+        destroy_lazer(scene->lazer);
+        scene->lazer = create_lazer(enemy->actual_tile->pos,
+        scene->player->actual_tile->pos, enemy->actual_stats->damage / 10.);
+        scene->lazer->show = 1;
     }
 }

@@ -1,0 +1,15 @@
+Name:Kid3
+Image:kid.png
+Dialogue#
+Merci !!
+Tu m'as gueri !
+-
+Je pensais que j'avais un cancer mais
+en fait j'avais simplement mal au dos !
+-
+Une bonne tape dans le dos suffisait
+-
+Je te donne mon nouveau casque
+de velo pour te recompenser
+-
+#

@@ -33,6 +33,9 @@ typedef struct enemy_s enemy_t;
 typedef struct combat_text_s combat_text_t;
 typedef struct card_overlay_s card_overlay_t;
 typedef struct equipment_s equipment_t;
+typedef struct lazer_s lazer_t;
+
+#define pi 3.1415
 
 enum player_state_e {
     ATTACKING,
@@ -103,6 +106,9 @@ struct battle_scene_s {
     int nb_enemies;
     int win;
     sfView *view;
+    lazer_t *lazer;
+    sfClock *clock;
+    sfVertexArray *black_fade;
 };
 
 struct tile_s {
@@ -145,6 +151,15 @@ struct enemy_s {
     int range;
     int nb_attack_tiles;
     image_t *sprite;
+};
+
+struct lazer_s {
+    sfVertexArray *array;
+    sfClock *clock;
+    sfVector2f start;
+    sfVector2f end;
+    float radius;
+    int show;
 };
 
 struct combat_text_s {

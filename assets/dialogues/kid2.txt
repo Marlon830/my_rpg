@@ -1,0 +1,12 @@
+Name:Kid2
+Image:kid.png
+Dialogue#
+Si j'ai bien compris tu cherches un T.U.R.C
+c'est ca ?
+-
+Ne les confonds pas avec moi, j'essaie juste
+de me reposer car j
+-
+He pourquoi tu m'attaques ?!
+-
+#

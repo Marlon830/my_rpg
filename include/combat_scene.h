@@ -23,7 +23,7 @@ sfVector2f *get_points(tile_t *tile);
 int is_point_in_diamond(sfVector2f point, tile_t *tile);
 combat_map_t *create_map(int width, int height, sfVector2f decalage,
 sfVector2f size);
-void update_map(combat_map_t *map, sfEvent event);
+void update_map(sfRenderWindow *window, combat_map_t *map, sfEvent event);
 void draw_map(sfRenderWindow *window, combat_map_t *map);
 void add_walls(tile_t *tile);
 void create_tile_array(sfVector2f center, sfColor color,
@@ -55,7 +55,7 @@ void save_map(combat_map_t *map, char *filename);
 int my_strlen(char *str);
 int int_len(int x);
 stat_t *create_stats(int damage, int health_point, int move_point);
-void move_player(combat_player_t *player, tile_t *tile, combat_map_t *map,
+void move_player(combat_player_t *player, tile_t *tile,
 battle_scene_t *scene);
 
 

@@ -73,3 +73,17 @@ char *int_to_string(int num)
     }
     return str;
 }
+
+sfVector2f convert_mouse_window(sfRenderWindow *window, int x, int y)
+{
+    sfView *view = sfView_create();
+    sfVector2f pos;
+
+    sfView_setSize(view, (sfVector2f) {1920, 1080});
+    sfView_setCenter(view, (sfVector2f) {1920 / 2, 1080 / 2});
+    if (window == NULL)
+        return (sfVector2f) {x, y};
+    pos = sfRenderWindow_mapPixelToCoords(window, (sfVector2i)
+    {x, y}, view);
+    return pos;
+}

@@ -8,6 +8,14 @@
 #include "project.h"
 #include "utils.h"
 
+void scene_management_bis(project_t *project)
+{
+    if (project->status == CREDIT) {
+        credit_event(project);
+        update_credit(project, project->credit);
+    }
+}
+
 void scene_management(project_t *project)
 {
     if (project->status == GAME) {
@@ -28,6 +36,7 @@ void scene_management(project_t *project)
         update_battle_scene(project->battle_scene, project, project->window);
         handle_end_of_fight(project);
     }
+    scene_management_bis(project);
 }
 
 void main_loop(project_t *project)
@@ -64,7 +73,7 @@ int main(void)
     push_back(&project->scenes, "mickey", get_map("mickey_house"), SCENE);
     push_back(&project->scenes, "coiffeur", get_map("coiffeur"), SCENE);
     push_back(&project->scenes, "boat", get_map("boat"), SCENE);
-    push_back(&project->scenes, "squest_1", get_map("squest_1"), SCENE);
+    push_back(&project->scenes, "kid", get_map("kid"), SCENE);
     push_back(&project->scenes, "dungeon2", get_map("dungeon2"), SCENE);
     push_back(&project->scenes, "dungeon3", get_map("dungeon3"), SCENE);
     main_loop(project);
