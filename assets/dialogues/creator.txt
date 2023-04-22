@@ -1,0 +1,20 @@
+Name:Creator
+Image:creator.png
+Dialogue#
+Ah....
+-
+Tu es enfin arrive...
+-
+Tu dois te poser beaucoup de questions...
+-
+Je suis le createur, le gardien des crampter.
+-
+Ce pouvoir permet a quiconque de controler
+le monde.
+-
+Tu devines bien que je dois proteger a tout prix
+ce pouvoir. 
+-
+Maintenant que tu es la, tu peux me poser ta question.
+-
+#

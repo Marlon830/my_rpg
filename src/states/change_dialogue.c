@@ -24,6 +24,7 @@ void init_dialogues(project_t *project)
     set_pnj_dialogue(project->scene->pnj, "/door_boss3.png", "DoorBoss1");
     set_pnj_dialogue(project->scene->pnj, "/heisenberg.png", "Heisenberg1");
     set_pnj_dialogue(project->scene->pnj, "/therock.png", "Therock1");
+    set_pnj_dialogue(project->scene->pnj, "/creator.png", "Creator");
     set_pnj_dialogue(project->scene->pnj, "/boat_guy.png", "Boat1");
 }
 
@@ -41,7 +42,12 @@ void set_dungeon_dialogues(project_t *project)
     }
     if (project->player->player_progress_state >= 11) {
         set_pnj_dialogue(project->scene->pnj, "/therock.png", "Therock2");
+        set_pnj_dialogue(project->scene->pnj, "/door_boss3.png", "DoorBoss2");
     }
+    if (project->player->player_progress_state >= 12)
+        set_pnj_dialogue(project->scene->pnj, "/creator.png", "Creator2");
+    if (project->player->player_progress_state >= 13)
+        set_pnj_dialogue(project->scene->pnj, "/creator.png", "Creator3");
 }
 
 void set_secondary_quest_dialogues(project_t *project)
