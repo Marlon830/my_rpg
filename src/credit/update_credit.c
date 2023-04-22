@@ -31,7 +31,7 @@ void update_credit2(project_t *project, credit_t *credit)
     if (credit->seconds_credit > 0.01) {
         credit->pos.y -= 1;
         sfClock_restart(credit->clock_credit);
-        if (credit->pos.y <= -950 && (sfMusic_getVolume(credit->music) -
+        if (credit->pos.y <= -1150 && (sfMusic_getVolume(credit->music) -
         credit->volume / 200) > 0)
             sfMusic_setVolume(credit->music, sfMusic_getVolume(credit->music) -
             credit->volume / 200);
@@ -45,7 +45,7 @@ void update_credit(project_t *project, credit_t *credit)
 {
     if (project->status != CREDIT)
         return;
-    if (credit->pos.y <= -1150) {
+    if (credit->pos.y <= -1350) {
         project->status = MAIN_MENU;
         credit->pos.y = 1080;
         sfMusic_stop(credit->music);
