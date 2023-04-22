@@ -49,6 +49,13 @@ void therock_quest(project_t *project, all_pnjs_t *act_pnj)
 void creator_quest(project_t *project, all_pnjs_t *act_pnj)
 {
     if (!my_strcmp(act_pnj->name, "/creator.png")) {
+        if (project->player->player_progress_state == 14)
+            start_credit(project);
+        if (project->player->player_progress_state == 12) {
+            project->player->player_progress_state = 13;
+            set_pnj_dialogue(project->scene->pnj, "/creator.png", "Creator3");
+            check_all_pnj_dialogue(project);
+        }
         if (project->player->player_progress_state == 11)
             project->player->player_progress_state = 12;
         if (project->player->player_progress_state == 12) {
