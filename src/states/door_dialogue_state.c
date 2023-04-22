@@ -54,6 +54,7 @@ void door_quest(project_t *project, all_pnjs_t *act_pnj)
         project->player->col->left = project->player->pos.x + 11;
         project->player->col->top = project->player->pos.y + 16;
         project->scene = load_scene(project, 3);
+        finish_quest("QUETE3", project->quests);
         add_quest("Chercher Mickey", project->quests, "SEC_QUETE1");
     }
 }
