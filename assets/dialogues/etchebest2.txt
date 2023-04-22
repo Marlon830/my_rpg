@@ -1,4 +1,4 @@
-Name:Enemy2
+Name:Etchebest2
 Image:etchébaiste.png
 Dialogue#
 Ah j'ai flop

@@ -1,0 +1,6 @@
+Name:Chest3
+Image:chest_opened.png
+Dialogue#
+Vous obtenez des bottes en or !
+-
+#

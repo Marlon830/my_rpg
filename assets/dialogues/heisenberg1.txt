@@ -1,0 +1,8 @@
+Name:Heisenberg1
+Image:heisenberg.png
+Dialogue#
+Je ne te laisserai pas passer
+-
+We have to cook
+-
+#
