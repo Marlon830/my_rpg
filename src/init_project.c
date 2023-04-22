@@ -61,6 +61,8 @@ act_dial_t *init_actual_dialogue(void)
     (sfVector2f){0.2, 0.2}, sfWhite);
     actual_dial->rect = create_rect();
     actual_dial->is_displayed = 0;
+    actual_dial->dialogue = NULL;
+    actual_dial->face = NULL;
     return actual_dial;
 }
 
