@@ -1,2 +1,2 @@
 1
-5 5 80 2 700 3 coiffeur/client.png
+5 5 80 2 500 3 coiffeur/client.png
