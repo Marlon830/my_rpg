@@ -20,6 +20,7 @@ credit_t *create_credit(void)
     sfText_setFont(credit->text, credit->font);
     sfText_setColor(credit->text, sfWhite);
     credit->pos.x = 800;
-    credit->pos.y = 1080;
+    credit->pos.y = 1660;
+    credit->music = sfMusic_createFromFile("assets/music/epic_music.ogg");
     return credit;
 }
