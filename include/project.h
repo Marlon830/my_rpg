@@ -137,5 +137,10 @@ void reset_view(project_t *project);
 sfVector2f convert_mouse_window(sfRenderWindow *window, int x, int y);
 void dungeon_door1_quest(project_t *project, all_pnjs_t *act_pnj);
 void squest_quest(project_t *project, all_pnjs_t *act_pnj);
+void destroy_project(project_t *project);
+void destroy_dialogue(act_dial_t *actual_dial);
+void destroy_button(button_t *button);
+void destroy_slider(slider_t *slider);
+void destroy_quest(quest_t *quest);
 
 #endif
