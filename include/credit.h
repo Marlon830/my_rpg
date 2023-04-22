@@ -29,5 +29,6 @@ credit_t *create_credit(void);
 void update_credit(project_t *project, credit_t *credit);
 void credit_event(project_t *project);
 void start_credit(project_t *project);
+void destroy_credit(credit_t *credit);
 
 #endif
