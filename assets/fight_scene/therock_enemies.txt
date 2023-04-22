@@ -1,2 +1,2 @@
 1
-5 5 30 8 100 5 dungeon3/therock.png
+5 5 120 8 1000 5 dungeon3/therock.png

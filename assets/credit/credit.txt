@@ -1,31 +1,33 @@
-            Credits :
+            CREDITS
             
 
-            Acteurs :
+            ACTEURS
 
-            The rock
+            The Rock
 
            Heisenberg
 
-             Mickey
+              Mickey
 
          Le Quoi ? Feur
 
             Etchebest
+
+       L'enfant pas malade
             
 
-          Developpeurs :
+          DEVELOPPEURS
           
          Alexandre Bret
 
           Marlon Pegahi
 
-         Allan Leflopeux
+         Allan Leherpeux
             
           Edgar Maurel
             
             
-        Mentions Speciales :
+        MENTIONS SPECIALES
 
           Leo Sarochar
           
@@ -60,4 +62,4 @@
 
 
 
-              prout
+
