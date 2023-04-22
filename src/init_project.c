@@ -49,6 +49,7 @@ player_t *init_player(int x, int y)
     player->player_second_state = 0;
     player->equipment = init_equipment();
     player->player_stats = init_stats();
+    player->character = NULL;
     return player;
 }
 
