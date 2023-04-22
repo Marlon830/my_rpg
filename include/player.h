@@ -95,5 +95,6 @@ char *get_stat_path(char *path);
 void add_stat(player_t *player, char *path);
 void remove_stat(player_t *player, char *path);
 char *get_box_path(box_t *box);
+void destroy_stats(player_stats_t *player_stats);
 
 #endif

@@ -15,10 +15,10 @@
             
 
           Developpeurs :
+          
+         Alexandre Bret
 
           Marlon Pegahi
-
-         Alexandre Bret
 
          Allan Leherpeux
             
@@ -28,3 +28,5 @@
         Mention Speciale :
 
           Leo Sarochar
+          
+        Theodore Billote

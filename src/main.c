@@ -56,6 +56,8 @@ void main_loop(project_t *project)
     sfMusic_destroy(project->main_menu->music);
     sfMusic_stop(project->main_menu->music_ingame);
     sfMusic_destroy(project->main_menu->music_ingame);
+    sfMusic_stop(project->credit->music);
+    sfMusic_destroy(project->credit->music);
     sfRenderWindow_destroy(project->window);
     free(project);
 }
