@@ -24,4 +24,5 @@ void destroy_stats(player_stats_t *player_stats)
     destroy_image(player_stats->defense_image);
     destroy_image(player_stats->move_range_image);
     destroy_image(player_stats->mana_image);
+    free(player_stats);
 }
