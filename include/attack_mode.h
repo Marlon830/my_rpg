@@ -57,3 +57,8 @@ void update_lazer(lazer_t *lazer);
 void append_vertex(sfVector2f point, sfColor color, sfVertexArray *array);
 void update_black_fade(battle_scene_t *scene);
 void update_end_of_fight(battle_scene_t *scene);
+arrow_t *create_arrow(sfVector2f pos, float size);
+void draw_arrow(arrow_t *arrow, sfRenderWindow *window);
+sprite_t *create_sprite(char *filename, sfVector2f pos);
+tutorial_t *create_tutorial(void);
+void draw_tutorial(tutorial_t *tutorial, sfRenderWindow *window);

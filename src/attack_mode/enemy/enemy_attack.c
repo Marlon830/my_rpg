@@ -9,8 +9,10 @@
 
 void hit_player(battle_scene_t *scene, tile_t *tile, int damage)
 {
-    char *text = int_to_str(damage);
-    scene->player->actual_stats->health_point -= damage;
+    char *text = int_to_str(MAX(damage -
+    scene->player->actual_stats->defense, 0));
+    scene->player->actual_stats->health_point += MIN(-damage +
+    scene->player->actual_stats->defense, 0);
     sfText_setString(scene->player->damage_taken->text, text);
     scene->player->damage_taken->show = 1;
     sfText_setPosition(scene->player->damage_taken->text,
