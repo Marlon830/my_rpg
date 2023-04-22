@@ -45,6 +45,8 @@ void dungeon_quest_fight(project_t *project)
         finish_quest("QUETE4", project->quests);
         add_quest("Combattre The Rock", project->quests,
         "QUETE5");
+        add_elem(project->inventory->bag,
+        "assets/object/ring_gelano.png", RING, 1);
         set_pnj_dialogue(project->scene->pnj, "/heisenberg.png", "Heisenberg2");
         check_all_pnj_dialogue(project);
     }
