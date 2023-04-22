@@ -1,2 +1,2 @@
 1
-5 5 1 1 1 500 kid/kid.png
+5 5 1 1 1 10 kid/kid.png
