@@ -140,14 +140,16 @@ void dungeon_door1_quest(project_t *project, all_pnjs_t *act_pnj);
 void heisenberg_quest(project_t *project, all_pnjs_t *act_pnj);
 void chest2_quest(project_t *project, all_pnjs_t *act_pnj);
 void dungeon_door2_quest(project_t *project, all_pnjs_t *act_pnj);
+void dungeon_door3_quest(project_t *project, all_pnjs_t *act_pnj);
 void therock_quest(project_t *project, all_pnjs_t *act_pnj);
-void squest_quest(project_t *project, all_pnjs_t *act_pnj);
+void kid_quest(project_t *project, all_pnjs_t *act_pnj);
 void boat_quest(project_t *project, all_pnjs_t *act_pnj);
 void secondary_quest_fight_state(project_t *project);
+void creator_quest(project_t *project, all_pnjs_t *act_pnj);
 void destroy_project(project_t *project);
-void destroy_dialogue(act_dial_t *actual_dial);
 void destroy_button(button_t *button);
 void destroy_slider(slider_t *slider);
+void destroy_dialogue(act_dial_t *actual_dial);
 void destroy_quest(quest_t *quest);
 
 #endif

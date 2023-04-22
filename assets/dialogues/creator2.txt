@@ -1,0 +1,10 @@
+Name:Creator2
+Image:moa.png
+Dialogue#
+Oui.. J'ai une seule question...
+-
+Les crampter...
+-
+C'EST QUOI ??????
+-
+#
