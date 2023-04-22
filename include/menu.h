@@ -109,5 +109,7 @@ void update_slider(project_t *project, slider_t *slider);
 void update_settings(project_t *project);
 void update_settings_pause(project_t *project);
 void slider_event_pause(project_t *project, sfEvent event);
+void destroy_main_menu(main_menu_t *menu);
+void destroy_pause_menu(pause_menu_t *menu);
 
 #endif
