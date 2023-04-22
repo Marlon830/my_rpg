@@ -137,5 +137,6 @@ void reset_view(project_t *project);
 sfVector2f convert_mouse_window(sfRenderWindow *window, int x, int y);
 void dungeon_door1_quest(project_t *project, all_pnjs_t *act_pnj);
 void squest_quest(project_t *project, all_pnjs_t *act_pnj);
+void boat_quest(project_t *project, all_pnjs_t *act_pnj);
 
 #endif

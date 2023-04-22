@@ -19,3 +19,16 @@ void squest_quest(project_t *project, all_pnjs_t *act_pnj)
         }
     }
 }
+
+void boat_quest(project_t *project, all_pnjs_t *act_pnj)
+{
+    if (!my_strcmp(act_pnj->name, "/boat_guy.png")) {
+        if (project->player->player_second_state == 3) {
+            project->status = FIGHT;
+            project->pnj_fighting = act_pnj->name;
+            project->battle_scene = create_battle_scene_from_file(
+        "assets/fight_scene/boat_map.txt",
+        "assets/fight_scene/boat_enemies.txt", project);
+        }
+    }
+}
